@@ -1,0 +1,19 @@
+{
+  "authorizedByUser": true,
+  "previousBundle": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\HydroDataLab-20261018-162136.bundle",
+  "commits": {
+    "3203f1c34bed06e394fe6db86ca5d69c09d6e692": "3203f1c34bed06e394fe6db86ca5d69c09d6e692",
+    "37408e71cd955f1c6bc0d1879345e3fec9a7e6c4": "37408e71cd955f1c6bc0d1879345e3fec9a7e6c4",
+    "462c459768f413c4d7859107c1af188f4687a958": "e8a7e5ae62e7118e1af52073b51e5acd4b2fabb3",
+    "50ba71b4a7c1e4ab107ffdeae17e82ce73255c18": "089c5668f268151f8916738467bac88ccce8c806",
+    "1c285b144565fcbf5b2aa2bfbc66705331c725b9": "3184c97af3766a6c6dcce255a5be029b8d9dda0c",
+    "b01c5c44341520956d706a075b1ffc39f5e2505d": "95529000c4bcd70432b5f0bed343f189801cd6a4",
+    "9f92fe3dd9feba37440c484f18038e2cee165038": "114d57d137c4064ab9617bb736e187421c83afdc",
+    "2d101faa09ccd187b02e31be48259290b1622f19": "4a462eec09f6f2cc62b4ec0ca36fa4a6a033bd78"
+  },
+  "fixtureSha256": {
+    "data/fixtures/demand.json": "f8a1f442458d95ffc33b088def38f7df51a6b9176b0c2ce29e97479b219a5008",
+    "data/fixtures/hydrometeo.json": "f52050b8df2bd5059e3912e103d0b6250e66e5c049d759606c9549c82cbe68ca",
+    "data/fixtures/manifest.json": "6c9605fa7f23a41bb4510c19f7283bc86a1699eb7402ea466a62207a46489397"
+  }
+}

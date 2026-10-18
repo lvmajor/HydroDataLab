@@ -25,6 +25,14 @@ Ce contournement de diagnostic ne remplace pas la répétition du moteur autoris
 
 24 routes Slidev et deux interactions validées avec les requêtes externes bloquées; 0 erreur JavaScript et 0 débordement. PDF de 24 pages, texte et rendu inspectés. Preuves détaillées : `presentation/exports/qa/VALIDATION.md`. Les alertes transitives restantes de l'outillage Slidev sont décrites sans masquage dans `presentation/DEPENDENCY-AUDIT.md`; la projection utilise le build statique par défaut.
 
+## Sauvegarde et reprise Git
+
+Les huit tags sont annotés et l'histoire est linéaire. Une restauration réelle depuis un bundle indépendant a exécuté les CLI des jalons 02 à 07 avec `uv --offline --frozen`. Les empreintes des sources sont exactes à chaque étape. Les deux acceptations échouent comme prévu sur 06; les 35 tests Python réussissent sur 07.
+
+Cette vérification a détecté puis permis de corriger une normalisation des fins de ligne par Git dans les anciens commits. La réparation locale a été explicitement autorisée; aucune donnée métier ni empreinte source n'a été remplacée. L'ancienne sauvegarde reste conservée pour traçabilité. Preuves : `validation/git-restoration.json` et `validation/git-history-repair.json`.
+
+L'archive hors ligne des quatre images mesure 1 205 382 656 octets. Son manifest contient les quatre identifiants attendus; son SHA-256 est `3c3c775373607b6f6cec5f2bdea7cc9506bfe4c5182e9df04bfce8ea4690ebfe`.
+
 ## À confirmer le 19 octobre
 
 Compte Copilot HQ, modèles réellement autorisés, politiques des outils, accès réseau public, moteur de conteneurs approuvé, projection, alimentation et répétition chronométrée. Aucune de ces vérifications spécifiques au portable HQ n'est déclarée effectuée ici.

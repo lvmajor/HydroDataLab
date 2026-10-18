@@ -8,7 +8,7 @@ Le support contient **18 diapositives + 6 annexes**, trois démonstrations (4 + 
 
 ## Commencer
 
-Dans PowerShell, à la racine du dossier :
+Dans **PowerShell 7**, à la racine du dossier :
 
 ```powershell
 ./scripts/doctor.ps1
@@ -32,6 +32,7 @@ Ouvrir **http://localhost:53173**; ajouter `/presenter` pour les notes. Le [PDF 
 ```powershell
 uv sync --project etl --frozen
 uv run --project etl python -m hydrodatalab run --source fixture --date 2026-10-17 --output outputs/cli
+New-Item -ItemType Directory -Force etl/.test-output | Out-Null
 uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basetemp etl/.test-output/manual
 ```
 
@@ -52,6 +53,26 @@ uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basete
 Préférer Node **24 LTS** sur le portable de présentation. Python 3.14.2 est testé; le projet accepte 3.12 à 3.14. Installer Git, .NET, uv, Node et Aspire avant `prepare.ps1`. Les téléchargements sont nécessaires à la préparation initiale. Après préparation, les parcours fixture et le diaporama sont autonomes.
 
 La publication part de `src/AppHost/apphost.cs`. Les scripts `prepare-docker.ps1` et `docker-demo.ps1` utilisent Compose généré par Aspire. Voir [docs/DOCKER.md](docs/DOCKER.md). Les images doivent être construites avant la séance. Les ports API/Python restent privés en conteneurs; Vue les utilise via nginx.
+
+## Restaurer les conteneurs sans réseau
+
+L'archive préparée le **18 octobre 2026**, [artifacts/hydrodatalab-images.tar](artifacts/hydrodatalab-images.tar), contient les **quatre images déjà testées** : Python, API, Vue et dashboard Aspire. Taille : **1 205 382 656 octets** (~1 149,5 Mio). Son SHA-256 est :
+
+```text
+3c3c775373607b6f6cec5f2bdea7cc9506bfe4c5182e9df04bfce8ea4690ebfe
+```
+
+Transporter le dossier du projet, l'archive et ses fichiers `.sha256` / `.manifest.json`, ainsi que **tout `artifacts/compose/`**. Ce dernier contient `docker-compose.yaml`, `images.env` et le `.env` généré par Aspire. **Le bundle Git et le ZIP du code ne contiennent pas ces artefacts**, car `artifacts/` est ignoré par Git; ils doivent être ajoutés au kit portable séparément. Les scripts de lancement requièrent `docker-compose.yaml` et `images.env` à leur emplacement d'origine.
+
+Sur le poste cible, avec le moteur installé et démarré, vérifier l'empreinte puis charger les images **avant** le lancement hors ligne :
+
+```powershell
+Get-FileHash artifacts/hydrodatalab-images.tar -Algorithm SHA256
+docker load --input artifacts/hydrodatalab-images.tar
+./scripts/docker-demo.ps1
+```
+
+Avec Podman, utiliser `podman load --input artifacts/hydrodatalab-images.tar`, puis `./scripts/docker-demo.ps1 -Engine podman`. Le lancement impose `--pull never --no-build`. La [procédure détaillée](docs/DOCKER.md#transporter-et-restaurer-les-images-avant-la-séance) explique aussi comment republier Compose sur un poste préparé si ses fichiers n'ont pas été transportés. Une nouvelle archive peut être produite avec `./scripts/export-images.ps1 -Engine podman` ou `-Engine docker`.
 
 ## Présenter et reprendre
 

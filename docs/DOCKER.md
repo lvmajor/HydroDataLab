@@ -26,12 +26,92 @@ uv run --project etl python etl/tests/verify_container.py --docker-context podma
 
 La preuve compare CSV, table Parquet et rapport JSON, hors horodatage de génération. Un volume ou `docker cp` permet de conserver les exports hors du conteneur.
 
-## Transporter les images avant la séance
+## Transporter et restaurer les images avant la séance
 
-```powershell
-docker save -o artifacts/hydrodatalab-images.tar hydrodatalab-etl:formation hydrodatalab-api:formation hydrodatalab-web:formation mcr.microsoft.com/dotnet/aspire-dashboard:13.6.1
-# Sur l'autre poste, avec son moteur déjà autorisé et démarré :
-docker load -i artifacts/hydrodatalab-images.tar
+L'export réalisé le **18 octobre 2026 à 20:25:37 UTC** est disponible dans `artifacts/hydrodatalab-images.tar`. C'est une archive Docker non compressée de **1 205 382 656 octets** (~1 149,5 Mio), dont le manifest a été vérifié : il contient exactement les quatre images et les configurations attendues.
+
+| Image | Début de l'identifiant vérifié |
+|---|---|
+| `docker.io/library/hydrodatalab-etl:formation` | `8b20bcb0db72` |
+| `docker.io/library/hydrodatalab-api:formation` | `54969f6be3e3` |
+| `docker.io/library/hydrodatalab-web:formation` | `d1d8ee58ea20` |
+| `mcr.microsoft.com/dotnet/aspire-dashboard:13.6.1` | `536e41832541` |
+
+Le fichier `hydrodatalab-images.tar.manifest.json` conserve les identifiants complets, la taille et l'instant d'export. Le fichier `hydrodatalab-images.tar.sha256` contient l'empreinte :
+
+```text
+3c3c775373607b6f6cec5f2bdea7cc9506bfe4c5182e9df04bfce8ea4690ebfe
 ```
 
-Ajouter `--context <nom>` après `docker` si nécessaire. Copier aussi `artifacts/compose/` avec ses deux fichiers de configuration et le dossier préparé. Le bundle Git conserve le code et les données, pas les images, les dépendances installées ou les volumes.
+### Contenu du kit portable
+
+Copier ensemble le projet et les éléments suivants, en conservant leur emplacement relatif :
+
+- `artifacts/hydrodatalab-images.tar`;
+- `artifacts/hydrodatalab-images.tar.sha256` et `artifacts/hydrodatalab-images.tar.manifest.json`;
+- **le dossier complet `artifacts/compose/`**, contenant `docker-compose.yaml`, `images.env` et `.env`.
+
+Le dossier `artifacts/` est ignoré par Git. **Un bundle Git ou le ZIP du code seul ne transporte donc ni les images ni Compose généré.** Ajouter ces fichiers séparément à l'archive finale ou au support de transport. Les scripts utilisent explicitement `--env-file artifacts/compose/images.env` : `docker-compose.yaml` et `images.env` sont indispensables au démarrage. Le `.env` généré par Aspire est conservé avec le dossier pour la traçabilité.
+
+Les dépendances installées du parcours natif et les volumes Docker ne sont pas inclus dans l'archive d'images. Sur un nouveau poste, les volumes du démonstrateur sont créés au premier lancement; le snapshot public est déjà intégré à l'image Python.
+
+### Restaurer sur le poste cible
+
+Le moteur autorisé et les prérequis des scripts doivent être installés avant la séance. Depuis la racine du projet, vérifier l'archive copiée :
+
+```powershell
+$imageArchiveHash = (Get-FileHash artifacts/hydrodatalab-images.tar -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($imageArchiveHash -ne '3c3c775373607b6f6cec5f2bdea7cc9506bfe4c5182e9df04bfce8ea4690ebfe') {
+    throw "L'empreinte de l'archive ne correspond pas à l'export validé."
+}
+Test-Path artifacts/compose/docker-compose.yaml
+Test-Path artifacts/compose/images.env
+```
+
+Les deux vérifications de chemins doivent renvoyer `True`. Choisir ensuite la séquence correspondant au moteur installé. **Le chargement précède le démarrage hors ligne** et ne nécessite ni reconstruction ni téléchargement.
+
+Avec Docker :
+
+```powershell
+docker load --input artifacts/hydrodatalab-images.tar
+./scripts/docker-demo.ps1
+./scripts/verify-http.ps1 -BaseUrl http://localhost:53170
+```
+
+Avec Podman :
+
+```powershell
+podman load --input artifacts/hydrodatalab-images.tar
+./scripts/docker-demo.ps1 -Engine podman
+./scripts/verify-http.ps1 -BaseUrl http://localhost:53170
+```
+
+Pour un contexte Docker explicite, ajouter `--context <nom>` à `docker load` et le même `-DockerContext <nom>` au script. Le lancement utilise `--pull never --no-build`. Le script `prepare-docker.ps1` correspond à la préparation initiale : il publie Compose, construit les images et télécharge le dashboard; le parcours portable ci-dessus utilise les fichiers et images déjà préparés.
+
+### Si Compose généré n'a pas été transporté
+
+Sur un poste dont les SDK, outils et dépendances ont déjà été préparés, republier le modèle **avant la séance hors réseau**, puis recréer le fichier de sélection des images :
+
+```powershell
+./scripts/stop-demo.ps1
+aspire publish --apphost src/AppHost/apphost.cs -o artifacts/compose --non-interactive
+@(
+    'PYTHON_IMAGE=docker.io/library/hydrodatalab-etl:formation'
+    'API_IMAGE=docker.io/library/hydrodatalab-api:formation'
+    'WEB_IMAGE=docker.io/library/hydrodatalab-web:formation'
+) | Set-Content artifacts/compose/images.env -Encoding ascii
+```
+
+Cette publication peut nécessiter une restauration de packages si le poste n'est pas préparé. Copier ensuite tout `artifacts/compose/` avec le kit. `docker-compose.yaml` reste produit par Aspire, sans retouche manuelle.
+
+### Produire une nouvelle archive
+
+Après validation d'une nouvelle version des quatre images :
+
+```powershell
+./scripts/export-images.ps1 -Engine podman
+# Variante avec Docker :
+./scripts/export-images.ps1 -Engine docker
+```
+
+Choisir une seule commande; ajouter `-Force` pour remplacer explicitement une archive existante. Le script exporte les images présentes, vérifie le manifest et leurs identifiants, puis produit les fichiers de preuve. Une nouvelle archive aura sa propre empreinte : utiliser celle de son fichier `.sha256`.

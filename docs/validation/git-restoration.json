@@ -1,0 +1,45 @@
+{
+  "bundle": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\HydroDataLab-repaired-validation.bundle",
+  "clonedInto": "F:\\PoC\\Formation Copilot - HQ\\.runtime\\recovery-check-v2",
+  "offlineDependencies": true,
+  "results": [
+    {
+      "tag": "02-extraction",
+      "fixtureIntegrity": "PASS",
+      "cli": "PASS",
+      "output": "warning: `VIRTUAL_ENV=F:\\PoC\\Formation Copilot - HQ\\etl\\.venv` does not match the project environment path `etl\\.venv` and will be ignored; use `--active` to target the active environment instead\n{\"output\": \"outputs\\\\recovery\\\\02-extraction\", \"records\": 168}\r\n"
+    },
+    {
+      "tag": "03-transformation-bi",
+      "fixtureIntegrity": "PASS",
+      "cli": "PASS",
+      "output": "warning: `VIRTUAL_ENV=F:\\PoC\\Formation Copilot - HQ\\etl\\.venv` does not match the project environment path `etl\\.venv` and will be ignored; use `--active` to target the active environment instead\n{\"runId\": \"766161e0-3c5d-49ca-b882-0e2277a42950\", \"summary\": {\"observationCount\": 168, \"seriesCount\": 4, \"invalidCount\": 0, \"duplicateCount\": 0}, \"warnings\": []}\r\n"
+    },
+    {
+      "tag": "04-pilotage",
+      "fixtureIntegrity": "PASS",
+      "cli": "PASS",
+      "output": "warning: `VIRTUAL_ENV=F:\\PoC\\Formation Copilot - HQ\\etl\\.venv` does not match the project environment path `etl\\.venv` and will be ignored; use `--active` to target the active environment instead\n{\"runId\": \"fc0e5703-d4c6-4a6c-9033-aceb1d6c2a05\", \"summary\": {\"observationCount\": 168, \"seriesCount\": 4, \"invalidCount\": 0, \"duplicateCount\": 0}, \"warnings\": []}\r\n"
+    },
+    {
+      "tag": "05-docker",
+      "fixtureIntegrity": "PASS",
+      "cli": "PASS",
+      "output": "warning: `VIRTUAL_ENV=F:\\PoC\\Formation Copilot - HQ\\etl\\.venv` does not match the project environment path `etl\\.venv` and will be ignored; use `--active` to target the active environment instead\n{\"runId\": \"c7af6add-d7bd-48b8-b8cb-9c049f3a1fee\", \"summary\": {\"observationCount\": 168, \"seriesCount\": 4, \"invalidCount\": 0, \"duplicateCount\": 0}, \"warnings\": []}\r\n"
+    },
+    {
+      "tag": "06-specification",
+      "fixtureIntegrity": "PASS",
+      "cli": "PASS",
+      "output": "warning: `VIRTUAL_ENV=F:\\PoC\\Formation Copilot - HQ\\etl\\.venv` does not match the project environment path `etl\\.venv` and will be ignored; use `--active` to target the active environment instead\n{\"runId\": \"e5b5e908-04bf-43fd-903b-1eb6ae4ecb18\", \"summary\": {\"observationCount\": 168, \"seriesCount\": 4, \"invalidCount\": 0, \"duplicateCount\": 0}, \"warnings\": []}\r\n",
+      "expectedAcceptanceFailures": 2
+    },
+    {
+      "tag": "07-solution",
+      "fixtureIntegrity": "PASS",
+      "cli": "PASS",
+      "output": "warning: `VIRTUAL_ENV=F:\\PoC\\Formation Copilot - HQ\\etl\\.venv` does not match the project environment path `etl\\.venv` and will be ignored; use `--active` to target the active environment instead\n{\"runId\": \"b0be9317-c6b3-4314-b0d7-3b219fe85a12\", \"summary\": {\"observationCount\": 168, \"seriesCount\": 4, \"invalidCount\": 0, \"duplicateCount\": 0}, \"warnings\": []}\r\n",
+      "passedTests": 35
+    }
+  ]
+}
