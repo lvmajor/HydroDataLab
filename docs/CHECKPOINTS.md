@@ -17,6 +17,8 @@ Les huit tags annotés constituent une histoire linéaire. Les premiers jalons s
 
 ## Préparer le live
 
+Arrêter le parcours conteneurisé avant de changer de jalon. Après l'arrêt ciblé d'Aspire, le script refuse aussi la bascule si le port 53170 est encore occupé; il ne tue aucune autre application.
+
 ```powershell
 ./scripts/checkpoint.ps1 -Tag 06-specification -Branch demo-live
 ./scripts/start-demo.ps1

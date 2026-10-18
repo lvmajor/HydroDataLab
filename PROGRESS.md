@@ -10,7 +10,7 @@ Mis à jour : 18 octobre 2026. Formation cible : mardi 20 octobre 2026.
 - [x] Parcours Docker Compose et comparaison avec le mode natif.
 - [x] 24 diapositives, PDF, notes et aide-mémoire contrôlés.
 - [ ] Tags pédagogiques, scripts de reprise et sauvegarde Git.
-- [ ] Vérification navigateur et répétition technique.
+- [x] Vérification navigateur et répétition technique sur le poste de construction.
 
 ## Décisions
 - Python porte les transformations. .NET pilote et conserve l'historique; Vue présente les résultats.
@@ -24,7 +24,7 @@ Lire ce journal, puis `git status --short --branch` et `git log -5 --oneline`.
 Ne pas écraser les modifications existantes. Le travail des agents est réparti entre `etl/`, `web/`, `presentation/` et le reste du dépôt.
 
 ## Prochaine action
-Terminer les images et la validation Compose; figer les jalons Git et les sauvegardes.
+Produire le bundle Git, vérifier une restauration réelle et terminer l'archive des images. La version finale Python a été restaurée après validation du jalon 06 volontairement incomplet.
 
 ## Vérifications
 - Python : 35 tests réussis; lecture réelle de la source publique vérifiée; date CLI, idempotence, changements d'heure et interruptions couverts.
@@ -32,13 +32,15 @@ Terminer les images et la validation Compose; figer les jalons Git et les sauveg
 - Vue : compilation et 11 tests réussis; parcours Edge complet et mobile validé, captures dans docs/screenshots.
 - HTTP natif : collecte, scénario manquant 95,83 %, échec/relance, trois exports vérifiés.
 - Slidev : 24 diapositives, aucun débordement ni requête externe; interactions vérifiées, PDF produit.
-- Git : dernier commit enregistré `1c285b1`, tag `04-pilotage` (ETL `50ba71b`, extraction `462c459`).
+- Git : jalons 00 à 06 enregistrés; `05-docker` = `b01c5c4`, `06-specification` = `9f92fe3`. Branche `demo-live` créée depuis 06. Solution 07 en cours d'enregistrement.
 - Image ETL finale testée sans réseau : CSV identique, Parquet et JSON métier équivalents au mode natif.
 - Aspire : publication Compose réussie; images API, Vue, ETL et dashboard téléchargées/construites.
 - 16:16 : Compose sain et parcours HTTP complet validé (collecte, couverture, panne, relance, exports). Le blocage venait de la liaison named pipe Docker; construction Podman directe puis API temporaire localhost dans le namespace systemd. Aucun service global redémarré. Voir docs/VALIDATION.md.
 - Persistance réelle : restart API conserve dernier rapport et planification; planification désactivée après vérification.
 - Préparation native exécutée avec succès; audit résiduel des outils Slidev documenté dans presentation/DEPENDENCY-AUDIT.md.
 - Scripts de reprise : runtime séparé par branche/tag; changements Git refusés si modifications locales.
+- Jalon 06 vérifié : deux acceptations volontairement rouges, CLI fonctionnelle avec 168 observations et couverture absente. Solution restaurée : 35 tests Python verts.
+- Compose : 14 contrôles navigateur réussis, aucune requête externe du navigateur. Conteneurs arrêtés proprement après les tests; volumes conservés.
 - Docker Desktop : backend ne démarre pas. Le contexte existant `podman-machine-default` répond; tests de conteneur via ce contexte explicite.
 - Ports réservés à cette démo : Vue 53170, API 53171, Python 53172, présentation 53173.
 

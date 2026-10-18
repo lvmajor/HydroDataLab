@@ -1,7 +1,7 @@
-# Jalon 06 — exercice de couverture
+# Jalon 07 — solution validée
 
-Le pipeline et l'application fonctionnent. La fonction `calculate_coverage` retourne volontairement `None` : l'interface affiche l'indicateur comme à construire.
+Le pipeline et l'application fonctionnent avec l'indicateur de couverture implémenté. Les observations valides sont dédupliquées par créneau; le calcul respecte les jours de 23/25 heures à Toronto.
 
-Lire `specs/coverage.md`, puis implémenter uniquement la fonction Python. Les tests de `specs/test_coverage_acceptance.py` et les tests unitaires de couverture sont volontairement rouges. Ne pas modifier les attentes pour les faire passer.
+`uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py` valide les règles, dont 23/24 = 95,83 %. Les zéros valides restent comptés et les données originales sont conservées.
 
-La branche `demo-live` permet de conserver la génération. La solution validée est disponible au tag `07-solution`. Voir `docs/CHECKPOINTS.md` pour la bascule de secours.
+La branche `demo-live` part du tag `06-specification`, où cette fonction est volontairement absente. Voir `docs/CHECKPOINTS.md` pour l'exercice et la bascule de secours. Cette version finale constitue le résultat préparé, pas une trace de génération en direct par Copilot.

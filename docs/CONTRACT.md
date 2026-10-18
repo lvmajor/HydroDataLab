@@ -48,4 +48,4 @@ Les séries sont `demand`, `water_level`, `temperature_min`, `temperature_max`. 
 Statuts : `queued`, `running`, `succeeded`, `failed`, `interrupted`. Étapes : `queued`, `extract-transform-export`, `persist`, `complete`. L'historique est durable; après redémarrage les exécutions en cours sont marquées interrompues. La planification périodique est désactivée au premier démarrage.
 
 ## Environnement
-Python : `HYDRO_OUTPUT_DIR`, `HYDRO_FIXTURE_DIR` facultatif. .NET : `Python__BaseUrl`, `Hydro__DataDir`, `Hydro__ArtifactDir`. Vite : `API_BASE_URL` pour son proxy `/api`. Chaque checkpoint utilise un répertoire runtime séparé.
+Python : `HYDRO_OUTPUT_DIR`, `HYDRO_FIXTURE_DIR` facultatif. .NET : `Python__BaseUrl`, `Hydro__DataDir`. Vite : `API_BASE_URL` pour son proxy `/api`. Le script `start-demo.ps1` sélectionne un répertoire runtime distinct par branche/tag via `HYDRO_RUNTIME_DIR`.
