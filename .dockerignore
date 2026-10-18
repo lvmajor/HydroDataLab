@@ -1,0 +1,13 @@
+**/bin
+**/obj
+**/node_modules
+**/.venv
+**/__pycache__
+**/.test-output
+.git
+.runtime
+outputs
+artifacts
+presentation
+handouts
+src/AppHost/.agents

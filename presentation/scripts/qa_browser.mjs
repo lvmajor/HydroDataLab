@@ -1,0 +1,30 @@
+import { chromium } from 'playwright-chromium';
+import fs from 'node:fs/promises';
+const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files/Google/Chrome/Application/chrome.exe'});
+const page=await browser.newPage({viewport:{width:1600,height:900},deviceScaleFactor:1});
+const errors=[]; const external=new Set(); const issues=[]; const titles=[];
+page.on('pageerror',e=>errors.push(e.message));
+page.on('request',r=>{const u=r.url();if(!u.startsWith('http://127.0.0.1:53173')&&!u.startsWith('data:')&&!u.startsWith('blob:'))external.add(u)});
+await page.route('**/*',route=>{const u=route.request().url();if(!u.startsWith('http://127.0.0.1:53173')&&!u.startsWith('data:')&&!u.startsWith('blob:'))return route.abort();return route.continue()});
+for(let i=1;i<=24;i++){
+ await page.goto(`http://127.0.0.1:53173/${i}`,{waitUntil:'networkidle'});
+ const slide=page.locator('.slidev-layout:visible').first();
+ await slide.waitFor();
+ titles.push(await slide.locator('h1').innerText());
+ const out=await slide.evaluate(el=>{const r=el.getBoundingClientRect();return [...el.children].filter(n=>!n.classList.contains('source')&&!n.classList.contains('slide-number')).map(n=>({tag:n.tagName,text:n.textContent.slice(0,70),r:n.getBoundingClientRect()})).filter(n=>n.r.bottom>r.bottom-25||n.r.right>r.right+2).map(n=>({tag:n.tag,text:n.text,bottom:n.r.bottom-r.bottom,right:n.r.right-r.right}))});
+ if(out.length)issues.push({slide:i,out});
+}
+await page.goto('http://127.0.0.1:53173/10',{waitUntil:'networkidle'});
+await page.getByRole('button',{name:'3. Contrat',exact:true}).click();
+if(!await page.getByText('Ce que les colonnes veulent dire',{exact:true}).isVisible())throw new Error('Context interaction failed');
+await page.screenshot({path:'exports/qa/context-interactive.png'});
+await page.goto('http://127.0.0.1:53173/13',{waitUntil:'networkidle'});
+await page.locator('select').nth(1).selectOption('luna');
+if(!await page.getByText('0.003 $ US',{exact:true}).isVisible())throw new Error('Cost Luna failed');
+await page.getByRole('button',{name:'+',exact:true}).click();
+if(!await page.getByText('0.006 $ US',{exact:true}).isVisible())throw new Error('Cost retries failed');
+await page.screenshot({path:'exports/qa/model-interactive.png'});
+await fs.writeFile('exports/qa/browser-report.json',JSON.stringify({slideCount:titles.length,titles,issues,errors,external:[...external],interactions:'passed',offline:'external resources blocked throughout'},null,2));
+await browser.close();
+console.log(JSON.stringify({slideCount:titles.length,issues,errors,external:[...external],interactions:'passed'}));
+if(issues.length||errors.length||external.size)process.exitCode=1;

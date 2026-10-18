@@ -76,7 +76,7 @@ onUnmounted(() => { disposed = true; clearTimeout(timer) })
             <section class="quality-panel" aria-labelledby="quality-title"><div><span class="quality-symbol" aria-hidden="true">✓</span><div><h2 id="quality-title">Une lecture transparente</h2><p>{{ number(report.summary.observationCount) }} observations · {{ report.summary.seriesCount }} séries</p></div></div><dl><div><dt>Couverture</dt><dd :class="{ amber: totalCoverage != null && totalCoverage < 100 }">{{ totalCoverage == null ? 'Non calculée' : `${number(totalCoverage, 1)} %` }}</dd></div><div><dt>Valeurs invalides</dt><dd>{{ number(report.summary.invalidCount) }}</dd></div><div><dt>Doublons</dt><dd>{{ number(report.summary.duplicateCount) }}</dd></div></dl></section>
             <p v-if="totalCoverage == null" class="coverage-note">La couverture n’a pas encore été calculée. Une absence de résultat ne signifie pas 100 %.</p>
             <ul v-if="report.warnings.length" class="warnings"><li v-for="warning in report.warnings" :key="warning">{{ warning }}</li></ul>
-            <details class="coverage-details"><summary>Qualité par série</summary><table><thead><tr><th>Série</th><th>Observées / attendues</th><th>Couverture</th></tr></thead><tbody><tr v-for="s in report.series" :key="s.id"><td>{{ s.label }}</td><td>{{ s.coverage ? `${number(s.coverage.observed)} / ${number(s.coverage.expected)}` : 'Non calculée' }}</td><td>{{ s.coverage ? `${number(s.coverage.percent, 1)} %` : '—' }}</td></tr></tbody></table></details>
+            <details class="coverage-details"><summary>Qualité par série</summary><table><thead><tr><th>Série</th><th>Observées / attendues</th><th>Couverture</th></tr></thead><tbody><tr v-for="s in report.series" :key="s.id"><td>{{ s.label }}</td><td>{{ s.coverage ? `${number(s.coverage.observed)} / ${number(s.coverage.expected)}` : 'Non calculée' }}</td><td>{{ s.coverage ? `${number(s.coverage.percent, 2)} %` : '—' }}</td></tr></tbody></table></details>
             <section class="data-table-section"><div class="section-line"><h2>Les mesures, à la source</h2><button class="text-button" :aria-expanded="showTable" @click="showTable = !showTable">{{ showTable ? 'Masquer le tableau' : 'Afficher le tableau' }}</button></div><div v-if="showTable" class="table-scroll"><table><caption>300 mesures les plus récentes de la période visible, heure de Toronto.</caption><thead><tr><th>Date et heure</th><th>Série</th><th>Station</th><th>Valeur</th></tr></thead><tbody><tr v-for="(row, index) in allRows" :key="index"><td>{{ dateTime(row.timestamp, report.period.timezone) }}</td><td>{{ row.label }}</td><td>{{ row.station }}</td><td :class="{ amber: row.value == null }">{{ row.value == null ? 'Absente' : number(row.value, 2) }} <span v-if="row.value != null">{{ row.unit }}</span></td></tr></tbody></table></div></section>
           </template>
         </div>
@@ -91,5 +91,6 @@ onUnmounted(() => { disposed = true; clearTimeout(timer) })
     </main><footer><span>HydroDataLab</span><p>Projet pédagogique indépendant. Aucune affiliation officielle à Hydro-Québec.</p><span>Construire avec les agents IA</span></footer>
   </div>
 </template>
+
 
 

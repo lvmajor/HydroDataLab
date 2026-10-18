@@ -170,10 +170,12 @@ def test_http_cli_share_exact_same_observations(tmp_path, monkeypatch):
     assert client.post("/run", json={"runId": "../bad"}).status_code == 422
 
 
-def test_health_remains_responsive_during_synchronous_job(monkeypatch):
+def test_busy_run_rejected_and_health_responsive_during_synchronous_job(monkeypatch):
     import hydrodatalab.api as api
     started, release = Event(), Event()
+    calls = []
     def waiting_pipeline(*args, **kwargs):
+        calls.append(kwargs["run_id"])
         started.set()
         assert release.wait(timeout=5)
         return {"summary": {"observationCount": 0}}
@@ -183,6 +185,26 @@ def test_health_remains_responsive_during_synchronous_job(monkeypatch):
         try:
             assert started.wait(timeout=3)
             assert client.get("/health").json() == {"status": "ok"}
+            busy = client.post("/run", json={"runId": str(uuid4())})
+            assert busy.status_code == 409
+            assert "déjà en cours" in busy.json()["detail"]
+            assert len(calls) == 1
         finally:
             release.set()
         assert pending.result(timeout=3).status_code == 200
+        assert client.post("/run", json={"runId": str(uuid4())}).status_code == 200
+        assert len(calls) == 2
+
+
+def test_run_lock_released_after_pipeline_failure(monkeypatch):
+    import hydrodatalab.api as api
+    calls = []
+    def fail_then_succeed(*args, **kwargs):
+        calls.append(kwargs["run_id"])
+        if len(calls) == 1:
+            raise RuntimeError("panne simulée")
+        return {"summary": {"observationCount": 0}}
+    monkeypatch.setattr(api, "run_pipeline", fail_then_succeed)
+    with TestClient(app) as client:
+        assert client.post("/run", json={"runId": str(uuid4())}).status_code == 503
+        assert client.post("/run", json={"runId": str(uuid4())}).status_code == 200

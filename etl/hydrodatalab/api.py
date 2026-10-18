@@ -1,5 +1,6 @@
 """Adaptateur HTTP mince; le calcul appartient au pipeline Python."""
 import logging
+from threading import Lock
 from typing import Literal
 from uuid import UUID
 
@@ -11,6 +12,7 @@ from .pipeline import artifact_path, run_pipeline
 
 app = FastAPI(title="HydroDataLab — ETL Python", version="0.1.0")
 logger = logging.getLogger("hydrodatalab")
+_run_lock = Lock()
 
 
 class RunRequest(BaseModel):
@@ -27,17 +29,22 @@ def health():
 
 @app.post("/run")
 def run(request: RunRequest):
+    if not _run_lock.acquire(blocking=False):
+        raise HTTPException(status_code=409, detail="Un pipeline Python est déjà en cours. Réessayez après sa fin.")
     logger.info("pipeline start run_id=%s source=%s", request.runId, request.source)
     try:
-        report = run_pipeline(request.source, run_id=str(request.runId), simulate_failure=request.simulateFailure,
-                              quality_scenario=request.qualityScenario)
-    except ValueError as error:
-        raise HTTPException(status_code=422, detail=str(error)) from error
-    except (RuntimeError, OSError) as error:
-        logger.exception("pipeline failed run_id=%s", request.runId)
-        raise HTTPException(status_code=503, detail=str(error)) from error
-    logger.info("pipeline complete run_id=%s observations=%s", request.runId, report["summary"]["observationCount"])
-    return report
+        try:
+            report = run_pipeline(request.source, run_id=str(request.runId), simulate_failure=request.simulateFailure,
+                                  quality_scenario=request.qualityScenario)
+        except ValueError as error:
+            raise HTTPException(status_code=422, detail=str(error)) from error
+        except (RuntimeError, OSError) as error:
+            logger.exception("pipeline failed run_id=%s", request.runId)
+            raise HTTPException(status_code=503, detail=str(error)) from error
+        logger.info("pipeline complete run_id=%s observations=%s", request.runId, report["summary"]["observationCount"])
+        return report
+    finally:
+        _run_lock.release()
 
 
 @app.get("/artifacts/{run_id}/{filename}")

@@ -7,8 +7,8 @@ Mis à jour : 18 octobre 2026. Formation cible : mardi 20 octobre 2026.
 - [x] Données publiques capturées et provenance conservée (17 octobre : 168 observations).
 - [x] ETL Python, tests, CLI et adaptateur HTTP.
 - [x] API .NET/Quartz/SQLite, Vue et Aspire, parcours natif intégré.
-- [ ] Parcours Docker et comparaison avec le mode natif.
-- [x] 24 diapositives, PDF, notes et aide-mémoire (contrôle final en cours).
+- [x] Parcours Docker Compose et comparaison avec le mode natif.
+- [x] 24 diapositives, PDF, notes et aide-mémoire contrôlés.
 - [ ] Tags pédagogiques, scripts de reprise et sauvegarde Git.
 - [ ] Vérification navigateur et répétition technique.
 
@@ -27,14 +27,18 @@ Ne pas écraser les modifications existantes. Le travail des agents est réparti
 Terminer les images et la validation Compose; figer les jalons Git et les sauvegardes.
 
 ## Vérifications
-- Python : 34 tests réussis; lecture réelle de la source publique vérifiée; date CLI, idempotence, changements d'heure et interruptions couverts.
+- Python : 35 tests réussis; lecture réelle de la source publique vérifiée; date CLI, idempotence, changements d'heure et interruptions couverts.
 - API : compilation .NET 10 et 8 tests SQLite réussis.
 - Vue : compilation et 11 tests réussis; parcours Edge complet et mobile validé, captures dans docs/screenshots.
 - HTTP natif : collecte, scénario manquant 95,83 %, échec/relance, trois exports vérifiés.
 - Slidev : 24 diapositives, aucun débordement ni requête externe; interactions vérifiées, PDF produit.
-- Git : dernier commit enregistré `50ba71b`, tag `03-transformation-bi` (extraction `462c459`).
+- Git : dernier commit enregistré `1c285b1`, tag `04-pilotage` (ETL `50ba71b`, extraction `462c459`).
 - Image ETL finale testée sans réseau : CSV identique, Parquet et JSON métier équivalents au mode natif.
-- Aspire : publication Compose réussie; images API et Vue en construction.
+- Aspire : publication Compose réussie; images API, Vue, ETL et dashboard téléchargées/construites.
+- 16:16 : Compose sain et parcours HTTP complet validé (collecte, couverture, panne, relance, exports). Le blocage venait de la liaison named pipe Docker; construction Podman directe puis API temporaire localhost dans le namespace systemd. Aucun service global redémarré. Voir docs/VALIDATION.md.
+- Persistance réelle : restart API conserve dernier rapport et planification; planification désactivée après vérification.
+- Préparation native exécutée avec succès; audit résiduel des outils Slidev documenté dans presentation/DEPENDENCY-AUDIT.md.
+- Scripts de reprise : runtime séparé par branche/tag; changements Git refusés si modifications locales.
 - Docker Desktop : backend ne démarre pas. Le contexte existant `podman-machine-default` répond; tests de conteneur via ce contexte explicite.
 - Ports réservés à cette démo : Vue 53170, API 53171, Python 53172, présentation 53173.
 

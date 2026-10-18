@@ -1,0 +1,25 @@
+{
+  "name": "hydrodatalab-formation",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev slides.md --port 53173",
+    "build": "slidev build slides.md --base ./",
+    "export": "node scripts/export-pdf.mjs",
+    "preview": "vite preview --host 127.0.0.1 --port 53173"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "^5.2.6",
+    "@fontsource/ibm-plex-mono": "^5.2.6",
+    "@fontsource/ibm-plex-sans": "^5.2.6",
+    "@slidev/cli": "^53.0.0",
+    "@slidev/theme-default": "^0.25.0",
+    "vue": "^3.5.22"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.56.0"
+  },
+  "overrides": {
+    "dompurify": "3.4.17"
+  }
+}

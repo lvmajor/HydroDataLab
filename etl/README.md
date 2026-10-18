@@ -25,7 +25,9 @@ Les exports se trouvent dans `<output>/<runId>/`. Les variables facultatives son
 - `POST /run` avec `{"runId":"UUID","source":"fixture","simulateFailure":false,"qualityScenario":"complete"}` → rapport complet. `missing` retire un point d'eau valide après normalisation, en mémoire. `simulateFailure` produit un HTTP 503 avec un message exploitable par le pilote.
 - `GET /artifacts/{runId}/observations.csv`, `observations.parquet` ou `report.json` → fichier publié. UUID et nom de fichier sont validés.
 
-La route d'exécution est synchrone (`def`) et FastAPI la déporte dans son pool de threads; elle ne bloque pas la boucle événementielle. L'API .NET impose une exécution active et gère l'historique et les reprises. Le pipeline est idempotent pour un UUID déjà publié. Des fichiers temporaires laissés par un arrêt brutal ne constituent pas un résultat publié.
+La route d'exécution est synchrone (`def`) et FastAPI la déporte dans son pool de threads; elle ne bloque pas la boucle événementielle. Un verrou non bloquant limite `/run` à **un pipeline actif par processus Python** : un second appel reçoit immédiatement HTTP 409, tandis que `/health` reste disponible. Le verrou est libéré après succès ou erreur. Une déconnexion ou un délai dépassé côté API .NET n'annule pas un calcul Python déjà commencé : le verrou reste détenu jusqu'à sa fin.
+
+L'API .NET gère également son admission, l'historique et les reprises. Le service Python doit rester en **un seul worker Uvicorn et une seule instance**; le Dockerfile impose `--workers 1`. Le verrou mémoire ne coordonne pas plusieurs processus, plusieurs conteneurs ou une CLI lancée séparément. Pour plusieurs instances, il faudrait un verrou distribué ou une file de tâches durable. Le pipeline est idempotent pour un UUID déjà publié. Des fichiers temporaires laissés par un arrêt brutal ne constituent pas un résultat publié.
 
 ## Tests
 
@@ -42,6 +44,8 @@ Pour préparer le checkpoint 06, remplacer **seulement** `etl/hydrodatalab/cover
 ## Conteneur
 
 Le contexte Docker est la **racine** du dépôt. Les versions de Python et uv sont fixées; les dépendances sont verrouillées par `uv.lock`.
+
+Le conteneur possède un `HEALTHCHECK` Python stdlib sur `/health` toutes les 5 secondes, délai maximal 3 secondes, période de démarrage 15 secondes. Compose peut donc attendre sa disponibilité avec `--wait`.
 
 ```powershell
 docker build --load -f etl/Dockerfile -t hydrodatalab-etl:formation .
@@ -61,5 +65,14 @@ uv run --project etl python etl/tests/verify_container.py --docker-context podma
 ```
 
 Le script écrit les preuves dans `etl/.test-output/container-parity/<runId>/verification.json`. Pour Docker Desktop fonctionnel, omettre `--docker-context`. Les contextes distants peuvent ne pas voir un montage de disque Windows : cette vérification utilise `docker cp` pour rester indépendante du partage des lecteurs.
+
+Si la liaison Docker vers Podman ne répond plus alors que le client Podman fonctionne, les mêmes opérations sont possibles sans changer les contextes globaux :
+
+```powershell
+podman build --format docker -f etl/Dockerfile -t docker.io/library/hydrodatalab-etl:formation .
+uv run --project etl python etl/tests/verify_container.py --engine podman --image docker.io/library/hydrodatalab-etl:formation
+```
+
+Le format `docker` préserve le `HEALTHCHECK`; Podman peut l'ignorer avec son format OCI par défaut.
 
 L'audit vérifie aussi l'immuabilité des octets et des dates de modification lors d'un rejeu, le refus d'un changement de source/scénario/date, et deux exécutions concurrentes du même UUID sous les comportements de renommage Windows/Linux. La télémétrie actuelle comprend les journaux HTTP et le suivi par UUID; aucun exporteur OpenTelemetry Python supplémentaire n'est activé.

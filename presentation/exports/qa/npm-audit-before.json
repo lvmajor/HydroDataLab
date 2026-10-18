@@ -1,0 +1,553 @@
+{
+  "auditReportVersion": 2,
+  "vulnerabilities": {
+    "@mdit-vue/plugin-frontmatter": {
+      "name": "@mdit-vue/plugin-frontmatter",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "gray-matter"
+      ],
+      "effects": [
+        "unplugin-vue-markdown"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/@mdit-vue/plugin-frontmatter"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@slidev/cli": {
+      "name": "@slidev/cli",
+      "severity": "high",
+      "isDirect": true,
+      "via": [
+        "@slidev/client",
+        "@slidev/parser",
+        "@slidev/types",
+        "fast-glob",
+        "monaco-editor",
+        "pptxgenjs",
+        "unplugin-vue-markdown",
+        "vite-plugin-static-copy"
+      ],
+      "effects": [],
+      "range": "*",
+      "nodes": [
+        "node_modules/@slidev/cli"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@slidev/client": {
+      "name": "@slidev/client",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "@slidev/parser",
+        "@slidev/types",
+        "monaco-editor",
+        "pptxgenjs"
+      ],
+      "effects": [
+        "@slidev/cli"
+      ],
+      "range": ">=52.0.0",
+      "nodes": [
+        "node_modules/@slidev/client"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "@slidev/parser": {
+      "name": "@slidev/parser",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@slidev/types"
+      ],
+      "effects": [],
+      "range": ">=52.10.0",
+      "nodes": [
+        "node_modules/@slidev/parser"
+      ],
+      "fixAvailable": true
+    },
+    "@slidev/types": {
+      "name": "@slidev/types",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "monaco-editor",
+        "unplugin-vue-markdown",
+        "vite-plugin-static-copy"
+      ],
+      "effects": [
+        "@slidev/parser"
+      ],
+      "range": ">=0.48.0-beta.0",
+      "nodes": [
+        "node_modules/@slidev/types"
+      ],
+      "fixAvailable": true
+    },
+    "argparse": {
+      "name": "argparse",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "sprintf-js"
+      ],
+      "effects": [
+        "js-yaml"
+      ],
+      "range": "1.0.0 - 1.0.10",
+      "nodes": [
+        "node_modules/gray-matter/node_modules/argparse"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "braces": {
+      "name": "braces",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1240992,
+          "name": "braces",
+          "dependency": "braces",
+          "title": "braces vulnerable to stack-exhaustion denial of service through deeply nested patterns",
+          "url": "https://github.com/advisories/GHSA-vfj7-8cjw-p6xm",
+          "severity": "high",
+          "cwe": [
+            "CWE-674"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": "<=3.0.3"
+        }
+      ],
+      "effects": [
+        "chokidar",
+        "micromatch"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/braces"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "chokidar": {
+      "name": "chokidar",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "braces"
+      ],
+      "effects": [
+        "vite-plugin-static-copy"
+      ],
+      "range": "2.0.0 - 3.6.0",
+      "nodes": [
+        "node_modules/vite-plugin-static-copy/node_modules/chokidar"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "dompurify": {
+      "name": "dompurify",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1124233,
+          "name": "dompurify",
+          "dependency": "dompurify",
+          "title": "DOMPurify: Permanent `ALLOWED_ATTR` pollution via `setConfig()` bypassing the hook clone-guard (incomplete fix of the 3.4.7 hook-pollution patch)",
+          "url": "https://github.com/advisories/GHSA-cmwh-pvxp-8882",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79",
+            "CWE-471",
+            "CWE-665"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=3.4.10"
+        },
+        {
+          "source": 1124234,
+          "name": "dompurify",
+          "dependency": "dompurify",
+          "title": "DOMPurify: Trusted Types policy survives `clearConfig()` and can poison later `RETURN_TRUSTED_TYPE` output",
+          "url": "https://github.com/advisories/GHSA-vxr8-fq34-vvx9",
+          "severity": "low",
+          "cwe": [
+            "CWE-693"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<3.4.9"
+        },
+        {
+          "source": 1138538,
+          "name": "dompurify",
+          "dependency": "dompurify",
+          "title": "DOMPurify: IN_PLACE hook removal leaves a detached subtree executable, causing XSS",
+          "url": "https://github.com/advisories/GHSA-55q2-fjhq-7xh7",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=3.4.12"
+        },
+        {
+          "source": 1240978,
+          "name": "dompurify",
+          "dependency": "dompurify",
+          "title": "DOMPurify: `CUSTOM_ELEMENT_HANDLING` bypasses `afterSanitizeElements` for allowed custom elements.",
+          "url": "https://github.com/advisories/GHSA-c2j3-45gr-mqc4",
+          "severity": "low",
+          "cwe": [
+            "CWE-79",
+            "CWE-184",
+            "CWE-693"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=3.4.11"
+        },
+        {
+          "source": 1241204,
+          "name": "dompurify",
+          "dependency": "dompurify",
+          "title": "DOMPurify: IN_PLACE returns a force-removed rawtext root whose text carries attacker markup — pure HTML reparse executes",
+          "url": "https://github.com/advisories/GHSA-6688-9rhm-gjv2",
+          "severity": "low",
+          "cwe": [
+            "CWE-79"
+          ],
+          "cvss": {
+            "score": 0,
+            "vectorString": null
+          },
+          "range": "<=3.4.15"
+        }
+      ],
+      "effects": [
+        "monaco-editor"
+      ],
+      "range": "<=3.4.15",
+      "nodes": [
+        "node_modules/monaco-editor/node_modules/dompurify"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "fast-glob": {
+      "name": "fast-glob",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "micromatch"
+      ],
+      "effects": [
+        "@slidev/cli"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/fast-glob"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "gray-matter": {
+      "name": "gray-matter",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "js-yaml"
+      ],
+      "effects": [
+        "@mdit-vue/plugin-frontmatter"
+      ],
+      "range": ">=2.0.2",
+      "nodes": [
+        "node_modules/gray-matter"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "image-size": {
+      "name": "image-size",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1239765,
+          "name": "image-size",
+          "dependency": "image-size",
+          "title": "image-size: JXL and HEIF parsers allow denial of service through infinite loops",
+          "url": "https://github.com/advisories/GHSA-5p2g-fcmc-qvqq",
+          "severity": "high",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=1.2.0 <=2.0.2"
+        },
+        {
+          "source": 1239766,
+          "name": "image-size",
+          "dependency": "image-size",
+          "title": "image-size: ICNS parser allows denial of service through an infinite loop",
+          "url": "https://github.com/advisories/GHSA-w3rx-r6r6-pgpr",
+          "severity": "high",
+          "cwe": [
+            "CWE-835"
+          ],
+          "cvss": {
+            "score": 7.5,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+          },
+          "range": ">=0.6.3 <=2.0.2"
+        }
+      ],
+      "effects": [
+        "pptxgenjs"
+      ],
+      "range": "0.6.3 - 2.0.2",
+      "nodes": [
+        "node_modules/image-size"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "js-yaml": {
+      "name": "js-yaml",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "argparse"
+      ],
+      "effects": [
+        "gray-matter"
+      ],
+      "range": "3.2.7 - 3.15.2",
+      "nodes": [
+        "node_modules/gray-matter/node_modules/js-yaml"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "micromatch": {
+      "name": "micromatch",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "braces"
+      ],
+      "effects": [
+        "fast-glob"
+      ],
+      "range": ">=0.2.0",
+      "nodes": [
+        "node_modules/micromatch"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "monaco-editor": {
+      "name": "monaco-editor",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "dompurify"
+      ],
+      "effects": [
+        "@slidev/cli",
+        "@slidev/client",
+        "@slidev/types"
+      ],
+      "range": "0.54.0-dev-20250909 - 0.56.0",
+      "nodes": [
+        "node_modules/monaco-editor"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "pptxgenjs": {
+      "name": "pptxgenjs",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "image-size"
+      ],
+      "effects": [
+        "@slidev/cli",
+        "@slidev/client"
+      ],
+      "range": ">=4.0.1-beta.0",
+      "nodes": [
+        "node_modules/pptxgenjs"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "sprintf-js": {
+      "name": "sprintf-js",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        {
+          "source": 1241202,
+          "name": "sprintf-js",
+          "dependency": "sprintf-js",
+          "title": "sprintf-js vulnerable to denial of service through unbounded precision specifiers",
+          "url": "https://github.com/advisories/GHSA-hp3w-g68c-fv3c",
+          "severity": "moderate",
+          "cwe": [
+            "CWE-1284"
+          ],
+          "cvss": {
+            "score": 5.3,
+            "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+          },
+          "range": "<=1.1.3"
+        }
+      ],
+      "effects": [
+        "argparse"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/sprintf-js"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "unplugin-vue-markdown": {
+      "name": "unplugin-vue-markdown",
+      "severity": "moderate",
+      "isDirect": false,
+      "via": [
+        "@mdit-vue/plugin-frontmatter"
+      ],
+      "effects": [
+        "@slidev/cli",
+        "@slidev/types"
+      ],
+      "range": "*",
+      "nodes": [
+        "node_modules/unplugin-vue-markdown"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    },
+    "vite-plugin-static-copy": {
+      "name": "vite-plugin-static-copy",
+      "severity": "high",
+      "isDirect": false,
+      "via": [
+        "chokidar"
+      ],
+      "effects": [
+        "@slidev/cli",
+        "@slidev/types"
+      ],
+      "range": ">=0.3.0",
+      "nodes": [
+        "node_modules/vite-plugin-static-copy"
+      ],
+      "fixAvailable": {
+        "name": "@slidev/cli",
+        "version": "52.9.1",
+        "isSemVerMajor": true
+      }
+    }
+  },
+  "metadata": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 9,
+      "high": 10,
+      "critical": 0,
+      "total": 19
+    },
+    "dependencies": {
+      "prod": 648,
+      "dev": 0,
+      "optional": 63,
+      "peer": 21,
+      "peerOptional": 0,
+      "total": 731
+    }
+  }
+}

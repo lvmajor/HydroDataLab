@@ -1,3 +1,4 @@
+param([switch]$WithDocker, [string]$DockerContext)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $root
@@ -12,5 +13,8 @@ foreach ($tool in @('git','dotnet','aspire','node','npm.cmd','uv')) {
 & node --version
 & uv --version
 Write-Host 'Docker est facultatif pour le mode natif.'
-if (Get-Command docker -ErrorAction SilentlyContinue) { & docker version --format '{{.Server.Version}}' }
+if ($WithDocker -and (Get-Command docker -ErrorAction SilentlyContinue)) {
+    if ($DockerContext) { & docker --context $DockerContext version --format '{{.Server.Version}}' }
+    else { & docker version --format '{{.Server.Version}}' }
+}
 Write-Host 'Vérifier dans VS Code les modèles autorisés par le compte HQ. Ce script ne modifie aucun réglage.'

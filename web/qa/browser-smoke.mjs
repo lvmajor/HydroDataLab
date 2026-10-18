@@ -9,6 +9,8 @@ const browser = await chromium.launch({ channel: 'msedge', headless: true })
 const context = await browser.newContext({ viewport: { width: 1440, height: 1100 }, acceptDownloads: true, reducedMotion: 'reduce' })
 const page = await context.newPage()
 const errors = []
+const externalRequests = []
+page.on('request', request => { const url = new URL(request.url()); if (['http:', 'https:'].includes(url.protocol) && url.origin !== new URL(baseURL).origin) externalRequests.push(url.origin + url.pathname) })
 page.on('pageerror', e => errors.push(e.message))
 const check = (condition, message) => { if (!condition) throw new Error(message) }
 const waitNotice = text => page.getByRole('status').filter({ hasText: text }).waitFor({ timeout: 30000 })
@@ -41,7 +43,10 @@ try {
   check(missingReport.series.find(s => s.id === 'water_level').coverage.percent < 100, 'La mesure absente doit réduire la couverture')
   await page.getByRole('button', { name: 'Afficher le tableau' }).click()
   check(await page.locator('.table-scroll tbody tr').count() > 0, 'Tableau de mesures vide')
+  await page.locator('.coverage-details summary').click()
+  check((await page.locator('.coverage-details').innerText()).includes('95,83'), 'Couverture du Gouin non visible')
   await page.screenshot({ path: resolve(shots, '03-qualite-mesure-absente.png'), fullPage: true })
+  await page.locator('.coverage-details summary').click()
   await page.getByRole('button', { name: 'Masquer le tableau' }).click()
   await page.getByRole('checkbox', { name: /Retirer une mesure/ }).uncheck()
   await page.getByRole('button', { name: 'Démontrer un échec contrôlé' }).click()
@@ -70,10 +75,13 @@ try {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.screenshot({ path: resolve(shots, '06-mobile.png'), fullPage: true })
   check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'Débordement horizontal sur mobile')
+  check(externalRequests.length === 0, 'Requêtes navigateur externes: ' + externalRequests.join('; '))
   check(errors.length === 0, `Erreurs JavaScript: ${errors.join('; ')}`)
-  const result = { status: 'passed', baseURL, checks: ['fixture', '3 charts', '2 weather series', '6h filter', 'keyboard chart', 'missing value coverage', 'failed run', 'retry', 'schedule on/off', 'CSV download', 'Parquet signature', 'mobile width', 'no JavaScript errors'], screenshots: shots, completedAt: new Date().toISOString() }
+  const result = { status: 'passed', baseURL, checks: ['fixture', '3 charts', '2 weather series', '6h filter', 'keyboard chart', 'missing value coverage', 'failed run', 'retry', 'schedule on/off', 'CSV download', 'Parquet signature', 'mobile width', 'no JavaScript errors', 'no external browser requests'], externalRequests, screenshots: shots, completedAt: new Date().toISOString() }
   await writeFile('qa-results/browser-smoke.json', JSON.stringify(result, null, 2))
   console.log(JSON.stringify(result, null, 2))
 } finally { await browser.close() }
+
+
 
 
