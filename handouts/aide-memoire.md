@@ -46,15 +46,17 @@ Une branche ou un worktree ne sauvegarde pas automatiquement les changements non
 
 Les règles applicables s’ajoutent; résoudre les contradictions à leur source. Copilot et Local ont des règles de découverte différentes. Les fichiers `*.prompt.md` restent utilisables dans Local; le moteur Copilot utilise les skills pour ces workflows. Pour une skill manuelle : `disable-model-invocation: true`.
 
-## Les cinq paliers ETL
+## Context layers — les couches du contexte
 
-1. Socle : architecture, commandes et invariants non évidents.
-2. Composant : conventions Python et transformations.
-3. Contrat : schéma, unité, fréquence, fuseau, provenance, qualité.
-4. Tâche : spec courte, fichier concerné, exemples attendus.
-5. Preuves : tests, rapport et logs ciblés.
+| Couche | Exemple dans HydroDataLab | Quand elle contribue |
+|---|---|---|
+| **Project instructions — Consignes du projet** | `.github/copilot-instructions.md` : préserver les données brutes et savoir valider le projet | Règles communes découvertes par le harnais |
+| **File-specific instructions — Consignes ciblées** | `.github/instructions/python.instructions.md` : zéro est valide, une absence reste absente | Selon fichier, description ou ajout manuel |
+| **Reference documents — Documents de référence** | `docs/DATA_DICTIONARY.md` : champs, unités, fréquence, fuseau et provenance | Document joint à la demande ou effectivement lu |
+| **Task prompt — Demande courante** | « Ajoute la couverture décrite dans `specs/coverage.md`. » | Pour préciser le résultat attendu maintenant |
+| **Tool results — Résultats des outils** | Sortie pytest et `report.json` : 23/24 donne 95,83 % | Pendant le travail, à partir des résultats réellement observés |
 
-C’est une méthode d’organisation, pas une hiérarchie officielle de priorité. Un index du dépôt n’implique pas l’envoi de tous les fichiers à chaque requête.
+Toutes alimentent le **Model context — Contexte du modèle**. Ces noms organisent notre démarche; ils ne constituent pas cinq niveaux officiels de VS Code ni un ordre de priorité. Un fichier mentionné n’est pas automatiquement chargé. Les catégories remplacent les anciens raccourcis du support : socle, composant, contrat, tâche et preuves.
 
 ## Économiser sans sacrifier la qualité
 

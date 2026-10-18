@@ -1,0 +1,38 @@
+{
+  "date": "2026-10-18",
+  "scope": "Presentation slides 10 and 13, presenter notes and handouts; application unchanged",
+  "supersedes": "The context and cost visualization checks in customizations-1142.json",
+  "slideCount": 24,
+  "timing": { "explanationsMinutes": 32, "demosMinutes": 13 },
+  "browser": {
+    "report": "presentation/exports/qa/browser-report.json",
+    "externalRequestsBlocked": true,
+    "pageErrors": 0,
+    "layoutOverflows": 0,
+    "checks": [
+      "Five bilingual context layers visible together",
+      "All five context detail states clear of source links",
+      "Reference document and tool-result examples",
+      "Reduced-motion preference",
+      "Four task columns and five model rows visible together",
+      "All twenty simulated costs match published rates and stated assumptions",
+      "Five recommended model/task cells",
+      "Attempt multiplier",
+      "Header labels and token volumes contained within cells",
+      "Presenter notes available"
+    ]
+  },
+  "pdf": {
+    "pages": 24,
+    "visualReview": "Rendered pages 10 and 13 inspected; content and source links separated",
+    "bilingualTermsAndModelLabels": "Verified by qa_pdf.py",
+    "officialExampleLinks": "Verified by qa_pdf.py",
+    "offlinePageDestinations": [[7,19],[18,21],[19,7],[21,18]],
+    "internalTemporaryServerUrls": 0
+  },
+  "limits": [
+    "Context layers are teaching categories, not official priority levels",
+    "Costs use fictitious token volumes, exclude cache and Auto discount, and are not measured benchmarks",
+    "Model availability and rehearsal on the HQ laptop remain to be confirmed"
+  ]
+}

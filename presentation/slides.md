@@ -214,14 +214,14 @@ Compter 0 comme une mesure numérique valide.
 
 ---
 
-# Composer le contexte par paliers
+# Context layers · les couches du contexte
 
 <ContextLayers />
 
 <div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · activation des règles</a> · <a href="https://code.visualstudio.com/docs/agents/guides/context-engineering-guide">Structurer le contexte</a></div>
 
 <!--
-3 minutes, 19:00–22:00. Le contexte est l’information mise à disposition du modèle. Montrer la règle commune et le ciblage Python, puis cliquer web/App.vue : la connexion change de branche, le socle reste. Ce schéma explique la sélection par applyTo, pas une garantie d’exclusion : description et ajout manuel restent possibles. La hiérarchie de rangement projet/composant est distincte de la priorité en cas de conflit. Les règles applicables se combinent; résoudre les contradictions plutôt que promettre « le dernier fichier gagne ». Les préférences User et les consignes d’organisation éventuellement disponibles sont d’autres portées, pas des étages de puissance. Ne pas transposer l’ordre documenté pour GitHub.com à tous les harnais VS Code. Cliquer ensuite Contrat, Tâche, Preuves. Ce sont nos cinq paliers pédagogiques, pas cinq fichiers automatiquement injectés. Socle court; contrat et exemples sélectionnés pour la tâche; preuves réelles. Le code sépare extraction, validation, transformation et export pour demander une modification ciblée. Le PDF garde la composition Python, tous les paliers et l’exemple du contrat. L’animation SVG est locale, brève et désactivée si l’utilisateur préfère réduire les mouvements.
+3 minutes, 19:00–22:00. Context layers signifie couches du contexte. Ce sont nos catégories pédagogiques, pas une hiérarchie officielle ni un ordre de priorité. Lire de haut en bas : Project instructions / Consignes du projet, File-specific instructions / Consignes ciblées, Reference documents / Documents de référence, Task prompt / Demande courante, Tool results / Résultats des outils. Les deux premières sont des consignes durables. Les documents et la demande cadrent le travail du moment. Les outils apportent ensuite les observations réelles. Les flèches alimentent un même Model context / Contexte du modèle; cliquer une couche illustre son apport, sans prétendre que le harnais charge automatiquement tous les fichiers. Montrer Reference documents et expliquer unité/fréquence/fuseau, puis Tool results et son exemple 23/24. Le mot « contrat » désigne ici un document décrivant les données; il n’est pas un niveau universel de contexte. Les autres sources (historique, instructions de service, préférences utilisateur) existent, mais ce dessin se concentre sur ce que le participant peut préparer dans son projet. Les règles applicables se combinent; résoudre les contradictions. Les détails applyTo restent à la slide 8. Le PDF garde toutes les couches, leurs traductions et leurs exemples de fichiers; la partie de droite montre la première couche.
 -->
 
 ---
@@ -274,14 +274,14 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 
 ---
 
-# Quel modèle essayer pour cette tâche?
+# Comparer 4 tâches et 5 modèles
 
 <ModelChooser />
 
 <div class="doc-link"><a href="https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing">GitHub · tarifs au 18 octobre 2026</a> · <a href="https://docs.github.com/en/copilot/reference/ai-models/model-comparison">Comparer les modèles</a></div>
 
 <!--
-2 minutes, 26:00–28:00. Le graphique compare les tarifs appliqués à des volumes fictifs, égaux entre modèles pour une tâche donnée. Ce ne sont pas des mesures de performance ni une prévision. Les quatre scénarios sont détaillés dans matrice-modeles.md. Montrer petite tâche puis fonctionnalité délimitée puis diagnostic. L’axe part de zéro et garde le même plafond de 0,40 dollar US pour un essai dans tous les scénarios; avec plusieurs essais le plafond augmente proportionnellement. Les valeurs numériques restent lisibles pour les petites barres. Le losange est une recommandation pédagogique, pas un score observé. Sonnet et Sol ont ici le même tarif : le choix repose aussi sur le résultat obtenu. Augmenter les tentatives pour montrer le coût total. Cache, écriture du cache, paliers longs et remise Auto ne sont pas modélisés. Les volumes de sortie sont supposés facturables, raisonnement compris lorsqu’il est facturé. Auto Balance reste le point de départ; son coût ne se trace pas à tarif fixe puisqu’il choisit le modèle. Confirmer les modèles disponibles dans le sélecteur HQ.
+2 minutes, 26:00–28:00. Les quatre types de tâches sont visibles simultanément en colonnes et les cinq modèles en lignes. Lire verticalement pour comparer les modèles d’une tâche, horizontalement pour comparer les quatre scénarios avec le même modèle. Chaque cellule comporte une barre et sa valeur en dollars US. Le plafond commun est 0,40 dollar par essai; les valeurs numériques conservent la lisibilité des petits montants. Les volumes fictifs entrée/sortie sont inscrits sous chaque tâche. Le losange et le fond vert indiquent un choix pédagogique à essayer, pas un score mesuré. Luna/Haiku pour une explication courte; Sonnet pour la modification bornée d’un ETL; Sol pour des changements complexes; Opus si le diagnostic reste difficile. Sonnet et Sol ont le même tarif, ce qui ne prouve pas une qualité identique. Multiplier les essais montre leur coût cumulé; leur volume réel peut varier. Cache et remise Auto sont exclus. Auto Balance reste le départ conseillé, sans lui inventer un prix fixe. Ces calculs ne sont pas des benchmarks ni une estimation mesurée du coût d’un projet. Confirmer les modèles disponibles dans le sélecteur HQ.
 -->
 
 ---

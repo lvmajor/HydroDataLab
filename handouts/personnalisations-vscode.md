@@ -51,6 +51,18 @@ Ce bloc est simplifié : le fichier réel couvre aussi `specs/**/*.py` et d’au
 
 Exemple chiffré : trois températures attendues `[10, 0, None]` donnent **deux mesures numériques sur trois**, soit **66,67 %**. Remplacer `None` par zéro ferait croire à trois mesures. Dans pandas, une absence peut être `NaN` ou `NA`; dans JSON, `null`. Les règles de plausibilité d’une série restent distinctes de cette distinction entre absence et zéro.
 
+## Context layers — les couches du contexte
+
+La diapositive 10 relie cinq sources au **Model context — Contexte du modèle** :
+
+1. **Project instructions — Consignes du projet** : les règles communes de `copilot-instructions.md`.
+2. **File-specific instructions — Consignes ciblées** : les règles Python dans `python.instructions.md`, activées selon les mécanismes décrits plus haut.
+3. **Reference documents — Documents de référence** : le dictionnaire des données joint à la demande ou lu par l’agent.
+4. **Task prompt — Demande courante** : le résultat voulu et la spécification à suivre pour cette tâche.
+5. **Tool results — Résultats des outils** : les sorties réelles de pytest, du terminal ou du rapport de qualité.
+
+Les deux premières sources apportent les consignes durables; les suivantes cadrent le travail et permettent de vérifier son résultat. C’est notre organisation pédagogique, pas une liste de niveaux officiels de VS Code. La position dans le dessin ne donne pas une priorité. L’historique et d’autres instructions peuvent également contribuer au contexte. [Guide Microsoft pour structurer le contexte](https://code.visualstudio.com/docs/agents/guides/context-engineering-guide).
+
 ## Les sept concepts et leur déclenchement
 
 | Concept | Exemple | Format ou point d’entrée | Déclenchement |

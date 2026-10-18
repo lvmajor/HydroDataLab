@@ -15,10 +15,10 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 13:00–15:00 | 7 — Instructions permanentes | 2 min | |
 | 15:00–17:00 | 8 — Portée et diagnostic | 2 min | |
 | 17:00–19:00 | 9 — Sept concepts et leurs rôles | 2 min | |
-| 19:00–22:00 | 10 — Composition et paliers interactifs | 3 min | |
+| 19:00–22:00 | 10 — Couches bilingues du contexte | 3 min | |
 | 22:00–24:00 | 11 — Tokens et reprises | 2 min | |
 | 24:00–26:00 | 12 — Auto | 2 min | |
-| 26:00–28:00 | 13 — Modèles, graphique des coûts | 2 min | |
+| 26:00–28:00 | 13 — Coûts : quatre tâches × cinq modèles | 2 min | |
 | 28:00–29:00 | 14 — HydraFusion | 1 min | |
 | 29:00–35:00 | 15 — Pipeline | 1 min | 5 min |
 | 35:00–38:00 | 16 — Survol SDD et mini-spec | 3 min | |
@@ -29,7 +29,7 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 
 Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**. Annexes 19–24 : seulement en réponse aux questions. Les notes détaillées sont intégrées à `presentation/slides.md` et au mode présentateur Slidev.
 
-Révision 1.142 : la diapositive 9 présente les sept concepts sans détailler leur configuration; la fiche [personnalisations-vscode.md](personnalisations-vscode.md) fournit les formats. La 10 anime la composition Python/Vue puis les cinq paliers. La 13 compare quatre scénarios fictifs de coût : même volume entre modèles, pas un benchmark. La 16 nomme SDD et annonce la formation de l’autre équipe. Canvas occupe 30 secondes dans les trois minutes de conclusion; l’annexe 21 fournit les prérequis. La capture de l’annexe 19 vient d’un autre projet et montre des listes vides : ne pas la présenter comme une preuve de chargement de HydroDataLab.
+Révision 1.142 : la diapositive 9 présente les sept concepts sans détailler leur configuration; la fiche [personnalisations-vscode.md](personnalisations-vscode.md) fournit les formats. La 10 montre cinq couches en anglais et en français, leurs fichiers et leurs conditions d’utilisation. Cliquer une couche illustre son apport au contexte du modèle; ce dessin ne définit pas une priorité. La 13 compare simultanément quatre tâches en colonnes et cinq modèles en lignes : même volume supposé entre modèles d’une tâche, barres sur une échelle commune, losanges pour les choix à essayer. Le bouton + multiplie les essais; les coûts restent des scénarios fictifs, pas un benchmark. La 16 nomme SDD et annonce la formation de l’autre équipe. Canvas occupe 30 secondes dans les trois minutes de conclusion; l’annexe 21 fournit les prérequis. La capture de l’annexe 19 vient d’un autre projet et montre des listes vides : ne pas la présenter comme une preuve de chargement de HydroDataLab.
 
 Pour la règle zéro/absence : trois températures fictives `[10, 0, None]` donnent deux mesures sur trois, soit 66,67 %. Remplacer None par zéro inventerait une mesure. Les contrôles de plausibilité restent propres à chaque série. Les liens officiels au bas des diapositives sont cliquables dans le site et dans le PDF.
 

@@ -76,3 +76,12 @@ La répétition du 19 octobre et la confirmation des politiques/modèles HQ néc
 - PDF : 24 pages inspectées visuellement; liens officiels vérifiés. Les liens d’annexes sont convertis en destinations PDF locales par `fix_pdf_links.py`; export reproductible avec Python/pypdf.
 - Révision validée enregistrée : `434d66a`. Le commit de clôture ajoute ce bilan. Assemblage du kit confirmé : 216 fichiers, archive d’images et bundle Git vérifiés, quatre renvois PDF internes fonctionnels sans serveur.
 - Prochaine action : copier le kit indiqué dans `artifacts/LIVRAISON.txt` sur le portable et un support distinct; effectuer la répétition et vérifier le compte HQ le 19 octobre. Les supports les plus récents restent sur main; les huit tags pédagogiques sont conservés.
+
+## Révision ciblée : couches bilingues et comparaison simultanée
+
+- Départ : main `359f7f1`, dépôt propre. Demande : clarifier les termes et la place visuelle des couches; comparer les tâches et modèles sans devoir choisir une seule tâche.
+- Réalisé : diapositive 10 avec cinq couches bilingues, exemples de fichiers, conditions d’utilisation et flèches vers le contexte du modèle; diapositive 13 avec quatre tâches et cinq modèles visibles simultanément, valeurs, barres comparables et recommandations. Tarifs officiels revérifiés le 18 octobre, hypothèses inchangées.
+- Correction du chevauchement signalé : en-têtes raccourcis, volumes dans leur cellule, ligne de conseil redondante retirée, espace réservé aux hypothèses et aux sources. Les cinq états de la diapositive 10 sont également vérifiés.
+- Validations réussies : build Slidev; 24 routes sans débordement ni erreur JavaScript, accès externes bloqués; 20 coûts et multiplicateur contrôlés; PDF de 24 pages avec liens officiels et renvois internes, pages 10/13 inspectées. Notes, aide-mémoire et fiches synchronisés. Preuve : `docs/validation/context-cost-comparison.json`.
+- Point de reprise : cette révision est enregistrée dans le commit portant « Clarifie les couches de contexte et compare les coûts sans chevauchement ». Le script `package-kit.ps1` assemble ensuite la sauvegarde transportable; son résultat et le SHA du commit sont consignés dans `artifacts/LIVRAISON.txt`. Les huit tags pédagogiques restent inchangés.
+- Prochaine action : transférer le kit indiqué par ce reçu, puis répéter sur le portable HQ le 19 octobre.

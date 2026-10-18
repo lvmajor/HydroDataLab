@@ -15,25 +15,33 @@ for(let i=1;i<=24;i++){
  if(out.length)issues.push({slide:i,out});
 }
 await page.goto('http://127.0.0.1:53173/10',{waitUntil:'networkidle'});
-await page.getByRole('button',{name:'3. Contrat',exact:true}).click();
-if(!await page.getByText('Ce que les colonnes veulent dire',{exact:true}).isVisible())throw new Error('Context interaction failed');
-await page.getByRole('button',{name:'web/App.vue',exact:true}).click();
-if(!await page.locator('.instruction-lanes>div').nth(2).getByText('✓ Motif correspondant',{exact:true}).isVisible())throw new Error('Vue scope failed');
-if(!await page.locator('.instruction-lanes>div').nth(1).getByText('— Motif non correspondant',{exact:true}).isVisible())throw new Error('Python scope failed');
+for(const term of ['Project instructions','File-specific instructions','Reference documents','Task prompt','Tool results']){
+ if(!await page.getByRole('button',{name:new RegExp(term)}).isVisible())throw new Error('Missing bilingual layer: '+term);
+ await page.getByRole('button',{name:new RegExp(term)}).click();
+ const overflow=await page.locator('.context-map').evaluate(el=>{const footer=el.closest('.slidev-layout').querySelector('.doc-link').getBoundingClientRect();return el.getBoundingClientRect().bottom>footer.top-4});
+ if(overflow)issues.push({slide:10,layer:term,problem:'Context overlaps references'});
+}
+await page.getByRole('button',{name:/Reference documents/}).click();
+if(!(await page.locator('.context-preview').innerText()).includes('Une série horaire'))throw new Error('Reference layer failed');
 await page.emulateMedia({reducedMotion:'reduce'});
-await page.getByRole('button',{name:'etl/transform.py',exact:true}).click();
-if(await page.locator('.composition-arrows path').first().evaluate(el=>parseFloat(getComputedStyle(el).animationDuration))!==0)throw new Error('Reduced motion failed');
+await page.getByRole('button',{name:/Tool results/}).click();
+if(!(await page.locator('.context-preview').innerText()).includes('95,83'))throw new Error('Tool results failed');
+if(await page.locator('.context-preview').evaluate(el=>parseFloat(getComputedStyle(el).animationDuration))!==0)throw new Error('Reduced motion failed');
 await page.screenshot({path:'exports/qa/context-interactive.png'});
 await page.goto('http://127.0.0.1:53173/13',{waitUntil:'networkidle'});
 const expected={explain:[.00055,.00055,.011,.011,.022],transform:[.003,.003,.06,.06,.12],complex:[.01,.01,.2,.2,.4],debug:[.01,.01,.2,.2,.4]};
 for(const [task,values] of Object.entries(expected)){
- await page.getByLabel('Type de tâche',{exact:true}).selectOption(task);
- const actual=await page.locator('.cost-value').allTextContents();
+ const actual=await page.locator(`[data-task=${task}] .cost-value`).allTextContents();
+ if(actual.length!==5)throw new Error('Matrix should show all five models per task');
  for(let i=0;i<5;i++){const n=parseFloat(actual[i].replace(',','.'));if(Math.abs(n-values[i])>.000051)throw new Error(`Cost ${task}/${i}: ${n}`)}
 }
 await page.getByRole('button',{name:'Ajouter une tentative',exact:true}).click();
-if(parseFloat((await page.locator('[data-model=opus] .cost-value').innerText()).replace(',','.'))!==.8)throw new Error('Retries failed');
-await page.getByLabel('Type de tâche',{exact:true}).selectOption('transform');
+if(parseFloat((await page.locator('[data-model=opus] [data-task=debug] .cost-value').innerText()).replace(',','.'))!==.8)throw new Error('Retries failed');
+if(await page.locator('.cost-value:visible').count()!==20)throw new Error('Comparison must remain simultaneous');
+if(await page.locator('.cost-cell.recommended').count()!==5)throw new Error('Expected five recommendations across four tasks');
+const headerOverflow=await page.locator('.task-header').evaluateAll(headers=>headers.filter(h=>[...h.children].some(c=>{const r=c.getBoundingClientRect(),p=h.getBoundingClientRect();return r.bottom>p.bottom-3||r.right>p.right-3})).map(h=>h.textContent));
+if(headerOverflow.length)issues.push({slide:13,headers:headerOverflow,problem:'Header content overflow'});
+await page.getByRole('button',{name:'Réduire les tentatives',exact:true}).click();
 await page.screenshot({path:'exports/qa/model-interactive.png'});
 for(const i of [7,8,9,16,19,21]){await page.goto(`http://127.0.0.1:53173/${i}`,{waitUntil:'networkidle'});await page.screenshot({path:`exports/qa/revision-${i}.png`})}
 await page.goto('http://127.0.0.1:53173/8',{waitUntil:'networkidle'});

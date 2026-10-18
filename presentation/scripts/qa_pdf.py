@@ -17,6 +17,12 @@ for page,fragment in expected_links.items():
     assert any(fragment in uri for uri in uris), (page,fragment)
 assert '66,67' in reader.pages[6].extract_text()
 assert 'Spec-Driven Development' in reader.pages[15].extract_text()
+context_text=reader.pages[9].extract_text()
+for term in ['Project instructions','File-specific instructions','Reference documents','Task prompt','Tool results','Model context']:
+    assert term in context_text, term
+model_text=reader.pages[12].extract_text()
+for term in ['GPT-6 Luna','Claude Haiku 5.5','Claude Sonnet 5.5','GPT-6.1 Sol','Claude Opus 5.5','Simple','Délimitée','Complexe','Diagnostic difficile','Coûts simulés']:
+    assert term in model_text, term
 for page,target in [(7,19),(18,21),(19,7),(21,18)]:
     dests=[a.get_object().get('/Dest') for a in reader.pages[page-1].get('/Annots',[])]
     assert any(d and d[0]==reader.pages[target-1].indirect_reference for d in dests), (page,target)
