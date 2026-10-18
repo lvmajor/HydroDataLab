@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.local
+
+web-preview*.png
+qa-results/
+playwright-report/
