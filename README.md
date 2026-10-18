@@ -76,6 +76,8 @@ Avec Podman, utiliser `podman load --input artifacts/hydrodatalab-images.tar`, p
 
 ## Présenter et reprendre
 
+Le **kit de transfert hors ligne** est assemblé par `./scripts/package-kit.ps1` dans `artifacts/kit-hq-<date-heure>/`, après préparation et depuis un dépôt propre. Il rassemble les sauvegardes Git, les images, Compose, le diaporama statique, le PDF et les guides. Ouvrir son `DEMARRER.md` : la présentation peut être servie avec Python seul, sans npm. Copier ce dossier complet sur le portable et sur un autre support avant la séance.
+
 - [Guide du présentateur minuté](handouts/guide-presentateur.md), [requêtes Copilot](handouts/prompts.md), [aide-mémoire](handouts/aide-memoire.md), [guide participant](handouts/guide-participant.md).
 - [Matrice des modèles datée](handouts/matrice-modeles.md) et [sources officielles](docs/SOURCES.md). Confirmer le sélecteur et les politiques HQ le 19 octobre.
 - [Jalons Git et démonstration en direct](docs/CHECKPOINTS.md).
