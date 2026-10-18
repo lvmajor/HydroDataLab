@@ -35,6 +35,32 @@ def test_live_uses_previous_local_day_and_pagination():
     assert all(item["license"] == "CC BY-NC 4.0" for item in bundle.provenance)
 
 
+def test_explicit_live_day_is_used_without_silent_replacement():
+    calls = []
+    def fetch(url):
+        calls.append(url)
+        where = parse_qs(urlparse(url).query)["where"][0]
+        assert "2026-03-08T00:00:00-05:00" in where
+        assert "2026-03-09T00:00:00-04:00" in where
+        return {"results": [{"example": 1}], "total_count": 1}
+    bundle = extract("live", day="2026-03-08", now=datetime(2026, 10, 18, 20, tzinfo=timezone.utc), fetch=fetch)
+    assert bundle.period == {"start": "2026-03-08", "end": "2026-03-09", "timezone": "America/Toronto"}
+    assert len(calls) == 2
+
+
+@pytest.mark.parametrize("day", ["20261017", "2026-02-30", "tomorrow", "2026-10-18", "2026-10-19"])
+def test_bad_or_unfinished_day_is_rejected(day):
+    with pytest.raises(ValueError):
+        extract("live", day=day, now=datetime(2026, 10, 18, 20, tzinfo=timezone.utc), fetch=lambda _: pytest.fail("aucun réseau"))
+
+
+def test_fixture_accepts_its_day_and_rejects_another_completed_day():
+    now = datetime(2026, 10, 18, 20, tzinfo=timezone.utc)
+    assert len(extract(day="2026-10-17", now=now).demand) == 96
+    with pytest.raises(ValueError, match="uniquement le 2026-10-17"):
+        extract(day="2026-10-16", now=now)
+
+
 def test_live_empty_or_incomplete_pages_fail_without_fixture_fallback():
     now = datetime(2026, 10, 18, 20, tzinfo=timezone.utc)
     with pytest.raises(ValueError, match="Aucune donnée"):
@@ -64,6 +90,6 @@ def test_network_transient_error_retries_and_permanent_error_does_not():
 
 
 def test_standalone_extractor_imports_no_transform_modules(tmp_path):
-    code = "import sys; from hydrodatalab.extract import main; main(['--source','fixture','--output',sys.argv[1]]); assert not any(x in sys.modules for x in ('pandas','hydrodatalab.pipeline','hydrodatalab.normalize','hydrodatalab.coverage'))"
+    code = "import sys; from hydrodatalab.extract import main; main(['--source','fixture','--date','2026-10-17','--output',sys.argv[1]]); assert not any(x in sys.modules for x in ('pandas','hydrodatalab.pipeline','hydrodatalab.normalize','hydrodatalab.coverage'))"
     subprocess.run([sys.executable, "-c", code, str(tmp_path)], check=True, capture_output=True)
     assert len(extract(directory=tmp_path).demand) == 96

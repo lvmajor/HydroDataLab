@@ -5,9 +5,10 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import time
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
@@ -25,6 +26,17 @@ def utc_now() -> str:
 
 def fixture_dir() -> Path:
     return Path(os.environ.get("HYDRO_FIXTURE_DIR", Path(__file__).resolve().parents[2] / "data" / "fixtures"))
+
+
+def validate_day(day: str | None) -> date | None:
+    if day is None:
+        return None
+    try:
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", day):
+            raise ValueError
+        return date.fromisoformat(day)
+    except (TypeError, ValueError) as error:
+        raise ValueError("La date doit être une date civile valide au format YYYY-MM-DD") from error
 
 
 @dataclass
@@ -53,10 +65,19 @@ def _request_json(url: str, *, opener=urlopen, sleeper=time.sleep) -> dict:
 
 
 def extract(source: str = "fixture", *, directory: Path | None = None,
-            now: datetime | None = None, fetch=_request_json) -> RawBundle:
+            day: str | None = None, now: datetime | None = None, fetch=_request_json) -> RawBundle:
+    now = now or datetime.now(timezone.utc)
+    if now.tzinfo is None:
+        raise ValueError("now doit contenir un fuseau horaire")
+    local_day = now.astimezone(ZoneInfo(TIMEZONE)).date()
+    selected_day = validate_day(day)
+    if selected_day is not None and selected_day >= local_day:
+        raise ValueError("La date doit désigner une journée terminée dans America/Toronto")
     if source == "fixture":
         directory = directory or fixture_dir()
         manifest = json.loads((directory / "manifest.json").read_text(encoding="utf-8-sig"))
+        if selected_day is not None and str(selected_day) != manifest["period"]["start"]:
+            raise ValueError(f"Le snapshot couvre uniquement le {manifest['period']['start']}; la date demandée est refusée.")
         payloads = {}
         for name in ("demand.json", "hydrometeo.json"):
             raw = (directory / name).read_bytes()
@@ -68,13 +89,10 @@ def extract(source: str = "fixture", *, directory: Path | None = None,
                          manifest["period"], manifest["sources"])
     if source != "live":
         raise ValueError("source doit être fixture ou live")
-    now = now or datetime.now(timezone.utc)
-    if now.tzinfo is None:
-        raise ValueError("now doit contenir un fuseau horaire")
-    local_day = now.astimezone(ZoneInfo(TIMEZONE)).date()
-    start_day = local_day - timedelta(days=1)
+    start_day = selected_day or local_day - timedelta(days=1)
+    end_day = start_day + timedelta(days=1)
     start = datetime.combine(start_day, datetime.min.time(), ZoneInfo(TIMEZONE))
-    end = datetime.combine(local_day, datetime.min.time(), ZoneInfo(TIMEZONE))
+    end = datetime.combine(end_day, datetime.min.time(), ZoneInfo(TIMEZONE))
     where = f'date >= "{start.isoformat()}" AND date < "{end.isoformat()}"'
     queries = [
         ("demande-electricite-quebec", where),
@@ -104,15 +122,19 @@ def extract(source: str = "fixture", *, directory: Path | None = None,
         all_rows.append(rows)
         provenance.append({"label": "Hydro-Québec", "url": first_url, "license": LICENSE,
                            "retrievedAtUtc": utc_now(), "recordCount": len(rows)})
-    return RawBundle(*all_rows, {"start": str(start_day), "end": str(local_day), "timezone": TIMEZONE}, provenance)
+    return RawBundle(*all_rows, {"start": str(start_day), "end": str(end_day), "timezone": TIMEZONE}, provenance)
 
 
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", choices=("fixture", "live"), default="fixture")
+    parser.add_argument("--date", help="Journée civile terminée à Toronto, YYYY-MM-DD")
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args(argv)
-    bundle = extract(args.source)
+    try:
+        bundle = extract(args.source, day=args.date)
+    except (ValueError, RuntimeError, OSError) as error:
+        parser.exit(1, f"Échec : {error}\n")
     args.output.mkdir(parents=True, exist_ok=True)
     sources = []
     for name, rows, provenance in zip(("demand.json", "hydrometeo.json"),
