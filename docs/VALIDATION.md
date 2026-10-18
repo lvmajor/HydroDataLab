@@ -23,6 +23,8 @@ Ce contournement de diagnostic ne remplace pas la répétition du moteur autoris
 
 ## Présentation
 
+Révision pédagogique après retour du présentateur : définitions avant emploi, objectifs d'observation sur les pages de démonstration et manipulations déplacées vers les notes. Site et PDF de 24 pages régénérés et inspectés. Les liens profonds `/presenter/17` chargent maintenant les ressources et affichent réellement les notes; le minutage de secours reste absent de la vue audience. Preuve ciblée : `validation/pedagogy.json`.
+
 24 routes Slidev et deux interactions validées avec les requêtes externes bloquées; 0 erreur JavaScript et 0 débordement. PDF de 24 pages, texte et rendu inspectés. Preuves détaillées : `presentation/exports/qa/VALIDATION.md`. Les alertes transitives restantes de l'outillage Slidev sont décrites sans masquage dans `presentation/DEPENDENCY-AUDIT.md`; la projection utilise le build statique par défaut.
 
 ## Sauvegarde et reprise Git

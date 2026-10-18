@@ -4,7 +4,26 @@ Vérifié le 18 octobre 2026. Un bon résultat est un comportement attendu accom
 
 ## Avant de lancer
 
-Définir objectif, entrée, sortie, contraintes et critères de réussite. Vérifier dossier, branche/worktree, moteur, modèle et permissions. Choisir une petite tâche. Pour le cas HydroDataLab, Python reste le lieu de transformation et les données brutes restent intactes.
+Définir objectif, entrée, sortie, contraintes et critères de réussite. Ouvrir le bon dossier du projet et choisir sa branche d'essai. Vérifier le modèle et les actions autorisées. Un worktree supplémentaire est facultatif. Pour HydroDataLab, Python réalise les transformations et les données brutes restent intactes.
+
+## Les mots utiles
+
+| Terme | Sens dans cette formation |
+|---|---|
+| Dépôt Git | Le projet avec l'historique de ses versions enregistrées. |
+| Commit | Une version enregistrée dans cet historique. |
+| Branche | Un chemin d'évolution nommé, par exemple `demo-live` pour notre essai. |
+| Worktree | Un dossier de travail supplémentaire lié au même dépôt, utile pour ouvrir une autre branche à côté. |
+| Session | Une conversation consacrée à une tâche. |
+| Modèle / agent | Le modèle produit une proposition; l'agent l'utilise avec des outils pour avancer dans la tâche. |
+| Moteur d'exécution | Le logiciel qui fournit à l'agent ses outils et ses consignes; Copilot dans notre démonstration. |
+| Contexte / token | Le contexte est l'information disponible pour la tâche; un token est un morceau de texte traité par le modèle. |
+| Instruction / skill | Une instruction est une consigne; une skill est une recette réutilisable avec ses étapes. |
+| Spécification / test | La spécification décrit le résultat attendu; le test compare le résultat obtenu à cette attente. |
+| Diff | La comparaison des lignes de code avant et après une modification. |
+| ETL / fixture | ETL = extraire, transformer, charger ou exporter; fixture = copie préparée des données pour un résultat reproductible. |
+
+Une branche ou un worktree ne sauvegarde pas automatiquement les changements non enregistrés. Un worktree partage l'historique du dépôt et n'isole pas les services externes. [Référence Git](https://git-scm.com/docs/git-worktree).
 
 ## Où ranger quoi?
 

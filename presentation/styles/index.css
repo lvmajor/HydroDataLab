@@ -56,3 +56,6 @@
 
 /* Strong code contrast for classroom projection. */
 .slidev-layout pre, .slidev-layout pre span { color:#234b5d!important; }
+.slidev-layout.breakwater table { background:#f9fcfd; color:var(--ink); }
+.slidev-layout.breakwater table strong { color:var(--water); }
+.slidev-layout .coverage-example { font-family:'Barlow Condensed',sans-serif; font-size:68px; line-height:1.1; margin:28px 0; }

@@ -9,9 +9,9 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 00:00–01:00 | 1 — Ouverture | 1 min | |
 | 01:00–02:00 | 2 — Parcours | 1 min | |
 | 02:00–04:00 | 3 — Séries et sens | 2 min | |
-| 04:00–06:00 | 4 — Boucle de l’agent | 2 min | |
-| 06:00–08:00 | 5 — Fenêtre Agents | 2 min | |
-| 08:00–13:00 | 6 — Cadrer la session | 1 min | 4 min |
+| 04:00–06:00 | 4 — Modèle, outils et agent | 2 min | |
+| 06:00–08:00 | 5 — Dépôt, commit, branche et worktree | 2 min | |
+| 08:00–13:00 | 6 — Première mission dans Agents | 1 min | 4 min |
 | 13:00–15:00 | 7 — Instructions permanentes | 2 min | |
 | 15:00–17:00 | 8 — Portée et diagnostic | 2 min | |
 | 17:00–19:00 | 9 — Skills et rôles | 2 min | |
@@ -28,6 +28,14 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 55:00–60:00 | Marge | 5 min | |
 
 Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**. Annexes 19–24 : seulement en réponse aux questions. Les notes détaillées sont intégrées à `presentation/slides.md` et au mode présentateur Slidev.
+
+## Ce que voit le public
+
+Les diapositives expliquent les notions et annoncent ce que les participants pourront observer ou vérifier. Les raccourcis clavier, commandes, minutages et procédures de secours se trouvent dans ce guide et dans les notes du mode présentateur. Projeter la fenêtre de présentation, pas la vue des notes.
+
+Ne pas supposer de connaissances Git ou Docker. Définir les termes avant de les employer : modèle et agent (4), dépôt/commit/branche/worktree (5), session/planification/autorisations (6), instruction (7), skill et rôle personnalisé (9), contexte (10), token (11), API et image Docker (15), spécification et critère de réussite (16). Le worktree est une option expliquée, pas un prérequis ni une manipulation demandée. Le lexique est repris dans l'aide-mémoire.
+
+À chaque démonstration, donner une question au public : « Quelles sources vérifient cette réponse? », « D'où vient ce résultat et comment reprendre après une erreur? », « Une mesure manque : le contrôle le détecte-t-il? ». Les repères de la fenêtre Agents et ses réglages se montrent dans la première démo, avec leur utilité : lisibilité, portée du réglage, confirmation des actions et comparaison avant/après.
 
 ## Préparer lundi, sur le portable HQ
 
@@ -53,12 +61,12 @@ Depuis la racine de la version finale (`main` ou `07-solution`), exécuter `./sc
 
 ## Démo 1 — 4 minutes
 
-1. Montrer dépôt, branche/worktree, moteur Copilot, mode et Auto Balance.
-2. Ouvrir `Ctrl+,`, retrouver un réglage de lecture et montrer sa portée.
-3. Ouvrir **Chat: Open Customizations**, retrouver le socle et la règle Python.
-4. Lancer le prompt de découverte de `prompts.md`; lire References puis vérifier une affirmation dans le fichier.
+1. **0:00–0:45** : ouvrir **Chat: Open Agents Window** et montrer le dossier et la branche déjà expliqués. Session = conversation pour une tâche; `/plan` demande une démarche avant l'implémentation. Le menu de cette fenêtre ne contient pas actuellement l'agent Plan : utiliser `/plan` dans la session Copilot. Copilot est l'environnement choisi et Auto sélectionne un modèle; ses niveaux seront expliqués ensuite. Présenter les confirmations d'actions.
+2. **0:45–1:30** : ouvrir `Ctrl+,`, ajuster la lisibilité et expliquer la portée : Utilisateur pour ses projets, Espace de travail pour le projet ouvert. Montrer **Changes**, la comparaison avant/après d'un fichier.
+3. **1:30–2:20** : ouvrir **Chat: Open Customizations**. Instruction = consigne écrite pour l'agent. Retrouver la règle Python qui distingue zéro d'une absence.
+4. **2:20–4:00** : lancer le prompt de découverte de `prompts.md`. Traduire **References** par « sources consultées », ouvrir un fichier cité et vérifier une affirmation avec le public.
 
-Résultat attendu : le public distingue modèle/moteur, retrouve une instruction et sait vérifier son usage. Si authentification indisponible, montrer les fichiers versionnés et la carte conceptuelle slide 5.
+Résultat attendu : le public sait où l'agent travaille, quelles actions il peut faire et comment vérifier une affirmation. Si l'authentification est indisponible, montrer les fichiers et les règles locaux en annonçant que la réponse ne sera pas générée en direct. Ne pas créer de worktree pendant cette démonstration.
 
 ## Démo 2 — 5 minutes
 

@@ -26,6 +26,10 @@ Vérification documentaire : **18 octobre 2026**. Prestation : **20 octobre 2026
 | S20 | [Hydro-Québec — Réservoirs](https://www.hydroquebec.com/comprendre/hydroelectricite/gestion-eau.html) | Distingue volumes total/utilisable; un niveau n’est pas un stock énergétique. |
 | S21 | [CEHQ — Données instantanées](https://www.cehq.gouv.qc.ca/hydrometrie/historique_donnees/fiche_instantanee.asp) | Source complémentaire non utilisée dans le snapshot : données instantanées préliminaires, anomalies/corrections possibles. |
 
+S22 — [Git : worktree](https://git-scm.com/docs/git-worktree), consulté le 18 octobre 2026. Un dépôt peut posséder plusieurs dossiers de travail liés, ce qui permet d'ouvrir plusieurs branches simultanément. La diapositive 5 explique dépôt, commit, branche et worktree avant leur emploi; un worktree supplémentaire reste facultatif dans ce parcours.
+
+Précision S01/S16, revérifiée le 18 octobre : la fenêtre Agents ne propose pas l'agent Plan dans son menu; `/plan` fonctionne dans une session Copilot. Les notes et le guide distinguent ce chemin des sélecteurs de la vue Chat.
+
 ## Instantané réellement utilisé
 
 Manifeste lu le 18 octobre 2026 : récupération **2026-10-18T19:44:01Z**, période **17 octobre 2026**, début inclusif et fin exclusive au 18 octobre dans America/Toronto. **168 observations** : 96 de demande, 72 hydrométéorologiques. Identifiants source filtrés : `1-15412` pour Niveau et `1-10622` pour Température Minimum/Maximum. Les noms de station, unités, fréquences et définitions proviennent des données/metadata; ne pas attribuer implicitement les températures au même capteur que le niveau. Licence déclarée par le manifeste : **CC BY-NC 4.0**. Conserver les fichiers bruts, l’attribution et leur empreinte.

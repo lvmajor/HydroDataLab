@@ -2,6 +2,8 @@
 
 Les huit tags annotés constituent une histoire linéaire. Les premiers jalons sont volontairement plus petits : seuls leurs composants présents sont exécutables. Les supports et scripts complets sont disponibles à partir du jalon 05. Conserver une copie du PDF et de ce guide hors du dossier que l'on change de jalon.
 
+La révision pédagogique du 18 octobre se trouve sur `main` et dans le kit de transfert le plus récent. Les tags conservent leur état historique : projeter le diaporama du kit récent pendant que le dossier de démonstration change de jalon.
+
 | Tag | État et commande depuis la racine |
 |---|---|
 | `00-socle` | README, journal et diagnostic `scripts/doctor.ps1`; pas encore d'ETL |

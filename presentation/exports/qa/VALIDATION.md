@@ -1,5 +1,11 @@
 # Validation de la présentation
 
+## Révision pédagogique du 18 octobre
+
+Le support introduit maintenant modèle/outils/agent, puis dépôt/commit/branche/worktree avant la première mission. Le worktree reste facultatif. Les démonstrations affichent un objectif observable; leurs manipulations, minutages et recours à la solution préparée sont dans les notes. Les autres notions nouvelles sont définies au premier emploi; un lexique est joint à l'aide-mémoire. Les 18 pages principales, 6 annexes et 45 minutes de contenu sont conservées.
+
+Après révision : build et export réussis, PDF de 24 pages avec rendu inspecté. Contrôle navigateur des 24 pages et des deux interactions sans débordement ni erreur JavaScript; requêtes externes bloquées. La séparation audience/notes est également vérifiée : la diapositive 17 montre le résultat à vérifier, tandis que `/presenter/17` contient le seuil de secours à 2:10. Le build utilise `--base /` pour corriger le chargement des ressources depuis ces liens profonds. Preuve complémentaire : `../../../docs/validation/pedagogy.json`.
+
 Contrôle effectué le 18 octobre 2026 dans le workspace de création. Cette validation porte sur le support; la répétition sur le portable HQ reste à faire.
 
 ## Résultats
@@ -24,6 +30,6 @@ Les preuves sont `browser-report.json`, `context-interactive.png`, `model-intera
 - Les libellés et tarifs sont documentés au 18 octobre 2026; disponibilité des modèles et politiques HQ doivent être vérifiées sur le poste de présentation.
 - Pas de capture VS Code simulée. Les schémas conceptuels sont signalés. Les captures de secours de l’application réelle sont dans `docs/screenshots/` à la racine du dépôt.
 
-## Complément après audit de dépendances
+## Historique : audit de dépendances avant révision pédagogique
 
-DOMPurify remplacé par 3.4.17 via override compatible le 18 octobre. Build relancé avec succès; voir `../../DEPENDENCY-AUDIT.md` et les rapports npm pour les 17 entrées résiduelles. Le serveur d’édition a été observé sur ::1 uniquement. Aucun contenu de diapositive n’a changé; le PDF reste celui contrôlé ci-dessus.
+DOMPurify remplacé par 3.4.17 via override compatible le 18 octobre. Build relancé avec succès; voir `../../DEPENDENCY-AUDIT.md` et les rapports npm pour les 17 entrées résiduelles. Le serveur d’édition a été observé sur ::1 uniquement. Cet audit précédait la révision pédagogique décrite en tête de document; le PDF a depuis été régénéré et contrôlé.

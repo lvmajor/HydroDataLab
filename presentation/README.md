@@ -10,6 +10,8 @@ Les fichiers de présentation sont disponibles à partir du tag `05-docker`. Au 
 
 `npm run build` produit `dist/`. `npm run preview` le sert sur http://127.0.0.1:53173. Après installation, polices, favicon et composants sont locaux; aucune CDN n’est nécessaire. Les liens de référence ne s’ouvrent que sur action explicite. Un serveur HTTP local est requis : ne pas ouvrir index.html directement par file://.
 
+Le build est servi à la racine du serveur (`--base /`) pour que les liens directs vers `/presenter/17` chargent aussi leurs ressources. La vue audience affiche les notions et objectifs; les raccourcis, minutages et procédures de secours sont dans les notes du présentateur. Le lexique est dans l'aide-mémoire.
+
 Pour une installation qui utilise Chrome/Edge existant, définir `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` avant `npm ci` afin d’éviter de télécharger un autre navigateur. Node 22.12+ est requis par Slidev; un Node LTS 22 ou 24 évite l’avertissement de compatibilité de postcss-nested observé avec Node 25.
 
 ## Export PDF

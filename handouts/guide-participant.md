@@ -4,13 +4,15 @@ Formation du 20 octobre 2026; sources vérifiées le 18 octobre. À la fin, vous
 
 ## Le projet en une minute
 
-HydroDataLab lit un instantané public Hydro-Québec, le transforme en Python et produit CSV, Parquet et JSON. FastAPI expose le même moteur que la CLI. Une API ASP.NET Core 10 pilote les tâches avec Quartz et garde l’historique dans SQLite. Vue affiche séries, qualité et provenance. Aspire 13.6.1 aide à démarrer et observer les services; Compose sert au chemin conteneur préparé.
+HydroDataLab lit une copie locale de données publiques Hydro-Québec, les transforme en Python et produit des tables et un rapport. C'est un ETL : extraire, transformer, charger ou exporter. Le même traitement fonctionne en ligne de commande et depuis le tableau de bord préparé.
+
+L'API est le point d'accès qui reçoit les commandes et transmet les résultats à l'écran. Aspire démarre les composants et regroupe leurs journaux. Une image Docker contient le code et ses dépendances pour l'exécuter en conteneur. L'infrastructure .NET/Vue est déjà préparée; les exercices portent sur Python. Le [lexique de l'aide-mémoire](aide-memoire.md#les-mots-utiles) explique Git, session, modèle, agent, tokens, spécification et diff.
 
 Les données de démonstration couvrent le 17 octobre 2026 : 96 observations de demande et 72 observations hydrométéorologiques. Le manifeste conserve URL, date de récupération et SHA-256. Les identifiants de station des températures sont distincts de celui du niveau Gouin. Le niveau est une hauteur en mètres, pas une réserve d’énergie.
 
 ## Exercice A — comprendre avant de modifier (10 minutes)
 
-1. Ouvrir une session du dépôt, moteur Copilot. Vérifier dossier et branche.
+1. Ouvrir le dossier du projet dans VS Code, choisir sa branche d'essai et créer une conversation (session) avec Copilot. Un worktree supplémentaire n'est pas nécessaire.
 2. Utiliser le prompt de découverte de `prompts.md`.
 3. Retrouver dans le contrat l’unité, la fréquence et le fuseau d’une série.
 4. Demander quel test distingue zéro d’une absence.
@@ -20,7 +22,7 @@ Réussite : vous pouvez nommer le fichier de transformation et expliquer pourquo
 
 ## Exercice B — modifier une fonction avec une spec (15 à 20 minutes)
 
-Utiliser une copie de travail depuis `06-specification`. Le stub de couverture est volontaire. Préserver le travail personnel et suivre les scripts de préparation/reprise du dépôt. Ne pas réinitialiser destructivement votre dossier principal.
+Une spécification décrit le résultat attendu et ses règles; « spec » est son abréviation. Utiliser une copie préparée depuis le tag `06-specification` (un tag est un repère nommé sur une version Git). La fonction de couverture y est volontairement incomplète. Préserver le travail personnel et suivre les scripts de préparation/reprise du dépôt.
 
 Fonction : `etl/hydrodatalab/coverage.py`. Contrat : `docs/CONTRACT.md`. Tests d’acceptation : `specs/test_coverage_acceptance.py`.
 
@@ -46,7 +48,7 @@ uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basete
 
 Dans Vue, déplier **Qualité par série** pour observer le niveau à 23/24 = 95,83 %. La synthèse globale affiche 167/168 = 99,4 % : les dénominateurs diffèrent.
 
-Réussite : les tests passent, vous comprenez le calcul d’expected et pouvez expliquer le diff. Un message « cela devrait fonctionner » ne satisfait pas ce critère.
+Réussite : les tests passent, vous comprenez le nombre attendu (`expected`) et pouvez expliquer la comparaison avant/après du code (`diff`). Un message « cela devrait fonctionner » ne satisfait pas ce critère.
 
 ## Exercice C — capitaliser sans grossir le contexte (10 minutes)
 

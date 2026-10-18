@@ -2,10 +2,10 @@
 import { ref } from 'vue'
 const selected = ref(0)
 const layers = [
- { name:'Socle', title:'Ce qui reste vrai pour tout le dépôt', text:'Python transforme. L’API orchestre. Vue présente. Les données brutes sont conservées.', file:'.github/copilot-instructions.md' },
- { name:'Composant', title:'Ce qui s’applique à la tâche Python', text:'Horodatages UTC, valeurs nulles explicites et tests du domaine. Une observation à zéro reste valide.', file:'.github/instructions/python.instructions.md' },
+ { name:'Socle', title:'Ce qui reste vrai pour tout le dépôt', text:'Python calcule les indicateurs. Les données brutes sont conservées. Chaque résultat garde son unité et sa source.', file:'.github/copilot-instructions.md' },
+ { name:'Composant', title:'Ce qui s’applique à la tâche Python', text:'Les dates utilisent UTC, une référence de temps commune. Une absence est explicite; une observation à zéro reste valide.', file:'.github/instructions/python.instructions.md' },
  { name:'Contrat', title:'Ce que les colonnes veulent dire', text:'Schéma, unité, fréquence, fuseau, provenance, qualité. MW ≠ MWh; un niveau en mètres ≠ une réserve en GWh.', file:'docs/CONTRACT.md + dictionnaire de données' },
- { name:'Tâche', title:'Ce que nous voulons changer maintenant', text:'Ajouter observed / expected / percent à une série, sur une journée civile choisie.', file:'specs/coverage.md + fonction Python ciblée' },
+ { name:'Tâche', title:'Ce que nous voulons changer maintenant', text:'Compter les mesures présentes et les comparer au nombre attendu pour une journée donnée.', file:'specs/coverage.md + fonction Python ciblée' },
  { name:'Preuves', title:'Ce qui permet de dire « terminé »', text:'24/24, 23/24, zéro valide, doublon, journées de 23 et 25 heures. Lire les tests et le résultat.', file:'tests Python + report.json' },
 ]
 </script>

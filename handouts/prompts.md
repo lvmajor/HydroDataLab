@@ -5,8 +5,9 @@ Version du 18 octobre 2026. Coller dans une session du dépôt et du moteur atte
 ## 1 — Retrouver le contexte (lecture seule)
 
 ```text
-Sans modifier de fichier, explique le chemin d’une observation depuis la fixture
-jusqu’au rapport. Lis docs/CONTRACT.md et les instructions pertinentes.
+Repère le calcul des indicateurs et explique comment il est testé.
+Ne modifie aucun fichier. Suis le chemin des données locales préparées
+dans data/fixtures jusqu’au rapport. Lis docs/CONTRACT.md et les instructions pertinentes.
 Identifie le fichier Python de transformation et les tests à utiliser.
 Cite les fichiers consultés et signale toute information manquante.
 Réponse attendue : un schéma en quatre étapes et les commandes de vérification.
@@ -14,7 +15,9 @@ Réponse attendue : un schéma en quatre étapes et les commandes de vérificati
 
 Observer References et les lectures d’outils. Une citation seule ne prouve pas que la règle a été respectée; vérifier une affirmation dans le code.
 
-## 2 — Préparer une modification (mode Plan)
+## 2 — Préparer une modification
+
+Dans la fenêtre Agents avec Copilot, utiliser `/plan` pour demander une démarche. Le sélecteur de cette fenêtre ne contient pas actuellement l'agent Plan.
 
 ```text
 Prépare un plan pour ajouter la couverture des observations à une série du rapport.

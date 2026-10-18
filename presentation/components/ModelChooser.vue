@@ -4,7 +4,7 @@ const task = ref('transform')
 const chosen = ref('sol')
 const attempts = ref(1)
 const models = [{id:'luna',name:'GPT-6 Luna',input:.1,output:.5},{id:'haiku',name:'Claude Haiku 5.5',input:.1,output:.5},{id:'sonnet',name:'Claude Sonnet 5.5',input:2,output:10},{id:'sol',name:'GPT-6.1 Sol',input:2,output:10},{id:'opus',name:'Claude Opus 5.5',input:4,output:20}]
-const tasks = {explain:{label:'Expliquer 30 lignes',advice:'Auto Efficiency, Luna ou Haiku : commencer petit et vérifier la réponse.'},transform:{label:'Modifier un ETL testé',advice:'Auto Balance, Sol ou Sonnet : suivre la spec, exécuter les tests.'},debug:{label:'Diagnostiquer un échec complexe',advice:'Planifier avec un modèle capable; Opus si la difficulté le justifie.'}}
+const tasks = {explain:{label:'Expliquer 30 lignes',advice:'Auto Efficiency, Luna ou Haiku : vérifier la réponse sur le code.'},transform:{label:'Modifier un ETL testé',advice:'Auto Balance, Sol ou Sonnet : vérifier le résultat avec les tests.'},debug:{label:'Diagnostiquer un échec complexe',advice:'Planifier avec un modèle capable; Opus si la difficulté le justifie.'}}
 const selected = computed(()=>models.find(m=>m.id===chosen.value))
 const cost = computed(()=>((20000*selected.value.input+2000*selected.value.output)/1e6*attempts.value))
 </script>

@@ -101,7 +101,7 @@ from urllib.parse import unquote, urlsplit
 class PresentationHandler(SimpleHTTPRequestHandler):
     def prepare_path(self):
         path = unquote(urlsplit(self.path).path)
-        # Slidev --base ./ peut demander /presenter/assets/... sur une route profonde.
+        # Compatibilité avec les anciens builds Slidev à chemins relatifs.
         marker = "/assets/"
         if marker in path:
             self.path = marker + path.split(marker, 1)[1]
@@ -175,7 +175,7 @@ docker compose -p hydrodatalab-training --env-file compose/images.env -f compose
 python servir-presentation.py
 ```
 
-Ouvrir **http://localhost:53173/1**. Le serveur conserve les routes SPA et adapte les chemins relatifs des assets, notamment pour `/presenter/1`. Le mode présentateur dépend des fonctions incluses dans le build statique : si les notes n'y sont pas offertes, utiliser `handouts/guide-presentateur.md` à côté du diaporama. Arrêter le serveur avec Ctrl+C.
+Ouvrir **http://localhost:53173/1** pour l'audience et **http://localhost:53173/presenter/1** pour les notes du présentateur. Le serveur prend en charge les liens directs vers les diapositives. Les consignes de manipulation, minutages et procédures de secours restent dans les notes; projeter uniquement la vue audience. Le guide `handouts/guide-presentateur.md` est aussi disponible. Arrêter le serveur avec Ctrl+C.
 
 Secours sans serveur : ouvrir `documents/formation-hydrodatalab.pdf`. Les notes et requêtes sont dans `handouts/`, les captures dans `captures/`.
 

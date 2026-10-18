@@ -26,7 +26,7 @@ Lire ce journal, puis `git status --short --branch` et `git log -5 --oneline`.
 Ne pas écraser les modifications existantes. Le travail des agents est réparti entre `etl/`, `web/`, `presentation/` et le reste du dépôt.
 
 ## Prochaine action
-Copier le dossier `artifacts/kit-hq-<date-heure>/` le plus récent sur le portable HQ et un autre support; ouvrir son `DEMARRER.md`. Répéter le 19 octobre, confirmer le compte Copilot et le moteur de conteneurs autorisé. Le travail de création et les vérifications possibles sur ce poste sont terminés.
+Révision pédagogique terminée et contrôlée : notions expliquées avant emploi, consignes d'animation dans les notes, site et PDF reconstruits. Copier le dossier `artifacts/kit-hq-<date-heure>/` le plus récent sur le portable HQ; `artifacts/LIVRAISON.txt` identifie le kit de référence. Répéter le 19 octobre et confirmer les accès Copilot. La version technique de l'application reste validée.
 
 Dernier jalon technique validé : `07-solution` = `4a462eec09f6f2cc62b4ec0ca36fa4a6a033bd78`. `demo-live` pointe sur `06-specification` = `114d57d137c4064ab9617bb736e187421c83afdc`. Les commits de livraison suivants portent sur les scripts de transport et la documentation.
 
@@ -54,6 +54,14 @@ Dernier commit d'outillage validé : `5e5b476` (assemblage du kit). Le commit de
 - Archive d'images : 1 205 382 656 octets, quatre IDs vérifiés; SHA-256 `3c3c775373607b6f6cec5f2bdea7cc9506bfe4c5182e9df04bfce8ea4690ebfe`.
 - Kit : code et histoire Git, images, Compose complet, données/licences, présentation statique, PDF, notes et captures; chaque fichier est inventorié dans `SHA256SUMS.json`. Aucune dépendance npm n'est requise pour sa projection.
 - Serveur Python du kit : 24 routes de diapositives, deux interactions et `/presenter/1` vérifiés avec les accès externes bloqués; aucune erreur JavaScript. Preuve `docs/validation/kit-browser.json`.
+
+## Révision pédagogique du 18 octobre
+
+- Introduction de modèle/outils/agent puis dépôt/commit/branche/worktree; worktree explicitement facultatif.
+- Démonstrations orientées vers une question et un résultat pour l'audience. Minutages, raccourcis et secours conservés dans les notes et le guide.
+- Définitions de session, instructions, skill, contexte, token, API, image Docker et spécification; lexique dans l'aide-mémoire.
+- Guides et requêtes alignés, notamment `/plan` dans la fenêtre Agents. Les huit tags historiques sont conservés; utiliser les supports récents de main/du kit pendant les démos.
+- Site, PDF de 24 pages et interactions contrôlés. Lien direct `/presenter/17` réparé et notes réellement vérifiées; preuve `docs/validation/pedagogy.json`.
 
 ## Préparation sur le portable HQ
 La répétition du 19 octobre et la confirmation des politiques/modèles HQ nécessiteront le portable et le compte du présentateur. Elles ne sont pas encore effectuées.

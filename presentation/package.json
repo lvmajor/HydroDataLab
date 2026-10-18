@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "slidev slides.md --port 53173",
-    "build": "slidev build slides.md --base ./",
+    "build": "slidev build slides.md --base /",
     "export": "node scripts/export-pdf.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 53173"
   },
