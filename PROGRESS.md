@@ -11,7 +11,7 @@ Mis à jour : 18 octobre 2026. Formation cible : mardi 20 octobre 2026.
 - [x] 24 diapositives, PDF, notes et aide-mémoire contrôlés.
 - [x] Huit tags annotés, branche demo-live, scripts de reprise et restauration Git réelle.
 - [x] Quatre images archivées avec manifest et empreinte SHA-256.
-- [ ] Assemblage final du kit de transfert hors ligne.
+- [x] Kit de transfert hors ligne assemblé; images, bundle et inventaire SHA-256 vérifiés.
 - [x] Vérification navigateur et répétition technique sur le poste de construction.
 
 ## Décisions
@@ -26,9 +26,11 @@ Lire ce journal, puis `git status --short --branch` et `git log -5 --oneline`.
 Ne pas écraser les modifications existantes. Le travail des agents est réparti entre `etl/`, `web/`, `presentation/` et le reste du dépôt.
 
 ## Prochaine action
-Assembler le kit de transfert avec le nouveau bundle, le code, Compose, les images, le diaporama statique et le PDF. Les six jalons ETL du bundle réparé ont été exécutés dans une copie restaurée, avec les dépendances en mode hors ligne.
+Copier le dossier `artifacts/kit-hq-<date-heure>/` le plus récent sur le portable HQ et un autre support; ouvrir son `DEMARRER.md`. Répéter le 19 octobre, confirmer le compte Copilot et le moteur de conteneurs autorisé. Le travail de création et les vérifications possibles sur ce poste sont terminés.
 
 Dernier jalon technique validé : `07-solution` = `4a462eec09f6f2cc62b4ec0ca36fa4a6a033bd78`. `demo-live` pointe sur `06-specification` = `114d57d137c4064ab9617bb736e187421c83afdc`. Les commits de livraison suivants portent sur les scripts de transport et la documentation.
+
+Dernier commit d'outillage validé : `5e5b476` (assemblage du kit). Le commit de clôture suivant ajoute ce bilan et la preuve navigateur. `git log -1` donne la version exacte de livraison.
 
 ## Vérifications
 - Python : 35 tests réussis; lecture réelle de la source publique vérifiée; date CLI, idempotence, changements d'heure et interruptions couverts.
@@ -50,6 +52,8 @@ Dernier jalon technique validé : `07-solution` = `4a462eec09f6f2cc62b4ec0ca36fa
 - Réparation autorisée explicitement le 18 octobre : Git avait normalisé les fins de ligne des données brutes. Les jalons 02 à 07 conservent maintenant leurs octets exacts et leurs empreintes; tags et branche live mis à jour atomiquement. Ancienne sauvegarde conservée, mais ne pas l'utiliser pour présenter.
 - Restauration réelle : six CLI réussies, intégrité des sources vérifiée à chaque jalon; 06 présente deux échecs d'acceptation attendus; 07 passe les 35 tests Python. Preuves dans `docs/validation/`.
 - Archive d'images : 1 205 382 656 octets, quatre IDs vérifiés; SHA-256 `3c3c775373607b6f6cec5f2bdea7cc9506bfe4c5182e9df04bfce8ea4690ebfe`.
+- Kit : code et histoire Git, images, Compose complet, données/licences, présentation statique, PDF, notes et captures; chaque fichier est inventorié dans `SHA256SUMS.json`. Aucune dépendance npm n'est requise pour sa projection.
+- Serveur Python du kit : 24 routes de diapositives, deux interactions et `/presenter/1` vérifiés avec les accès externes bloqués; aucune erreur JavaScript. Preuve `docs/validation/kit-browser.json`.
 
 ## Préparation sur le portable HQ
 La répétition du 19 octobre et la confirmation des politiques/modèles HQ nécessiteront le portable et le compte du présentateur. Elles ne sont pas encore effectuées.

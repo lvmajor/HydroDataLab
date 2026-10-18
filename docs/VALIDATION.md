@@ -33,6 +33,8 @@ Cette vérification a détecté puis permis de corriger une normalisation des fi
 
 L'archive hors ligne des quatre images mesure 1 205 382 656 octets. Son manifest contient les quatre identifiants attendus; son SHA-256 est `3c3c775373607b6f6cec5f2bdea7cc9506bfe4c5182e9df04bfce8ea4690ebfe`.
 
+`scripts/package-kit.ps1` a été exécuté : copie vérifiée de l'archive d'images, bundle copié vérifié par Git, inventaire de chaque fichier. Le serveur Python standard livré dans le kit a passé un contrôle navigateur des 24 diapositives, des deux interactions et du mode présentateur `/presenter/1`, avec les requêtes externes bloquées. Aucune erreur JavaScript ni ressource externe; preuve `validation/kit-browser.json`.
+
 ## À confirmer le 19 octobre
 
 Compte Copilot HQ, modèles réellement autorisés, politiques des outils, accès réseau public, moteur de conteneurs approuvé, projection, alimentation et répétition chronométrée. Aucune de ces vérifications spécifiques au portable HQ n'est déclarée effectuée ici.
