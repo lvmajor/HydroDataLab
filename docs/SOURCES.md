@@ -25,6 +25,14 @@ Vérification documentaire : **18 octobre 2026**. Prestation : **20 octobre 2026
 | S19 | [Slidev — Export](https://sli.dev/guide/exporting) et [polices](https://sli.dev/custom/config-fonts) | Export CLI Playwright, PDF statique, polices locales; consulté 18/10/2026. |
 | S20 | [Hydro-Québec — Réservoirs](https://www.hydroquebec.com/comprendre/hydroelectricite/gestion-eau.html) | Distingue volumes total/utilisable; un niveau n’est pas un stock énergétique. |
 | S21 | [CEHQ — Données instantanées](https://www.cehq.gouv.qc.ca/hydrometrie/historique_donnees/fiche_instantanee.asp) | Source complémentaire non utilisée dans le snapshot : données instantanées préliminaires, anomalies/corrections possibles. |
+| S23 | [VS Code 1.142](https://code.visualstudio.com/updates/v1_142) | 14/10/2026 : Copilot SDK, défaut progressif du harnais; Canvas en Preview. |
+| S24 | [Concept de harnais](https://code.visualstudio.com/docs/agents/concepts/agent-harnesses) et [choix et Canvas](https://code.visualstudio.com/docs/agents/run/agent-harnesses) | Séparer harnais/modèle; Canvas desktop local Copilot Agent Host, extension et activation. |
+| S25 | [Concepts de personnalisation](https://code.visualstudio.com/docs/agents/concepts/customization) | Instructions, skills, agents, tools, MCP, hooks, plugins : responsabilités et composition. |
+| S26 | [Panneau Customizations](https://code.visualstudio.com/docs/agent-customization/overview) | Portées User/Workspace/Organization, fichier découvert vs comportement vérifié. |
+| S27 | [Hooks](https://code.visualstudio.com/docs/agent-customization/hooks) et [MCP](https://code.visualstudio.com/docs/agent-customization/mcp-servers) | Hooks Copilot SDK différents de Local; serveurs exposant des outils. |
+| S28 | [Plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins) | Paquets de capacités; chaque composant conserve son activation. |
+| S29 | [HydraFusion, documentation](https://docs.github.com/en/early-access/copilot/hydrafusion) | Single/Cascade/Critique; somme des usages par modèle, aucun supplément propre, aucune remise Auto. |
+| S30 | [GitHub — Comparaison des modèles](https://docs.github.com/en/copilot/reference/ai-models/model-comparison) | Complément à la grille de prix; les recommandations et volumes du cours restent pédagogiques. |
 
 S22 — [Git : worktree](https://git-scm.com/docs/git-worktree), consulté le 18 octobre 2026. Un dépôt peut posséder plusieurs dossiers de travail liés, ce qui permet d'ouvrir plusieurs branches simultanément. La diapositive 5 explique dépôt, commit, branche et worktree avant leur emploi; un worktree supplémentaire reste facultatif dans ce parcours.
 
@@ -38,7 +46,13 @@ Manifeste lu le 18 octobre 2026 : récupération **2026-10-18T19:44:01Z**, péri
 
 - Pas d’estimation des réserves en GWh ni de prévision opérationnelle; le niveau Gouin reste exprimé en mètres.
 - Les exemples 24/24, 23/24 et les jours de 23/25 heures sont des cas de tests, pas des données hydrologiques inventées.
-- Les coûts du simulateur supposent un volume égal entre modèles, sans cache ni remise; ce sont des illustrations, pas des mesures.
-- HydraFusion peut employer un pool comprenant Astra selon l’annonce; le parcours HQ n’en fait pas une démo exécutable ni une recommandation autorisée.
+- Les coûts du graphique supposent quatre scénarios de volume, égal entre modèles pour un scénario, sans cache ni remise. Ce sont des illustrations, pas des mesures de performance ou une prévision de facture.
+- HydraFusion peut choisir un ou plusieurs modèles autorisés et disponibles; la capsule n’exige pas son activation. Aucune politique HQ sur un modèle n’est présumée.
 - Aucune capture d’interface inventée. Les schémas décrivent des concepts et sont étiquetés comme tels.
 - Les références web sont consultables sur action; le build de la présentation conserve localement scripts et polices.
+
+## Capture fournie et distinction des démonstrations
+
+La capture `presentation/public/vscode-customizations-user.png` est l’image fournie par le présentateur le 18 octobre, conservée sans modification des pixels. Le cadrage CSS de l’annexe 19 montre Agent Customizations / Copilot, pour le projet RealEstateFinancing, avec User 0 et Workspace 0. Les chemins expliqués sous l’image ne sont pas des éléments présents dans ces listes. Le schéma animé d’instructions est pédagogique; les exemples MCP, hooks et plugins ne sont pas des installations de HydroDataLab. Le schéma Canvas décrit une fonctionnalité et ne prétend pas être relié à Copilot.
+
+Pour S03, la page officielle sans paramètres a été intermittente pendant la consultation; la même page indexée avec un paramètre de suivi a permis de lire les sections sur le format, AGENTS.md, la vérification et les instructions d’organisation. Les supports utilisent son URL canonique. Ne pas confondre une organisation des dossiers avec un ordre de priorité universel, ni transférer les règles GitHub.com à tous les harnais VS Code.

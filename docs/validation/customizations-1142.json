@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-18",
+  "scope": "Presentation and handouts; no application behavior changed",
+  "slideCount": 24,
+  "timing": {"explanationsMinutes": 32, "demosMinutes": 13},
+  "browser": {
+    "report": "presentation/exports/qa/browser-report.json",
+    "externalRequestsBlocked": true,
+    "pageErrors": 0,
+    "layoutOverflows": 0,
+    "checks": ["Python/Vue instruction selection", "Five context layers", "Four cost scenarios, five models", "Attempt multiplier", "Reduced motion", "Presenter notes", "Canvas annex and return"]
+  },
+  "pdf": {
+    "pages": 24,
+    "visualReview": "Two contact sheets and detailed views of composition, costs, screenshot and Canvas",
+    "officialExampleLinks": "Verified by qa_pdf.py",
+    "offlinePageDestinations": [[7,19],[18,21],[19,7],[21,18]],
+    "internalTemporaryServerUrls": 0
+  },
+  "limits": ["Model prices verified from GitHub; task volumes are illustrative, not measured", "VS Code screenshot is user supplied from another project with empty instruction lists", "Canvas is explained, not installed or connected", "HQ laptop rehearsal and account availability remain unverified"]
+}

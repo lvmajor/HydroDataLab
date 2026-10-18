@@ -8,6 +8,18 @@ assert len(reader.pages)==24, len(reader.pages)
 for i,p in enumerate(reader.pages,1):
     text=p.extract_text() or ''
     assert len(text)>70, (i,text)
+    for a in p.get('/Annots', []):
+        uri=str(a.get_object().get('/A', {}).get('/URI', ''))
+        assert not uri.startswith(('http://localhost:', 'http://127.0.0.1:')), (i,uri)
+expected_links={8:'custom-instructions#instructions-file-format',13:'models-and-pricing',14:'early-access/copilot/hydrafusion',16:'spec-kit',21:'use-canvases-with-the-copilot-harness'}
+for page,fragment in expected_links.items():
+    uris=[str(a.get_object().get('/A',{}).get('/URI','')) for a in reader.pages[page-1].get('/Annots',[])]
+    assert any(fragment in uri for uri in uris), (page,fragment)
+assert '66,67' in reader.pages[6].extract_text()
+assert 'Spec-Driven Development' in reader.pages[15].extract_text()
+for page,target in [(7,19),(18,21),(19,7),(21,18)]:
+    dests=[a.get_object().get('/Dest') for a in reader.pages[page-1].get('/Annots',[])]
+    assert any(d and d[0]==reader.pages[target-1].indirect_reference for d in dests), (page,target)
 for group in range(2):
     canvas=Image.new('RGB',(1600,1280),'#dce8ed')
     draw=ImageDraw.Draw(canvas)

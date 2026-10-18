@@ -65,3 +65,13 @@ Dernier commit d'outillage validé : `5e5b476` (assemblage du kit). Le commit de
 
 ## Préparation sur le portable HQ
 La répétition du 19 octobre et la confirmation des politiques/modèles HQ nécessiteront le portable et le compte du présentateur. Elles ne sont pas encore effectuées.
+
+## Révision des personnalisations et nouveautés 1.142
+
+- Point de reprise : main `3e58862`, dépôt propre avant cette révision; huit tags pédagogiques conservés.
+- Sources officielles revérifiées le 18 octobre : harnais Copilot/SDK, instructions, migration, plugins, hooks, Canvas, tarifs et HydraFusion.
+- Décisions : conserver 18 diapositives + 6 annexes et 45 minutes; expliquer composition et activation sans inventer un ordre universel de priorité. Parcours Copilot en priorité; AGENTS.md pour le socle partagé entre harnais compatibles.
+- Réalisé : exemple numérique zéro/absence, sources cliquables, composition animée Python/Vue, sept concepts, capture utilisateur reliée aux portées, graphique avec quatre hypothèses de tâches, Canvas et SDD. Notes, minutage et trois fiches synchronisés; nouvelle fiche `handouts/personnalisations-vscode.md`.
+- Site validé : 24 routes, aucune erreur ni ressource externe, aucun débordement; sélection de règles, quatre scénarios de coût, tentatives, réduction des animations et notes présentateur contrôlés.
+- PDF : 24 pages inspectées visuellement; liens officiels vérifiés. Les liens d’annexes sont convertis en destinations PDF locales par `fix_pdf_links.py`; export reproductible avec Python/pypdf.
+- Prochaine action : enregistrer cette révision, assembler le nouveau kit transportable et vérifier ses empreintes. La répétition et la vérification du compte HQ restent à effectuer sur le portable le 19 octobre.

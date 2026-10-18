@@ -9,25 +9,29 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 00:00–01:00 | 1 — Ouverture | 1 min | |
 | 01:00–02:00 | 2 — Parcours | 1 min | |
 | 02:00–04:00 | 3 — Séries et sens | 2 min | |
-| 04:00–06:00 | 4 — Modèle, outils et agent | 2 min | |
+| 04:00–06:00 | 4 — Modèle, harnais, outils et agent | 2 min | |
 | 06:00–08:00 | 5 — Dépôt, commit, branche et worktree | 2 min | |
 | 08:00–13:00 | 6 — Première mission dans Agents | 1 min | 4 min |
 | 13:00–15:00 | 7 — Instructions permanentes | 2 min | |
 | 15:00–17:00 | 8 — Portée et diagnostic | 2 min | |
-| 17:00–19:00 | 9 — Skills et rôles | 2 min | |
-| 19:00–22:00 | 10 — Paliers interactifs | 3 min | |
+| 17:00–19:00 | 9 — Sept concepts et leurs rôles | 2 min | |
+| 19:00–22:00 | 10 — Composition et paliers interactifs | 3 min | |
 | 22:00–24:00 | 11 — Tokens et reprises | 2 min | |
 | 24:00–26:00 | 12 — Auto | 2 min | |
-| 26:00–28:00 | 13 — Modèles, simulation | 2 min | |
+| 26:00–28:00 | 13 — Modèles, graphique des coûts | 2 min | |
 | 28:00–29:00 | 14 — HydraFusion | 1 min | |
 | 29:00–35:00 | 15 — Pipeline | 1 min | 5 min |
-| 35:00–38:00 | 16 — Mini-spec | 3 min | |
+| 35:00–38:00 | 16 — Survol SDD et mini-spec | 3 min | |
 | 38:00–42:00 | 17 — Python live | | 4 min |
-| 42:00–45:00 | 18 — Pratique et ressources | 3 min | |
+| 42:00–45:00 | 18 — Pratique, ressources et 30 s sur Canvas | 3 min | |
 | 45:00–55:00 | Questions | 10 min | |
 | 55:00–60:00 | Marge | 5 min | |
 
 Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**. Annexes 19–24 : seulement en réponse aux questions. Les notes détaillées sont intégrées à `presentation/slides.md` et au mode présentateur Slidev.
+
+Révision 1.142 : la diapositive 9 présente les sept concepts sans détailler leur configuration; la fiche [personnalisations-vscode.md](personnalisations-vscode.md) fournit les formats. La 10 anime la composition Python/Vue puis les cinq paliers. La 13 compare quatre scénarios fictifs de coût : même volume entre modèles, pas un benchmark. La 16 nomme SDD et annonce la formation de l’autre équipe. Canvas occupe 30 secondes dans les trois minutes de conclusion; l’annexe 21 fournit les prérequis. La capture de l’annexe 19 vient d’un autre projet et montre des listes vides : ne pas la présenter comme une preuve de chargement de HydroDataLab.
+
+Pour la règle zéro/absence : trois températures fictives `[10, 0, None]` donnent deux mesures sur trois, soit 66,67 %. Remplacer None par zéro inventerait une mesure. Les contrôles de plausibilité restent propres à chaque série. Les liens officiels au bas des diapositives sont cliquables dans le site et dans le PDF.
 
 ## Ce que voit le public
 
@@ -48,6 +52,7 @@ Depuis la racine de la version finale (`main` ou `07-solution`), exécuter `./sc
 - Lancer `./scripts/start-demo.ps1` et tester le parcours. Ports réservés : Vue 53170, API 53171, Python 53172, slides 53173.
 - Ouvrir le support : `./scripts/start-presentation.ps1` (ou `cd presentation`, `npm ci`, `npm run dev`); http://localhost:53173. Pour le build autonome : `npm run build` puis `npm run preview`. L’installation réseau se fait avant la séance.
 - Ouvrir aussi `presentation/exports/formation-hydrodatalab.pdf`. Il contient 24 pages; les interactions sont figées mais leur explication reste lisible.
+- Pour régénérer ce PDF : `npm --prefix presentation run export` utilise Chrome/Edge/Chromium et Python avec `pypdf`. Au besoin, définir `SLIDEV_PYTHON_PATH` vers cet interpréteur. Le post-traitement convertit les liens d’annexes en destinations PDF sans serveur; projeter le PDF déjà préparé ne demande aucune de ces dépendances.
 - Tester projection 16:9, zoom du navigateur, notifications désactivées et alimentation branchée. Faire une répétition chronométrée sans dépendre du réseau.
 
 ### Préparer les jalons et les conteneurs

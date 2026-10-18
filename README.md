@@ -80,6 +80,7 @@ Le **kit de transfert hors ligne** est assemblé par `./scripts/package-kit.ps1`
 
 - [Guide du présentateur minuté](handouts/guide-presentateur.md), [requêtes Copilot](handouts/prompts.md), [aide-mémoire](handouts/aide-memoire.md), [guide participant](handouts/guide-participant.md).
 - [Matrice des modèles datée](handouts/matrice-modeles.md) et [sources officielles](docs/SOURCES.md). Confirmer le sélecteur et les politiques HQ le 19 octobre.
+- [Personnalisations VS Code 1.142](handouts/personnalisations-vscode.md) : formats, portées, AGENTS.md, sept concepts, panneau Instructions et Canvas. Les références des exemples sont cliquables dans le site et le PDF.
 - [Jalons Git et démonstration en direct](docs/CHECKPOINTS.md).
 - [Journal de reprise](PROGRESS.md), `./scripts/resume.ps1` et `./scripts/backup.ps1`.
 - [Captures de secours](docs/screenshots/) et [contrat des données](docs/DATA_DICTIONARY.md).

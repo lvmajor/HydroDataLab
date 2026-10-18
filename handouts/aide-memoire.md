@@ -2,6 +2,8 @@
 
 Vérifié le 18 octobre 2026. Un bon résultat est un comportement attendu accompagné de preuves reproductibles.
 
+La [fiche des personnalisations VS Code](personnalisations-vscode.md) explique les formats, portées, déclenchements, la capture du panneau Instructions et Canvas. La [matrice des modèles](matrice-modeles.md) détaille les hypothèses du graphique de coûts.
+
 ## Avant de lancer
 
 Définir objectif, entrée, sortie, contraintes et critères de réussite. Ouvrir le bon dossier du projet et choisir sa branche d'essai. Vérifier le modèle et les actions autorisées. Un worktree supplémentaire est facultatif. Pour HydroDataLab, Python réalise les transformations et les données brutes restent intactes.
@@ -16,9 +18,15 @@ Définir objectif, entrée, sortie, contraintes et critères de réussite. Ouvri
 | Worktree | Un dossier de travail supplémentaire lié au même dépôt, utile pour ouvrir une autre branche à côté. |
 | Session | Une conversation consacrée à une tâche. |
 | Modèle / agent | Le modèle produit une proposition; l'agent l'utilise avec des outils pour avancer dans la tâche. |
-| Moteur d'exécution | Le logiciel qui fournit à l'agent ses outils et ses consignes; Copilot dans notre démonstration. |
+| Harnais / harness | Logiciel qui relie modèle, outils, contexte et autorisations; Copilot utilise le Copilot SDK dans notre parcours. |
 | Contexte / token | Le contexte est l'information disponible pour la tâche; un token est un morceau de texte traité par le modèle. |
 | Instruction / skill | Une instruction est une consigne; une skill est une recette réutilisable avec ses étapes. |
+| Tool / outil | Une action disponible, comme lire un fichier ou lancer pytest. |
+| Serveur MCP | Un service qui expose notamment des outils par le Model Context Protocol. |
+| Hook | Du code déclenché à un événement du cycle de l’agent, selon le harnais. |
+| Plugin | Un paquet regroupant des capacités comme skills et serveurs MCP. |
+| SDD | Spec-Driven Development : besoin → spécification → plan → tâches → code → preuves. |
+| Canvas | Surface interactive partagée avec l’agent; préversion desktop Copilot, fournie par une extension. |
 | Spécification / test | La spécification décrit le résultat attendu; le test compare le résultat obtenu à cette attente. |
 | Diff | La comparaison des lignes de code avant et après une modification. |
 | ETL / fixture | ETL = extraire, transformer, charger ou exporter; fixture = copie préparée des données pour un résultat reproductible. |
@@ -52,7 +60,7 @@ C’est une méthode d’organisation, pas une hiérarchie officielle de priorit
 
 Commencer par Auto Balance. Employer Efficiency pour une tâche simple, Intelligence ou un modèle capable pour une analyse difficile. Fournir les fichiers pertinents et les critères; éviter les sorties de terminal géantes. Mesurer le coût total des tentatives. `/compact` résume mais peut perdre des détails. Pour un sujet sans rapport, ouvrir une nouvelle session. Stocker les décisions durables dans Git, pas seulement dans le chat.
 
-Les tarifs actuels sont en AI credits : 1 crédit = 0,01 $ US. Le coût dépend du modèle, des tokens et du cache. La remise Auto de 10 % des plans payants ne garantit pas une économie sur toute tâche. HydraFusion/Max restent en research preview; leur orchestration n’est pas une économie garantie.
+Les tarifs actuels sont en AI credits : 1 crédit = 0,01 $ US. Le coût dépend du modèle, des tokens et du cache. La remise Auto de 10 % des plans payants ne garantit pas une économie sur toute tâche. HydraFusion/Max choisissent un ou plusieurs modèles : somme des usages, sans supplément propre et sans remise Auto. Ils restent en research preview. [Documentation HydraFusion](https://docs.github.com/en/early-access/copilot/hydrafusion).
 
 ## Vérifier une transformation
 
