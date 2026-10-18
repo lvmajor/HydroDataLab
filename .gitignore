@@ -4,6 +4,9 @@
 **/.venv/
 **/__pycache__/
 **/.pytest_cache/
+**/.test-output/
+src/AppHost/.agents/
+src/AppHost/.vscode/
 **/*.egg-info/
 **/dist/
 **/.slidev/

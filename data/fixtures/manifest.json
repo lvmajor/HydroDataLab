@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "sha256": "f8a1f442458d95ffc33b088def38f7df51a6b9176b0c2ce29e97479b219a5008",
+      "retrievedAtUtc": "2026-10-18T19:44:01Z",
+      "url": "https://donnees.hydroquebec.com/api/explore/v2.1/catalog/datasets/demande-electricite-quebec/records?where=date%20%3E%3D%20%222026-10-17T00%3A00%3A00-04%3A00%22%20AND%20date%20%3C%20%222026-10-18T00%3A00%3A00-04%3A00%22&order_by=date&limit=100",
+      "recordCount": 96,
+      "label": "Hydro-Québec",
+      "file": "demand.json",
+      "license": "CC BY-NC 4.0"
+    },
+    {
+      "sha256": "f52050b8df2bd5059e3912e103d0b6250e66e5c049d759606c9549c82cbe68ca",
+      "retrievedAtUtc": "2026-10-18T19:44:01Z",
+      "url": "https://donnees.hydroquebec.com/api/explore/v2.1/catalog/datasets/donnees-hydrometeorologiques/records?where=date%20%3E%3D%20%222026-10-17T00%3A00%3A00-04%3A00%22%20AND%20date%20%3C%20%222026-10-18T00%3A00%3A00-04%3A00%22%20AND%20%28%28identifiant%3D%221-15412%22%20AND%20composition_depil_type_point_donnee%3D%22Niveau%22%29%20OR%20%28identifiant%3D%221-10622%22%20AND%20composition_depil_type_point_donnee%20IN%20%28%22Temp%C3%A9rature%20Minimum%22%2C%22Temp%C3%A9rature%20Maximum%22%29%29%29&order_by=date&limit=100",
+      "recordCount": 72,
+      "label": "Hydro-Québec",
+      "file": "hydrometeo.json",
+      "license": "CC BY-NC 4.0"
+    }
+  ],
+  "period": {
+    "timezone": "America/Toronto",
+    "start": "2026-10-17",
+    "end": "2026-10-18"
+  }
+}

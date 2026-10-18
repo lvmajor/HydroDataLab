@@ -3,3 +3,4 @@
 *.pdf binary
 *.png binary
 *.parquet binary
+data/fixtures/*.json -text
