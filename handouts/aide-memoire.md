@@ -1,6 +1,6 @@
 # Aide-mémoire — des agents IA aux données fiables
 
-Vérifié le 18 octobre 2026. Un bon résultat est un comportement attendu accompagné de preuves reproductibles.
+Vérifié les 18–19 octobre 2026. Repères MCP actualisés pour VS Code 1.142. Un bon résultat est un comportement attendu accompagné de preuves reproductibles.
 
 La [fiche des personnalisations VS Code](personnalisations-vscode.md) explique les formats, portées, déclenchements, la capture du panneau Instructions et Canvas. La [matrice des modèles](matrice-modeles.md) détaille les hypothèses du graphique de coûts.
 
@@ -55,6 +55,19 @@ Notre `/validate-etl` est volontaire (`disable-model-invocation: true`). Sans ce
 | Tâche et critères actuels | Spec et tests ciblés |
 
 Les règles applicables s’ajoutent; résoudre les contradictions à leur source. Copilot et Local ont des règles de découverte différentes. Les fichiers `*.prompt.md` restent utilisables dans Local; le moteur Copilot utilise les skills pour ces workflows. Pour une skill manuelle : `disable-model-invocation: true`.
+
+## MCP : emplacements selon le harnais, repères VS Code 1.142
+
+**Transition récente :** la version **1.142, publiée le 14 octobre 2026**, déploie progressivement **Copilot comme harnais par défaut**. Il était déjà disponible dans le sélecteur. Les notes de version ne présentent pas les chemins ci-dessous comme apparus en 1.142 : ils correspondent à la configuration documentée lors du passage à Copilot. [Notes de version](https://code.visualstudio.com/updates/v1_142#copilot-harness).
+
+| Harnais actif | Configuration personnelle | Configuration du projet | Clé JSON principale |
+|---|---|---|---|
+| **Copilot** | `%USERPROFILE%\.copilot\mcp-config.json` par défaut sous Windows | `.mcp.json` à la racine | `mcpServers` |
+| **Local** | `mcp.json` dans les données du **profil VS Code** | `.vscode/mcp.json` | `servers` |
+
+Le personnel Copilot concerne plusieurs projets et reste distinct d’un profil VS Code. Si `COPILOT_HOME` est défini, le fichier se trouve dans ce dossier. Les emplacements Local restent disponibles pour compatibilité, marqués dépréciés dans l’assistant. Celui-ci propose la destination projet `.mcp.json` lorsque **`chat.mcp.workspaceRootConfig.enabled`** est activé; cette option est encore **expérimentale**. [Microsoft : destinations MCP](https://code.visualstudio.com/docs/agent-customization/mcp-servers#choose-a-configuration-destination).
+
+**Migration :** sélectionner **Copilot → Chat: Open Customizations → Migrations**. Relire les conversions, notamment les variables et propriétés propres à VS Code, puis vérifier un appel d’outil. Changer uniquement le nom du fichier ne suffit pas. Les chemins distants/Dev Container appartiennent à l’environnement qui exécute l’agent. [Microsoft : migration MCP](https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers).
 
 ## Context layers — les couches du contexte
 

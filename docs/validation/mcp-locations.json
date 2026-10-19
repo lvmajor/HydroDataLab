@@ -1,0 +1,24 @@
+{
+  "checkedAtUtc": "2026-10-19T20:15:19.410Z",
+  "slide": 11,
+  "release": "VS Code 1.142, 2026-10-14",
+  "claim": "Progressive default rollout, not first introduction of MCP file paths",
+  "results": [
+    {
+      "width": 1366,
+      "height": 768,
+      "gapToFooter": 20.065185546875,
+      "overflow": [],
+      "notesExpandedByKeyboard": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "gapToFooter": 28.21673583984375,
+      "overflow": [],
+      "notesExpandedByKeyboard": true
+    }
+  ],
+  "errors": [],
+  "external": []
+}

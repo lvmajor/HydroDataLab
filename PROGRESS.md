@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Repères MCP et VS Code 1.142 — 19 octobre
+
+- Départ : main `0987859`, dépôt propre. Ajouter les emplacements Copilot/Local à la slide 11, aux notes et à l’aide-mémoire.
+- Vérifié : les notes 1.142 (14 octobre) annoncent le déploiement progressif de Copilot par défaut; elles précisent que ce harnais était déjà disponible. Les destinations MCP viennent du guide de migration et de la documentation MCP actuelle, pas d’une annonce de création de ces chemins dans 1.142.
+- Réalisé : encadré comparatif sur la slide 11, notes minutées avec précisions repliables, aide-mémoire, fiche des personnalisations et conducteur du présentateur. 29 slides et 32 + 13 minutes conservées. Capture accessible en annexe 24. Aucune migration de configuration personnelle ou du projet.
+- Validé : build, correspondance des 23 plages notes/guide, encadré et notes au clavier en 1366×768 et 1920×1080 sans débordement, rendu audience/présentateur inspecté. PDF de 29 pages actualisé, page 11 et liens vérifiés. Preuves : `docs/validation/mcp-locations.json`, `presentation-flow.json` et `presentation/exports/qa/`.
+- Prochaine action : recharger les deux vues Slidev puis poursuivre la répétition. Le ZIP `eba8d19` reste une archive antérieure à cette retouche; il ne contient pas les repères MCP ajoutés ici.
+
 ## ZIP allégé pour le portable HQ — 19 octobre
 
 - Départ : main `1437495`, dépôt propre. Demande : une archive unique pour les slides et les trois démos, Docker inclus, avec guide de préparation du portable.

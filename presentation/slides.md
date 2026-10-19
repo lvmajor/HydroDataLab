@@ -509,30 +509,30 @@ Compter 0 comme une mesure numérique valide.
 
 <CustomizationMap />
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/concepts/customization">Microsoft · comparer les concepts</a> · <a href="https://code.visualstudio.com/docs/agent-customization/overview">Le panneau</a> · <a href="/24">Vue d’ensemble et portées →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/updates/v1_142#copilot-harness">Microsoft · version 1.142</a> · <a href="https://code.visualstudio.com/docs/agent-customization/mcp-servers#choose-a-configuration-destination">Fichiers MCP</a> · <a href="https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers">Migration</a> · <a href="/24">Capture du panneau →</a></div>
 
 <!--
 **1 min 15 · 19:00–20:15**
 
-> **Fil rouge :** repérer ce qui guide l’agent, ce qui lui donne des moyens et ce qui se partage.
+> **Fil rouge :** repérer les personnalisations, puis choisir le fichier MCP selon le harnais actif.
 
-### 0:00–0:15 · Partir du menu
+### 0:00–0:10 · Partir du menu
 
-- **Montrer Overview :** point d’entrée des personnalisations.
-- **Dire :** « Les trois familles à droite nous aident à nous repérer. »
+- **Situer Overview :** point d’entrée des personnalisations; capture disponible en annexe 24.
+- **Dire :** « Ces trois familles nous aident à nous repérer. »
 
-### 0:15–0:40 · Guider le travail
+### 0:10–0:35 · Lire les trois familles
 
-- **Instructions :** règles → préserver les absences.
-- **Skills :** méthode réutilisable → valider l’ETL.
-- **Agents :** rôle, consignes et outils → réviseur BI.
+- **Guider :** instructions = règles, skills = méthode, agents = rôle spécialisé.
+- **Donner des moyens :** Tools = outils disponibles; MCP Servers = connexions à des outils et données externes, par exemple SQL.
+- **Automatiser et partager :** hook = commande sur événement; plugin = paquet de capacités.
 
-### 0:40–1:05 · Donner des moyens et partager
+### 0:35–1:05 · Montrer l’encadré MCP
 
-- **Tools :** outils disponibles → lecture, terminal.
-- **MCP Servers :** connecter des outils et données externes → lecture SQL.
-- **Hooks :** commande déclenchée par un événement configuré.
-- **Plugins :** distribuer un ensemble → skill et serveur MCP.
+- **Situer la nouveauté :** « La 1.142, sortie le 14 octobre, déploie progressivement Copilot comme harnais par défaut. Vérifiez le harnais de votre session. »
+- **Copilot :** personnel dans `%USERPROFILE%\.copilot\mcp-config.json`; projet dans `.mcp.json` à la racine.
+- **Local :** fichier personnel du profil VS Code; projet dans `.vscode/mcp.json`, encore conservé pour compatibilité.
+- **Retenir :** le format change aussi (`mcpServers` / `servers`). Consulter la migration avant de déplacer un fichier.
 
 ### 1:05–1:15 · Enchaîner
 
@@ -543,9 +543,20 @@ Compter 0 comme une mesure numérique valide.
 
 - **Customize Your Agent** aide à préparer des fichiers à relire; visible en annexe 24.
 - **Explore Customizations** ouvre les mêmes rubriques sous forme de cartes.
-- Les compteurs ne prouvent pas l’utilisation dans une réponse. La capture est agrandie sans retoucher ses pixels.
+- Les compteurs ne prouvent pas l’utilisation dans une réponse. La capture de l’annexe est agrandie sans retoucher ses pixels.
 - MCP = *Model Context Protocol*. SQL, hook et plugin sont des exemples illustratifs, pas des composants identifiés dans la capture.
 - Les trois familles ne sont pas une hiérarchie officielle ni un ordre de priorité. Formats dans la fiche; aucune configuration supplémentaire en direct.
+
+</details>
+
+<details>
+<summary>Précisions · version, emplacements et migration MCP</summary>
+
+- **Ce que dit la 1.142 :** Copilot existait déjà dans le sélecteur; son adoption par défaut est progressive. Les notes ne datent pas l’apparition des deux chemins MCP. Éviter « ces fichiers sont apparus en 1.142 ». [Notes officielles, section Copilot harness](https://code.visualstudio.com/updates/v1_142#copilot-harness).
+- **Nouveaux repères lors du passage à Copilot :** la documentation de migration donne les destinations affichées. Le fichier personnel est indépendant du profil VS Code; `COPILOT_HOME`, s’il est défini, remplace le dossier `.copilot` par défaut. Dans une session distante, les chemins appartiennent à la machine qui exécute l’agent.
+- **Astérisque du projet :** l’assistant d’ajout propose `.mcp.json` avec `chat.mcp.workspaceRootConfig.enabled`, encore expérimental. Les destinations Local restent proposées pour compatibilité, avec une mention de dépréciation. [Destinations documentées](https://code.visualstudio.com/docs/agent-customization/mcp-servers#choose-a-configuration-destination).
+- **Interface :** sélectionner Copilot, puis `Chat: Open Customizations` et **Migrations**. Examiner destination et propriétés incompatibles, puis tester un outil du serveur. Les variables interactives VS Code ne se recopient pas telles quelles. [Guide de migration](https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers).
+- **Rythme :** ces précisions sont réservées aux questions. Aucun serveur à installer ou migrer pendant les 30 secondes de l’encadré.
 
 </details>
 -->

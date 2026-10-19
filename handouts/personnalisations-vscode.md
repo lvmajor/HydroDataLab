@@ -135,11 +135,17 @@ Le panneau **Tools** répond à « Quels outils l’agent peut-il utiliser pour 
 | Skill | Valider l’ETL | `.github/skills/validate-etl/SKILL.md` | Pertinence ou commande; notre skill est volontaire. |
 | Agent personnalisé | Réviseur BI | `.github/agents/reviseur-bi.agent.md` | Rôle sélectionné / invocation prise en charge. |
 | Tool / outil | Terminal pour lancer pytest | Tools : capacités disponibles | Choix du modèle selon la tâche et le contexte, puis contrôles du harnais. |
-| Serveur MCP | Proposer une lecture SQL | MCP Servers; configuration du harnais | Un outil exposé par le serveur est appelé. |
+| Serveur MCP | Proposer une lecture SQL | MCP Servers; [emplacements Copilot et Local](aide-memoire.md#mcp--emplacements-selon-le-harnais-repères-vs-code-1142) | Un outil exposé par le serveur est appelé. |
 | Hook | Journaliser un appel | Hooks; configuration du harnais | Événement de cycle de vie, sans dépendre d’une décision du modèle. |
 | Plugin | Distribuer skill et MCP ensemble | Plugins; paquet et manifeste | Installation; chaque composant garde ses règles. |
 
 MCP signifie **Model Context Protocol**. Un outil n’exige pas nécessairement MCP. Un plugin regroupe des capacités; il ne devient pas une nouvelle priorité des instructions. SQL, hook et plugin ci-dessus sont des exemples illustratifs; la capture ne permet pas d’identifier les composants précis installés derrière ses compteurs. [Comparaison Microsoft](https://code.visualstudio.com/docs/agents/concepts/customization), [serveurs MCP](https://code.visualstudio.com/docs/agent-customization/mcp-servers), [plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins).
+
+### MCP : choisir le fichier du harnais actif
+
+L’encadré de la slide 11 compare **Copilot** (`%USERPROFILE%\.copilot\mcp-config.json` personnel, `.mcp.json` projet) et **Local** (`mcp.json` du profil VS Code, `.vscode/mcp.json` projet). La clé JSON est respectivement `mcpServers` ou `servers`.
+
+**Repère de version :** la 1.142 déploie progressivement Copilot par défaut, déjà accessible auparavant. Elle ne date pas l’apparition de ces chemins. L’[aide-mémoire](aide-memoire.md#mcp--emplacements-selon-le-harnais-repères-vs-code-1142) précise le réglage expérimental pour la destination projet, `COPILOT_HOME`, la compatibilité Local et la migration. [Notes 1.142](https://code.visualstudio.com/updates/v1_142#copilot-harness), [guide Microsoft](https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers).
 
 ### Une recette : skill
 
