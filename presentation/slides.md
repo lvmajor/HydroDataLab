@@ -28,7 +28,37 @@ HydroDataLab<br>Une pratique concrète pour les analyses Python
 <div class="source">20 octobre 2026 • Sources vérifiées le 18 octobre • Démonstration pédagogique, données publiques</div>
 
 <!--
-1 minute, 00:00–01:00. Ouvrir avec une question : « Si l’agent produit un beau graphique, qu’est-ce qui vous permet de croire aux données? » La formation porte sur la délégation d’un travail vérifiable. Le projet est polyglotte, mais le geste principal sera une modification Python accessible aux personnes qui font du BI. L’agent n’est pas une autorité sur l’hydrologie. Ce support n’est pas une publication officielle d’Hydro-Québec. Les chiffres d’exemple sont signalés; les données réelles viennent des sources publiques et de leur instantané documenté.
+30 secondes, 00:00–00:30. Ouvrir avec une question : « Si l’agent produit un beau graphique, qu’est-ce qui vous permet de croire aux données? » La formation porte sur la délégation d’un travail vérifiable. Le projet est polyglotte, mais le geste principal sera une modification Python accessible aux personnes qui font du BI. L’agent n’est pas une autorité sur l’hydrologie. Ce support n’est pas une publication officielle d’Hydro-Québec. Les chiffres d’exemple sont signalés; les données réelles viennent des sources publiques et de leur instantané documenté.
+-->
+
+---
+class: audience-context
+---
+
+# Votre terrain de développement
+
+<p class="context-audience">Analystes BI et développeurs citoyens : Python, ETL et visualisation de données.</p>
+
+<div class="local-to-container">
+<div><b>Développer</b><span>Explorer une idée.<br>Créer un traitement ou un visuel.</span></div>
+<span class="route-arrow" aria-hidden="true">→</span>
+<div><b>Tester sur le poste</b><span>Vérifier les calculs.<br>Rejouer avec des données d’essai.</span></div>
+<span class="route-arrow" aria-hidden="true">→</span>
+<div><b>Préparer le déploiement</b><span>Emballer code et dépendances<br>pour un environnement conteneurisé.</span></div>
+</div>
+
+<div class="context-practices">
+<div><h2>Une marge pour expérimenter</h2><p>Un cadre plus souple : l’occasion<br>d’essayer, de comparer et d’apprendre.</p></div>
+<div><h2>La sécurité au quotidien</h2><p>Données autorisées, secrets protégés.<br>Accès limités, code relu et testé.</p></div>
+</div>
+
+<div class="context-takeaway">L’IA accélère les essais; vous gardez la maîtrise des données et des actions.</div>
+
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/security">Microsoft · sécurité du développement avec les agents</a></div>
+
+<!--
+1 minute, 00:30–01:30. Partir du travail réel des participants, avant de présenter HydroDataLab : développer et tester sur leur poste des ETL Python et des visualisations qui pourront être exécutés dans des environnements conteneurisés. ETL signifie extraire, transformer et charger ou exporter des données. Un conteneur exécute une application à partir d’une image qui regroupe son code et ses dépendances; le déploiement demande encore une configuration et un environnement autorisé.
+Souligner la chance d’avoir une marge d’expérimentation : essayer une approche, comparer deux résultats, apprendre rapidement. Le cadre plus souple est le contexte décrit par l’organisateur, pas une exemption aux règles de sécurité HQ ni une description vérifiée de ses politiques. Garder quatre réflexes : utiliser des données autorisées pour l’outil et l’usage; protéger les clés et mots de passe; limiter les accès accordés à l’agent; relire et tester ses changements. Un ETL exécuté localement ne signifie pas que les données envoyées à un service IA restent sur le poste. Les droits et règles internes s’appliquent aussi à un prototype. Ici, les données publiques et leurs copies préparées permettent de pratiquer. Transition : « Comment utiliser cette liberté pour produire un résultat dont on peut vérifier la qualité? »
 -->
 
 ---
@@ -54,7 +84,7 @@ Données publiques Hydro-Québec.<br>Un traitement réutilisable.<br>Un indicate
 <div class="strip">45 minutes de présentation et de démos, puis vos questions.</div>
 
 <!--
-1 minute, 01:00–02:00. Public BI/Python : aucune maîtrise de Git, Docker, .NET ou Vue n’est supposée. Les mots utiles seront expliqués avant leur emploi. Les démonstrations sont réparties dans les 45 minutes; 10 minutes de questions et 5 de marge suivent. Les annexes 19 à 24 servent aux questions. Objectif de sortie : le participant peut décrire une règle, donner les bons éléments à l’agent et examiner une preuve de résultat. Ne pas dérouler une liste de technologies.
+30 secondes, 01:30–02:00. Public BI/Python : aucune maîtrise de Git, Docker, .NET ou Vue n’est supposée. Les mots utiles seront expliqués avant leur emploi. Les démonstrations sont réparties dans les 45 minutes; 10 minutes de questions et 5 de marge suivent. Les annexes 20 à 25 servent aux questions. Objectif de sortie : le participant peut décrire une règle, donner les bons éléments à l’agent et examiner une preuve de résultat. Ne pas dérouler une liste de technologies.
 -->
 
 ---
@@ -155,10 +185,10 @@ Si l’authentification échoue, suivre les mêmes repères dans les fichiers lo
 
 <div class="rule-file"><b>Instruction permanente :</b> « Conserver les valeurs manquantes.<br>Compter 0 comme une mesure numérique valide. »<br><code>.github/instructions/python.instructions.md</code></div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions personnalisées</a> · <a href="/19">Voir le panneau Instructions →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions personnalisées</a> · <a href="/20">Voir le panneau Instructions →</a></div>
 
 <!--
-2 minutes, 13:00–15:00. Une instruction est une consigne durable, enregistrée dans le projet et relue comme le code. Montrer trois températures fictives : zéro Celsius est bien une mesure, None signifie qu’on n’en a pas reçu. En pandas, l’absence peut apparaître sous forme NaN ou NA; en JSON, null. La règle ne prétend pas qu’un zéro est physiquement plausible pour toute série : les contrôles métier restent nécessaires. Ici, ne pas convertir un manque en zéro pour remplir un graphique. Si on le faisait, la couverture deviendrait artificiellement 100 %. Le test doit compter deux valeurs, et non une (zéro exclu) ou trois (absence remplacée). Montrer le fichier du dépôt. Le lien interne conduit à la capture réelle en annexe 19; l’ouvrir pendant la démo seulement si nécessaire. Les notes et le guide fournissent la marche à suivre.
+2 minutes, 13:00–15:00. Une instruction est une consigne durable, enregistrée dans le projet et relue comme le code. Montrer trois températures fictives : zéro Celsius est bien une mesure, None signifie qu’on n’en a pas reçu. En pandas, l’absence peut apparaître sous forme NaN ou NA; en JSON, null. La règle ne prétend pas qu’un zéro est physiquement plausible pour toute série : les contrôles métier restent nécessaires. Ici, ne pas convertir un manque en zéro pour remplir un graphique. Si on le faisait, la couverture deviendrait artificiellement 100 %. Le test doit compter deux valeurs, et non une (zéro exclu) ou trois (absence remplacée). Montrer le fichier du dépôt. Le lien interne conduit à la capture réelle en annexe 20; l’ouvrir pendant la démo seulement si nécessaire. Les notes et le guide fournissent la marche à suivre.
 -->
 
 ---
@@ -221,7 +251,7 @@ Compter 0 comme une mesure numérique valide.
 <div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · activation des règles</a> · <a href="https://code.visualstudio.com/docs/agents/guides/context-engineering-guide">Structurer le contexte</a></div>
 
 <!--
-3 minutes, 19:00–22:00. Context layers signifie couches du contexte. Ce sont nos catégories pédagogiques, pas une hiérarchie officielle ni un ordre de priorité. Lire de haut en bas : Project instructions / Consignes du projet, File-specific instructions / Consignes ciblées, Reference documents / Documents de référence, Task prompt / Demande courante, Tool results / Résultats des outils. Les deux premières sont des consignes durables. Les documents et la demande cadrent le travail du moment. Les outils apportent ensuite les observations réelles. Les flèches alimentent un même Model context / Contexte du modèle; cliquer une couche illustre son apport, sans prétendre que le harnais charge automatiquement tous les fichiers. Montrer Reference documents et expliquer unité/fréquence/fuseau, puis Tool results et son exemple 23/24. Le mot « contrat » désigne ici un document décrivant les données; il n’est pas un niveau universel de contexte. Les autres sources (historique, instructions de service, préférences utilisateur) existent, mais ce dessin se concentre sur ce que le participant peut préparer dans son projet. Les règles applicables se combinent; résoudre les contradictions. Les détails applyTo restent à la slide 8. Le PDF garde toutes les couches, leurs traductions et leurs exemples de fichiers; la partie de droite montre la première couche.
+3 minutes, 19:00–22:00. Context layers signifie couches du contexte. Ce sont nos catégories pédagogiques, pas une hiérarchie officielle ni un ordre de priorité. Lire de haut en bas : Project instructions / Consignes du projet, File-specific instructions / Consignes ciblées, Reference documents / Documents de référence, Task prompt / Demande courante, Tool results / Résultats des outils. Les deux premières sont des consignes durables. Les documents et la demande cadrent le travail du moment. Les outils apportent ensuite les observations réelles. Les flèches alimentent un même Model context / Contexte du modèle; cliquer une couche illustre son apport, sans prétendre que le harnais charge automatiquement tous les fichiers. Montrer Reference documents et expliquer unité/fréquence/fuseau, puis Tool results et son exemple 23/24. Le mot « contrat » désigne ici un document décrivant les données; il n’est pas un niveau universel de contexte. Les autres sources (historique, instructions de service, préférences utilisateur) existent, mais ce dessin se concentre sur ce que le participant peut préparer dans son projet. Les règles applicables se combinent; résoudre les contradictions. Les détails applyTo restent à la slide 9. Le PDF garde toutes les couches, leurs traductions et leurs exemples de fichiers; la partie de droite montre la première couche.
 -->
 
 ---
@@ -374,11 +404,11 @@ class: breakwater
 
 <!--
 4 minutes de démo, 38:00–42:00. La diapositive annonce le résultat que l’audience doit pouvoir vérifier, pas le déroulé technique.
-0:00–0:40 : ouvrir la branche demo-live au jalon 06-specification, la spécification, les tests et la fonction Python à compléter. Le tableau de bord sait déjà afficher la couverture; elle est absente tant que le calcul n’est pas implémenté.
+0:00–0:40 : montrer brièvement « Couverture : Non calculée » sur le parcours préparé au jalon 06, puis ouvrir la branche demo-live, la spécification, les tests et la fonction Python à compléter. Le tableau de bord sait déjà afficher la couverture; elle est absente tant que le calcul n’est pas implémenté.
 0:40–2:10 : choisir le modèle validé en répétition, coller le prompt live et limiter la modification à Python. Attendre le résultat réel des tests.
 À 2:10 : si la génération n’est pas prête, annoncer « Je passe à la solution préparée pour garder le temps de vérifier. » Préserver le travail et basculer vers le dossier de secours 07-solution selon le guide.
 2:10–3:00 : lire la comparaison avant/après (diff) et un test. Expliquer diff au moment de l’afficher.
-3:00–4:00 : exécuter les cas complet et manquant. Le niveau horaire passe de 24/24 à 23/24 = 95,83 %. Déplier la qualité par série : la couverture globale 167/168 = 99,4 % utilise un autre dénominateur. Ne pas présenter la solution de secours comme une génération en direct.
+3:00–4:00 : revenir au même tableau de bord et déplier Qualité par série. Exécuter les cas complet et manquant : le niveau horaire passe de 24/24 = 100 % à 23/24 = 95,83 %. Marquer une pause sur ce changement : une règle en français est devenue du code testé, puis un résultat visible. Déplier la qualité par série : la couverture globale 167/168 = 99,4 % utilise un autre dénominateur. Ne pas présenter la solution de secours comme une génération en direct.
 -->
 
 ---
@@ -399,14 +429,14 @@ class: breakwater
 
 Une surface interactive partagée<br>avec l’agent, à côté du chat.<br>Exemple : suivre les étapes de l’ETL<br>dans un tableau de tâches.
 
-[Microsoft · Canvas en préversion](https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness)<br><a href="/21">Voir le fonctionnement →</a>
+[Microsoft · Canvas en préversion](https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness)<br><a href="/22">Voir le fonctionnement →</a>
 
 </div></div>
 
 <div class="strip compact">Quelle règle de vos analyses aimeriez-vous rendre vérifiable?</div>
 
 <!--
-3 minutes, 42:00–45:00, dont 30 secondes pour Canvas. Reprendre la règle mesurable, le contexte sélectionné et les preuves. Canvas est une surface interactive partagée avec l’agent, fournie par une extension; par exemple un tableau de tâches. Le présenter comme une nouveauté 1.142 en preview, sans en faire une dépendance du parcours ETL. L’annexe 21 détaille activation et limites; ne pas l’ouvrir systématiquement pendant les 45 minutes. Le composant interactif de nos slides et l’application Vue ne sont pas des Canvas VS Code. Proposer le guide participant. Learn structure l’apprentissage; Awesome Copilot fournit des exemples à relire; Community permet les échanges. Le SDD sera approfondi par l’autre équipe. Questions 45:00–55:00, marge jusqu’à 60:00.
+3 minutes, 42:00–45:00, dont 30 secondes pour Canvas. Reprendre la règle mesurable, le contexte sélectionné et les preuves. Canvas est une surface interactive partagée avec l’agent, fournie par une extension; par exemple un tableau de tâches. Le présenter comme une nouveauté 1.142 en preview, sans en faire une dépendance du parcours ETL. L’annexe 22 détaille activation et limites; ne pas l’ouvrir systématiquement pendant les 45 minutes. Le composant interactif de nos slides et l’application Vue ne sont pas des Canvas VS Code. Proposer le guide participant. Learn structure l’apprentissage; Awesome Copilot fournit des exemples à relire; Community permet les échanges. Le SDD sera approfondi par l’autre équipe. Questions 45:00–55:00, marge jusqu’à 60:00.
 -->
 
 ---
@@ -424,7 +454,7 @@ class: annex
 
 <div class="small">Règles ciblées : <code>~/.copilot/instructions/</code> ou <code>.github/instructions/</code>.</div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/overview#agent-customizations-editor">Microsoft · panneau Customizations</a> · <a href="/7">Retour à l’exemple →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/overview#agent-customizations-editor">Microsoft · panneau Customizations</a> · <a href="/8">Retour à l’exemple →</a></div>
 <div class="source">Capture réelle fournie par le présentateur, autre projet, listes vides. Les chemins ci-dessus expliquent les portées; ils ne sont pas des entrées visibles dans cette capture.</div>
 
 <!--
@@ -477,7 +507,7 @@ Application VS Code de bureau.<br>Session locale Copilot / Agent Host.<br>Pas le
 
 </div></div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness">Microsoft · prérequis et fonctionnement</a> · <a href="https://code.visualstudio.com/updates/v1_142#canvases-preview">Nouveauté 1.142</a> · <a href="/18">Retour →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness">Microsoft · prérequis et fonctionnement</a> · <a href="https://code.visualstudio.com/updates/v1_142#canvases-preview">Nouveauté 1.142</a> · <a href="/19">Retour →</a></div>
 
 <!--
 Annexe. Disponible en preview sur desktop pour les sessions locales du harnais Copilot dans Agent Host. Chaque Canvas provient d’une extension. /create-canvas crée une extension dans le workspace quand la skill est disponible. Autre chemin documenté : installer un chat plugin contenant une extension Canvas via l’application GitHub Copilot, puis demander à VS Code les Canvas disponibles. Add Tab (+) > Canvas ouvre une extension déjà disponible; ce menu seul ne crée pas une capacité. Le canvas reste associé à son chat; selon l’extension, les actions utilisateur et agent font évoluer le même état. Exemple de prompt de préparation : « Crée un canvas Kanban pour nos étapes extraire, valider, transformer et exporter. Affiche les critères de réussite de chaque carte. » Faire cela avant la séance si souhaité et autorisé, sans promettre que notre Slidev est relié à Copilot. Aucun Canvas n’a été créé ou installé dans le cadre de cette révision.

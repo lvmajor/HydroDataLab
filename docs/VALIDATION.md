@@ -1,5 +1,9 @@
 # Vérifications effectuées — 18 octobre 2026
 
+## Dernière révision du support
+
+Ajout de la mise en contexte en diapositive 2 : 25 pages au total, durée de 45 minutes conservée, liens internes renumérotés. Site et PDF reconstruits; 25 routes sans débordement ni erreur JavaScript, accès externes bloqués; PDF et nouvelle ouverture inspectés. Voir `validation/audience-context.json`. Les validations à 24 pages ci-dessous sont les preuves des révisions précédentes.
+
 ## Application
 
 - Python : 35 tests, dont deux acceptations; 0 échec. Zéros, absences, unités, doublons, types de température, jours de 23/25 heures, réseau, publication atomique, rejouabilité et verrou HTTP couverts.

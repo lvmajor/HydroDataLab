@@ -1,1 +1,1 @@
-<template><div class="slide-number">{{ $slidev.nav.currentPage }} / 24</div></template>
+<template><div class="slide-number">{{ $slidev.nav.currentPage }} / 25</div></template>

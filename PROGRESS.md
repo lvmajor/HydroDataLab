@@ -8,7 +8,7 @@ Mis à jour : 18 octobre 2026. Formation cible : mardi 20 octobre 2026.
 - [x] ETL Python, tests, CLI et adaptateur HTTP.
 - [x] API .NET/Quartz/SQLite, Vue et Aspire, parcours natif intégré.
 - [x] Parcours Docker Compose et comparaison avec le mode natif.
-- [x] 24 diapositives, PDF, notes et aide-mémoire contrôlés.
+- [x] 25 diapositives (19 principales + 6 annexes), PDF, notes et aide-mémoire contrôlés.
 - [x] Huit tags annotés, branche demo-live, scripts de reprise et restauration Git réelle.
 - [x] Quatre images archivées avec manifest et empreinte SHA-256.
 - [x] Kit de transfert hors ligne assemblé; images, bundle et inventaire SHA-256 vérifiés.
@@ -85,3 +85,13 @@ La répétition du 19 octobre et la confirmation des politiques/modèles HQ néc
 - Validations réussies : build Slidev; 24 routes sans débordement ni erreur JavaScript, accès externes bloqués; 20 coûts et multiplicateur contrôlés; PDF de 24 pages avec liens officiels et renvois internes, pages 10/13 inspectées. Notes, aide-mémoire et fiches synchronisés. Preuve : `docs/validation/context-cost-comparison.json`.
 - Point de reprise : cette révision est enregistrée dans le commit portant « Clarifie les couches de contexte et compare les coûts sans chevauchement ». Le script `package-kit.ps1` assemble ensuite la sauvegarde transportable; son résultat et le SHA du commit sont consignés dans `artifacts/LIVRAISON.txt`. Les huit tags pédagogiques restent inchangés.
 - Prochaine action : transférer le kit indiqué par ce reçu, puis répéter sur le portable HQ le 19 octobre.
+
+## Mise en contexte du public et moment fort
+
+- Départ : main `aa97bf4`, dépôt propre. Ajout demandé d’une ouverture sur le développement BI/Python local, la préparation au déploiement en conteneur, la marge d’expérimentation et la sécurité quotidienne.
+- Réalisé : nouvelle diapositive 2 « Votre terrain de développement », avec trajet développer/tester localement/préparer le déploiement conteneurisé, marge d’expérimentation et réflexes de sécurité. Source Microsoft S31 liée; la souplesse du cadre reste le contexte fourni par le présentateur, sans inventer de politique HQ.
+- Durée conservée : couverture 30 s, contexte 1 min, parcours 30 s; 32 min d’explications + 13 min de démos. Support de 25 pages, renvois et fiches renumérotés. La démo Python devient la diapositive 18.
+- Moment fort précisé dans les notes et le conducteur : « Non calculée » → code Python et tests → niveau horaire à 100 %, puis 95,83 % dans le scénario manquant. Infrastructure préparée et solution de secours annoncées clairement; leur présentation en direct reste à répéter sur le portable HQ.
+- Validé : build; 25 routes sans erreur, débordement ou ressource externe; interactions et notes; PDF de 25 pages, liens et destinations internes, inspection des planches et de la nouvelle page. Preuve : `docs/validation/audience-context.json`. Le serveur de présentation arrêté a été relancé sur 127.0.0.1:53173.
+- Enregistrement : commit « Ajoute le contexte du public et précise le moment fort ». Le kit et le SHA exacts seront consignés par le reçu `artifacts/LIVRAISON.txt` après assemblage; tags pédagogiques conservés.
+- Prochaine action : transférer ce kit et répéter l’avant/après le 19 octobre sur le portable HQ.

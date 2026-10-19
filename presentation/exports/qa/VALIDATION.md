@@ -1,5 +1,13 @@
 # Validation de la présentation
 
+## État courant : contexte du public
+
+Le support compte maintenant **25 diapositives : 19 principales et 6 annexes**. La page 2 présente le développement BI/Python local, la préparation au déploiement conteneurisé, la marge d’expérimentation et les réflexes de sécurité. Le minutage reste de 32 min d’explications et 13 min de démos; l’ouverture est répartie en 30 s / 1 min / 30 s.
+
+Build et export réussis. Contrôle navigateur des 25 routes : zéro débordement, erreur de page ou requête externe; interactions, ordre de l’ouverture et notes `/presenter/18` vérifiés. Le PDF contient 25 pages; les textes, références officielles et renvois internes sont vérifiés. Les trois planches et la page 2 agrandie ont été inspectées. Preuve : `../../../docs/validation/audience-context.json`; captures courantes `page-01.png` à `page-25.png`, `contact-1.jpg` à `contact-3.jpg` et `revision-2.png`.
+
+Les résultats ci-dessous décrivent les révisions antérieures à 24 pages.
+
 ## Révision pédagogique du 18 octobre
 
 Le support introduit maintenant modèle/outils/agent, puis dépôt/commit/branche/worktree avant la première mission. Le worktree reste facultatif. Les démonstrations affichent un objectif observable; leurs manipulations, minutages et recours à la solution préparée sont dans les notes. Les autres notions nouvelles sont définies au premier emploi; un lexique est joint à l'aide-mémoire. Les 18 pages principales, 6 annexes et 45 minutes de contenu sont conservées.

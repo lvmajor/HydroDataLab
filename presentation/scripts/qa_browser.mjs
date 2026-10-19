@@ -6,7 +6,7 @@ const errors=[]; const external=new Set(); const issues=[]; const titles=[];
 page.on('pageerror',e=>errors.push(e.message));
 page.on('request',r=>{const u=r.url();if(!u.startsWith('http://127.0.0.1:53173')&&!u.startsWith('data:')&&!u.startsWith('blob:'))external.add(u)});
 await page.route('**/*',route=>{const u=route.request().url();if(!u.startsWith('http://127.0.0.1:53173')&&!u.startsWith('data:')&&!u.startsWith('blob:'))return route.abort();return route.continue()});
-for(let i=1;i<=24;i++){
+for(let i=1;i<=25;i++){
  await page.goto(`http://127.0.0.1:53173/${i}`,{waitUntil:'networkidle'});
  const slide=page.locator('.slidev-layout:visible').first();
  await slide.waitFor();
@@ -14,12 +14,13 @@ for(let i=1;i<=24;i++){
  const out=await slide.evaluate(el=>{const r=el.getBoundingClientRect();const footers=[...el.querySelectorAll('.doc-link,.source')];const limit=Math.min(r.bottom-25,...footers.map(n=>n.getBoundingClientRect().top-4));return [...el.children].filter(n=>!['source','doc-link','slide-number'].some(c=>n.classList.contains(c))).map(n=>({tag:n.tagName,text:n.textContent.slice(0,70),r:n.getBoundingClientRect()})).filter(n=>n.r.bottom>limit||n.r.right>r.right+2).map(n=>({tag:n.tag,text:n.text,bottom:n.r.bottom-limit,right:n.r.right-r.right}))});
  if(out.length)issues.push({slide:i,out});
 }
-await page.goto('http://127.0.0.1:53173/10',{waitUntil:'networkidle'});
+if(titles.length!==25||titles[1]!=='Votre terrain de développement')throw new Error('Opening slide order');
+await page.goto('http://127.0.0.1:53173/11',{waitUntil:'networkidle'});
 for(const term of ['Project instructions','File-specific instructions','Reference documents','Task prompt','Tool results']){
  if(!await page.getByRole('button',{name:new RegExp(term)}).isVisible())throw new Error('Missing bilingual layer: '+term);
  await page.getByRole('button',{name:new RegExp(term)}).click();
  const overflow=await page.locator('.context-map').evaluate(el=>{const footer=el.closest('.slidev-layout').querySelector('.doc-link').getBoundingClientRect();return el.getBoundingClientRect().bottom>footer.top-4});
- if(overflow)issues.push({slide:10,layer:term,problem:'Context overlaps references'});
+ if(overflow)issues.push({slide:11,layer:term,problem:'Context overlaps references'});
 }
 await page.getByRole('button',{name:/Reference documents/}).click();
 if(!(await page.locator('.context-preview').innerText()).includes('Une série horaire'))throw new Error('Reference layer failed');
@@ -28,7 +29,7 @@ await page.getByRole('button',{name:/Tool results/}).click();
 if(!(await page.locator('.context-preview').innerText()).includes('95,83'))throw new Error('Tool results failed');
 if(await page.locator('.context-preview').evaluate(el=>parseFloat(getComputedStyle(el).animationDuration))!==0)throw new Error('Reduced motion failed');
 await page.screenshot({path:'exports/qa/context-interactive.png'});
-await page.goto('http://127.0.0.1:53173/13',{waitUntil:'networkidle'});
+await page.goto('http://127.0.0.1:53173/14',{waitUntil:'networkidle'});
 const expected={explain:[.00055,.00055,.011,.011,.022],transform:[.003,.003,.06,.06,.12],complex:[.01,.01,.2,.2,.4],debug:[.01,.01,.2,.2,.4]};
 for(const [task,values] of Object.entries(expected)){
  const actual=await page.locator(`[data-task=${task}] .cost-value`).allTextContents();
@@ -40,13 +41,13 @@ if(parseFloat((await page.locator('[data-model=opus] [data-task=debug] .cost-val
 if(await page.locator('.cost-value:visible').count()!==20)throw new Error('Comparison must remain simultaneous');
 if(await page.locator('.cost-cell.recommended').count()!==5)throw new Error('Expected five recommendations across four tasks');
 const headerOverflow=await page.locator('.task-header').evaluateAll(headers=>headers.filter(h=>[...h.children].some(c=>{const r=c.getBoundingClientRect(),p=h.getBoundingClientRect();return r.bottom>p.bottom-3||r.right>p.right-3})).map(h=>h.textContent));
-if(headerOverflow.length)issues.push({slide:13,headers:headerOverflow,problem:'Header content overflow'});
+if(headerOverflow.length)issues.push({slide:14,headers:headerOverflow,problem:'Header content overflow'});
 await page.getByRole('button',{name:'Réduire les tentatives',exact:true}).click();
 await page.screenshot({path:'exports/qa/model-interactive.png'});
-for(const i of [7,8,9,16,19,21]){await page.goto(`http://127.0.0.1:53173/${i}`,{waitUntil:'networkidle'});await page.screenshot({path:`exports/qa/revision-${i}.png`})}
-await page.goto('http://127.0.0.1:53173/8',{waitUntil:'networkidle'});
+for(const i of [2,8,9,10,17,20,22]){await page.goto(`http://127.0.0.1:53173/${i}`,{waitUntil:'networkidle'});await page.screenshot({path:`exports/qa/revision-${i}.png`})}
+await page.goto('http://127.0.0.1:53173/9',{waitUntil:'networkidle'});
 if(!await page.getByRole('link',{name:'Microsoft · format et activation',exact:true}).isVisible())throw new Error('Official format reference missing');
-await page.goto('http://127.0.0.1:53173/presenter/17',{waitUntil:'networkidle'});
+await page.goto('http://127.0.0.1:53173/presenter/18',{waitUntil:'networkidle'});
 if(!(await page.locator('body').innerText()).includes('solution préparée'))throw new Error('Presenter notes missing');
 await fs.writeFile('exports/qa/browser-report.json',JSON.stringify({slideCount:titles.length,titles,issues,errors,external:[...external],interactions:'passed',offline:'external resources blocked throughout'},null,2));
 await browser.close();

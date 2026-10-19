@@ -34,7 +34,7 @@ Vérification documentaire : **18 octobre 2026**. Prestation : **20 octobre 2026
 | S29 | [HydraFusion, documentation](https://docs.github.com/en/early-access/copilot/hydrafusion) | Single/Cascade/Critique; somme des usages par modèle, aucun supplément propre, aucune remise Auto. |
 | S30 | [GitHub — Comparaison des modèles](https://docs.github.com/en/copilot/reference/ai-models/model-comparison) | Complément à la grille de prix; les recommandations et volumes du cours restent pédagogiques. |
 
-S22 — [Git : worktree](https://git-scm.com/docs/git-worktree), consulté le 18 octobre 2026. Un dépôt peut posséder plusieurs dossiers de travail liés, ce qui permet d'ouvrir plusieurs branches simultanément. La diapositive 5 explique dépôt, commit, branche et worktree avant leur emploi; un worktree supplémentaire reste facultatif dans ce parcours.
+S22 — [Git : worktree](https://git-scm.com/docs/git-worktree), consulté le 18 octobre 2026. Un dépôt peut posséder plusieurs dossiers de travail liés, ce qui permet d'ouvrir plusieurs branches simultanément. La diapositive 6 explique dépôt, commit, branche et worktree avant leur emploi; un worktree supplémentaire reste facultatif dans ce parcours.
 
 Précision S01/S16, revérifiée le 18 octobre : la fenêtre Agents ne propose pas l'agent Plan dans son menu; `/plan` fonctionne dans une session Copilot. Les notes et le guide distinguent ce chemin des sélecteurs de la vue Chat.
 
@@ -53,6 +53,10 @@ Manifeste lu le 18 octobre 2026 : récupération **2026-10-18T19:44:01Z**, péri
 
 ## Capture fournie et distinction des démonstrations
 
-La capture `presentation/public/vscode-customizations-user.png` est l’image fournie par le présentateur le 18 octobre, conservée sans modification des pixels. Le cadrage CSS de l’annexe 19 montre Agent Customizations / Copilot, pour le projet RealEstateFinancing, avec User 0 et Workspace 0. Les chemins expliqués sous l’image ne sont pas des éléments présents dans ces listes. Le schéma animé d’instructions est pédagogique; les exemples MCP, hooks et plugins ne sont pas des installations de HydroDataLab. Le schéma Canvas décrit une fonctionnalité et ne prétend pas être relié à Copilot.
+La capture `presentation/public/vscode-customizations-user.png` est l’image fournie par le présentateur le 18 octobre, conservée sans modification des pixels. Le cadrage CSS de l’annexe 20 montre Agent Customizations / Copilot, pour le projet RealEstateFinancing, avec User 0 et Workspace 0. Les chemins expliqués sous l’image ne sont pas des éléments présents dans ces listes. Le schéma animé d’instructions est pédagogique; les exemples MCP, hooks et plugins ne sont pas des installations de HydroDataLab. Le schéma Canvas décrit une fonctionnalité et ne prétend pas être relié à Copilot.
 
 Pour S03, la page officielle sans paramètres a été intermittente pendant la consultation; la même page indexée avec un paramètre de suivi a permis de lire les sections sur le format, AGENTS.md, la vérification et les instructions d’organisation. Les supports utilisent son URL canonique. Ne pas confondre une organisation des dossiers avec un ordre de priorité universel, ni transférer les règles GitHub.com à tous les harnais VS Code.
+
+## Contexte du public et sécurité
+
+S31 — [Microsoft : sécurité du développement avec les agents](https://code.visualstudio.com/docs/agents/run/security), consulté le 18 octobre 2026. Référence de la diapositive 2 : contrôle des permissions, protection des secrets et revue des changements. Le contexte d’expérimentation plus souple vient du présentateur; il ne constitue pas une politique HQ vérifiée.

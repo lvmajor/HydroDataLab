@@ -90,3 +90,14 @@
 .slidev-layout.sdd td,.slidev-layout.sdd th { padding:7px 14px; }
 .slidev-layout.sdd .strip { margin:10px 0; }
 .slidev-layout.annex:has(.screenshot-window) .scope-map { margin:8px 0; }
+
+/* Opening: the audience's development path, before the demonstration project. */
+.audience-context .context-audience { font-size:21px; margin:0 0 20px; opacity:1; color:var(--ink); }
+.local-to-container { display:grid; grid-template-columns:1fr 22px 1fr 22px 1.14fr; align-items:start; gap:10px; padding:16px 0; border-top:2px solid #b9d5df; border-bottom:2px solid #b9d5df; }
+.local-to-container b { display:block; font-size:21px; margin-bottom:8px; color:var(--water); }
+.local-to-container span:not(.route-arrow) { display:block; font-size:17px; line-height:1.4; }
+.local-to-container .route-arrow { color:var(--water); font-size:25px; align-self:center; }
+.context-practices { display:grid; grid-template-columns:1fr 1fr; gap:34px; margin-top:20px; }
+.context-practices h2 { font-size:29px; margin:0 0 10px; }
+.context-practices p { font-size:20px; line-height:1.4; margin:0; }
+.context-takeaway { font-size:20px; line-height:1.4; border-left:5px solid var(--gold); padding-left:15px; margin-top:23px; }

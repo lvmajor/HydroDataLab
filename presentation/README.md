@@ -1,6 +1,6 @@
 # Présentation HydroDataLab
 
-**24 diapositives : 18 principales et 6 annexes.** Prestation du 20 octobre 2026; sources vérifiées le 18 octobre. Le contenu et les démos occupent 45 minutes : 32 minutes d’explications et 4 + 5 + 4 minutes de démonstrations. Questions : 10 minutes; marge : 5.
+**25 diapositives : 19 principales et 6 annexes.** Prestation du 20 octobre 2026; sources vérifiées le 18 octobre. Le contenu et les démos occupent 45 minutes : 32 minutes d’explications et 4 + 5 + 4 minutes de démonstrations. Questions : 10 minutes; marge : 5.
 
 ## Lancer localement
 
@@ -10,19 +10,19 @@ Les fichiers de présentation sont disponibles à partir du tag `05-docker`. Au 
 
 `npm run build` produit `dist/`. `npm run preview` le sert sur http://127.0.0.1:53173. Après installation, polices, favicon et composants sont locaux; aucune CDN n’est nécessaire. Les liens de référence ne s’ouvrent que sur action explicite. Un serveur HTTP local est requis : ne pas ouvrir index.html directement par file://.
 
-Le build est servi à la racine du serveur (`--base /`) pour que les liens directs vers `/presenter/17` chargent aussi leurs ressources. La vue audience affiche les notions et objectifs; les raccourcis, minutages et procédures de secours sont dans les notes du présentateur. Le lexique est dans l'aide-mémoire.
+Le build est servi à la racine du serveur (`--base /`) pour que les liens directs vers `/presenter/18` chargent aussi leurs ressources. La vue audience affiche les notions et objectifs; les raccourcis, minutages et procédures de secours sont dans les notes du présentateur. Le lexique est dans l'aide-mémoire.
 
 Pour une installation qui utilise Chrome/Edge existant, définir `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` avant `npm ci` afin d’éviter de télécharger un autre navigateur. Node 22.12+ est requis par Slidev; un Node LTS 22 ou 24 évite l’avertissement de compatibilité de postcss-nested observé avec Node 25.
 
 ## Export PDF
 
-`npm run export` produit `exports/formation-hydrodatalab.pdf`. Le script détecte Chrome/Edge sur Windows ou Chromium Playwright. Pour un autre emplacement, définir `SLIDEV_BROWSER_PATH`. Aucun téléchargement n’est lancé par ce script d’export. Le PDF contient 24 pages statiques : interactions figées à l’état initial avec leurs hypothèses visibles.
+`npm run export` produit `exports/formation-hydrodatalab.pdf`. Le script détecte Chrome/Edge sur Windows ou Chromium Playwright. Pour un autre emplacement, définir `SLIDEV_BROWSER_PATH`. Aucun téléchargement n’est lancé par ce script d’export. Le PDF contient 25 pages statiques : interactions figées à l’état initial avec leurs hypothèses visibles.
 
 ## Vérifications
 
-Après `npm run build`, démarrer `npm run preview`, puis `node scripts/qa_browser.mjs` sur la machine de création. Le contrôle parcourt 24 routes, vérifie les débordements, bloque les requêtes externes et exerce les deux interactions. Rapport : `exports/qa/browser-report.json`.
+Après `npm run build`, démarrer `npm run preview`, puis `node scripts/qa_browser.mjs` sur la machine de création. Le contrôle parcourt 25 routes, vérifie les débordements, bloque les requêtes externes et exerce les deux interactions. Rapport : `exports/qa/browser-report.json`.
 
-Le contrôle PDF utilise `scripts/qa_pdf.py` avec pypdf et Pillow, après rendu Poppler vers `exports/qa/page-01.png` à `page-24.png`. Les images et planches sont des artefacts de contrôle, pas des diapositives supplémentaires. Voir `exports/qa/VALIDATION.md`.
+Le contrôle PDF utilise `scripts/qa_pdf.py` avec pypdf et Pillow, après rendu Poppler vers `exports/qa/page-01.png` à `page-25.png`. Les images et planches sont des artefacts de contrôle, pas des diapositives supplémentaires. Voir `exports/qa/VALIDATION.md`.
 
 ## Direction visuelle
 

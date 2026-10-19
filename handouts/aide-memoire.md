@@ -4,6 +4,10 @@ Vérifié le 18 octobre 2026. Un bon résultat est un comportement attendu accom
 
 La [fiche des personnalisations VS Code](personnalisations-vscode.md) explique les formats, portées, déclenchements, la capture du panneau Instructions et Canvas. La [matrice des modèles](matrice-modeles.md) détaille les hypothèses du graphique de coûts.
 
+## Votre contexte de développement
+
+Développer et tester localement des ETL Python et des visualisations, puis préparer leur exécution dans un environnement conteneurisé. Utiliser la marge d’expérimentation pour comparer des approches et conserver des résultats reproductibles. Au quotidien : données autorisées pour l’outil utilisé, secrets protégés, accès limités, changements relus et testés. Les politiques HQ continuent de s’appliquer aux prototypes. [Référence Microsoft sur la sécurité](https://code.visualstudio.com/docs/agents/run/security).
+
 ## Avant de lancer
 
 Définir objectif, entrée, sortie, contraintes et critères de réussite. Ouvrir le bon dossier du projet et choisir sa branche d'essai. Vérifier le modèle et les actions autorisées. Un worktree supplémentaire est facultatif. Pour HydroDataLab, Python réalise les transformations et les données brutes restent intactes.

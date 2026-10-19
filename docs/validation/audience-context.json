@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-18",
+  "scope": "Opening slide, presenter script, numbering and presentation exports; application unchanged",
+  "slideCount": 25,
+  "mainSlides": 19,
+  "annexes": 6,
+  "timing": {"explanationsMinutes": 32, "demosMinutes": 13, "questionsMinutes": 10, "marginMinutes": 5},
+  "opening": {"coverSeconds": 30, "audienceContextSeconds": 60, "agendaSeconds": 30},
+  "browser": {
+    "report": "presentation/exports/qa/browser-report.json",
+    "pageErrors": 0,
+    "layoutOverflows": 0,
+    "externalRequests": 0,
+    "externalRequestsBlocked": true,
+    "interactions": "Five context layers, twenty model/task costs, attempt multiplier and reduced motion passed",
+    "presenterNotes": "Checked at /presenter/18",
+    "openingOrder": "New audience context immediately after the cover"
+  },
+  "pdf": {
+    "pages": 25,
+    "visualReview": "New slide and all pages inspected through three rendered groups",
+    "officialLinks": "Checked including new Microsoft security reference",
+    "internalDestinations": [[8,20],[19,22],[20,8],[22,19]],
+    "internalTemporaryServerUrls": 0
+  },
+  "limits": [
+    "Audience working context is supplied by the presenter, not a verified HQ policy",
+    "The live Copilot generation and timing on the HQ laptop still require rehearsal",
+    "Existing infrastructure and fallback solution are prepared; only the coverage calculation is requested live"
+  ]
+}
