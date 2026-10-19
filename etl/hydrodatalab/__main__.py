@@ -25,7 +25,8 @@ def main(argv=None):
     except (ValueError, RuntimeError, OSError) as error:
         print(f"Échec : {error}", file=sys.stderr)
         return 1
-    print(json.dumps({"runId": result["runId"], "summary": result["summary"], "warnings": result["warnings"]}, ensure_ascii=False))
+    print(json.dumps({"runId": result["runId"], "summary": result["summary"], "warnings": result["warnings"],
+                      "indicators": result.get("analysis", {}).get("indicators")}, ensure_ascii=False))
     return 0
 
 

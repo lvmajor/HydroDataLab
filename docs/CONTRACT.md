@@ -28,7 +28,7 @@ Racine du paquet : `etl/`, module `hydrodatalab`. Commande : `uv run --project e
   ],
   "provenance": [{ "label": "Hydro-Québec", "url": "https://donnees.hydroquebec.com/", "license": "CC BY-NC 4.0", "retrievedAtUtc": "2026-10-18T12:00:00Z" }],
   "warnings": [],
-  "artifacts": { "csv": "observations.csv", "parquet": "observations.parquet", "report": "report.json" }
+    "artifacts": { "csv": "observations.csv", "parquet": "observations.parquet", "report": "report.json", "hourly": "hourly.csv" }
 }
 ```
 
@@ -38,14 +38,33 @@ Les séries sont `demand`, `water_level`, `temperature_min`, `temperature_max`. 
 - `GET /health` : état.
 - `GET /api/runs` : tableau, ordre décroissant; objets `{id, source, status, stage, createdAtUtc, startedAtUtc, completedAtUtc, error, qualityScenario}`.
 - `GET /api/runs/{id}` : un objet.
+- `GET /api/runs/{id}/details` : `{run, retryOf, simulateFailure, report, execution}`. `report` appartient à cette exécution, pas au dernier succès. Métadonnées absentes des anciens traitements = `null`. `execution.steps` reprend les étapes mesurées par Python, y compris celles reçues en erreur.
 - `POST /api/runs` corps `{source:"fixture|live",simulateFailure:false,qualityScenario:"complete|missing"}` : HTTP 202 `{id}`; 409 si une exécution est active.
 - `POST /api/runs/{id}/retry` : HTTP 202 `{id}` pour une nouvelle exécution, mêmes paramètres avec simulateFailure=false.
 - `GET /api/schedule` : `{enabled:false, intervalMinutes:5}`.
 - `PUT /api/schedule` : même objet, intervalle entre 1 et 60 minutes.
 - `GET /api/report` : rapport ci-dessus.
-- `GET /api/artifacts/{runId}/{file}` : export csv/parquet/report.json, chemin validé.
+- `GET /api/artifacts/{runId}/{file}` : export observations.csv/observations.parquet/report.json/hourly.csv, chemin validé.
 
 Statuts : `queued`, `running`, `succeeded`, `failed`, `interrupted`. Étapes : `queued`, `extract-transform-export`, `persist`, `complete`. L'historique est durable; après redémarrage les exécutions en cours sont marquées interrompues. La planification périodique est désactivée au premier démarrage.
 
 ## Environnement
-Python : `HYDRO_OUTPUT_DIR`, `HYDRO_FIXTURE_DIR` facultatif. .NET : `Python__BaseUrl`, `Hydro__DataDir`, `Hydro__ArtifactDir`. Vite : `API_BASE_URL` pour son proxy `/api`. Chaque checkpoint utilise un répertoire runtime séparé.
+Python : `HYDRO_OUTPUT_DIR`, `HYDRO_FIXTURE_DIR` facultatif. .NET : `Python__BaseUrl`, `Hydro__DataDir`. Vite : `API_BASE_URL` pour son proxy `/api`. Le script `start-demo.ps1` sélectionne un répertoire runtime distinct par branche/tag via `HYDRO_RUNTIME_DIR`.
+
+En mode Aspire natif, les ports hôtes de Python et de l’API sont attribués automatiquement. Leurs adresses sont transmises par références d’endpoints (`Python__BaseUrl` vers .NET, `API_BASE_URL` vers Vite), sans numéro à recopier. Vue reste sur `http://localhost:53170`; le navigateur et `scripts/verify-http.ps1` accèdent à l’API par `/api` sur cette même adresse. Les URL directes du lancement courant figurent dans le dashboard Aspire.
+
+Hors Aspire, fournir explicitement `Python__BaseUrl` à l’API et `API_BASE_URL` au serveur Vite. Une configuration absente est signalée; les anciens ports 53171/53172 ne servent plus de repli. En Compose, les ports internes Python 8001 et API 8080 et leur réseau privé restent inchangés.
+
+## Analyse BI et traçabilité (ajout compatible, 19 octobre)
+
+`schemaVersion: 1` reçoit trois champs optionnels pour que les anciens rapports restent lisibles :
+
+- `etl` : `rawCount`, `normalizedCount`, `validCount`, `missingCount`, `scenarioRemovedCount`; `rawDemandSample` (quatre premières lignes de demande reçues, champs `date` et `valeurs_demandetotal`) et `normalizedDemandSample` (quatre premières lignes de demande triées après validation, champs `timestamp_utc`, `value`, `unit`). Les échantillons ne sont pas nécessairement en correspondance ligne par ligne lorsque la source contient des anomalies.
+- `analysis` : `hourly`, `completeHours`, `finishedHours`, `indicators`. Chaque ligne horaire contient `startUtc`, `localHour` (ISO avec décalage), `observed`, `expected:4`, `meanDemandMW` ou `null`. Calculs détaillés dans DATA_DICTIONARY.md et `etl/hydrodatalab/analysis.py`.
+- `execution.steps` : `{id,label,status,startedAtUtc,completedAtUtc,durationMs,error?}`. Étapes extract, normalize, analyze, export; arrêt au premier échec. Bilan disponible en fin de réponse Python, pas un flux de progression. Les durées excluent la publication finale JSON, le transport et SQLite; ne pas les additionner pour prétendre obtenir la durée totale API.
+
+`artifacts.hourly` désigne `hourly.csv`, mêmes colonnes que `analysis.hourly`. Le répertoire entier est publié atomiquement; une relance HTTP avec le même UUID restitue le rapport déjà publié. Une nouvelle tentative via `/retry` crée un nouvel UUID et conserve `retryOf`.
+
+Les erreurs Python structurées renvoient `detail: {message, execution}` (execution peut être null); l’API conserve les diagnostics d’échec dans SQLite. Les interruptions réseau n’inventent pas un bilan Python. Quartz reçoit un `JobExecutionException` après enregistrement de l’échec, sans réexécution immédiate; la relance reste explicite. La table additionnelle `run_details` préserve la table historique `runs`. Statut et diagnostics de fin sont enregistrés dans une même transaction.
+
+Les nouveaux calculs n’appellent pas `coverage.calculate_coverage` : le jalon 06 garde son exercice Python et peut afficher les analyses avec la couverture « Non calculée ». Les données sources ne sont jamais réécrites.

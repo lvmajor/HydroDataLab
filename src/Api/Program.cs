@@ -46,6 +46,7 @@ store.InterruptInFlight();
 app.MapHealthChecks("/health");
 app.MapGet("/api/runs", (RunStore db) => db.List());
 app.MapGet("/api/runs/{id}", (string id, RunStore db) => db.Get(id) is { } run ? Results.Ok(run) : Results.NotFound());
+app.MapGet("/api/runs/{id}/details", (string id, RunStore db) => db.Details(id) is { } details ? Results.Ok(details) : Results.NotFound());
 app.MapPost("/api/runs", async (RunRequest request, PipelineCoordinator coordinator) =>
 {
     if (!request.IsValid) return Results.BadRequest(new { message = "Source ou scénario non reconnu." });
@@ -57,7 +58,7 @@ app.MapPost("/api/runs/{id}/retry", async (string id, RunStore db, PipelineCoord
     var previous = db.Get(id);
     if (previous is null) return Results.NotFound();
     if (previous.Status is not ("failed" or "interrupted")) return Results.BadRequest(new { message = "Seules les exécutions en échec ou interrompues sont relançables." });
-    var next = await coordinator.QueueAsync(new(previous.Source, false, previous.QualityScenario));
+    var next = await coordinator.QueueAsync(new(previous.Source, false, previous.QualityScenario), previous.Id);
     return next is null ? Results.Conflict(new { message = "Une exécution est déjà en cours." }) : Results.Accepted($"/api/runs/{next}", new { id = next });
 });
 app.MapGet("/api/report", (RunStore db) => db.LatestReport() is { } report ? Results.Content(report, "application/json") : Results.NotFound(new { message = "Lancez un premier traitement pour afficher les observations." }));
@@ -70,7 +71,7 @@ app.MapPut("/api/schedule", async (ScheduleSettings settings, PipelineCoordinato
 });
 app.MapGet("/api/artifacts/{runId}/{file}", async (string runId, string file, RunStore db, IHttpClientFactory clients, CancellationToken cancellationToken) =>
 {
-    if (!Guid.TryParseExact(runId, "D", out _) || !new[] { "observations.csv", "observations.parquet", "report.json" }.Contains(file)) return Results.BadRequest();
+    if (!Guid.TryParseExact(runId, "D", out _) || !new[] { "observations.csv", "observations.parquet", "report.json", "hourly.csv" }.Contains(file)) return Results.BadRequest();
     if (db.Get(runId)?.Status != "succeeded") return Results.NotFound();
     using var response = await clients.CreateClient("python").GetAsync($"artifacts/{runId}/{file}", cancellationToken);
     if (!response.IsSuccessStatusCode) return Results.NotFound(new { message = "Export indisponible dans ce répertoire d'exécution." });

@@ -9,10 +9,10 @@ public sealed class PipelineCoordinator(RunStore store, ISchedulerFactory schedu
     private readonly SemaphoreSlim scheduleLock = new(1, 1);
     private static readonly JobKey PeriodicJobKey = new("periodic-pipeline");
     private static readonly TriggerKey PeriodicTriggerKey = new("periodic-pipeline-trigger");
-    public async Task<string?> QueueAsync(RunRequest request)
+    public async Task<string?> QueueAsync(RunRequest request, string? retryOf = null)
     {
         if (!request.IsValid) throw new ArgumentException("Invalid run request.");
-        var id = store.TryCreate(request);
+        var id = store.TryCreate(request, retryOf);
         if (id is null) return null;
         try
         {
@@ -62,6 +62,7 @@ public sealed class PipelineJob(RunStore store, IHttpClientFactory clients, ILog
         using var activity = Activities.StartActivity("ETL HydroDataLab");
         activity?.SetTag("hydro.run_id", id);
         using var scope = logger.BeginScope(new Dictionary<string, object> { ["RunId"] = id });
+        string? execution = null;
         try
         {
             var body = new { runId = id, source = context.MergedJobDataMap.GetString("source"),
@@ -70,7 +71,25 @@ public sealed class PipelineJob(RunStore store, IHttpClientFactory clients, ILog
             logger.LogInformation("Extraction, transformation et export Python pour {RunId}", id);
             using var response = await clients.CreateClient("python").PostAsJsonAsync("run", body, cancellationToken);
             var report = await response.Content.ReadAsStringAsync(cancellationToken);
-            if (!response.IsSuccessStatusCode) throw new HttpRequestException($"Python HTTP {(int)response.StatusCode} : {report[..Math.Min(report.Length, 800)]}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var message = $"Python HTTP {(int)response.StatusCode}";
+                try
+                {
+                    using var failure = JsonDocument.Parse(report);
+                    if (failure.RootElement.TryGetProperty("detail", out var detail))
+                    {
+                        if (detail.ValueKind == JsonValueKind.Object)
+                        {
+                            if (detail.TryGetProperty("execution", out var steps)) execution = steps.GetRawText();
+                            if (detail.TryGetProperty("message", out var reason)) message += " : " + reason.GetString();
+                        }
+                        else if (detail.ValueKind == JsonValueKind.String) message += " : " + detail.GetString();
+                    }
+                }
+                catch (JsonException) { /* Une réponse proxy non JSON reste une erreur HTTP lisible. */ }
+                throw new HttpRequestException(message);
+            }
             using var document = JsonDocument.Parse(report);
             if (document.RootElement.GetProperty("runId").GetString() != id) throw new InvalidDataException("Identifiant incohérent dans le rapport Python.");
             store.Complete(id, report, null);
@@ -80,12 +99,14 @@ public sealed class PipelineJob(RunStore store, IHttpClientFactory clients, ILog
         {
             store.Complete(id, null, "Traitement interrompu ou délai dépassé : " + exception.Message, interrupted: true);
             activity?.SetStatus(ActivityStatusCode.Error, "interrupted");
+            throw new JobExecutionException(exception) { RefireImmediately = false };
         }
         catch (Exception exception)
         {
-            store.Complete(id, null, exception.Message);
+            store.Complete(id, null, exception.Message, execution: execution);
             activity?.SetStatus(ActivityStatusCode.Error, exception.Message);
             logger.LogError(exception, "Échec du traitement {RunId}", id);
+            throw new JobExecutionException(exception) { RefireImmediately = false };
         }
     }
 }

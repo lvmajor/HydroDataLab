@@ -57,6 +57,40 @@ public sealed class RunStoreTests : IDisposable
         store.WriteSchedule(new(true, 7));
         Assert.Equal(new(true, 7), Create().ReadSchedule());
     }
+    [Fact]
+    public void DetailsPersistFailureStagesAndRetryParent()
+    {
+        var store = Create();
+        var failed = store.TryCreate(new RunRequest(SimulateFailure: true))!;
+        store.TryStart(failed);
+        store.Complete(failed, null, "Échec contrôlé", execution: "{\"steps\":[{\"id\":\"extract\",\"status\":\"failed\"}]}");
+        var retry = store.TryCreate(new RunRequest(), failed)!;
+        var restarted = Create();
+        Assert.True(restarted.Details(failed)!.SimulateFailure);
+        Assert.Equal("failed", restarted.Details(failed)!.Execution!.Value.GetProperty("steps")[0].GetProperty("status").GetString());
+        Assert.Equal(failed, restarted.Details(retry)!.RetryOf);
+        Assert.False(restarted.Details(retry)!.SimulateFailure);
+        Assert.Null(restarted.Details("absent"));
+    }
+    [Fact]
+    public void OldDatabaseWithoutDetailsMigratesWithoutLosingReports()
+    {
+        var store = Create();
+        var old = store.TryCreate(new RunRequest())!;
+        store.Complete(old, "{\"source\":\"fixture\"}", null);
+        using (var connection = new SqliteConnection($"Data Source={Path.Combine(directory, "test.sqlite")}"))
+        {
+            connection.Open();
+            using var command = connection.CreateCommand();
+            command.CommandText = "DROP TABLE run_details";
+            command.ExecuteNonQuery();
+        }
+        var migrated = Create().Details(old)!;
+        Assert.Equal("succeeded", migrated.Run.Status);
+        Assert.Equal("fixture", migrated.Report!.Value.GetProperty("source").GetString());
+        Assert.Null(migrated.Execution);
+        Assert.Null(migrated.SimulateFailure);
+    }
     [Theory]
     [InlineData("fixture", "complete", true)]
     [InlineData("live", "missing", true)]
