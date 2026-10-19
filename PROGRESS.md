@@ -96,6 +96,17 @@ La répétition du 19 octobre et la confirmation des politiques/modèles HQ néc
 - Enregistrement : commit « Ajoute le contexte du public et précise le moment fort ». Le kit et le SHA exacts seront consignés par le reçu `artifacts/LIVRAISON.txt` après assemblage; tags pédagogiques conservés.
 - Prochaine action : transférer ce kit et répéter l’avant/après le 19 octobre sur le portable HQ.
 
+## Révision « vanille », skills et ressources — 19 octobre
+
+- Départ : main `b40c95f`, dépôt propre. Ajouter une position nuancée sur les personnalisations, une sélection de skills et une page finale de ressources avec emplacements HQ modifiables. Conserver 45 minutes de contenu et les interactions entre les deux vues.
+- Audit : `artifacts` contient 11 131 997 052 octets, dont huit kits avec la même archive Docker. Suppression des sept kits du 18 octobre explicitement autorisée par le présentateur; conserver le kit du 19 octobre, la source Docker et tous les bundles/ZIP Git.
+- Ménage effectué : 8 571 725 646 octets supprimés, 2 560 271 406 octets conservés avant la nouvelle sauvegarde. Chemins des sept dossiers vérifiés, aucune jonction suivie, archive et bundle conservés contrôlés. Preuve : `docs/validation/storage-audit.json`.
+- Réalisé : pages 11 (approche vanille), 12 (skills selon la tâche; Matt Pocock en exploration) et 22 (veille et trois emplacements HQ). Liens éditables dans `presentation/resources/links.json`; fiche `handouts/skills-et-veille.md`. Aucun lien interne fourni à ce stade, aucune adresse inventée, aucun skill tiers installé.
+- Sources primaires vérifiées le 19 octobre; aucun consensus « must have » affirmé. Minutage conservé : 32 minutes d’explications, 13 minutes de démos, 10 minutes de questions, 5 minutes de marge. Renvois et notes actualisés : contexte 13, coûts 16, Python live 20, annexes 23–28.
+- Validé : 28 routes sans débordement, erreur de page ou accès externe; ressources et emplacements HQ contrôlés; synchronisation des deux vues réussie. PDF de 28 pages, liens officiels et quatre renvois internes vérifiés; planches et nouvelles pages inspectées.
+- Livraison : nouveau script `refresh-kit.ps1` pour actualiser le support et la sauvegarde du kit existant sans recopier Docker. Après enregistrement Git, l’exécuter sur le kit du 19 octobre puis contrôler son serveur Python; le reçu `artifacts/LIVRAISON.txt` identifiera le commit livré.
+- Prochaine action : compléter les liens HQ si disponibles, puis répéter sur le portable avec le kit indiqué dans le reçu.
+
 ## Synchronisation des interactions entre les deux écrans — 19 octobre
 
 - Départ : main `d42ba5c`, dépôt propre. Demande : piloter les couches de contexte et les coûts depuis la vue présentateur.

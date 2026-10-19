@@ -1,5 +1,5 @@
 {
-  "slideCount": 25,
+  "slideCount": 28,
   "titles": [
     "Des agents IA\naux données fiables",
     "Votre terrain de développement",
@@ -11,6 +11,8 @@
     "Écrire une règle que l’on peut vérifier",
     "Où écrire la règle, et quand s’applique-t-elle?",
     "Sept concepts, sept responsabilités",
+    "Une base « vanille », des ajouts ciblés",
+    "Des skills à choisir selon votre tâche",
     "Context layers · les couches du contexte",
     "Les tokens : lire et produire",
     "Auto : un bon point de départ",
@@ -20,6 +22,7 @@
     "SDD : une spécification avant le code",
     "Démo 3 · détecter une mesure absente",
     "Votre prochaine tâche Python",
+    "Pour continuer et rester à jour",
     "Annexe · du fichier au panneau Instructions",
     "Annexe · modèles et tarifs Copilot",
     "Annexe · Canvas, travailler dans le même objet",

@@ -1,0 +1,26 @@
+{
+  "publicGroups": [
+    {
+      "title": "Suivre les évolutions",
+      "links": [
+        { "label": "VS Code · nouveautés", "url": "https://code.visualstudio.com/updates", "description": "Fonctions et migrations" },
+        { "label": "Copilot · changelog", "url": "https://github.blog/changelog/label/copilot/", "description": "Modèles et services" },
+        { "label": "Aspire · documentation", "url": "https://aspire.dev/", "description": "Orchestration et agents" },
+        { "label": "Spec Kit · SDD", "url": "https://github.github.com/spec-kit/", "description": "Spécifications et SDD" }
+      ]
+    },
+    {
+      "title": "Apprendre et échanger",
+      "links": [
+        { "label": "Microsoft Learn", "url": "https://learn.microsoft.com/en-us/training/modules/github-copilot-agent-mode/", "description": "Exercices guidés" },
+        { "label": "Awesome Copilot", "url": "https://github.com/github/awesome-copilot", "description": "Exemples à relire et tester" },
+        { "label": "GitHub Community", "url": "https://github.com/community/community/discussions/categories/copilot", "description": "Échanges et retours d’expérience" }
+      ]
+    }
+  ],
+  "internal": [
+    { "label": "Communauté BI / Python", "url": "", "description": "Teams et échanges BI" },
+    { "label": "Guides et sécurité IA", "url": "", "description": "Pratiques et outils autorisés" },
+    { "label": "Formations et contacts", "url": "", "description": "Parcours et contacts" }
+  ]
+}

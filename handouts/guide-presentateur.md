@@ -1,11 +1,11 @@
 # Guide présentateur — HydroDataLab
 
-Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeurs, analystes BI/Python; gestionnaires et développeurs débutants/intermédiaires. Version documentaire : 18 octobre. Objectif : déléguer une petite transformation vérifiable, avec son contrat et ses preuves.
+Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeurs, analystes BI/Python; gestionnaires et développeurs débutants/intermédiaires. Version documentaire : 19 octobre. Objectif : déléguer une petite transformation vérifiable, avec son contrat et ses preuves.
 
 ## Minutage strict
 
 | Horloge | Diapositive | Explication | Démo |
-|---|---:|---:|---:|
+|---|---|---:|---:|
 | 00:00–00:30 | 1 — Ouverture | 30 s | |
 | 00:30–01:30 | 2 — Votre terrain de développement | 1 min | |
 | 01:30–02:00 | 3 — Parcours | 30 s | |
@@ -16,23 +16,28 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 13:00–15:00 | 8 — Instructions permanentes | 2 min | |
 | 15:00–17:00 | 9 — Portée et diagnostic | 2 min | |
 | 17:00–19:00 | 10 — Sept concepts et leurs rôles | 2 min | |
-| 19:00–22:00 | 11 — Couches bilingues du contexte | 3 min | |
-| 22:00–24:00 | 12 — Tokens et reprises | 2 min | |
-| 24:00–26:00 | 13 — Auto | 2 min | |
-| 26:00–28:00 | 14 — Coûts : quatre tâches × cinq modèles | 2 min | |
-| 28:00–29:00 | 15 — HydraFusion | 1 min | |
-| 29:00–35:00 | 16 — Pipeline | 1 min | 5 min |
-| 35:00–38:00 | 17 — Survol SDD et mini-spec | 3 min | |
-| 38:00–42:00 | 18 — Python live | | 4 min |
-| 42:00–45:00 | 19 — Pratique, ressources et 30 s sur Canvas | 3 min | |
+| 19:00–20:00 | 11 — Base vanille et ajouts ciblés | 1 min | |
+| 20:00–21:30 | 12 — Sélection de skills | 1 min 30 | |
+| 21:30–23:30 | 13 — Couches bilingues du contexte | 2 min | |
+| 23:30–25:30 | 14 — Tokens et reprises | 2 min | |
+| 25:30–27:00 | 15 — Auto | 1 min 30 | |
+| 27:00–29:00 | 16 — Coûts : quatre tâches × cinq modèles | 2 min | |
+| 29:00–30:00 | 17 — HydraFusion | 1 min | |
+| 30:00–36:00 | 18 — Pipeline | 1 min | 5 min |
+| 36:00–38:00 | 19 — Survol SDD et mini-spec | 2 min | |
+| 38:00–42:00 | 20 — Python live | | 4 min |
+| 42:00–43:30 | 21 — Pratique et 30 s sur Canvas | 1 min 30 | |
+| 43:30–45:00 | 22 — Ressources et liens internes HQ | 1 min 30 | |
 | 45:00–55:00 | Questions | 10 min | |
 | 55:00–60:00 | Marge | 5 min | |
 
-Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**. Annexes 20–25 : seulement en réponse aux questions. Les notes détaillées sont intégrées à `presentation/slides.md` et au mode présentateur Slidev.
+Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**. Annexes 23–28 : seulement en réponse aux questions. Les notes détaillées sont intégrées à `presentation/slides.md` et au mode présentateur Slidev.
 
-Révision 1.142 : la diapositive 10 présente les sept concepts sans détailler leur configuration; la fiche [personnalisations-vscode.md](personnalisations-vscode.md) fournit les formats. La 11 montre cinq couches en anglais et en français, leurs fichiers et leurs conditions d’utilisation. Cliquer une couche illustre son apport au contexte du modèle; ce dessin ne définit pas une priorité. La 14 compare simultanément quatre tâches en colonnes et cinq modèles en lignes : même volume supposé entre modèles d’une tâche, barres sur une échelle commune, losanges pour les choix à essayer. Le bouton + multiplie les essais; les coûts restent des scénarios fictifs, pas un benchmark. La 17 nomme SDD et annonce la formation de l’autre équipe. Canvas occupe 30 secondes dans les trois minutes de conclusion; l’annexe 22 fournit les prérequis. La capture de l’annexe 20 vient d’un autre projet et montre des listes vides : ne pas la présenter comme une preuve de chargement de HydroDataLab.
+Révision 1.142 : la diapositive 10 présente les sept concepts sans détailler leur configuration; la fiche [personnalisations-vscode.md](personnalisations-vscode.md) fournit les formats. La 13 montre cinq couches en anglais et en français, leurs fichiers et leurs conditions d’utilisation. Cliquer une couche illustre son apport au contexte du modèle; ce dessin ne définit pas une priorité. La 16 compare simultanément quatre tâches en colonnes et cinq modèles en lignes : même volume supposé entre modèles d’une tâche, barres sur une échelle commune, losanges pour les choix à essayer. Le bouton + multiplie les essais; les coûts restent des scénarios fictifs, pas un benchmark. La 19 nomme SDD et annonce la formation de l’autre équipe. Canvas occupe 30 secondes dans la minute et demie de conclusion; l’annexe 25 fournit les prérequis. La capture de l’annexe 23 vient d’un autre projet et montre des listes vides : ne pas la présenter comme une preuve de chargement de HydroDataLab.
 
 Pour la règle zéro/absence : trois températures fictives `[10, 0, None]` donnent deux mesures sur trois, soit 66,67 %. Remplacer None par zéro inventerait une mesure. Les contrôles de plausibilité restent propres à chaque série. Les liens officiels au bas des diapositives sont cliquables dans le site et dans le PDF.
+
+Les pages 11 et 12 introduisent la préférence du présentateur pour une base simple et une sélection par besoin, sans consensus « must have » inventé. Matt Pocock est en exploration. La page 22 devient la page de ressources à laisser visible pendant les questions; compléter les trois entrées HQ dans presentation/resources/links.json. La fiche [skills-et-veille.md](skills-et-veille.md) donne les sources et les modalités de mise à jour.
 
 ## Ce que voit le public
 
@@ -40,13 +45,13 @@ Pour la règle zéro/absence : trois températures fictives `[10, 0, None]` donn
 
 Utiliser deux écrans en mode **Étendre** (`Win + P`) et deux fenêtres du même navigateur/profil. Garder http://127.0.0.1:53173/presenter/1 sur le portable; déplacer http://127.0.0.1:53173/1 sur le projecteur puis passer en plein écran (`F11`). Utiliser exactement le même hôte et le même port dans les deux fenêtres.
 
-Dans le panneau **Current → Slides** de la vue présentateur, sélectionner les couches de contexte (11) et actionner les boutons `−`/`+` des coûts (14). Le public voit les changements automatiquement. Les réglages restent conservés après navigation ou rechargement; avant la séance, sélectionner la première couche et 1 essai. Cette synchronisation fonctionne hors ligne, y compris dans le kit. Recharger les deux fenêtres après une mise à jour du support. Pour une démo, afficher VS Code ou HydroDataLab sur l’écran de projection, puis revenir à la fenêtre audience.
+Dans le panneau **Current → Slides** de la vue présentateur, sélectionner les couches de contexte (13) et actionner les boutons `−`/`+` des coûts (16). Le public voit les changements automatiquement. Les réglages restent conservés après navigation ou rechargement; avant la séance, sélectionner la première couche et 1 essai. Cette synchronisation fonctionne hors ligne, y compris dans le kit. Recharger les deux fenêtres après une mise à jour du support. Pour une démo, afficher VS Code ou HydroDataLab sur l’écran de projection, puis revenir à la fenêtre audience.
 
 ### Contenu projeté
 
 Les diapositives expliquent les notions et annoncent ce que les participants pourront observer ou vérifier. Les raccourcis clavier, commandes, minutages et procédures de secours se trouvent dans ce guide et dans les notes du mode présentateur. Projeter la fenêtre de présentation, pas la vue des notes.
 
-Ne pas supposer de connaissances Git ou Docker. Définir les termes avant de les employer : modèle et agent (5), dépôt/commit/branche/worktree (6), session/planification/autorisations (7), instruction (8), skill et rôle personnalisé (10), contexte (11), token (12), API et image Docker (16), spécification et critère de réussite (17). Le worktree est une option expliquée, pas un prérequis ni une manipulation demandée. Le lexique est repris dans l'aide-mémoire.
+Ne pas supposer de connaissances Git ou Docker. Définir les termes avant de les employer : modèle et agent (5), dépôt/commit/branche/worktree (6), session/planification/autorisations (7), instruction (8), skill et rôle personnalisé (10), contexte (13), token (14), API et image Docker (18), spécification et critère de réussite (19). Le worktree est une option expliquée, pas un prérequis ni une manipulation demandée. Le lexique est repris dans l'aide-mémoire.
 
 À chaque démonstration, donner une question au public : « Quelles sources vérifient cette réponse? », « D'où vient ce résultat et comment reprendre après une erreur? », « Une mesure manque : le contrôle le détecte-t-il? ». Les repères de la fenêtre Agents et ses réglages se montrent dans la première démo, avec leur utilité : lisibilité, portée du réglage, confirmation des actions et comparaison avant/après.
 
@@ -68,7 +73,7 @@ Depuis la racine de la version finale (`main` ou `07-solution`), exécuter `./sc
 - Préparer deux dossiers de travail distincts : live depuis `06-specification`, secours depuis `07-solution`. Commande pour créer la branche live depuis un dépôt propre : `./scripts/checkpoint.ps1 -Tag 06-specification -Branch demo-live`. Ce script refuse un dossier modifié et arrête Aspire avant la bascule. Utiliser les scripts de la version finale et le guide `docs/CHECKPOINTS.md` pour préparer les copies : tous les scripts ne sont pas présents dans les premiers tags. Préparer séparément la copie de secours 07-solution; ne pas écraser un dossier sale.
 - Lancer `./scripts/start-demo.ps1` et tester le parcours. Ports réservés : Vue 53170, API 53171, Python 53172, slides 53173.
 - Ouvrir le support : `./scripts/start-presentation.ps1` (ou `cd presentation`, `npm ci`, `npm run dev`); http://localhost:53173. Pour le build autonome : `npm run build` puis `npm run preview`. L’installation réseau se fait avant la séance.
-- Ouvrir aussi `presentation/exports/formation-hydrodatalab.pdf`. Il contient 25 pages; les interactions sont figées mais leur explication reste lisible.
+- Ouvrir aussi `presentation/exports/formation-hydrodatalab.pdf`. Il contient 28 pages; les interactions sont figées mais leur explication reste lisible.
 - Pour régénérer ce PDF : `npm --prefix presentation run export` utilise Chrome/Edge/Chromium et Python avec `pypdf`. Au besoin, définir `SLIDEV_PYTHON_PATH` vers cet interpréteur. Le post-traitement convertit les liens d’annexes en destinations PDF sans serveur; projeter le PDF déjà préparé ne demande aucune de ces dépendances.
 - Tester projection 16:9, zoom du navigateur, notifications désactivées et alimentation branchée. Faire une répétition chronométrée sans dépendre du réseau.
 

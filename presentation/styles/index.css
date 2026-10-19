@@ -101,3 +101,28 @@
 .context-practices h2 { font-size:29px; margin:0 0 10px; }
 .context-practices p { font-size:20px; line-height:1.4; margin:0; }
 .context-takeaway { font-size:20px; line-height:1.4; border-left:5px solid var(--gold); padding-left:15px; margin-top:23px; }
+
+/* Three new pages use the existing hydro palette and a readable projection grid. */
+.vanilla .vanilla-position,.skill-selection .selection-intro { font-size:21px; margin:0 0 20px; opacity:1; }
+.vanilla-path { display:grid; grid-template-columns:1fr 22px 1fr 22px 1fr; gap:12px; align-items:center; padding:20px 0; border-block:2px solid #b9d5df; }
+.vanilla-path b { display:block; color:var(--water); font-size:23px; margin-bottom:10px; }
+.vanilla-path span:not(.path-arrow) { display:block; font-size:18px; line-height:1.45; }
+.vanilla-path .path-arrow { color:var(--water); font-size:24px; }
+.vanilla-reasoning { display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:16px; }
+.vanilla-reasoning h2 { margin:0 0 10px; font-size:30px; }
+.vanilla-reasoning p { margin:0; font-size:20px; }
+.vanilla-takeaway { border-left:5px solid var(--gold); padding-left:15px; font-size:20px; margin-top:24px; }
+.skill-selection .skill-table table { font-size:18px; margin-top:0; }
+.skill-table td,.skill-table th { padding:9px 10px; }
+.skill-table code { font-size:16px; }
+.exploration-note { border-left:5px solid var(--gold); padding:8px 13px; font-size:19px; margin-top:15px; }
+.skill-selection .selection-note { font-size:17px; margin-top:11px; }
+.resources h1 { margin-bottom:20px; }
+.resource-columns { display:grid; grid-template-columns:1fr 1fr 1fr; gap:30px; margin-top:12px; }
+.resource-columns h2 { font-size:28px; margin:0 0 14px; }
+.resource-item { margin-bottom:13px; }
+.resource-item a,.resource-item b { font-size:20px; line-height:1.25; font-weight:600; }
+.resource-item span { display:block; font-size:16px; line-height:1.4; margin-top:4px; }
+.resource-item small { display:block; font-size:14px; color:var(--muted); margin-top:4px; }
+.internal-resources { border-left:3px solid var(--gold); padding-left:18px; }
+.resource-routine { font-size:19px; border-top:2px solid #b9d5df; padding-top:14px; margin-top:14px; }

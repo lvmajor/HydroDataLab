@@ -47,6 +47,14 @@ Le build statique a été contrôlé dans deux pages d’un même contexte Chrom
 
 Test reproductible : `presentation/scripts/qa_presenter_sync.mjs`. Preuve : `validation/presenter-sync.json`; captures : `presentation/exports/qa/sync-*.png`. Le guide précise le mode Étendre, le même navigateur/profil/origine et la remise à l’état initial avant la séance. Le PDF reste le secours statique de 25 pages déjà validé.
 
+## Approche vanille, skills et ressources — 19 octobre
+
+Trois pages ajoutées, 28 pages au total. Sources primaires et indices d’adoption consultés; sélection par besoin, sans consensus universel revendiqué. Matt Pocock explicitement en exploration. Les sept liens publics et trois entrées HQ éditables sont contrôlés; aucun lien interne n’a été fourni ou inventé.
+
+Build, contrôle navigateur des 28 pages et synchronisation entre les deux vues réussis. Zéro débordement, erreur de page et requête externe. PDF : 28 pages, quatre destinations internes et liens officiels vérifiés, trois planches et nouvelles pages inspectées. Preuve : `validation/vanilla-skills-resources.json`.
+
+Sept anciens kits supprimés avec accord explicite : 8 571 725 646 octets libérés. Archive Docker et toutes les sauvegardes Git conservées; voir `validation/storage-audit.json`. La mise à jour légère `scripts/refresh-kit.ps1` conserve l’archive dans le kit existant. Le reçu `artifacts/LIVRAISON.txt` indique la révision livrée et le contrôle de ce kit.
+
 ## À confirmer le 19 octobre
 
 Compte Copilot HQ, modèles réellement autorisés, politiques des outils, accès réseau public, moteur de conteneurs approuvé, projection, alimentation et répétition chronométrée. Aucune de ces vérifications spécifiques au portable HQ n'est déclarée effectuée ici.

@@ -1,6 +1,6 @@
 # Registre des sources — HydroDataLab
 
-Vérification documentaire : **18 octobre 2026**. Prestation : **20 octobre 2026**. Sources primaires sauf les ressources communautaires identifiées. La date de consultation ne garantit pas que chaque fonctionnalité est activée dans le tenant HQ ou la version installée. Recommandations de modèles et organisation du contexte = choix pédagogiques, pas benchmarks fournisseurs.
+Vérification documentaire initiale : **18 octobre 2026**; ajouts S32–S39 vérifiés le **19 octobre**. Prestation : **20 octobre 2026**. Sources primaires sauf les ressources communautaires identifiées. La date de consultation ne garantit pas que chaque fonctionnalité est activée dans le tenant HQ ou la version installée. Recommandations de modèles et organisation du contexte = choix pédagogiques, pas benchmarks fournisseurs.
 
 | ID | Source | Fait utilisé / date de publication connue |
 |---|---|---|
@@ -42,6 +42,24 @@ Précision S01/S16, revérifiée le 18 octobre : la fenêtre Agents ne propose p
 
 Manifeste lu le 18 octobre 2026 : récupération **2026-10-18T19:44:01Z**, période **17 octobre 2026**, début inclusif et fin exclusive au 18 octobre dans America/Toronto. **168 observations** : 96 de demande, 72 hydrométéorologiques. Identifiants source filtrés : `1-15412` pour Niveau et `1-10622` pour Température Minimum/Maximum. Les noms de station, unités, fréquences et définitions proviennent des données/metadata; ne pas attribuer implicitement les températures au même capteur que le niveau. Licence déclarée par le manifeste : **CC BY-NC 4.0**. Conserver les fichiers bruts, l’attribution et leur empreinte.
 
+## Ajouts du 19 octobre : personnalisation, skills et veille
+
+S32 — [Microsoft : migration vers le harnais Copilot](https://code.visualstudio.com/docs/agent-customization/migrate-customizations). Des formats et emplacements peuvent nécessiter une migration. Fonde l’exemple d’entretien de la diapositive 11; la recommandation « vanille » est notre analyse, pas une conclusion chiffrée de Microsoft.
+
+S33 — [Microsoft : Agent Skills](https://code.visualstudio.com/docs/agent-customization/agent-skills). Chargement progressif, format ouvert, différences de capacités entre harnais et revue des skills partagés.
+
+S34 — [Microsoft : playwright-cli](https://github.com/microsoft/playwright-cli). CLI accompagnée de skills, pilotage de navigateur et captures; distinction avec le serveur MCP. Le catalogue est proposé, sans installation par cette révision.
+
+S35 — [Aspire : agents IA](https://aspire.dev/get-started/ai-coding-agents/) et [aspire agent init](https://aspire.dev/reference/cli/commands/aspire-agent-init/). Skills pour la CLI, santé et journaux; MCP facultatif.
+
+S36 — [Équipe .NET : dotnet/skills](https://github.com/dotnet/skills). Collections dotnet-aspnetcore et dotnet-test; ne pas confondre skill portable, agent propre au harnais et plugin de distribution.
+
+S37 — [Matt Pocock : skills](https://github.com/mattpocock/skills). grill-me et tdd sont présentés comme pistes en exploration, non validées dans notre démo ni dans le compte HQ.
+
+S38 — [skills.sh : répertoire](https://skills.sh/) et [fiche playwright-cli](https://skills.sh/microsoft/playwright-cli/playwright-cli). Indices d’adoption datés dans la fiche participant; ils ne constituent ni un consensus « must have », ni une preuve de qualité. Les descriptions techniques sont vérifiées dans les dépôts d’origine.
+
+S39 — [Nouveautés VS Code](https://code.visualstudio.com/updates), [changelog Copilot](https://github.blog/changelog/label/copilot/), [Microsoft Learn](https://learn.microsoft.com/en-us/training/modules/github-copilot-agent-mode/), [Awesome Copilot](https://github.com/github/awesome-copilot), [GitHub Community](https://github.com/community/community/discussions/categories/copilot), [Aspire](https://aspire.dev/) et [Spec Kit](https://github.github.com/spec-kit/). Liens de la page finale, consultés le 19 octobre. Les trois ressources HQ sont des emplacements à compléter, sans adresse inventée.
+
 ## Limites éditoriales à préserver
 
 - Pas d’estimation des réserves en GWh ni de prévision opérationnelle; le niveau Gouin reste exprimé en mètres.
@@ -53,7 +71,7 @@ Manifeste lu le 18 octobre 2026 : récupération **2026-10-18T19:44:01Z**, péri
 
 ## Capture fournie et distinction des démonstrations
 
-La capture `presentation/public/vscode-customizations-user.png` est l’image fournie par le présentateur le 18 octobre, conservée sans modification des pixels. Le cadrage CSS de l’annexe 20 montre Agent Customizations / Copilot, pour le projet RealEstateFinancing, avec User 0 et Workspace 0. Les chemins expliqués sous l’image ne sont pas des éléments présents dans ces listes. Le schéma animé d’instructions est pédagogique; les exemples MCP, hooks et plugins ne sont pas des installations de HydroDataLab. Le schéma Canvas décrit une fonctionnalité et ne prétend pas être relié à Copilot.
+La capture `presentation/public/vscode-customizations-user.png` est l’image fournie par le présentateur le 18 octobre, conservée sans modification des pixels. Le cadrage CSS de l’annexe 23 montre Agent Customizations / Copilot, pour le projet RealEstateFinancing, avec User 0 et Workspace 0. Les chemins expliqués sous l’image ne sont pas des éléments présents dans ces listes. Le schéma animé d’instructions est pédagogique; les exemples MCP, hooks et plugins ne sont pas des installations de HydroDataLab. Le schéma Canvas décrit une fonctionnalité et ne prétend pas être relié à Copilot.
 
 Pour S03, la page officielle sans paramètres a été intermittente pendant la consultation; la même page indexée avec un paramètre de suivi a permis de lire les sections sur le format, AGENTS.md, la vérification et les instructions d’organisation. Les supports utilisent son URL canonique. Ne pas confondre une organisation des dossiers avec un ordre de priorité universel, ni transférer les règles GitHub.com à tous les harnais VS Code.
 

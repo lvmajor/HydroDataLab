@@ -1,6 +1,6 @@
 # Personnalisations de VS Code et du harnais Copilot
 
-Vérifié le **18 octobre 2026**, pour VS Code **1.142**. Cette fiche accompagne les diapositives 8 à 11, 20 et 22. Les formats cités sont liés à leur documentation officielle.
+Vérifié le **18 octobre 2026**, pour VS Code **1.142**. Cette fiche accompagne les diapositives 8 à 13, 23 et 25. Les formats cités sont liés à leur documentation officielle.
 
 ## Choix conseillé pour ce public
 
@@ -53,7 +53,7 @@ Exemple chiffré : trois températures attendues `[10, 0, None]` donnent **deux 
 
 ## Context layers — les couches du contexte
 
-La diapositive 11 relie cinq sources au **Model context — Contexte du modèle** :
+La diapositive 13 relie cinq sources au **Model context — Contexte du modèle** :
 
 1. **Project instructions — Consignes du projet** : les règles communes de `copilot-instructions.md`.
 2. **File-specific instructions — Consignes ciblées** : les règles Python dans `python.instructions.md`, activées selon les mécanismes décrits plus haut.
@@ -109,7 +109,7 @@ Pour Copilot, suivre le **schéma GitHub Copilot / SDK**, pas un exemple Local c
 4. Ouvrir l’élément, examiner son fichier et son en-tête.
 5. Faire une petite tâche représentative; examiner **References**, les actions et les tests.
 
-La capture fournie par le présentateur, intégrée en annexe 20, provient d’un autre projet et montre **User 0 / Workspace 0**. Elle illustre le panneau; elle ne certifie pas que les fichiers HydroDataLab y sont chargés. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
+La capture fournie par le présentateur, intégrée en annexe 23, provient d’un autre projet et montre **User 0 / Workspace 0**. Elle illustre le panneau; elle ne certifie pas que les fichiers HydroDataLab y sont chargés. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
 
 Si un fichier manque : vérifier harnais, dossier ouvert, emplacement et activation. Le réglage des dossiers parents et les fichiers AGENTS imbriqués demandent une vérification spécifique. Pour Local, `chat.useNestedAgentsMdFiles` est expérimental; ce n’est pas un commutateur universel pour Copilot. Les anciens `chat.*FilesLocations` peuvent nécessiter une migration.
 

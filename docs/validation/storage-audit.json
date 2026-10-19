@@ -1,0 +1,42 @@
+{
+  "atUtc": "2026-10-19T14:25:18.5841474Z",
+  "authorization": "Accord explicite du présentateur dans la conversation, 19 octobre 2026",
+  "beforeBytes": 11131997052,
+  "afterBytes": 2560271406,
+  "removedBytes": 8571725646,
+  "removed": [
+    {
+      "path": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\kit-hq-20261018-213455",
+      "bytes": 1229242167
+    },
+    {
+      "path": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\kit-hq-20261018-181012",
+      "bytes": 1227345493
+    },
+    {
+      "path": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\kit-hq-20261018-175328",
+      "bytes": 1226518272
+    },
+    {
+      "path": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\kit-hq-20261018-175245",
+      "bytes": 1226518233
+    },
+    {
+      "path": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\kit-hq-20261018-171901",
+      "bytes": 1222348524
+    },
+    {
+      "path": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\kit-hq-20261018-165439",
+      "bytes": 1219877784
+    },
+    {
+      "path": "F:\\PoC\\Formation Copilot - HQ\\artifacts\\kit-hq-20261018-165318",
+      "bytes": 1219875173
+    }
+  ],
+  "retained": [
+    "F:\\PoC\\Formation Copilot - HQ\\artifacts\\kit-hq-20261019-101734",
+    "artifacts/hydrodatalab-images.tar",
+    "Tous les bundles et ZIP Git"
+  ]
+}

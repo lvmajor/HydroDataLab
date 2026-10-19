@@ -68,6 +68,10 @@ Commencer par Auto Balance. Employer Efficiency pour une tâche simple, Intellig
 
 Les tarifs actuels sont en AI credits : 1 crédit = 0,01 $ US. Le coût dépend du modèle, des tokens et du cache. La remise Auto de 10 % des plans payants ne garantit pas une économie sur toute tâche. HydraFusion/Max choisissent un ou plusieurs modèles : somme des usages, sans supplément propre et sans remise Auto. Ils restent en research preview. [Documentation HydraFusion](https://docs.github.com/en/early-access/copilot/hydrafusion).
 
+## Garder une configuration facile à entretenir
+
+Partir des fonctions natives, des consignes du projet et des tests. Ajouter un skill pour une tâche répétée, puis vérifier son utilité. La sélection Python, Playwright, Aspire, .NET et les pistes de Matt Pocock est détaillée dans [Skills et veille](skills-et-veille.md). Matt Pocock reste en exploration dans cette formation. Les ressources pour suivre les nouveautés et les emplacements HQ sont en diapositive 22.
+
 ## Vérifier une transformation
 
 - Zéro est valide; null signifie absent.

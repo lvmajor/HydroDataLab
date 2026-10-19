@@ -1,6 +1,12 @@
 # Validation de la présentation
 
-## État courant : contexte du public
+## État courant : approche vanille, skills et ressources
+
+Support de **28 diapositives : 22 principales et 6 annexes**. Pages ajoutées : 11, 12, 22; la conclusion 21 renvoie à la nouvelle page de ressources. Notes et conducteur conservent 45 minutes de contenu. Renvois vers les annexes et contrôles de synchronisation adaptés.
+
+Build réussi, 28 routes sans débordement, erreur de page ou ressource externe. Les couches (13) et coûts (16) restent synchronisés entre présentateur et audience. Sept liens publics et trois emplacements HQ sans fausse URL vérifiés. PDF de 28 pages avec liens officiels et quatre destinations internes; planches complètes et pages nouvelles inspectées. Preuve : `../../../docs/validation/vanilla-skills-resources.json`. Les rendus `page-01.png` à `page-28.png` et les trois planches correspondent à cette version.
+
+## Historique : contexte du public
 
 Le support compte maintenant **25 diapositives : 19 principales et 6 annexes**. La page 2 présente le développement BI/Python local, la préparation au déploiement conteneurisé, la marge d’expérimentation et les réflexes de sécurité. Le minutage reste de 32 min d’explications et 13 min de démos; l’ouverture est répartie en 30 s / 1 min / 30 s.
 
