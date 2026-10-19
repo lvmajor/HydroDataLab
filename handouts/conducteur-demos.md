@@ -6,12 +6,14 @@ Ouvrir [la version lisible dans le navigateur](conducteur-demos.html) sur le por
 
 ## Repères à garder sous les yeux
 
+**Sujet de la formation : GitHub Copilot dans VS Code et ses bonnes pratiques.** HydroDataLab rend visibles les résultats à vérifier. Démo 1 : 09:00–13:00; démo 2 : 29:30–34:30; transition SDD : 34:30–36:30; démo 3 : 36:30–40:30. Le parcours se termine à 45:00, puis questions et marge. Contexte interactif : slide 10; coûts : slide 15.
+
 | Moment | Dossier / version | À montrer | Durée |
 |---|---|---|---:|
 | Démo 1 · slide 7 | Dépôt principal, `main` | Une mission en lecture seule, ses instructions et ses preuves | 4 min |
-| Démo 2 · slide 18 | Dépôt principal, `main` | Python → avant/après → synthèse horaire → détails/relance → conteneur | 5 min |
-| Transition · slide 19 | Arrêter `main`, démarrer la copie d’exercice | Garder la slide SDD projetée pendant la manipulation | Dans les 2 min de SDD |
-| Démo 3 · slide 20 | Copie d’exercice, branche `codex/repetition-01` issue de `06-specification` | Règle BI → code Python → tests → 100 %, puis 95,83 % | 4 min |
+| Démo 2 · slide 17 | Dépôt principal, `main` | Exécution → avant/après → code/test → détails → conteneur | 5 min |
+| Transition · slide 18 | Arrêter `main`, démarrer la copie d’exercice | Garder la slide SDD projetée pendant la manipulation | Dans les 2 min de SDD |
+| Démo 3 · slide 19 | Copie d’exercice, branche `codex/repetition-01` issue de `codex/preparation-demo-06` | Règle BI → code Python → tests → 100 %, puis 95,83 % | 4 min |
 | Secours, si nécessaire | Retour au dépôt principal, `main` | Solution préparée, annoncée comme telle | Décider à 2:10 de la démo 3 |
 
 **Pourquoi deux dossiers?** Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. `main` conserve la solution métier du jalon 07 et ajoute les améliorations de préparation, dont les ports dynamiques. La branche préparée `codex/preparation-demo-06`, issue du jalon 06, intègre les ports dynamiques, la typographie et le parcours ETL détaillé, sans implémenter la couverture. Le commit préparé `9e1ecde` est transporté dans le bundle; aucune résolution de conflit ou application manuelle de commits n’est nécessaire. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.
@@ -140,15 +142,15 @@ Garder ce terminal ouvert. `Win + P` → **Étendre**. Même navigateur, même p
 - Projecteur : **http://127.0.0.1:53173/1**, plein écran `F11`.
 - Démonstration : **http://localhost:53170**, dashboard Aspire et deux fenêtres VS Code déjà ouvertes.
 
-Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 19. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.
+Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 18. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.
 
 ## Démo 1 · cadrer une mission · 4 min
 
-**Slide 7 → VS Code du dépôt principal (`main`). Question au public : « Comment vérifier que l’agent comprend où il travaille et quelles règles suivre? »**
+**Slide 7 → VS Code du dépôt principal (`main`). Question au public : « Quelles sources permettent de vérifier sa réponse? »**
 
 ### 0:00–0:45 · Où travaille l’agent?
 
-**Faire :** ouvrir la fenêtre Agents via la palette de commandes de VS Code; utiliser **Chat: Open Agents Window** si ce libellé est disponible dans la version installée. Vérifier le dossier HydroDataLab, la branche `main`, le moteur Copilot et le modèle autorisé préparé, généralement Auto Balance. Créer une session pour cette tâche et garder les confirmations d’actions.
+**Faire :** ouvrir la fenêtre Agents via la palette de commandes de VS Code; utiliser **Chat: Open Agents Window** si ce libellé est disponible dans la version installée. Vérifier le dossier HydroDataLab, la branche `main`, le moteur Copilot et le modèle autorisé préparé, généralement Auto Balance. Créer une session pour cette tâche et garder les confirmations d’actions. Repérer `/plan` pour une future modification, sans lancer une deuxième demande ici.
 
 **Dire :** « Une session porte une tâche. Le dossier indique les fichiers accessibles; la branche indique la version du travail. » Ne pas créer de worktree ici : la notion a déjà été expliquée en slide 6.
 
@@ -181,11 +183,11 @@ Réponse attendue : un schéma en quatre étapes et les commandes de vérificati
 
 **Réussite :** le public distingue le lieu de travail, les instructions et une preuve. Aucun fichier n’a été modifié pour cette mission.
 
-## Démo 2 · du Python au résultat · 5 min
+## Démo 2 · vérifier un résultat · 5 min
 
-**Slide 18 → terminal du dépôt principal (`main`). Question : « Puis-je rejouer ce traitement et comprendre un échec? »**
+**Slide 17 → terminal du dépôt principal (`main`). Question : « Quelles preuves faut-il avant d’accepter le résultat de l’agent? »**
 
-### 0:00–1:00 · Exécuter le cœur Python
+### 0:00–0:45 · Rejouer un résultat
 
 ```powershell
 Set-Location -LiteralPath $Depot
@@ -202,53 +204,59 @@ Get-Content -LiteralPath (Join-Path $Export 'hourly.csv') -TotalCount 5
 
 **Dire :** « Ce traitement Python est autonome. CSV et Parquet servent à l’analyse; JSON explique le résultat et sa provenance. »
 
-### 1:00–2:45 · Rendre la transformation visible dans Vue
+### 0:45–2:15 · Rendre la transformation visible dans Vue
 
-**Faire :** ouvrir http://localhost:53170, choisir **Jeu de démonstration**, décocher **Retirer une mesure de niveau d’eau**, puis **Lancer la collecte**. Attendre **Terminé** dans **Dernières exécutions**.
+**Faire :** ouvrir http://localhost:53170 et utiliser la collecte complète réussie pendant la préparation (Jeu de démonstration, sans mesure retirée). Repérer **Terminé** dans **Dernières exécutions**. Si le rapport ne correspond pas, lancer une nouvelle collecte complète; ne pas prétendre que les clics sur les onglets exécutent les étapes.
 
 **Faire et montrer :** dans **Parcours ETL**, cliquer successivement :
 
 1. **1 · Extraire** : `date`, `valeurs_demandetotal` — vrais champs du fournisseur, 168 lignes sur les quatre séries.
 2. **2 · Transformer** : `timestamp_utc`, `value`, `unit` — dates UTC, nombres typés, unités vérifiées, doublons retirés. Sur le jeu propre, le nombre de lignes reste le même : nettoyer ne signifie pas supprimer arbitrairement des données.
-3. **3 · Charger / exporter** : ouvrir **Afficher la synthèse horaire**. Quatre créneaux de 15 minutes deviennent une moyenne; une heure incomplète reste absente. Montrer la courbe horaire et télécharger son CSV.
+3. **3 · Charger / exporter** : ouvrir **Afficher la synthèse horaire**. Quatre créneaux de 15 minutes deviennent une moyenne; une heure incomplète reste absente. Montrer la courbe horaire et le lien vers son CSV; éviter une manipulation de téléchargement pendant ce créneau.
 
-**Dire :** « C’est ici que Python apporte la valeur BI : des sources hétérogènes deviennent une table et des indicateurs réutilisables. Vue affiche les résultats; elle ne refait pas les calculs. »
+**Dire :** « Voici un résultat concret à vérifier avant d’accepter le travail de l’agent : quatre mesures deviennent une moyenne horaire. Le calcul vient de Python; Vue affiche son résultat. »
 
-**Montrer les trois cartes, en faisant défiler à zoom normal :**
+**Développer seulement la pointe horaire moyenne.** Les autres valeurs restent des repères pour les questions, pas trois explications supplémentaires dans le créneau :
 
 - Pointe horaire moyenne : **22 009,75 MW**, 17 octobre à **18 h** Toronto. Maximum des heures complètes, différent du maximum ponctuel de la courbe de 15 minutes.
 - Énergie demandée estimée : **489 442 MWh**, somme de la demande × 0,25 h. Hypothèse : puissance constante pendant chaque créneau; estimation descriptive, pas facturation ni prévision.
 - Variation du niveau observé : **+3 cm** entre 00 h et 23 h, à Gouin Nord. Ce n’est pas un volume d’eau ou une réserve d’énergie.
 
-Les calculs lisibles sont dans **`etl/hydrodatalab/analysis.py`**; les petits exemples vérifiables sont dans **`etl/tests/test_analysis.py`**. Les onglets sont une exploration du résultat enregistré, pas des étapes exécutées au clic. Les températures minimale et maximale restent deux séries distinctes.
+### 2:15–3:15 · Relier le résultat au code et au test
 
-### 2:45–3:15 · Relier Python à son exécution
+**Faire :** dans VS Code, ouvrir **etl/hydrodatalab/analysis.py**, puis **etl/tests/test_analysis.py**, déjà préparés dans des onglets. Montrer la règle de synthèse horaire et un test avec quatre créneaux valides. Ne pas lire tout le module.
 
-**Faire :** dans **Dernières exécutions**, cliquer **Voir les détails** sur le traitement terminé. Montrer les paramètres, les quatre étapes et leurs durées réelles, puis l’export de cette exécution. Copier mentalement le même identifiant dans les journaux Aspire; montrer rapidement les ressources **python**, **api**, **web**.
+**Dire :** « À la première démo, Copilot a cité des fichiers. Nous pouvons maintenant confronter son explication au calcul et à un test. » Les onglets Vue explorent un rapport enregistré; ils ne recalculent rien au clic. Les minima et maxima de température restent deux séries distinctes.
 
-**Dire :** « Quartz planifie; Python traite; SQLite conserve le bilan. Aspire montre les processus et les journaux. Les étapes Python arrivent à la fin du traitement, pas en animation temps réel. » Les exports d’une ancienne exécution restent liés à son propre rapport.
+### 3:15–4:15 · Lire les détails d’une exécution
 
-### 3:15–4:30 · Provoquer une erreur et reprendre
+**Faire :** dans **Dernières exécutions**, ouvrir **Voir les détails** sur le succès préparé. Montrer les paramètres, les quatre étapes Python, leurs durées et un export lié à cet identifiant. Si le créneau le permet, montrer un seul journal correspondant dans Aspire; aucun tour de toutes les ressources.
 
-**Faire :** cliquer **Démontrer un échec contrôlé**, attendre **Échec**, puis **Voir les détails**. Montrer l’étape **Extraire les sources** en échec et le message. Les étapes suivantes n’ont pas été exécutées. Cliquer **Relancer ce traitement** dans l’historique, attendre **Terminé**, ouvrir ses détails.
+**Dire :** « Quartz déclenche la tâche; Python traite; SQLite conserve le bilan. Aspire regroupe les processus et les journaux. » Les étapes Python sont un bilan reçu à la fin, pas une progression animée. Les anciens exports restent rattachés à leur propre exécution. La planification reste désactivée.
 
-**Montrer :** la nouvelle tentative pointe vers l’identifiant de l’échec; l’ancienne erreur et le dernier rapport réussi sont préservés. Les durées peuvent être très courtes : aucune attente artificielle n’a été ajoutée. La planification reste désactivée.
-
-**Dire :** « C’est une panne simulée et annoncée. Nous démontrons une reprise vérifiable, pas la disponibilité du fournisseur. »
-
-### 4:30–5:00 · Le même traitement dans une image préparée
+### 4:15–5:00 · Rejouer dans une image préparée
 
 ```powershell
 docker run --rm --pull never --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
 ```
 
-Utiliser la variante Docker/Podman déjà validée avant la séance. **Montrer :** les mêmes nombres dans le résumé et les trois indicateurs Python. **Dire :** « Le code et ses dépendances sont emballés dans cette image. L’ETL tourne ici sans réseau. » Les fichiers de `/tmp/result` disparaissent avec ce conteneur; les exports persistants ont déjà été montrés côté natif. L’égalité complète CSV/Parquet/JSON se valide avant la séance avec la procédure de [DOCKER](../docs/DOCKER.md), pas avec le seul résumé console.
+Utiliser la variante Docker/Podman déjà validée. **Montrer :** le résumé et l’indicateur horaire correspondant au natif. **Dire :** « Ce résultat est rejouable avec le code et ses dépendances dans une image. » Les fichiers de /tmp/result disparaissent avec ce conteneur. La comparaison complète CSV/Parquet/JSON est une vérification préalable décrite dans [DOCKER](../docs/DOCKER.md); le résumé seul ne la prouve pas.
 
-**Réussite :** expliquer ce qui change entre les données brutes et les 24 moyennes horaires, puis montrer une erreur comprise et une relance reliée. Si le temps manque, raccourcir Aspire; conserver l’avant/après ETL et les indicateurs, qui sont le cœur de la démo pour ce public. Si Docker échoue, dire « Le moteur conteneur n’est pas disponible; le parcours local vient d’être exécuté » et passer à SDD.
+**Arrêt à 5:00.** Si Docker est indisponible, annoncer que l’on utilise le résultat préparé ou la capture, puis revenir à SDD. Ne pas diagnostiquer le moteur en direct. Si un passage précédent dépasse son créneau, omettre le journal Aspire; conserver la preuve dans le code et le test.
+
+### Variante 3:15–5:00 · Échec et relance à la place d’Aspire et Docker
+
+Choisir cette variante **avant la séance**, ou l’utiliser pendant les questions. Elle remplace les deux derniers créneaux; elle ne s’y ajoute pas.
+
+**Faire :** cliquer **Démontrer un échec contrôlé**, attendre **Échec**, puis **Voir les détails**. Montrer **Extraire les sources** en échec et le message; les étapes suivantes n’ont pas tourné. Cliquer **Relancer ce traitement**, attendre **Terminé**, puis ouvrir les détails. La relance pointe vers la première tentative; l’ancienne erreur et le dernier rapport valide sont préservés.
+
+**Dire :** « Nous vérifions aussi le comportement en échec. La panne est simulée et annoncée. » Si la relance tarde, montrer la capture [exécution](../docs/screenshots/etl-execution.png) en l’annonçant. Ne pas activer la planification pour créer du mouvement.
+
+**Réussite :** le public sait relier un résultat aux données, au code, au test et à une exécution. La démo illustre comment évaluer le travail de Copilot; les détails BI et l’infrastructure restent disponibles pour les questions.
 
 ## Transition · préparer la démo 3
 
-**Garder la slide 19 (SDD) sur le projecteur.** Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.
+**Garder la slide 18 (SDD) sur le projecteur.** Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.
 
 ```powershell
 Set-Location -LiteralPath $Depot
@@ -260,11 +268,11 @@ git status --short --branch
 
 **Attendu :** la branche de cette répétition, avec `coverage.py` encore à implémenter. Recharger Vue, lancer une collecte complète et vérifier **Non calculée**. Si l’indicateur est déjà calculé, ne pas poursuivre comme si l’exercice était neuf : vérifier le chemin et préparer une nouvelle branche selon la dernière section.
 
-**Dire :** « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de `$Live`, puis à la slide 20. La présentation reste servie depuis `$Depot`; aucun ancien support du tag 06 n’est lancé.
+**Dire :** « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de `$Live`, puis à la slide 19. La présentation reste servie depuis `$Depot`; aucun ancien support du tag 06 n’est lancé.
 
 ## Démo 3 · une règle devient un contrôle · 4 min
 
-**Slide 20 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »**
+**Slide 19 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »**
 
 ### 0:00–0:40 · Montrer le besoin et l’état initial
 
@@ -321,7 +329,7 @@ uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basete
 
 Si l’ancien rapport reste visible, attendre la fin de la nouvelle collecte et rafraîchir. Modifier le code ne recalcule pas rétroactivement un rapport déjà publié. Si le rechargement Python n’a pas eu lieu, utiliser le secours au lieu de diagnostiquer devant le public.
 
-**Réussite :** une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 21.
+**Réussite :** une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 20, sélection de skills.
 
 ## Secours · revenir à la solution préparée
 

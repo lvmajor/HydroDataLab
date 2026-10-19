@@ -1,45 +1,49 @@
 # Guide présentateur — HydroDataLab
 
-Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeurs, analystes BI/Python; gestionnaires et développeurs débutants/intermédiaires. Version documentaire : 19 octobre. Objectif : déléguer une petite transformation vérifiable, avec son contrat et ses preuves.
+Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeurs, analystes BI/Python; gestionnaires et développeurs débutants/intermédiaires. Version documentaire : 19 octobre. Sujet central : utiliser GitHub Copilot dans Visual Studio Code avec des règles, du contexte, des skills et des outils adaptés, puis vérifier ses résultats. HydroDataLab illustre ces pratiques pour le public BI/Python.
 
-**Pour répéter et piloter les trois démos :** ouvrir le [conducteur avec commandes à copier](conducteur-demos.html), utilisable directement dans un navigateur, ou sa [source Markdown](conducteur-demos.md). Le parcours recommandé conserve `main` pour les démos 1 et 2 ainsi que le secours, et utilise une seule copie d’exercice issue de `06-specification` pour la démo 3. La bascule se prépare pendant la slide 19; le serveur des slides reste sur `main`.
+**Pour répéter et piloter les trois démos :** ouvrir le [conducteur avec commandes à copier](conducteur-demos.html), utilisable directement dans un navigateur, ou sa [source Markdown](conducteur-demos.md). Le parcours recommandé conserve `main` pour les démos 1 et 2 ainsi que le secours, et utilise une seule copie d’exercice sur `codex/repetition-01`, issue de `codex/preparation-demo-06` (9e1ecde) pour la démo 3. La bascule se prépare pendant la slide 18; le serveur des slides reste sur `main`.
 
 ## Minutage strict
 
 | Horloge | Diapositive | Explication | Démo |
 |---|---|---:|---:|
-| 00:00–00:30 | 1 — Ouverture | 30 s | |
-| 00:30–01:30 | 2 — Votre terrain de développement | 1 min | |
-| 01:30–02:00 | 3 — Parcours | 30 s | |
-| 02:00–04:00 | 4 — Séries et sens | 2 min | |
-| 04:00–06:00 | 5 — Modèle, harnais, outils et agent | 2 min | |
-| 06:00–08:00 | 6 — Dépôt, commit, branche et worktree | 2 min | |
+| 00:00–00:30 | 1 — Copilot dans VS Code | 30 s |  |
+| 00:30–01:30 | 2 — Votre terrain de développement | 1 min |  |
+| 01:30–02:00 | 3 — Bien déléguer avec Copilot | 30 s |  |
+| 02:00–04:00 | 4 — Les données du fil conducteur | 2 min |  |
+| 04:00–06:00 | 5 — Modèle, harnais, outils et agent | 2 min |  |
+| 06:00–08:00 | 6 — Repères Git | 2 min |  |
 | 08:00–13:00 | 7 — Première mission dans Agents | 1 min | 4 min |
-| 13:00–15:00 | 8 — Instructions permanentes | 2 min | |
-| 15:00–17:00 | 9 — Portée et diagnostic | 2 min | |
-| 17:00–19:00 | 10 — Sept concepts et leurs rôles | 2 min | |
-| 19:00–20:00 | 11 — Base vanille et ajouts ciblés | 1 min | |
-| 20:00–21:30 | 12 — Sélection de skills | 1 min 30 | |
-| 21:30–23:30 | 13 — Couches bilingues du contexte | 2 min | |
-| 23:30–25:30 | 14 — Tokens et reprises | 2 min | |
-| 25:30–27:00 | 15 — Auto | 1 min 30 | |
-| 27:00–29:00 | 16 — Coûts : quatre tâches × cinq modèles | 2 min | |
-| 29:00–30:00 | 17 — HydraFusion | 1 min | |
-| 30:00–36:00 | 18 — Pipeline | 1 min | 5 min |
-| 36:00–38:00 | 19 — Survol SDD et mini-spec | 2 min | |
-| 38:00–42:00 | 20 — Python live | | 4 min |
-| 42:00–43:30 | 21 — Pratique et 30 s sur Canvas | 1 min 30 | |
-| 43:30–45:00 | 22 — Ressources et liens internes HQ | 1 min 30 | |
-| 45:00–55:00 | Questions | 10 min | |
-| 55:00–60:00 | Marge | 5 min | |
+| 13:00–15:00 | 8 — Une instruction vérifiable | 2 min |  |
+| 15:00–17:00 | 9 — Format, portée et activation | 2 min |  |
+| 17:00–19:00 | 10 — Couches bilingues du contexte | 2 min |  |
+| 19:00–21:00 | 11 — Mécanismes de personnalisation | 2 min |  |
+| 21:00–22:00 | 12 — Base vanille et ajouts ciblés | 1 min |  |
+| 22:00–24:00 | 13 — Tokens et reprises | 2 min |  |
+| 24:00–25:30 | 14 — Auto | 1 min 30 |  |
+| 25:30–27:30 | 15 — Coûts : quatre tâches × cinq modèles | 2 min |  |
+| 27:30–28:30 | 16 — Capsule HydraFusion | 1 min |  |
+| 28:30–34:30 | 17 — Vérifier un résultat | 1 min | 5 min |
+| 34:30–36:30 | 18 — Survol SDD et préparation de l’exercice | 2 min |  |
+| 36:30–40:30 | 19 — Déléguer et vérifier la modification |  | 4 min |
+| 40:30–42:00 | 20 — Des skills selon votre tâche | 1 min 30 |  |
+| 42:00–43:30 | 21 — Votre prochaine tâche avec Copilot | 1 min 30 |  |
+| 43:30–45:00 | 22 — Ressources et liens internes HQ | 1 min 30 |  |
+| 45:00–55:00 | Questions | 10 min |  |
+| 55:00–60:00 | Marge | 5 min |  |
 
-Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**. Annexes 23–28 : seulement en réponse aux questions. Les notes détaillées sont intégrées à `presentation/slides.md` et au mode présentateur Slidev.
+Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**. Questions : 10 minutes; marge : 5. Les 22 diapositives principales occupent exactement 45 minutes sur le conducteur. Les annexes 23–28 sont réservées aux questions; la répétition humaine doit confirmer le rythme réel.
 
-Révision 1.142 : la diapositive 10 présente les sept concepts sans détailler leur configuration; la fiche [personnalisations-vscode.md](personnalisations-vscode.md) fournit les formats. La 13 montre cinq couches en anglais et en français, leurs fichiers et leurs conditions d’utilisation. Cliquer une couche illustre son apport au contexte du modèle; ce dessin ne définit pas une priorité. La 16 compare simultanément quatre tâches en colonnes et cinq modèles en lignes : même volume supposé entre modèles d’une tâche, barres sur une échelle commune, losanges pour les choix à essayer. Le bouton + multiplie les essais; les coûts restent des scénarios fictifs, pas un benchmark. La 19 nomme SDD et annonce la formation de l’autre équipe. Canvas occupe 30 secondes dans la minute et demie de conclusion; l’annexe 25 fournit les prérequis. La capture de l’annexe 23 vient d’un autre projet et montre des listes vides : ne pas la présenter comme une preuve de chargement de HydroDataLab.
+Le parcours relie les fichiers d’instructions (8–9) aux couches de contexte (10), puis aux mécanismes de personnalisation (11) et à la base « vanille » (12). Le sujet reste Copilot dans VS Code; Python et l’ETL fournissent les exemples vérifiables. Aucun aperçu ETL supplémentaire n’est ajouté à l’ouverture.
 
-Pour la règle zéro/absence : trois températures fictives `[10, 0, None]` donnent deux mesures sur trois, soit 66,67 %. Remplacer None par zéro inventerait une mesure. Les contrôles de plausibilité restent propres à chaque série. Les liens officiels au bas des diapositives sont cliquables dans le site et dans le PDF.
+La slide 11 garde les sept concepts : suivre un exemple instruction → skill → outil, puis situer agent personnalisé, MCP, hook et plugin sans entrer dans sept configurations. La fiche [personnalisations-vscode.md](personnalisations-vscode.md) conserve les formats. La sélection de skills rejoint la fin (20), après leur mise en contexte. Matt Pocock reste en exploration; aucune liste universelle de « must have » n’est affirmée.
 
-Les pages 11 et 12 introduisent la préférence du présentateur pour une base simple et une sélection par besoin, sans consensus « must have » inventé. Matt Pocock est en exploration. La page 22 devient la page de ressources à laisser visible pendant les questions; compléter les trois entrées HQ dans presentation/resources/links.json. La fiche [skills-et-veille.md](skills-et-veille.md) donne les sources et les modalités de mise à jour.
+La 10 montre les couches en anglais/français, leurs fichiers et leurs conditions d’utilisation. Elles composent le contexte sans définir une priorité officielle. La 15 compare quatre tâches et cinq modèles avec des volumes supposés; les losanges sont des choix à essayer, pas un benchmark. La 18 nomme le SDD et annonce la formation de l’autre équipe. **Canvas reste en annexe 25**, accessible depuis les ressources (22), sans nouveau concept dans la conclusion.
+
+Pour zéro/absence, [10, 0, None] donne deux mesures sur trois, soit 66,67 %. Les contrôles de plausibilité restent propres à chaque série. La capture Instructions en annexe 23 provient d’un autre projet, avec des listes vides : ce n’est pas une preuve de chargement HydroDataLab. Les sources au bas des slides restent cliquables dans le site et le PDF.
+
+La page 22 reste visible pendant les questions. Compléter les trois entrées HQ dans presentation/resources/links.json; la fiche [skills-et-veille.md](skills-et-veille.md) donne les sources et les modalités de mise à jour.
 
 ## Ce que voit le public
 
@@ -47,23 +51,23 @@ Les pages 11 et 12 introduisent la préférence du présentateur pour une base s
 
 Utiliser deux écrans en mode **Étendre** (`Win + P`) et deux fenêtres du même navigateur/profil. Garder http://127.0.0.1:53173/presenter/1 sur le portable; déplacer http://127.0.0.1:53173/1 sur le projecteur puis passer en plein écran (`F11`). Utiliser exactement le même hôte et le même port dans les deux fenêtres.
 
-Dans le panneau **Current → Slides** de la vue présentateur, sélectionner les couches de contexte (13) et actionner les boutons `−`/`+` des coûts (16). Le public voit les changements automatiquement. Les réglages restent conservés après navigation ou rechargement; avant la séance, sélectionner la première couche et 1 essai. Cette synchronisation fonctionne hors ligne, y compris dans le kit. Recharger les deux fenêtres après une mise à jour du support. Pour une démo, afficher VS Code ou HydroDataLab sur l’écran de projection, puis revenir à la fenêtre audience.
+Dans le panneau **Current → Slides** de la vue présentateur, sélectionner les couches de contexte (10) et actionner les boutons `−`/`+` des coûts (15). Le public voit les changements automatiquement. Les réglages restent conservés après navigation ou rechargement; avant la séance, sélectionner la première couche et 1 essai. Cette synchronisation fonctionne hors ligne, y compris dans le kit. Recharger les deux fenêtres après une mise à jour du support. Pour une démo, afficher VS Code ou HydroDataLab sur l’écran de projection, puis revenir à la fenêtre audience.
 
 ### Contenu projeté
 
 Les diapositives expliquent les notions et annoncent ce que les participants pourront observer ou vérifier. Les raccourcis clavier, commandes, minutages et procédures de secours se trouvent dans ce guide et dans les notes du mode présentateur. Projeter la fenêtre de présentation, pas la vue des notes.
 
-Ne pas supposer de connaissances Git ou Docker. Définir les termes avant de les employer : modèle et agent (5), dépôt/commit/branche/worktree (6), session/planification/autorisations (7), instruction (8), skill et rôle personnalisé (10), contexte (13), token (14), API et image Docker (18), spécification et critère de réussite (19). Le worktree est une option expliquée, pas un prérequis ni une manipulation demandée. Le lexique est repris dans l'aide-mémoire.
+Ne pas supposer de connaissances Git ou Docker. Définir les termes avant de les employer : modèle et agent (5), dépôt/commit/branche/worktree (6), session/planification/autorisations (7), instruction (8), contexte (10), skill, outils et MCP (11), token (13), API et image Docker (17), spécification et critère de réussite (18). Le worktree est une option expliquée, pas un prérequis ni une manipulation demandée. Le lexique est repris dans l'aide-mémoire.
 
-À chaque démonstration, donner une question au public : « Quelles sources vérifient cette réponse? », « D'où vient ce résultat et comment reprendre après une erreur? », « Une mesure manque : le contrôle le détecte-t-il? ». Les repères de la fenêtre Agents et ses réglages se montrent dans la première démo, avec leur utilité : lisibilité, portée du réglage, confirmation des actions et comparaison avant/après.
+À chaque démonstration, donner une question au public : « Quelles sources vérifient cette réponse? », « Quelles preuves faut-il avant d’accepter le résultat de l’agent? », « Une mesure manque : le contrôle le détecte-t-il? ». Les repères de la fenêtre Agents et ses réglages se montrent dans la première démo, avec leur utilité : lisibilité, portée du réglage, confirmation des actions et comparaison avant/après.
 
 ## L’ouverture et le moment fort
 
 La nouvelle diapositive 2 occupe une minute. Le contexte est celui communiqué par le présentateur : des analystes BI/Python qui peuvent expérimenter avec un cadre de développement plus souple, tout en conservant les règles de sécurité de leur organisation. Décrire le trajet : développer ETL et visualisations, tester localement, préparer code et dépendances pour un déploiement conteneurisé. Définir ETL et conteneur brièvement. Les accès, données et environnements doivent être autorisés pour l’usage. Ne pas présenter cette liberté comme une exception aux politiques HQ; elles ne sont pas documentées dans ce support. Réduire la couverture et l’annonce du parcours à 30 secondes chacune préserve les 45 minutes.
 
-**Le moment fort principal est la démo 3, de 38:00 à 42:00** : passer d’une règle en français à un calcul Python testé, puis voir son résultat dans la même interface. Avant le prompt, montrer « Couverture : Non calculée » sur le jalon 06. Après les tests, revenir à la qualité par série : le niveau horaire affiche 100 % pour les données complètes, puis 95,83 % quand une mesure est retirée en mémoire. Marquer une pause : « Vous voyez maintenant ce que cette règle permet de détecter. » La couverture globale de 99,4 % reste un indicateur différent.
+**Le moment fort principal est la démo 3, de 36:30 à 40:30** : passer d’une règle en français à un calcul Python testé, puis voir son résultat dans la même interface. Avant le prompt, montrer « Couverture : Non calculée » sur la copie préparée issue de 06. Après les tests, revenir à la qualité par série : le niveau horaire affiche 100 % pour les données complètes, puis 95,83 % quand une mesure est retirée en mémoire. Marquer une pause : « Vous voyez maintenant ce que cette règle permet de détecter. » La couverture globale de 99,4 % reste un indicateur différent.
 
-Le passage du même cœur Python de la commande locale au conteneur, pendant la démo 2, renforce la pertinence pour ce public. Les images, l’interface, l’API et le suivi Aspire sont préparés; seule la petite évolution Python est demandée à Copilot en direct. Ce moment dépend du résultat réel de la génération; à 2:10, la solution de secours est annoncée clairement. Canvas et HydraFusion sont des capsules explicatives, pas des démonstrations intégrées. La répétition du 19 octobre doit confirmer que l’avant/après est lisible et tient dans les quatre minutes.
+Le passage du même cœur Python de la commande locale au conteneur, pendant la démo 2, renforce la pertinence pour ce public. Les images, l’interface, l’API et le suivi Aspire sont préparés; seule la petite évolution Python est demandée à Copilot en direct. Ce moment dépend du résultat réel de la génération; à 2:10, la solution de secours est annoncée clairement. HydraFusion occupe une minute explicative; Canvas reste en annexe pour les questions. Aucun des deux ne demande une activation en séance. La répétition du 19 octobre doit confirmer que l’avant/après est lisible et tient dans les quatre minutes.
 
 ## Préparer lundi, sur le portable HQ
 
@@ -72,7 +76,7 @@ Depuis la racine de la version finale (`main`; les tags restent historiques), ex
 - Vérifier connexion Copilot, modèle autorisé, version VS Code et moteur Copilot. Confirmer Auto Balance et GPT-6.1 Sol; choisir un remplacement autorisé avant la séance si nécessaire.
 - Les paramètres expérimentaux ne sont pas requis pour réussir la formation. HydraFusion reste une capsule facultative; pas d’exécution si le pool/politiques HQ ne le permettent pas.
 - Instantané confirmé : 168 observations du 17 octobre 2026, extraites le 18 octobre à 19:44:01 UTC. Vérifier empreintes et manifeste, sans remplacer les fixtures pour obtenir un résultat plus spectaculaire.
-- Suivre le [conducteur de répétition](conducteur-demos.html) : le dépôt principal reste sur `main` pour les démos 1 et 2, les slides et le secours. Une copie Git locale reçoit une nouvelle branche issue de `06-specification` pour la démo 3. Préparer les dépendances et les deux démarrages avant la séance; basculer pendant la slide SDD. Aucun téléchargement ou changement de branche du dépôt principal n’est nécessaire en direct.
+- Suivre le [conducteur de répétition](conducteur-demos.html) : le dépôt principal reste sur `main` pour les démos 1 et 2, les slides et le secours. Une copie Git locale reçoit `codex/repetition-01` depuis la branche préparée `codex/preparation-demo-06` (9e1ecde), descendante de `06-specification` pour la démo 3. Préparer les dépendances et les deux démarrages avant la séance; basculer pendant la slide SDD. Aucun téléchargement ou changement de branche du dépôt principal n’est nécessaire en direct.
 - Lancer `./scripts/start-demo.ps1` et tester le parcours. Ports fixes : Vue 53170 et slides 53173. Aspire attribue les ports API/Python et fournit leurs adresses aux composants; les retrouver dans son dashboard. La copie d’exercice part de la branche préparée issue de 06, indiquée dans le conducteur; elle contient aussi les nouvelles analyses ETL, mais garde la couverture à implémenter.
 - Ouvrir le support : `./scripts/start-presentation.ps1` (ou `cd presentation`, `npm ci`, `npm run dev`); http://localhost:53173. Pour le build autonome : `npm run build` puis `npm run preview`. L’installation réseau se fait avant la séance.
 - Ouvrir aussi `presentation/exports/formation-hydrodatalab.pdf`. Il contient 28 pages; les interactions sont figées mais leur explication reste lisible.
@@ -90,36 +94,38 @@ Depuis la racine de la version finale (`main`; les tags restent historiques), ex
 
 ## Démo 1 — 4 minutes
 
-1. **0:00–0:45** : ouvrir **Chat: Open Agents Window** et montrer le dossier et la branche déjà expliqués. Session = conversation pour une tâche; `/plan` demande une démarche avant l'implémentation. Le menu de cette fenêtre ne contient pas actuellement l'agent Plan : utiliser `/plan` dans la session Copilot. Copilot est l'environnement choisi et Auto sélectionne un modèle; ses niveaux seront expliqués ensuite. Présenter les confirmations d'actions.
+1. **0:00–0:45** : ouvrir **Chat: Open Agents Window** dans le dépôt principal, branche `main`. Session = conversation pour une tâche; repérer `/plan` pour une future implémentation, sans lancer une deuxième demande pendant cette mission en lecture seule. Le menu de cette fenêtre ne contient pas actuellement l'agent Plan : utiliser `/plan` dans la session Copilot. Copilot est l'environnement choisi et Auto sélectionne un modèle; ses niveaux seront expliqués ensuite. Présenter les confirmations d'actions.
 2. **0:45–1:30** : ouvrir `Ctrl+,`, ajuster la lisibilité et expliquer la portée : Utilisateur pour ses projets, Espace de travail pour le projet ouvert. Repérer **Changes**; ce panneau peut être vide pendant la mission en lecture seule. Le vrai diff sera montré à la démo 3.
 3. **1:30–2:20** : ouvrir **Chat: Open Customizations**. Instruction = consigne écrite pour l'agent. Retrouver la règle Python qui distingue zéro d'une absence.
-4. **2:20–4:00** : lancer le prompt de découverte de `prompts.md`. Traduire **References** par « sources consultées », ouvrir un fichier cité et vérifier une affirmation avec le public.
+4. **2:20–4:00** : lancer le prompt de découverte du conducteur des démos. Traduire **References** par « sources consultées », ouvrir un fichier cité et vérifier une affirmation avec le public.
 
 Résultat attendu : le public sait où l'agent travaille, quelles actions il peut faire et comment vérifier une affirmation. Si l'authentification est indisponible, montrer les fichiers et les règles locaux en annonçant que la réponse ne sera pas générée en direct. Ne pas créer de worktree pendant cette démonstration.
 
 ## Démo 2 — 5 minutes
 
-- 0:00–1:00 : lancer la CLI Python; montrer résumé, indicateurs et `hourly.csv` (24 lignes).
-- 1:00–2:45 : Vue → **Parcours ETL** → **Extraire**, **Transformer**, **Charger / exporter**. Montrer champs bruts, schéma normalisé, synthèse horaire et trois cartes métier. Formules et limites restent affichées.
-- 2:45–3:15 : **Voir les détails** d’un succès : paramètres, étapes Python, durées, exports. Retrouver rapidement les ressources et le journal dans Aspire.
-- 3:15–4:30 : échec contrôlé → détails de l’extraction échouée → relance → lien vers la tentative précédente. Le dernier rapport valide est préservé.
-- 4:30–5:00 : exécuter la commande Docker déjà préparée. Résumé et indicateurs identiques au natif. Privilégier la partie ETL si le temps se resserre; le [conducteur détaillé](conducteur-demos.html) donne les phrases et valeurs attendues.
+Objectif Copilot : vérifier par l’exécution, le code et les traces le résultat d’un développement assisté par agent. L’ETL est notre cas concret. Dépôt principal sur main; une collecte complète a déjà réussi avant la séance.
+
+- **0:00–0:45** : commande Python préparée; résumé et hourly.csv. Données locales reproductibles, 168 observations et quatre séries.
+- **0:45–2:15** : Vue → Parcours ETL → Extraire, Transformer, Charger / exporter. Lire les champs bruts, le schéma normalisé et les 24 moyennes horaires. Développer un seul indicateur : pointe horaire moyenne 22 009,75 MW à 18 h Toronto. Les autres restent disponibles aux questions.
+- **2:15–3:15** : dans VS Code, ouvrir analysis.py et test_analysis.py. Relier la règle des quatre quarts d’heure valides à un test. Retrouver la preuve citée par Copilot à la démo 1, sans parcourir toute l’implémentation.
+- **3:15–4:15** : Voir les détails d’un succès : paramètres, étapes Python, durées, exports propres à cette exécution. Un seul journal Aspire si le créneau le permet. Quartz déclenche, SQLite conserve l’historique; les étapes Python arrivent en fin de traitement.
+- **4:15–5:00** : commande Docker préremplie, image déjà chargée; comparer le résumé au natif. En cas d’indisponibilité du moteur, annoncer le résultat préparé et revenir aux slides à 5:00.
+
+**Variante choisie avant la séance :** remplacer 3:15–5:00 par échec contrôlé, détails de l’extraction échouée et relance liée à sa première tentative. Dans cette variante, omettre Aspire et Docker. Ne pas cumuler les deux parcours. Le [conducteur détaillé](conducteur-demos.html) conserve les commandes et les valeurs pour la répétition et les questions.
 
 ```powershell
-docker run --rm --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
+docker run --rm --pull never --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
 ```
 
-Si le moteur autorisé utilise un contexte explicite, ajouter `--context <nom-validé>` juste après `docker`, par exemple `docker --context podman-machine-default run ...` sur le poste de construction. Ne pas changer le contexte global pour la démonstration. Le fichier dans `/tmp/result` disparaît avec ce conteneur : la démonstration montre le résumé console; les exports persistants ont déjà été montrés côté natif. Préparer et valider la pile Compose complète avant la séance; ne pas basculer toute la pile pendant ces cinq minutes.
-
-Ne pas dépendre d’un appel live : le snapshot local assure la démonstration. Ne pas activer une planification permanente pour créer du mouvement. Montrer le contrôle, puis revenir à désactivé.
+Employer le moteur et le contexte validés avant la séance (option --context juste après docker si nécessaire). Les fichiers du conteneur disparaissent avec --rm; les exports persistants sont montrés côté natif. L’égalité complète des résultats se valide avant la séance, pas à partir du seul résumé console. Aucune construction, installation ou bascule de toute la pile Compose en direct. La planification reste désactivée.
 
 ## Démo 3 — 4 minutes, seuil de bascule à 2:10
 
-- **0:00–0:40** : montrer « Couverture : Non calculée » sur le parcours `06-specification`, puis ouvrir `etl/hydrodatalab/coverage.py`, `specs/test_coverage_acceptance.py` et le contrat. Les tests de couverture rouges sont volontaires à cette étape.
+- **0:00–0:40** : montrer « Couverture : Non calculée » dans la copie d’exercice `codex/repetition-01`, préparée depuis `codex/preparation-demo-06`, puis ouvrir `specs/coverage.md`, `etl/hydrodatalab/coverage.py` et `specs/test_coverage_acceptance.py`. Les tests de couverture rouges sont volontaires à cette étape.
 - **0:40–2:10** : coller le prompt live. L’agent modifie Python, sans recréer l’API ni Vue. Attendre une sortie de tests, pas seulement « terminé ».
 - **À 2:10** : si ce n’est pas prêt, dire « Je passe à la solution préparée pour garder le temps de vérifier. » Arrêter la génération, conserver les modifications dans la copie d’exercice, arrêter ses services et redémarrer le dépôt principal `main`, qui contient la solution préparée avec son runtime séparé.
 - **2:10–3:00** : montrer le diff et les tests, dont jours de 23/25 heures.
-- **3:00–4:00** : revenir au même écran, lancer scénario complet puis manquant. Déplier **Qualité par série** : le niveau horaire est à 24/24 puis 23/24 = 95,83 %. La couverture globale des quatre séries devient 167/168, soit 99,4 % dans la synthèse : ce n’est pas le même dénominateur. Le retrait est en mémoire; les données originales sont intactes.
+- **3:00–4:00** : revenir au même écran, lancer scénario complet puis manquant. Déplier **Qualité par série** : le niveau horaire est à 24/24 puis 23/24 = 95,83 %. La couverture globale des quatre séries devient 167/168, soit 99,4 % dans la synthèse : ce n’est pas le même dénominateur. Le retrait est en mémoire; les données originales sont intactes. Revenir à la slide 20 (sélection de skills).
 
 Commande de vérification à partir de la racine : `uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basetemp etl/.test-output/live`. La fonction reçoit des timestamps déjà filtrés sur valeur valide; la validité de zéro se vérifie aussi au niveau du pipeline. Une valeur absente n’est pas transformée en zéro.
 

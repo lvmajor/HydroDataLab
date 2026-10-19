@@ -66,6 +66,7 @@ if (-not $guide.Contains('Archive ETL consolidée')) {
 }
 $guide = $guide -replace 'HydroDataLab-\d{8}-\d{6}\.bundle', $bundle.Name
 $guide = $guide.Replace('couches de contexte (11)', 'couches de contexte').Replace('boutons des coûts (14)', 'boutons des coûts')
+$guide = $guide.Replace('couches de contexte (13)', 'couches de contexte (10)').Replace('boutons des coûts (16)', 'boutons des coûts (15)')
 $guide | Set-Content -LiteralPath "$kit/DEMARRER.md" -Encoding utf8NoBOM
 $head = (& git rev-parse HEAD).Trim()
 @("Mise à jour : $([DateTime]::UtcNow.ToString('o'))", "Commit : $head", "Bundle actif : $($bundle.Name)", 'Archive Docker consolidée et vérifiée; aucun nouveau kit complet créé.') |

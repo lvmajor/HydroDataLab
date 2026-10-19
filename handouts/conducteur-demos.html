@@ -11,11 +11,12 @@
 <div class="shell"><aside><nav aria-label="Étapes de répétition"><a href="#reperes-a-garder-sous-les-yeux" data-section="reperes-a-garder-sous-les-yeux"><span>00</span>Repères</a>
 <a href="#avant-la-seance-preparer-une-fois" data-section="avant-la-seance-preparer-une-fois"><span>01</span>Avant la séance</a>
 <a href="#demo-1-cadrer-une-mission-4-min" data-section="demo-1-cadrer-une-mission-4-min"><span>02</span>Démo 1 · 4 min</a>
-<a href="#demo-2-du-python-au-resultat-5-min" data-section="demo-2-du-python-au-resultat-5-min"><span>03</span>Démo 2 · 5 min</a>
+<a href="#demo-2-verifier-un-resultat-5-min" data-section="demo-2-verifier-un-resultat-5-min"><span>03</span>Démo 2 · 5 min</a>
 <a href="#transition-preparer-la-demo-3" data-section="transition-preparer-la-demo-3"><span>04</span>Transition vers Python</a>
 <a href="#demo-3-une-regle-devient-un-controle-4-min" data-section="demo-3-une-regle-devient-un-controle-4-min"><span>05</span>Démo 3 · 4 min</a>
 <a href="#secours-revenir-a-la-solution-preparee" data-section="secours-revenir-a-la-solution-preparee"><span>06</span>Secours à 2:10</a>
 <a href="#fin-et-nouvelle-repetition" data-section="fin-et-nouvelle-repetition"><span>07</span>Fin et reprise</a></nav><p class="private">Sur le portable : ce guide.<br>Sur le projecteur : les preuves.<br><strong>Secours démo 3 : à 2:10.</strong></p><button class="print" type="button" id="print">Imprimer le conducteur</button><p class="copy-status" aria-live="polite" id="copy-status"></p></aside><main><section id="reperes-a-garder-sous-les-yeux" tabindex="-1"><h2>Repères à garder sous les yeux</h2>
+<p><strong>Sujet de la formation : GitHub Copilot dans VS Code et ses bonnes pratiques.</strong> HydroDataLab rend visibles les résultats à vérifier. Démo 1 : 09:00–13:00; démo 2 : 29:30–34:30; transition SDD : 34:30–36:30; démo 3 : 36:30–40:30. Le parcours se termine à 45:00, puis questions et marge. Contexte interactif : slide 10; coûts : slide 15.</p>
 <table>
 <thead>
 <tr>
@@ -33,20 +34,20 @@
 <td style="text-align:right">4 min</td>
 </tr>
 <tr>
-<td>Démo 2 · slide 18</td>
+<td>Démo 2 · slide 17</td>
 <td>Dépôt principal, <code>main</code></td>
-<td>Python → avant/après → synthèse horaire → détails/relance → conteneur</td>
+<td>Exécution → avant/après → code/test → détails → conteneur</td>
 <td style="text-align:right">5 min</td>
 </tr>
 <tr>
-<td>Transition · slide 19</td>
+<td>Transition · slide 18</td>
 <td>Arrêter <code>main</code>, démarrer la copie d’exercice</td>
 <td>Garder la slide SDD projetée pendant la manipulation</td>
 <td style="text-align:right">Dans les 2 min de SDD</td>
 </tr>
 <tr>
-<td>Démo 3 · slide 20</td>
-<td>Copie d’exercice, branche <code>codex/repetition-01</code> issue de <code>06-specification</code></td>
+<td>Démo 3 · slide 19</td>
+<td>Copie d’exercice, branche <code>codex/repetition-01</code> issue de <code>codex/preparation-demo-06</code></td>
 <td>Règle BI → code Python → tests → 100 %, puis 95,83 %</td>
 <td style="text-align:right">4 min</td>
 </tr>
@@ -138,12 +139,12 @@ docker run --rm --pull never --network none hydrodatalab-etl:formation python -m
 <li>Projecteur : <strong><a href="http://127.0.0.1:53173/1">http://127.0.0.1:53173/1</a></strong>, plein écran <code>F11</code>.</li>
 <li>Démonstration : <strong><a href="http://localhost:53170">http://localhost:53170</a></strong>, dashboard Aspire et deux fenêtres VS Code déjà ouvertes.</li>
 </ul>
-<p>Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 19. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.</p>
+<p>Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 18. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.</p>
 <div class="step-navigation"><a href="#reperes-a-garder-sous-les-yeux">← Repères</a><a href="#demo-1-cadrer-une-mission-4-min">Démo 1 · 4 min →</a></div></section>
 <section id="demo-1-cadrer-une-mission-4-min" tabindex="-1"><h2>Démo 1 · cadrer une mission · 4 min</h2>
-<p><strong>Slide 7 → VS Code du dépôt principal (<code>main</code>). Question au public : « Comment vérifier que l’agent comprend où il travaille et quelles règles suivre? »</strong></p>
+<p><strong>Slide 7 → VS Code du dépôt principal (<code>main</code>). Question au public : « Quelles sources permettent de vérifier sa réponse? »</strong></p>
 <h3>0:00–0:45 · Où travaille l’agent?</h3>
-<p><strong>Faire :</strong> ouvrir la fenêtre Agents via la palette de commandes de VS Code; utiliser <strong>Chat: Open Agents Window</strong> si ce libellé est disponible dans la version installée. Vérifier le dossier HydroDataLab, la branche <code>main</code>, le moteur Copilot et le modèle autorisé préparé, généralement Auto Balance. Créer une session pour cette tâche et garder les confirmations d’actions.</p>
+<p><strong>Faire :</strong> ouvrir la fenêtre Agents via la palette de commandes de VS Code; utiliser <strong>Chat: Open Agents Window</strong> si ce libellé est disponible dans la version installée. Vérifier le dossier HydroDataLab, la branche <code>main</code>, le moteur Copilot et le modèle autorisé préparé, généralement Auto Balance. Créer une session pour cette tâche et garder les confirmations d’actions. Repérer <code>/plan</code> pour une future modification, sans lancer une deuxième demande ici.</p>
 <p><strong>Dire :</strong> « Une session porte une tâche. Le dossier indique les fichiers accessibles; la branche indique la version du travail. » Ne pas créer de worktree ici : la notion a déjà été expliquée en slide 6.</p>
 <h3>0:45–1:30 · Des réglages qui ont un but</h3>
 <p><strong>Faire :</strong> montrer la portée Utilisateur/Espace de travail dans les paramètres (<code>Ctrl+,</code>), le zoom préparé pour la projection et le panneau <strong>Changes</strong>.</p>
@@ -162,10 +163,10 @@ Réponse attendue : un schéma en quatre étapes et les commandes de vérificati
 </code></pre>
 <p><strong>Montrer :</strong> les références/fichiers réellement consultés, puis une fonction ou un test cité. <strong>Dire :</strong> « Je peux vérifier cette affirmation dans le code. » Revenir aux slides. Si la réponse tarde ou que Copilot est indisponible, ouvrir <code>etl/hydrodatalab/pipeline.py</code> et un test local, en disant que la génération n’a pas abouti en direct.</p>
 <p><strong>Réussite :</strong> le public distingue le lieu de travail, les instructions et une preuve. Aucun fichier n’a été modifié pour cette mission.</p>
-<div class="step-navigation"><a href="#avant-la-seance-preparer-une-fois">← Avant la séance</a><a href="#demo-2-du-python-au-resultat-5-min">Démo 2 · 5 min →</a></div></section>
-<section id="demo-2-du-python-au-resultat-5-min" tabindex="-1"><h2>Démo 2 · du Python au résultat · 5 min</h2>
-<p><strong>Slide 18 → terminal du dépôt principal (<code>main</code>). Question : « Puis-je rejouer ce traitement et comprendre un échec? »</strong></p>
-<h3>0:00–1:00 · Exécuter le cœur Python</h3>
+<div class="step-navigation"><a href="#avant-la-seance-preparer-une-fois">← Avant la séance</a><a href="#demo-2-verifier-un-resultat-5-min">Démo 2 · 5 min →</a></div></section>
+<section id="demo-2-verifier-un-resultat-5-min" tabindex="-1"><h2>Démo 2 · vérifier un résultat · 5 min</h2>
+<p><strong>Slide 17 → terminal du dépôt principal (<code>main</code>). Question : « Quelles preuves faut-il avant d’accepter le résultat de l’agent? »</strong></p>
+<h3>0:00–0:45 · Rejouer un résultat</h3>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Depot
 $Execution = uv run --project etl python -m hydrodatalab run --source fixture --date 2026-10-17 --output outputs/cli | ConvertFrom-Json
 if ($LASTEXITCODE -ne 0) { throw 'Le traitement Python a échoué.' }
@@ -177,37 +178,40 @@ Get-Content -LiteralPath (Join-Path $Export 'hourly.csv') -TotalCount 5
 </code></pre>
 <p><strong>Montrer :</strong> 168 observations, 4 séries, <code>observations.csv</code>, <code>observations.parquet</code>, <code>hourly.csv</code>, <code>report.json</code>. Le CSV horaire contient 24 lignes calculées à partir des 96 demandes de 15 minutes. Le dossier de résultats inclut un identifiant unique de traitement; il n’est pas simplement <code>outputs/cli/report.json</code>.</p>
 <p><strong>Dire :</strong> « Ce traitement Python est autonome. CSV et Parquet servent à l’analyse; JSON explique le résultat et sa provenance. »</p>
-<h3>1:00–2:45 · Rendre la transformation visible dans Vue</h3>
-<p><strong>Faire :</strong> ouvrir <a href="http://localhost:53170">http://localhost:53170</a>, choisir <strong>Jeu de démonstration</strong>, décocher <strong>Retirer une mesure de niveau d’eau</strong>, puis <strong>Lancer la collecte</strong>. Attendre <strong>Terminé</strong> dans <strong>Dernières exécutions</strong>.</p>
+<h3>0:45–2:15 · Rendre la transformation visible dans Vue</h3>
+<p><strong>Faire :</strong> ouvrir <a href="http://localhost:53170">http://localhost:53170</a> et utiliser la collecte complète réussie pendant la préparation (Jeu de démonstration, sans mesure retirée). Repérer <strong>Terminé</strong> dans <strong>Dernières exécutions</strong>. Si le rapport ne correspond pas, lancer une nouvelle collecte complète; ne pas prétendre que les clics sur les onglets exécutent les étapes.</p>
 <p><strong>Faire et montrer :</strong> dans <strong>Parcours ETL</strong>, cliquer successivement :</p>
 <ol>
 <li><strong>1 · Extraire</strong> : <code>date</code>, <code>valeurs_demandetotal</code> — vrais champs du fournisseur, 168 lignes sur les quatre séries.</li>
 <li><strong>2 · Transformer</strong> : <code>timestamp_utc</code>, <code>value</code>, <code>unit</code> — dates UTC, nombres typés, unités vérifiées, doublons retirés. Sur le jeu propre, le nombre de lignes reste le même : nettoyer ne signifie pas supprimer arbitrairement des données.</li>
-<li><strong>3 · Charger / exporter</strong> : ouvrir <strong>Afficher la synthèse horaire</strong>. Quatre créneaux de 15 minutes deviennent une moyenne; une heure incomplète reste absente. Montrer la courbe horaire et télécharger son CSV.</li>
+<li><strong>3 · Charger / exporter</strong> : ouvrir <strong>Afficher la synthèse horaire</strong>. Quatre créneaux de 15 minutes deviennent une moyenne; une heure incomplète reste absente. Montrer la courbe horaire et le lien vers son CSV; éviter une manipulation de téléchargement pendant ce créneau.</li>
 </ol>
-<p><strong>Dire :</strong> « C’est ici que Python apporte la valeur BI : des sources hétérogènes deviennent une table et des indicateurs réutilisables. Vue affiche les résultats; elle ne refait pas les calculs. »</p>
-<p><strong>Montrer les trois cartes, en faisant défiler à zoom normal :</strong></p>
+<p><strong>Dire :</strong> « Voici un résultat concret à vérifier avant d’accepter le travail de l’agent : quatre mesures deviennent une moyenne horaire. Le calcul vient de Python; Vue affiche son résultat. »</p>
+<p><strong>Développer seulement la pointe horaire moyenne.</strong> Les autres valeurs restent des repères pour les questions, pas trois explications supplémentaires dans le créneau :</p>
 <ul>
 <li>Pointe horaire moyenne : <strong>22 009,75 MW</strong>, 17 octobre à <strong>18 h</strong> Toronto. Maximum des heures complètes, différent du maximum ponctuel de la courbe de 15 minutes.</li>
 <li>Énergie demandée estimée : <strong>489 442 MWh</strong>, somme de la demande × 0,25 h. Hypothèse : puissance constante pendant chaque créneau; estimation descriptive, pas facturation ni prévision.</li>
 <li>Variation du niveau observé : <strong>+3 cm</strong> entre 00 h et 23 h, à Gouin Nord. Ce n’est pas un volume d’eau ou une réserve d’énergie.</li>
 </ul>
-<p>Les calculs lisibles sont dans <strong><code>etl/hydrodatalab/analysis.py</code></strong>; les petits exemples vérifiables sont dans <strong><code>etl/tests/test_analysis.py</code></strong>. Les onglets sont une exploration du résultat enregistré, pas des étapes exécutées au clic. Les températures minimale et maximale restent deux séries distinctes.</p>
-<h3>2:45–3:15 · Relier Python à son exécution</h3>
-<p><strong>Faire :</strong> dans <strong>Dernières exécutions</strong>, cliquer <strong>Voir les détails</strong> sur le traitement terminé. Montrer les paramètres, les quatre étapes et leurs durées réelles, puis l’export de cette exécution. Copier mentalement le même identifiant dans les journaux Aspire; montrer rapidement les ressources <strong>python</strong>, <strong>api</strong>, <strong>web</strong>.</p>
-<p><strong>Dire :</strong> « Quartz planifie; Python traite; SQLite conserve le bilan. Aspire montre les processus et les journaux. Les étapes Python arrivent à la fin du traitement, pas en animation temps réel. » Les exports d’une ancienne exécution restent liés à son propre rapport.</p>
-<h3>3:15–4:30 · Provoquer une erreur et reprendre</h3>
-<p><strong>Faire :</strong> cliquer <strong>Démontrer un échec contrôlé</strong>, attendre <strong>Échec</strong>, puis <strong>Voir les détails</strong>. Montrer l’étape <strong>Extraire les sources</strong> en échec et le message. Les étapes suivantes n’ont pas été exécutées. Cliquer <strong>Relancer ce traitement</strong> dans l’historique, attendre <strong>Terminé</strong>, ouvrir ses détails.</p>
-<p><strong>Montrer :</strong> la nouvelle tentative pointe vers l’identifiant de l’échec; l’ancienne erreur et le dernier rapport réussi sont préservés. Les durées peuvent être très courtes : aucune attente artificielle n’a été ajoutée. La planification reste désactivée.</p>
-<p><strong>Dire :</strong> « C’est une panne simulée et annoncée. Nous démontrons une reprise vérifiable, pas la disponibilité du fournisseur. »</p>
-<h3>4:30–5:00 · Le même traitement dans une image préparée</h3>
+<h3>2:15–3:15 · Relier le résultat au code et au test</h3>
+<p><strong>Faire :</strong> dans VS Code, ouvrir <strong>etl/hydrodatalab/analysis.py</strong>, puis <strong>etl/tests/test_analysis.py</strong>, déjà préparés dans des onglets. Montrer la règle de synthèse horaire et un test avec quatre créneaux valides. Ne pas lire tout le module.</p>
+<p><strong>Dire :</strong> « À la première démo, Copilot a cité des fichiers. Nous pouvons maintenant confronter son explication au calcul et à un test. » Les onglets Vue explorent un rapport enregistré; ils ne recalculent rien au clic. Les minima et maxima de température restent deux séries distinctes.</p>
+<h3>3:15–4:15 · Lire les détails d’une exécution</h3>
+<p><strong>Faire :</strong> dans <strong>Dernières exécutions</strong>, ouvrir <strong>Voir les détails</strong> sur le succès préparé. Montrer les paramètres, les quatre étapes Python, leurs durées et un export lié à cet identifiant. Si le créneau le permet, montrer un seul journal correspondant dans Aspire; aucun tour de toutes les ressources.</p>
+<p><strong>Dire :</strong> « Quartz déclenche la tâche; Python traite; SQLite conserve le bilan. Aspire regroupe les processus et les journaux. » Les étapes Python sont un bilan reçu à la fin, pas une progression animée. Les anciens exports restent rattachés à leur propre exécution. La planification reste désactivée.</p>
+<h3>4:15–5:00 · Rejouer dans une image préparée</h3>
 <pre><code class="language-powershell">docker run --rm --pull never --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
 </code></pre>
-<p>Utiliser la variante Docker/Podman déjà validée avant la séance. <strong>Montrer :</strong> les mêmes nombres dans le résumé et les trois indicateurs Python. <strong>Dire :</strong> « Le code et ses dépendances sont emballés dans cette image. L’ETL tourne ici sans réseau. » Les fichiers de <code>/tmp/result</code> disparaissent avec ce conteneur; les exports persistants ont déjà été montrés côté natif. L’égalité complète CSV/Parquet/JSON se valide avant la séance avec la procédure de <a href="../docs/DOCKER.md">DOCKER</a>, pas avec le seul résumé console.</p>
-<p><strong>Réussite :</strong> expliquer ce qui change entre les données brutes et les 24 moyennes horaires, puis montrer une erreur comprise et une relance reliée. Si le temps manque, raccourcir Aspire; conserver l’avant/après ETL et les indicateurs, qui sont le cœur de la démo pour ce public. Si Docker échoue, dire « Le moteur conteneur n’est pas disponible; le parcours local vient d’être exécuté » et passer à SDD.</p>
+<p>Utiliser la variante Docker/Podman déjà validée. <strong>Montrer :</strong> le résumé et l’indicateur horaire correspondant au natif. <strong>Dire :</strong> « Ce résultat est rejouable avec le code et ses dépendances dans une image. » Les fichiers de /tmp/result disparaissent avec ce conteneur. La comparaison complète CSV/Parquet/JSON est une vérification préalable décrite dans <a href="../docs/DOCKER.md">DOCKER</a>; le résumé seul ne la prouve pas.</p>
+<p><strong>Arrêt à 5:00.</strong> Si Docker est indisponible, annoncer que l’on utilise le résultat préparé ou la capture, puis revenir à SDD. Ne pas diagnostiquer le moteur en direct. Si un passage précédent dépasse son créneau, omettre le journal Aspire; conserver la preuve dans le code et le test.</p>
+<h3>Variante 3:15–5:00 · Échec et relance à la place d’Aspire et Docker</h3>
+<p>Choisir cette variante <strong>avant la séance</strong>, ou l’utiliser pendant les questions. Elle remplace les deux derniers créneaux; elle ne s’y ajoute pas.</p>
+<p><strong>Faire :</strong> cliquer <strong>Démontrer un échec contrôlé</strong>, attendre <strong>Échec</strong>, puis <strong>Voir les détails</strong>. Montrer <strong>Extraire les sources</strong> en échec et le message; les étapes suivantes n’ont pas tourné. Cliquer <strong>Relancer ce traitement</strong>, attendre <strong>Terminé</strong>, puis ouvrir les détails. La relance pointe vers la première tentative; l’ancienne erreur et le dernier rapport valide sont préservés.</p>
+<p><strong>Dire :</strong> « Nous vérifions aussi le comportement en échec. La panne est simulée et annoncée. » Si la relance tarde, montrer la capture <a href="../docs/screenshots/etl-execution.png">exécution</a> en l’annonçant. Ne pas activer la planification pour créer du mouvement.</p>
+<p><strong>Réussite :</strong> le public sait relier un résultat aux données, au code, au test et à une exécution. La démo illustre comment évaluer le travail de Copilot; les détails BI et l’infrastructure restent disponibles pour les questions.</p>
 <div class="step-navigation"><a href="#demo-1-cadrer-une-mission-4-min">← Démo 1 · 4 min</a><a href="#transition-preparer-la-demo-3">Transition vers Python →</a></div></section>
 <section id="transition-preparer-la-demo-3" tabindex="-1"><h2>Transition · préparer la démo 3</h2>
-<p><strong>Garder la slide 19 (SDD) sur le projecteur.</strong> Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.</p>
+<p><strong>Garder la slide 18 (SDD) sur le projecteur.</strong> Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Depot
 ./scripts/stop-demo.ps1
 Set-Location -LiteralPath $Live
@@ -215,10 +219,10 @@ git status --short --branch
 ./scripts/start-demo.ps1 -NoBuild
 </code></pre>
 <p><strong>Attendu :</strong> la branche de cette répétition, avec <code>coverage.py</code> encore à implémenter. Recharger Vue, lancer une collecte complète et vérifier <strong>Non calculée</strong>. Si l’indicateur est déjà calculé, ne pas poursuivre comme si l’exercice était neuf : vérifier le chemin et préparer une nouvelle branche selon la dernière section.</p>
-<p><strong>Dire :</strong> « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de <code>$Live</code>, puis à la slide 20. La présentation reste servie depuis <code>$Depot</code>; aucun ancien support du tag 06 n’est lancé.</p>
-<div class="step-navigation"><a href="#demo-2-du-python-au-resultat-5-min">← Démo 2 · 5 min</a><a href="#demo-3-une-regle-devient-un-controle-4-min">Démo 3 · 4 min →</a></div></section>
+<p><strong>Dire :</strong> « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de <code>$Live</code>, puis à la slide 19. La présentation reste servie depuis <code>$Depot</code>; aucun ancien support du tag 06 n’est lancé.</p>
+<div class="step-navigation"><a href="#demo-2-verifier-un-resultat-5-min">← Démo 2 · 5 min</a><a href="#demo-3-une-regle-devient-un-controle-4-min">Démo 3 · 4 min →</a></div></section>
 <section id="demo-3-une-regle-devient-un-controle-4-min" tabindex="-1"><h2>Démo 3 · une règle devient un contrôle · 4 min</h2>
-<p><strong>Slide 20 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »</strong></p>
+<p><strong>Slide 19 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »</strong></p>
 <h3>0:00–0:40 · Montrer le besoin et l’état initial</h3>
 <p><strong>Montrer :</strong> <strong>Couverture : Non calculée</strong>, puis ces trois fichiers dans la copie d’exercice :</p>
 <ul>
@@ -257,7 +261,7 @@ uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basete
 <p><strong>Faire :</strong> après l’enregistrement Python et son rechargement, retourner à Vue. Lancer une <strong>nouvelle</strong> collecte complète, déplier <strong>Qualité par série</strong>. Montrer le niveau d’eau à <strong>24 / 24 · 100 %</strong>. Cocher <strong>Retirer une mesure de niveau d’eau</strong>, relancer, montrer <strong>23 / 24 · 95,83 %</strong>.</p>
 <p><strong>Dire, puis marquer une pause :</strong> « La règle que nous venons de définir détecte maintenant la mesure manquante. » La synthèse globale affiche <strong>167 / 168, soit 99,4 %</strong> : ce n’est pas le même dénominateur. Le retrait est en mémoire; les données brutes restent intactes.</p>
 <p>Si l’ancien rapport reste visible, attendre la fin de la nouvelle collecte et rafraîchir. Modifier le code ne recalcule pas rétroactivement un rapport déjà publié. Si le rechargement Python n’a pas eu lieu, utiliser le secours au lieu de diagnostiquer devant le public.</p>
-<p><strong>Réussite :</strong> une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 21.</p>
+<p><strong>Réussite :</strong> une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 20, sélection de skills.</p>
 <div class="step-navigation"><a href="#transition-preparer-la-demo-3">← Transition vers Python</a><a href="#secours-revenir-a-la-solution-preparee">Secours à 2:10 →</a></div></section>
 <section id="secours-revenir-a-la-solution-preparee" tabindex="-1"><h2>Secours · revenir à la solution préparée</h2>
 <p><strong>Déclencheur :</strong> à 2:10 de la démo 3, tests encore rouges, génération trop lente ou indisponible. Arrêter d’abord la génération Copilot, puis annoncer le passage au code préparé. Les modifications de l’exercice restent sur disque : aucun checkout ni nettoyage dans ce dossier.</p>

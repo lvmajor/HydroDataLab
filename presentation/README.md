@@ -1,5 +1,7 @@
 # Présentation HydroDataLab
 
+Sujet central : **GitHub Copilot dans VS Code et les bonnes pratiques des agents**. HydroDataLab sert de fil conducteur.
+
 **28 diapositives : 22 principales et 6 annexes.** Prestation du 20 octobre 2026; sources vérifiées les 18 et 19 octobre. Le contenu et les démos occupent 45 minutes : 32 minutes d’explications et 4 + 5 + 4 minutes de démonstrations. Questions : 10 minutes; marge : 5.
 
 ## Lancer localement
@@ -21,7 +23,7 @@ Dans Windows, utiliser `Win + P` → **Étendre**. Ouvrir deux fenêtres du **m�
 - Portable : http://127.0.0.1:53173/presenter/1 — notes et commandes.
 - Écran de projection : http://127.0.0.1:53173/1 — audience, en plein écran avec `F11`.
 
-Dans l’aperçu **Current → Slides** du présentateur, cliquer une couche de contexte (diapositive 13) ou les boutons `−`/`+` du comparatif des coûts (16). La vue audience reproduit la sélection, le texte et les coûts. La synchronisation fonctionne dans les deux sens, sans Internet, avec le serveur de développement, le build statique ou le kit Python.
+Dans l’aperçu **Current → Slides** du présentateur, cliquer une couche de contexte (diapositive 10) ou les boutons `−`/`+` du comparatif des coûts (15). La vue audience reproduit la sélection, le texte et les coûts. La synchronisation fonctionne dans les deux sens, sans Internet, avec le serveur de développement, le build statique ou le kit Python.
 
 Les réglages sont conservés après navigation, rechargement ou ouverture tardive de la fenêtre audience. Pour revenir au début : sélectionner la première couche et ramener les essais à 1. Garder **la même adresse et le même port** dans les deux fenêtres : `localhost` et `127.0.0.1` sont deux origines distinctes pour le navigateur. Des profils ou navigateurs différents ne partagent pas ces réglages. Après une mise à jour du site, recharger les deux fenêtres.
 
@@ -31,7 +33,7 @@ La synchronisation utilise le stockage local réactif [VueUse `useStorage`](http
 
 La diapositive **22** utilise [resources/links.json](resources/links.json). Modifier `label`, `url` et `description` dans `internal` pour ajouter les liens HQ. Une URL vide reste un emplacement sans faux lien. Conserver trois entrées courtes pour la projection; compléter la fiche [skills-et-veille.md](../handouts/skills-et-veille.md) pour plus de détails.
 
-Après modification : `npm run build`, `npm run export`, puis recharger les deux fenêtres. La page 11 expose le choix « vanille »; la page 12 propose une sélection par besoin. Matt Pocock y reste « en exploration ».
+Après modification : `npm run build`, `npm run export`, puis recharger les deux fenêtres. La page 12 expose le choix « vanille »; la page 20 propose une sélection par besoin. Matt Pocock y reste « en exploration ».
 
 ## Export PDF
 

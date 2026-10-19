@@ -1,6 +1,14 @@
 # Validation de la présentation
 
-## État courant : approche vanille, skills et ressources
+## État courant : progression Copilot et notes synchronisées
+
+19 octobre 2026. **28 diapositives : 22 principales et 6 annexes.** Copilot dans VS Code est le sujet central; HydroDataLab reste l’exemple. Instructions 8–9, contexte 10, mécanismes 11, vanille 12; skills 20 près des ressources; Canvas uniquement en annexe 25. Le calendrier des notes et du guide comporte les mêmes 22 plages, soit 32 minutes d’explications et 13 de démos. La répétition humaine doit encore confirmer le rythme en salle.
+
+Build et contrôle navigateur réussis : 28 routes, aucun débordement détecté, aucune erreur de page, aucune requête externe. Synchronisation présentateur/audience validée pour les couches (10) et les coûts (15), y compris navigation, rechargement et limites des contrôles. PDF de 28 pages; textes, liens officiels et quatre destinations internes contrôlés. Pages modifiées inspectées à pleine taille et planches parcourues. Deux retours à la ligne corrigés avant l’export final. Avertissement FloatingVue dans l’outillage d’export; aucun effet constaté sur les rendus ou le site compilé.
+
+Conducteur : huit rubriques, 21 boutons Copier et repli de sélection, quatre largeurs, liens locaux et impression contrôlés; 19 blocs PowerShell et deux scripts de kit syntaxiquement valides. Preuves : `../../../docs/validation/presentation-flow.json`, `../../../docs/validation/presentation-guide.json`, `browser-report.json` et `presenter-sync.json`. L’application et le moteur ETL n’ont pas changé dans cette révision.
+
+## Historique : approche vanille, skills et ressources
 
 Support de **28 diapositives : 22 principales et 6 annexes**. Pages ajoutées : 11, 12, 22; la conclusion 21 renvoie à la nouvelle page de ressources. Notes et conducteur conservent 45 minutes de contenu. Renvois vers les annexes et contrôles de synchronisation adaptés.
 

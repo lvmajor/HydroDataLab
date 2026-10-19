@@ -11,23 +11,23 @@ for i,p in enumerate(reader.pages,1):
     for a in p.get('/Annots', []):
         uri=str(a.get_object().get('/A', {}).get('/URI', ''))
         assert not uri.startswith(('http://localhost:', 'http://127.0.0.1:')), (i,uri)
-expected_links={2:'agents/run/security',9:'custom-instructions#instructions-file-format',11:'migrate-customizations',12:'microsoft/playwright-cli',16:'models-and-pricing',17:'early-access/copilot/hydrafusion',19:'spec-kit',22:'changelog/label/copilot',25:'use-canvases-with-the-copilot-harness'}
+expected_links={2:'agents/run/security',9:'custom-instructions#instructions-file-format',12:'migrate-customizations',20:'microsoft/playwright-cli',15:'models-and-pricing',16:'early-access/copilot/hydrafusion',18:'spec-kit',22:'changelog/label/copilot',25:'use-canvases-with-the-copilot-harness'}
 for page,fragment in expected_links.items():
     uris=[str(a.get_object().get('/A',{}).get('/URI','')) for a in reader.pages[page-1].get('/Annots',[])]
     assert any(fragment in uri for uri in uris), (page,fragment)
 assert '66,67' in reader.pages[7].extract_text()
-assert 'Spec-Driven Development' in reader.pages[18].extract_text()
-context_text=reader.pages[12].extract_text()
+assert 'Spec-Driven Development' in reader.pages[17].extract_text()
+context_text=reader.pages[9].extract_text()
 for term in ['Project instructions','File-specific instructions','Reference documents','Task prompt','Tool results','Model context']:
     assert term in context_text, term
-model_text=reader.pages[15].extract_text()
+model_text=reader.pages[14].extract_text()
 for term in ['GPT-6 Luna','Claude Haiku 5.5','Claude Sonnet 5.5','GPT-6.1 Sol','Claude Opus 5.5','Simple','Délimitée','Complexe','Diagnostic difficile','Coûts simulés']:
     assert term in model_text, term
-for page,target in [(8,23),(21,25),(23,8),(25,21)]:
+for page,target in [(8,23),(22,25),(23,8),(25,22)]:
     dests=[a.get_object().get('/Dest') for a in reader.pages[page-1].get('/Annots',[])]
     assert any(d and d[0]==reader.pages[target-1].indirect_reference for d in dests), (page,target)
 assert 'Votre terrain de développement' in reader.pages[1].extract_text()
-assert 'en exploration' in reader.pages[11].extract_text()
+assert 'en exploration' in reader.pages[19].extract_text()
 assert 'Chez Hydro' in reader.pages[21].extract_text()
 for group in range((len(reader.pages)+11)//12):
     canvas=Image.new('RGB',(1600,1280),'#dce8ed')

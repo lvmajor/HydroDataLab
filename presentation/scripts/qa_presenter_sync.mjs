@@ -53,9 +53,9 @@ const openAudience = async slide => {
 }
 
 try {
-  await presenter.goto(`${origin}/presenter/13`, { waitUntil: 'networkidle' })
+  await presenter.goto(`${origin}/presenter/10`, { waitUntil: 'networkidle' })
   await current().getByRole('button', { name: /Reference documents/ }).click()
-  audience = await openAudience(13)
+  audience = await openAudience(10)
   await waitLayer(audience, 2)
   checks.push('Audience ouverte après la sélection : même couche immédiatement')
 
@@ -63,17 +63,17 @@ try {
     await current().locator('.context-layer').nth(layer).click()
     await Promise.all([waitLayer(presenter, layer), waitLayer(audience, layer)])
     assert.equal(await audience.locator('.context-preview').innerText(), await current().locator('.context-preview').innerText())
-    assert.equal(new URL(presenter.url()).pathname, '/presenter/13')
-    assert.equal(new URL(audience.url()).pathname, '/13')
+    assert.equal(new URL(presenter.url()).pathname, '/presenter/10')
+    assert.equal(new URL(audience.url()).pathname, '/10')
   }
   checks.push('Cinq couches : sélection, texte et flèche synchronisés, sans changer de diapositive')
 
   await audience.getByRole('button', { name: /Task prompt/ }).click()
   await waitLayer(presenter, 3)
   await presenter.getByTitle('Go to next slide', { exact: true }).click()
-  await audience.waitForURL(url => url.pathname === '/14')
+  await audience.waitForURL(url => url.pathname === '/11')
   await presenter.getByTitle('Go to previous slide', { exact: true }).click()
-  await audience.waitForURL(url => url.pathname === '/13')
+  await audience.waitForURL(url => url.pathname === '/10')
   await Promise.all([waitLayer(presenter, 3), waitLayer(audience, 3)])
   await presenter.reload({ waitUntil: 'networkidle' })
   await audience.reload({ waitUntil: 'networkidle' })
@@ -82,8 +82,8 @@ try {
   await presenter.screenshot({ path: path.join(output, 'sync-context-presenter.png') })
   await audience.screenshot({ path: path.join(output, 'sync-context-audience.png') })
 
-  await presenter.goto(`${origin}/presenter/16`, { waitUntil: 'networkidle' })
-  await audience.goto(`${origin}/16`, { waitUntil: 'networkidle' })
+  await presenter.goto(`${origin}/presenter/15`, { waitUntil: 'networkidle' })
+  await audience.goto(`${origin}/15`, { waitUntil: 'networkidle' })
   await Promise.all([waitAttempts(presenter, 1), waitAttempts(audience, 1)])
   for (let attempts = 2; attempts <= 8; attempts++) {
     await current().getByRole('button', { name: 'Ajouter une tentative', exact: true }).click()
@@ -97,7 +97,7 @@ try {
   await audience.getByRole('button', { name: 'Réduire les tentatives', exact: true }).click()
   await waitAttempts(presenter, 7)
   await audience.close()
-  audience = await openAudience(16)
+  audience = await openAudience(15)
   await waitAttempts(audience, 7)
   await presenter.reload({ waitUntil: 'networkidle' })
   await Promise.all([waitAttempts(presenter, 7), waitAttempts(audience, 7)])
@@ -110,13 +110,13 @@ try {
   }
   await current().getByRole('button', { name: 'Réduire les tentatives', exact: true }).click()
   await Promise.all([waitAttempts(presenter, 1), waitAttempts(audience, 1)])
-  assert.equal(new URL(presenter.url()).pathname, '/presenter/16')
-  assert.equal(new URL(audience.url()).pathname, '/16')
+  assert.equal(new URL(presenter.url()).pathname, '/presenter/15')
+  assert.equal(new URL(audience.url()).pathname, '/15')
   checks.push('Baisse synchronisée, plancher de 1 essai, aucun changement de page involontaire')
   await presenter.screenshot({ path: path.join(output, 'sync-costs-presenter.png') })
   await audience.screenshot({ path: path.join(output, 'sync-costs-audience.png') })
 
-  await presenter.goto(`${origin}/presenter/13`, { waitUntil: 'networkidle' })
+  await presenter.goto(`${origin}/presenter/10`, { waitUntil: 'networkidle' })
   await waitLayer(presenter, 3)
   checks.push('Les réglages des deux composants restent indépendants après un aller-retour')
   assert.deepEqual(errors, [])

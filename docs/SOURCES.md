@@ -44,7 +44,7 @@ Manifeste lu le 18 octobre 2026 : récupération **2026-10-18T19:44:01Z**, péri
 
 ## Ajouts du 19 octobre : personnalisation, skills et veille
 
-S32 — [Microsoft : migration vers le harnais Copilot](https://code.visualstudio.com/docs/agent-customization/migrate-customizations). Des formats et emplacements peuvent nécessiter une migration. Fonde l’exemple d’entretien de la diapositive 11; la recommandation « vanille » est notre analyse, pas une conclusion chiffrée de Microsoft.
+S32 — [Microsoft : migration vers le harnais Copilot](https://code.visualstudio.com/docs/agent-customization/migrate-customizations). Des formats et emplacements peuvent nécessiter une migration. Fonde l’exemple d’entretien de la diapositive 12; la recommandation « vanille » est notre analyse, pas une conclusion chiffrée de Microsoft.
 
 S33 — [Microsoft : Agent Skills](https://code.visualstudio.com/docs/agent-customization/agent-skills). Chargement progressif, format ouvert, différences de capacités entre harnais et revue des skills partagés.
 

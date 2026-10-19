@@ -1,5 +1,14 @@
 # HydroDataLab — journal de reprise
 
+## Progression Copilot et synchronisation du support — 19 octobre
+
+- Départ : main `9629f7c`, dépôt propre. Demande confirmée : appliquer les recommandations 2 à 5; sujet central = GitHub Copilot dans VS Code et bonnes pratiques, HydroDataLab servant d’exemple. Aucun aperçu ETL supplémentaire au début.
+- Réalisé : ouverture/objectifs/conclusion centrés sur Copilot; instructions 8–9 suivies du contexte 10, mécanismes 11 et approche vanille 12. Choix des skills en 20; Canvas en annexe 25. Les sept concepts restent couverts avec un exemple commun instruction/skill/outil.
+- Notes, conducteur HTML/Markdown, guide et prompt live synchronisés. Démo 2 : résultat exécuté, avant/après, un indicateur, code/test, détails et conteneur; l’échec/relance devient une variante de 3:15–5:00, sans cumuler Aspire et Docker. Démo 3 sur la copie préparée, secours sur main; aucune bascule historique en séance.
+- Minutage vérifié : les 22 plages des notes correspondent au guide, sans trou; 32 min d’explications + 13 min de démos, questions 10 min, marge 5 min. Démo 1 en slide 7, démo 2 en 17, SDD en 18, démo 3 en 19. L’application, les branches d’exercice et les tags sont inchangés.
+- Validé : build, 28 routes sans débordement détecté ni erreur de page, interactions et synchronisation des deux vues (contexte 10/coûts 15). PDF de 28 pages, liens officiels et quatre destinations internes; rendus des pages modifiées et planches inspectés. L’export signale un avertissement FloatingVue de l’outillage, sans effet constaté sur le PDF ou le site compilé. Conducteur : 8 rubriques, 21 copies, 4 largeurs, liens et impression; 19 blocs PowerShell et 2 scripts analysés sans erreur syntaxique. Preuves : docs/validation/presentation-flow.json et presentation-guide.json, presentation/exports/qa/.
+- Prochaine action : enregistrer la révision et actualiser le kit existant avec sauvegarde Git, puis reprendre la répétition humaine sur le portable HQ. Aucun nouveau kit complet ni archive Docker supplémentaire.
+
 ## ETL visible et détails des exécutions — 19 octobre
 
 - Départ : main `101de0f`, dépôt propre. Demande : avant/après ETL, synthèse horaire, indicateurs Python, détails des exécutions et conducteur actualisé; Quartz conservé.

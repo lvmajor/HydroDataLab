@@ -1,6 +1,6 @@
 # Prompts de la formation
 
-Version du 18 octobre 2026. Coller dans une session du dépôt et du moteur attendus. Remplacer les références si la structure évolue. Ces prompts sont du texte à copier; ils ne supposent pas le chargement de fichiers `*.prompt.md` par le moteur Copilot.
+Version du 19 octobre 2026. Coller dans une session du dépôt et du moteur attendus. Remplacer les références si la structure évolue. Ces prompts sont du texte à copier; ils ne supposent pas le chargement de fichiers `*.prompt.md` par le moteur Copilot.
 
 ## 1 — Retrouver le contexte (lecture seule)
 
@@ -28,19 +28,19 @@ les valeurs absentes, les doublons et le changement d’heure.
 Propose la plus petite modification et les tests qui prouvent le résultat.
 ```
 
-## 3 — Mini-démo live Python (checkpoint 06-specification)
+## 3 — Mini-démo live Python (copie préparée issue de 06)
 
 ```text
 Implémente calculate_coverage dans etl/hydrodatalab/coverage.py.
-Respecte la signature existante et docs/CONTRACT.md. Les timestamps reçus
-correspondent déjà aux observations dont la valeur est valide.
+Respecte specs/coverage.md, la signature existante et docs/CONTRACT.md.
+Les timestamps reçus correspondent déjà aux observations dont la valeur est valide.
 Compte des créneaux distincts alignés et inclus dans [début, fin).
 Début et fin sont des dates civiles America/Toronto; fin exclusive.
 Calcule expected à partir des bornes converties en UTC et de interval_minutes,
 pas à partir des lignes reçues. Gère les journées de 23 et 25 heures.
 Retourne observed, expected, percent arrondi à deux décimales.
 Ne recrée pas l’API ni l’interface. Ne modifie pas les données brutes.
-Exécute depuis la racine :
+Exécute depuis la racine de cette copie :
 uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basetemp etl/.test-output/live
 Lis les échecs et corrige la fonction. Termine par le diff et les résultats
 vérifiés; n’affirme pas avoir lancé un test sans résultat d’exécution.

@@ -1,7 +1,7 @@
 ---
 theme: default
 favicon: /favicon.png
-title: HydroDataLab — Des agents IA aux données fiables
+title: GitHub Copilot dans VS Code — bonnes pratiques avec les agents
 author: Formation Hydro-Québec
 info: Support du 20 octobre 2026. Sources vérifiées les 18 et 19 octobre 2026.
 class: cover
@@ -21,14 +21,14 @@ mdc: true
 exportFilename: formation-hydrodatalab
 ---
 
-# Des agents IA<br>aux données fiables
+# GitHub Copilot<br>dans VS Code
 
-HydroDataLab<br>Une pratique concrète pour les analyses Python
+Bonnes pratiques avec les agents<br>Fil conducteur : HydroDataLab
 
 <div class="source">20 octobre 2026 • Sources vérifiées les 18–19 octobre • Démonstration pédagogique, données publiques</div>
 
 <!--
-30 secondes, 00:00–00:30. Ouvrir avec une question : « Si l’agent produit un beau graphique, qu’est-ce qui vous permet de croire aux données? » La formation porte sur la délégation d’un travail vérifiable. Le projet est polyglotte, mais le geste principal sera une modification Python accessible aux personnes qui font du BI. L’agent n’est pas une autorité sur l’hydrologie. Ce support n’est pas une publication officielle d’Hydro-Québec. Les chiffres d’exemple sont signalés; les données réelles viennent des sources publiques et de leur instantané documenté.
+30 secondes, 00:00–00:30. « Comment déléguer à Copilot tout en gardant la maîtrise de son travail? » Le sujet est GitHub Copilot dans Visual Studio Code : contexte, instructions, skills, outils, permissions et choix du modèle. HydroDataLab fournit des exemples proches du travail BI/Python du groupe; ce n’est pas un cours de construction d’ETL ou d’Aspire. La petite modification Python sert à observer la démarche et ses preuves. Ce support n’est pas une publication officielle d’Hydro-Québec; les exemples utilisent des données publiques.
 -->
 
 ---
@@ -63,28 +63,28 @@ Souligner la chance d’avoir une marge d’expérimentation : essayer une appro
 
 ---
 
-# Du besoin BI au résultat vérifié
+# Bien déléguer avec Copilot
 
-<div class="lead">Notre défi : détecter les mesures manquantes<br>dans une journée de données.</div>
+<div class="lead">Une mission précise, un contexte utile,<br>un résultat que vous pouvez vérifier.</div>
 
 <div class="columns"><div>
 
 ## Ce que vous saurez faire
 
-Donner une tâche précise à l’agent.<br>Retrouver les règles qu’il utilise.<br>Vérifier le calcul qu’il propose.
+Cadrer une session dans VS Code.<br>Choisir les règles et outils utiles.<br>Relire les changements et les tests.
 
 </div><div>
 
-## Notre exemple Python
+## Notre fil conducteur
 
-Données publiques Hydro-Québec.<br>Un traitement réutilisable.<br>Un indicateur de qualité visible.
+Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indicateur de qualité vérifiable.
 
 </div></div>
 
 <div class="strip">45 minutes de présentation et de démos, puis vos questions.</div>
 
 <!--
-30 secondes, 01:30–02:00. Public BI/Python : aucune maîtrise de Git, Docker, .NET ou Vue n’est supposée. Les mots utiles seront expliqués avant leur emploi. Les démonstrations sont réparties dans les 45 minutes; 10 minutes de questions et 5 de marge suivent. Les annexes 20 à 25 servent aux questions. Objectif de sortie : le participant peut décrire une règle, donner les bons éléments à l’agent et examiner une preuve de résultat. Ne pas dérouler une liste de technologies.
+30 secondes, 01:30–02:00. Annoncer le parcours : utiliser Agents, fournir des règles et du contexte, choisir ses capacités et son modèle, puis vérifier un changement. Les démos illustrent ces pratiques dans HydroDataLab. Aucune maîtrise de Git, Docker, .NET ou Vue n’est supposée; expliquer les mots avant de les utiliser. 32 minutes d’explications et 13 minutes de démos, puis 10 minutes de questions et 5 de marge. Les annexes 23 à 28 servent aux questions. Transition : « Voici les données qui nous serviront à vérifier ce que produit l’agent. »
 -->
 
 ---
@@ -133,7 +133,7 @@ Données publiques Hydro-Québec.<br>Un traitement réutilisable.<br>Un indicate
 |---|---|
 | **Dépôt Git** | Le projet et l’historique de ses versions enregistrées. |
 | **Commit** | Un point enregistré dans cet historique. |
-| **Branche** | Une suite de versions pour un essai, par exemple <code>demo-live</code>. |
+| **Branche** | Une suite de versions pour un essai.<br>Exemple : <code>codex/repetition-01</code>. |
 | **Worktree** · facultatif | Un autre dossier du même dépôt, pour travailler sur une autre branche. |
 
 <div class="strip">Pour débuter, une branche d’essai suffit.</div>
@@ -141,7 +141,7 @@ Données publiques Hydro-Québec.<br>Un traitement réutilisable.<br>Un indicate
 <div class="source"><a href="https://git-scm.com/docs/git-worktree">Documentation Git · worktree</a> [S22]. Les fichiers et résultats non enregistrés demandent leur propre sauvegarde.</div>
 
 <!--
-2 minutes, 06:00–08:00. Partir du besoin « essayer un calcul sans mélanger l’essai avec la version de référence ». Dépôt : dossier du projet avec son historique Git. Commit : version enregistrée, pas simple sauvegarde du fichier dans l’éditeur. Branche : chemin d’évolution nommé; main reste la référence, demo-live accueille notre essai jusqu’à sa revue. Un worktree supplémentaire ouvre une autre branche dans un autre dossier, tout en partageant l’historique du même dépôt. Il est facultatif pour cette initiation; nous n’en créons pas en direct. Ce n’est ni un conteneur, ni une sauvegarde, ni une isolation des bases et services externes. La démo préparée utilise la branche demo-live et des dossiers de secours; ne pas la présenter comme une démonstration de création de worktree. Dans la fenêtre Agents, le dossier sélectionné indique où les outils vont agir. Faire reformuler : « Dans quel dossier et sur quelle branche mon essai va-t-il être fait? » Référence : https://git-scm.com/docs/git-worktree
+2 minutes, 06:00–08:00. Partir du besoin « essayer un changement sans mélanger l’essai avec la version de référence ». Dépôt : dossier du projet avec son historique Git. Commit : version enregistrée, pas simple sauvegarde dans l’éditeur. Branche : chemin d’évolution nommé; main reste la référence, codex/repetition-01 accueille l’exercice. Un worktree ouvre une autre branche dans un autre dossier en partageant l’historique; il reste facultatif ici, et ne constitue ni un conteneur ni une isolation des services externes. Notre répétition utilise une copie Git indépendante, préparée depuis un bundle : elle contient la branche issue de codex/preparation-demo-06, avec les améliorations actuelles et la couverture à compléter. Aucun changement de branche n’est nécessaire sur le dépôt principal pendant la séance. Faire reformuler : « Dans quel dossier et sur quelle branche l’agent va-t-il agir? » Le conducteur décrit la préparation et le retour à main en secours.
 -->
 
 ---
@@ -161,12 +161,12 @@ Données publiques Hydro-Québec.<br>Un traitement réutilisable.<br>Un indicate
 <div class="source"><a href="https://code.visualstudio.com/docs/agents/run/agents-window">Microsoft · fenêtre Agents</a> · <a href="https://code.visualstudio.com/docs/agents/run/planning">Planification</a> · <a href="https://code.visualstudio.com/docs/agents/run/agents-window-configuration">Réglages</a></div>
 
 <!--
-1 minute d’explication puis 4 minutes de démo, 08:00–13:00. La diapositive donne une mission et une question au public; la manipulation suivante reste dans ces notes.
-0:00–0:45 : ouvrir Chat: Open Agents Window (ou code --agents), montrer le dossier et la branche déjà expliqués. Présenter une session comme une conversation pour une tâche. Copilot est le moteur d’exécution choisi; le modèle sera sélectionné à l’intérieur de Copilot. Auto choisit le modèle pour nous; ses niveaux seront expliqués plus loin. Montrer /plan pour demander une démarche avant l'implémentation. La fenêtre Agents ne propose pas actuellement l'agent Plan dans son menu; /plan est disponible dans une session Copilot. Ne pas confondre les sélecteurs de la vue Chat et de cette fenêtre. Laisser les confirmations manuelles; expliquer une autorisation au moment où elle apparaît.
-0:45–1:30 : Ctrl+, agrandir la lecture et montrer le retour à la ligne. Expliquer la portée : Utilisateur = mes projets; Espace de travail = ce projet. Ne pas appliquer un réglage global sans raison. Montrer le panneau Changes, soit la comparaison avant/après lorsqu’un fichier change.
-1:30–2:20 : Chat: Open Customizations, puis Instructions. Une instruction est une consigne écrite destinée à l’agent; les règles permanentes seront détaillées à la diapositive suivante. Montrer la règle Python zéro/absence dans le dépôt.
-2:20–4:00 : lancer le prompt de découverte dans handouts/prompts.md; lire References comme « fichiers ou sources consultés ». Ouvrir un fichier cité et faire vérifier une affirmation par le public. Découverte ne signifie pas respect : il faudra encore tester le comportement.
-Si l’authentification échoue, suivre les mêmes repères dans les fichiers locaux, en annonçant que la réponse ne sera pas générée en direct.
+1 minute d’explication puis 4 minutes de démo, 08:00–13:00. Présenter la mission en lecture seule et la question « Quelles sources permettent de vérifier sa réponse? ». Le dépôt principal reste sur main. Commandes et prompt complets : handouts/conducteur-demos.html, Démo 1.
+0:00–0:45 : ouvrir Chat: Open Agents Window, vérifier dossier, branche main, harnais Copilot et Auto Balance ou le modèle autorisé préparé. Créer une session et garder les confirmations d’actions. Montrer /plan comme possibilité pour une future modification, sans lancer une deuxième demande ici. Dans cette fenêtre, ne pas chercher l’agent Plan du menu de la vue Chat.
+0:45–1:30 : Ctrl+, montrer Utilisateur/Espace de travail et la lisibilité préparée. Repérer Changes; il peut rester vide pendant cette mission. Le vrai diff sera montré à la démo 3.
+1:30–2:20 : Customizations → Instructions; ouvrir les consignes communes et Python. Retrouver zéro/absence. Si un fichier n’est pas listé, ne pas conclure qu’il est chargé simplement parce qu’il existe.
+2:20–4:00 : coller le prompt de découverte du conducteur. Lire References comme sources consultées; ouvrir une fonction ou un test cité et vérifier une affirmation. La présence d’une règle ne garantit pas son respect.
+Si Copilot tarde ou est indisponible, ouvrir pipeline.py et un test local, en annonçant que la génération n’a pas abouti en direct. Revenir aux slides à 4:00.
 -->
 
 ---
@@ -218,28 +218,43 @@ Compter 0 comme une mesure numérique valide.
 
 ---
 
-# Sept concepts, sept responsabilités
+# Context layers · les couches du contexte
+
+<ContextLayers />
+
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · activation des règles</a> · <a href="https://code.visualstudio.com/docs/agents/guides/context-engineering-guide">Structurer le contexte</a></div>
+
+<!--
+2 minutes, 17:00–19:00. Après les fichiers d’instructions, montrer comment leurs consignes rejoignent les autres éléments utiles à une demande. Context layers signifie couches du contexte. Ce sont nos catégories pédagogiques, pas une hiérarchie officielle ni un ordre de priorité. Lire de haut en bas : Project instructions / Consignes du projet, File-specific instructions / Consignes ciblées, Reference documents / Documents de référence, Task prompt / Demande courante, Tool results / Résultats des outils. Les deux premières sont des consignes durables. Les documents et la demande cadrent le travail du moment. Les outils apportent ensuite les observations réelles. Les flèches alimentent un même Model context / Contexte du modèle; cliquer une couche illustre son apport, sans prétendre que le harnais charge automatiquement tous les fichiers. Montrer Reference documents et expliquer unité/fréquence/fuseau, puis Tool results et son exemple 23/24. Le mot « contrat » désigne ici un document décrivant les données; il n’est pas un niveau universel de contexte. Les autres sources (historique, instructions de service, préférences utilisateur) existent, mais ce dessin se concentre sur ce que le participant peut préparer dans son projet. Les règles applicables se combinent; résoudre les contradictions. Les détails applyTo restent à la slide 9. Le PDF garde toutes les couches, leurs traductions et leurs exemples de fichiers; la partie de droite montre la première couche.
+-->
+
+---
+
+# Les mécanismes de personnalisation
 
 <div class="concept-table">
 
 | Concept | Question à laquelle il répond | Petit exemple BI |
 |---|---|---|
 | **Instructions** | Quelles règles respecter? | Garder les valeurs manquantes. |
-| **[Skill](https://code.visualstudio.com/docs/agent-customization/agent-skills)** | Quelle procédure réutiliser? | Tests → unités → rapport qualité. |
+| **[Skill](https://code.visualstudio.com/docs/agent-customization/agent-skills)** | Quelle procédure réutiliser? | Procédure <code>/validate-etl</code>. |
+| **Tool · outil** | Quelle action exécuter? | Lancer pytest dans le terminal. |
 | **[Agent personnalisé](https://code.visualstudio.com/docs/agent-customization/custom-agents)** | Quel rôle et quels outils? | Réviseur BI en lecture seule. |
-| **Tool · outil** | Quelle action exécuter? | Lire un CSV ou lancer pytest. |
 | **[Serveur MCP](https://code.visualstudio.com/docs/agent-customization/mcp-servers)** | Comment connecter un système? | Fournir un outil de lecture SQL. |
 | **Hook** | Que lancer à un événement? | Journaliser un appel d’outil. |
 | **Plugin** | Comment distribuer un ensemble? | Installer une skill et un serveur MCP. |
 
 </div>
 
-<div class="small">L’instruction guide le modèle; le hook exécute du code à l’événement configuré.<br>Le serveur MCP expose des outils; le plugin peut les regrouper avec d’autres capacités.</div>
+<div class="small">Même tâche : une instruction fixe la règle, un skill guide la vérification,<br>un outil exécute le test. Les autres mécanismes répondent à des besoins précis.</div>
 
 <div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/concepts/customization">Microsoft · comparer les concepts</a> · <a href="https://code.visualstudio.com/docs/agent-customization/agent-skills">Skills</a> · <a href="https://code.visualstudio.com/docs/agent-customization/hooks">Hooks</a> · <a href="https://code.visualstudio.com/docs/agent-customization/agent-plugins">Plugins</a></div>
 
 <!--
-2 minutes, 17:00–19:00. Suivre les questions du tableau, sans lire chaque définition comme une liste à mémoriser. Développer MCP : Model Context Protocol, un protocole de connexion entre l’agent et des services. Un outil peut être intégré au harnais ou fourni par un serveur MCP; MCP n’est pas le modèle. Skill = recette avec SKILL.md, scripts et ressources; notre validate-etl se lance volontairement par /validate-etl. Agent personnalisé = configuration du rôle; notre reviseur-bi limite les outils. Hook = code déclenché par un événement; ses noms, schémas et événements dépendent du harnais. L’exemple SQL, le hook de journalisation et le plugin sont des exemples conceptuels, pas des composants installés dans HydroDataLab. Un plugin distribue des capacités; il n’est pas un niveau de priorité des instructions. Les formats, déclenchements et liens propres à chaque type sont dans handouts/personnalisations-vscode.md. Démarrer avec instructions et tests; ajouter les autres mécanismes pour un besoin concret.
+2 minutes, 19:00–21:00. Faire vivre un seul exemple plutôt que réciter sept définitions.
+0:00–0:50 : « Conserver les absences » est l’instruction. Le skill validate-etl, avec son SKILL.md, propose la procédure tests/unités/rapport. Le terminal est l’outil qui lance réellement pytest. Montrer leurs trois premières lignes et rappeler que la compétence du modèle ne remplace pas l’exécution.
+0:50–1:35 : le réviseur BI est un agent personnalisé, configuré avec un rôle et des outils limités. MCP signifie Model Context Protocol : un serveur peut exposer un outil de lecture SQL; il connecte un système et ne désigne pas le modèle. Un hook lance du code sur un événement configuré; il faut en vérifier les permissions et le comportement. Un plugin distribue des capacités, par exemple un skill et un serveur MCP. Ces exemples SQL/hook/plugin ne sont pas installés dans HydroDataLab.
+1:35–2:00 : quelle capacité répond à notre besoin réel? Règles et tests d’abord; ajouter le mécanisme justifié. Les formats et conditions d’activation sont dans handouts/personnalisations-vscode.md; le catalogue de skills arrive en slide 20, après la mise en pratique. Transition : « Nous pouvons personnaliser beaucoup de choses; voici pourquoi je garde une base simple. »
 -->
 
 ---
@@ -265,47 +280,7 @@ class: vanilla
 <div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/migrate-customizations">Microsoft · migrations</a> · <a href="https://code.visualstudio.com/docs/agent-customization/agent-skills">Skills et chargement progressif</a></div>
 
 <!--
-1 minute, 19:00–20:00. « Vanille » signifie ici utiliser surtout les capacités natives, avec quelques consignes lisibles. C’est la préférence du présentateur et notre recommandation pour commencer; aucune politique HQ ni mesure universelle de productivité n’est affirmée. L’argument est le coût d’entretien : chaque intégration ajoute des versions, permissions et comportements à comprendre. Exemple concret documenté : la migration vers le harnais Copilot peut imposer de déplacer ou convertir des personnalisations que son moteur ne lit pas sous leur ancien format. La configuration native évolue elle aussi : rester simple ne dispense pas de lire les nouveautés. Nuance : les skills chargent leur contenu progressivement et un bon skill évite de répéter une procédure. Leur nombre seul ne prouve donc ni une surcharge de tokens ni un ralentissement. Préférer un format standard, une portée limitée et une version connue; comparer sur une tâche réelle avant/après. Un plugin maintenu peut faciliter la distribution. Sources S32 et S33, consultées le 19 octobre 2026.
--->
-
----
-class: skill-selection
----
-
-# Des skills à choisir selon votre tâche
-
-<p class="selection-intro">Notre sélection pour HydroDataLab : Python d’abord, puis le besoin du projet.</p>
-
-<div class="skill-table">
-
-| Besoin | Point de départ | Utilité concrète |
-|---|---|---|
-| ETL Python | `validate-etl` · ce dépôt | Tests, unités et exports |
-| Interface Vue | [Playwright CLI · Microsoft](https://github.com/microsoft/playwright-cli) | Parcours navigateur et captures |
-| Application Aspire | [Skills Aspire · officiels](https://aspire.dev/get-started/ai-coding-agents/) | Démarrage, santé et journaux |
-| API .NET | [dotnet/skills · équipe .NET](https://github.com/dotnet/skills) | ASP.NET Core et tests ciblés |
-| Cadrage et tests | [Matt Pocock · grill-me, tdd](https://github.com/mattpocock/skills) | Clarifier le besoin; tester par étapes |
-
-</div>
-
-<div class="exploration-note"><b>Matt Pocock : en exploration.</b> Pas encore validé dans notre démo.</div>
-
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/agent-skills#use-shared-skills">Microsoft · utiliser des skills partagés</a> · Sélection au 19 octobre 2026</div>
-
-<!--
-1 min 30, 20:00–21:30. Pas de liste universelle « must have » : les installations et étoiles ne mesurent pas un consensus ni la qualité pour notre cas. Pour des analystes Python, pytest et des critères métier restent la base; validate-etl est notre procédure locale, pas un standard de la communauté. Playwright est l’outil de navigateur; playwright-cli est sa CLI et le dépôt Microsoft distribue un skill qui guide son emploi. Aspire propose une famille de skills, avec serveur MCP facultatif. dotnet/skills distribue des collections : regarder dotnet-aspnetcore ou dotnet-test selon la tâche, sans installer tout le catalogue. Matt Pocock fournit notamment grill-me pour questionner le besoin et tdd pour la boucle test en échec → correction → amélioration. Développer TDD : Test-Driven Development, développement piloté par les tests. Dire explicitement que nous commençons à explorer ces skills. Leur consultation ne constitue ni une installation ni une validation dans Copilot HQ. Voir handouts/skills-et-veille.md pour les dépôts, limites, indices d’adoption et chemins d’installation à vérifier selon le harnais. Sources S34–S38.
--->
-
----
-
-# Context layers · les couches du contexte
-
-<ContextLayers />
-
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · activation des règles</a> · <a href="https://code.visualstudio.com/docs/agents/guides/context-engineering-guide">Structurer le contexte</a></div>
-
-<!--
-2 minutes, 21:30–23:30. Context layers signifie couches du contexte. Ce sont nos catégories pédagogiques, pas une hiérarchie officielle ni un ordre de priorité. Lire de haut en bas : Project instructions / Consignes du projet, File-specific instructions / Consignes ciblées, Reference documents / Documents de référence, Task prompt / Demande courante, Tool results / Résultats des outils. Les deux premières sont des consignes durables. Les documents et la demande cadrent le travail du moment. Les outils apportent ensuite les observations réelles. Les flèches alimentent un même Model context / Contexte du modèle; cliquer une couche illustre son apport, sans prétendre que le harnais charge automatiquement tous les fichiers. Montrer Reference documents et expliquer unité/fréquence/fuseau, puis Tool results et son exemple 23/24. Le mot « contrat » désigne ici un document décrivant les données; il n’est pas un niveau universel de contexte. Les autres sources (historique, instructions de service, préférences utilisateur) existent, mais ce dessin se concentre sur ce que le participant peut préparer dans son projet. Les règles applicables se combinent; résoudre les contradictions. Les détails applyTo restent à la slide 9. Le PDF garde toutes les couches, leurs traductions et leurs exemples de fichiers; la partie de droite montre la première couche.
+1 minute, 21:00–22:00. « Vanille » signifie ici utiliser surtout les capacités natives, avec quelques consignes lisibles. C’est la préférence du présentateur et notre recommandation pour commencer; aucune politique HQ ni mesure universelle de productivité n’est affirmée. L’argument est le coût d’entretien : chaque intégration ajoute des versions, permissions et comportements à comprendre. Exemple concret documenté : la migration vers le harnais Copilot peut imposer de déplacer ou convertir des personnalisations que son moteur ne lit pas sous leur ancien format. La configuration native évolue elle aussi : rester simple ne dispense pas de lire les nouveautés. Nuance : les skills chargent leur contenu progressivement et un bon skill évite de répéter une procédure. Leur nombre seul ne prouve donc ni une surcharge de tokens ni un ralentissement. Préférer un format standard, une portée limitée et une version connue; comparer sur une tâche réelle avant/après. Un plugin maintenu peut faciliter la distribution. Sources S32 et S33, consultées le 19 octobre 2026.
 -->
 
 ---
@@ -333,7 +308,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 <div class="source"><a href="https://code.visualstudio.com/docs/agents/concepts/context">Microsoft · contexte</a> · <a href="https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing">GitHub · facturation</a>. Évaluer toutes les tentatives nécessaires.</div>
 
 <!--
-2 minutes, 23:30–25:30. Ne pas assimiler un token à un mot : la découpe varie. Le modèle dispose d’une quantité limitée de contexte; la longueur de la demande n’est qu’une partie de ce qui est traité. Un petit prompt peut déclencher de nombreuses lectures. Exemple concret : donner le dictionnaire, quelques lignes avec zéro/absence/doublon, la fonction ciblée et ses tests. Demander un extrait de journal autour de l’erreur au lieu de toute la sortie. Une nouvelle tâche sans rapport mérite une nouvelle session. /compact résume une conversation mais peut perdre des détails. Le cache réutilise certains calculs d’entrée et peut changer leur prix; ce n’est pas une instruction permanente. Les reprises peuvent annuler le gain d’un modèle moins cher. Conserver décisions et état dans les fichiers du projet pour reprendre après interruption.
+2 minutes, 22:00–24:00. Les règles, documents et résultats que nous venons de voir occupent du contexte; examinons leur coût. Ne pas assimiler un token à un mot : la découpe varie. Le modèle dispose d’une quantité limitée de contexte; la longueur de la demande n’est qu’une partie de ce qui est traité. Un petit prompt peut déclencher de nombreuses lectures. Exemple concret : donner le dictionnaire, quelques lignes avec zéro/absence/doublon, la fonction ciblée et ses tests. Demander un extrait de journal autour de l’erreur au lieu de toute la sortie. Une nouvelle tâche sans rapport mérite une nouvelle session. /compact résume une conversation mais peut perdre des détails. Le cache réutilise certains calculs d’entrée et peut changer leur prix; ce n’est pas une instruction permanente. Les reprises peuvent annuler le gain d’un modèle moins cher. Conserver décisions et état dans les fichiers du projet pour reprendre après interruption.
 -->
 
 ---
@@ -353,7 +328,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 <div class="source"><a href="https://docs.github.com/en/copilot/concepts/models/auto-model-selection">GitHub · Auto model selection</a>, consulté le 18 octobre 2026. Politiques et abonnement restent déterminants.</div>
 
 <!--
-1 min 30, 25:30–27:00. Balance est notre défaut pédagogique, pas une règle institutionnelle. Les niveaux modifient une préférence de routage, pas une liste exclusive de modèles. Auto considère complexité et disponibilité, dans les politiques applicables. La remise n’implique pas une économie pour toute tâche face à n’importe quel modèle manuel. On peut voir le modèle utilisé dans les informations de la réponse. 1 AI credit représente 0,01 dollar US. Les anciens abonnements annuels individuels peuvent avoir un régime historique distinct du cas entreprise.
+1 min 30, 24:00–25:30. Balance est notre défaut pédagogique, pas une règle institutionnelle. Les niveaux modifient une préférence de routage, pas une liste exclusive de modèles. Auto considère complexité et disponibilité, dans les politiques applicables. La remise n’implique pas une économie pour toute tâche face à n’importe quel modèle manuel. On peut voir le modèle utilisé dans les informations de la réponse. 1 AI credit représente 0,01 dollar US. Les anciens abonnements annuels individuels peuvent avoir un régime historique distinct du cas entreprise.
 -->
 
 ---
@@ -365,7 +340,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 <div class="doc-link"><a href="https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing">GitHub · tarifs au 18 octobre 2026</a> · <a href="https://docs.github.com/en/copilot/reference/ai-models/model-comparison">Comparer les modèles</a></div>
 
 <!--
-2 minutes, 27:00–29:00. Les quatre types de tâches sont visibles simultanément en colonnes et les cinq modèles en lignes. Lire verticalement pour comparer les modèles d’une tâche, horizontalement pour comparer les quatre scénarios avec le même modèle. Chaque cellule comporte une barre et sa valeur en dollars US. Le plafond commun est 0,40 dollar par essai; les valeurs numériques conservent la lisibilité des petits montants. Les volumes fictifs entrée/sortie sont inscrits sous chaque tâche. Le losange et le fond vert indiquent un choix pédagogique à essayer, pas un score mesuré. Luna/Haiku pour une explication courte; Sonnet pour la modification bornée d’un ETL; Sol pour des changements complexes; Opus si le diagnostic reste difficile. Sonnet et Sol ont le même tarif, ce qui ne prouve pas une qualité identique. Multiplier les essais montre leur coût cumulé; leur volume réel peut varier. Cache et remise Auto sont exclus. Auto Balance reste le départ conseillé, sans lui inventer un prix fixe. Ces calculs ne sont pas des benchmarks ni une estimation mesurée du coût d’un projet. Confirmer les modèles disponibles dans le sélecteur HQ.
+2 minutes, 25:30–27:30. Les quatre types de tâches sont visibles simultanément en colonnes et les cinq modèles en lignes. Lire verticalement pour comparer les modèles d’une tâche, horizontalement pour comparer les quatre scénarios avec le même modèle. Chaque cellule comporte une barre et sa valeur en dollars US. Le plafond commun est 0,40 dollar par essai; les valeurs numériques conservent la lisibilité des petits montants. Les volumes fictifs entrée/sortie sont inscrits sous chaque tâche. Le losange et le fond vert indiquent un choix pédagogique à essayer, pas un score mesuré. Luna/Haiku pour une explication courte; Sonnet pour la modification bornée d’un ETL; Sol pour des changements complexes; Opus si le diagnostic reste difficile. Sonnet et Sol ont le même tarif, ce qui ne prouve pas une qualité identique. Multiplier les essais montre leur coût cumulé; leur volume réel peut varier. Cache et remise Auto sont exclus. Auto Balance reste le départ conseillé, sans lui inventer un prix fixe. Ces calculs ne sont pas des benchmarks ni une estimation mesurée du coût d’un projet. Confirmer les modèles disponibles dans le sélecteur HQ.
 -->
 
 ---
@@ -391,14 +366,14 @@ Un modèle choisi pour la requête.<br>Préférence Efficiency, Balance<br>ou In
 <div class="doc-link"><a href="https://docs.github.com/en/early-access/copilot/hydrafusion">GitHub · fonctionnement et facturation HydraFusion</a><br><a href="https://github.blog/changelog/2026-10-14-hydrafusion-updates-and-new-max-option/">Annonce du 14 octobre</a> · <a href="https://docs.github.com/en/copilot/concepts/models/auto-model-selection">Documentation Auto</a></div>
 
 <!--
-1 minute, 29:00–30:00. HydraFusion n’est pas lui-même un modèle et ne lance pas systématiquement plusieurs modèles. Single peut suffire; Cascade juge et peut escalader; Critique ajoute revue puis révision. Le choix du parcours et de l’effort varie par prompt. Les passages supplémentaires peuvent augmenter durée et crédits. Les modèles doivent être disponibles dans le plan et autorisés par les politiques; l’utilisateur ne choisit pas individuellement le pool. Le système reste en research preview, sans promesse de production ni d’économie universelle. Capsule préparée, aucune activation requise pour la formation.
+1 minute, 27:30–28:30. HydraFusion n’est pas lui-même un modèle et ne lance pas systématiquement plusieurs modèles. Single peut suffire; Cascade juge et peut escalader; Critique ajoute revue puis révision. Le choix du parcours et de l’effort varie par prompt. Les passages supplémentaires peuvent augmenter durée et crédits. Les modèles doivent être disponibles dans le plan et autorisés par les politiques; l’utilisateur ne choisit pas individuellement le pool. Le système reste en research preview, sans promesse de production ni d’économie universelle. Capsule préparée, aucune activation requise pour la formation.
 -->
 
 ---
 class: breakwater
 ---
 
-# Démo 2 · suivre le trajet des données
+# Démo 2 · vérifier un résultat
 
 <div class="flow"><b>Données HQ</b><span>→</span><b>Calcul Python</b><span>→</span><b>Tableau de bord</b></div>
 
@@ -408,13 +383,18 @@ class: breakwater
 | **Aspire** | Démarrer les composants et regrouper leurs journaux. |
 | **Image Docker** | Emballer le code et ses dépendances pour l’exécuter en conteneur. |
 
-<div class="strip">D’où vient ce résultat? Et comment reprendre un traitement en erreur?</div>
+<div class="strip">Quelles preuves faut-il avant d’accepter le résultat de l’agent?</div>
 
 <div class="source">Architecture HydroDataLab [S12]. Le calcul métier reste dans le même code Python.</div>
 
 <!--
-1 minute d’explication puis 5 minutes de démo, 30:00–36:00. Définir API comme le point d’accès du programme : l’interface envoie une demande et reçoit une réponse. Vue est la technologie de l’écran; .NET celle de l’API préparée. Aspire démarre les composants et permet de lire leurs journaux. Docker démarre un conteneur à partir d’une image déjà préparée; il ne transforme pas à lui seul un script en service déployé. L’audience n’a pas à reconstruire cette infrastructure.
-Démo : exécuter la commande Python locale déjà répétée. CLI signifie interface en ligne de commande; dire d’abord « commande Python ». Source fixture = copie locale préparée des données publiques. Montrer les sorties : CSV (table texte), Parquet (format de table typée), JSON (rapport structuré). Depuis Vue, lancer le traitement et lire son état, sa provenance et ses résultats. Montrer une ressource et son journal dans Aspire. Expliquer seulement à ce moment : Quartz déclenche les tâches; SQLite est la base locale où l’API conserve l’historique. Aspire n’est pas le planificateur métier. Simuler un échec puis relancer. À 4:30, exécuter la commande Docker préremplie et déjà testée sans réseau; comparer son résumé au résultat natif. Les images ont été préparées avant la séance; ne pas lancer une construction en direct. La planification reste désactivée. Le guide conserve tous les raccourcis, commandes et seuils de secours.
+1 minute d’explication puis 5 minutes de démo, 28:30–34:30. Relier à Copilot : une réponse convaincante doit devenir un résultat exécuté, traçable et vérifiable. API = point d’accès entre programmes; Vue présente, .NET pilote, Python calcule. Aspire démarre les composants et regroupe les journaux. L’infrastructure est préparée. Commandes et variantes : handouts/conducteur-demos.html, Démo 2. Conserver main.
+0:00–0:45 : exécuter le bloc CLI préparé du conducteur (uv run --project etl python -m hydrodatalab run --source fixture --date 2026-10-17 --output outputs/cli). Montrer 168 observations, quatre séries et hourly.csv; la copie locale des sources rend l’essai reproductible.
+0:45–2:15 : Vue → Parcours ETL → Extraire, Transformer, Charger / exporter. Utiliser la collecte réussie préparée. Passer des champs fournisseur au schéma normalisé puis aux 24 moyennes horaires. Lire un seul indicateur : pointe horaire moyenne 22 009,75 MW à 18 h Toronto. Les autres restent disponibles aux questions. Ces onglets explorent un rapport déjà calculé; ils n’exécutent pas le pipeline au clic.
+2:15–3:15 : dans VS Code, ouvrir analysis.py et test_analysis.py; comparer la règle quatre quarts d’heure valides avec un test. Ne pas parcourir tout le code. Faire le lien avec la démo 1 : la réponse de Copilot peut être confrontée à un fichier et à un résultat réel.
+3:15–4:15 : Voir les détails d’un succès : paramètres, étapes Python, durées et export lié à cette exécution. Quartz déclenche; SQLite conserve le bilan; les étapes ne sont pas une animation en temps réel. Si le temps le permet dans ce créneau, montrer un seul journal Aspire correspondant.
+4:15–5:00 : commande Docker préremplie avec --pull never --network none; comparer le résumé. Image et dépendances préparées, aucune construction en direct. Si le moteur est indisponible, montrer le résultat préparé en l’annonçant puis revenir aux slides à 5:00.
+Variante choisie avant la séance : remplacer le créneau 3:15–5:00 par échec contrôlé, détails et relance; dans ce cas, ne pas ajouter Aspire ni Docker. Ne pas cumuler les deux parcours. La planification reste désactivée. La vérification d’un résultat est le message central, pas une visite exhaustive de l’application.
 -->
 
 ---
@@ -439,7 +419,8 @@ class: sdd
 <div class="doc-link"><a href="https://github.github.com/spec-kit/">GitHub · Spec Kit et développement piloté par spécifications</a></div>
 
 <!--
-2 minutes, 36:00–38:00. Définir « spec » comme le raccourci de spécification, puis « critère d’acceptation » comme un exemple vérifiable qui décide si le résultat convient. Un test exécutable compare le résultat calculé au résultat attendu. Formule : mesures valides dans des créneaux distincts / créneaux attendus × 100. Ne pas utiliser le nombre de lignes reçues au dénominateur. Un zéro est une mesure; un doublon ne crée pas un créneau. Les bornes de la journée sont calculées à Toronto puis comparées comme instants UTC (référence de temps commune). La demande à 15 minutes attend 96 points, ou 92/100 lors des changements d’heure. Le survol du développement piloté par spécifications est la démarche besoin → critères relus → plan → tâches → code → preuves. Spec Kit aide à organiser ces documents; nous n’en faisons pas l’installation ici.
+2 minutes, 34:30–36:30. Garder cette slide projetée pendant la transition préparée : depuis $Depot, ./scripts/stop-demo.ps1; depuis $Live, vérifier git status --short --branch puis ./scripts/start-demo.ps1 -NoBuild. Recharger Vue et lancer une collecte complète; vérifier Couverture : Non calculée. La copie utilise codex/repetition-01 issue de codex/preparation-demo-06 (9e1ecde), pas un ancien tag seul. Les slides restent servies depuis main. Si le démarrage ne tient pas dans les deux minutes répétées, utiliser le secours annoncé; ne pas improviser des installations.
+ Définir « spec » comme le raccourci de spécification, puis « critère d’acceptation » comme un exemple vérifiable qui décide si le résultat convient. Un test exécutable compare le résultat calculé au résultat attendu. Formule : mesures valides dans des créneaux distincts / créneaux attendus × 100. Ne pas utiliser le nombre de lignes reçues au dénominateur. Un zéro est une mesure; un doublon ne crée pas un créneau. Les bornes de la journée sont calculées à Toronto puis comparées comme instants UTC (référence de temps commune). La demande à 15 minutes attend 96 points, ou 92/100 lors des changements d’heure. Le survol du développement piloté par spécifications est la démarche besoin → critères relus → plan → tâches → code → preuves. Spec Kit aide à organiser ces documents; nous n’en faisons pas l’installation ici.
 -->
 
 ---
@@ -457,40 +438,66 @@ class: breakwater
 <div class="source">Scénario pédagogique : une mesure est retirée en mémoire. Les données brutes restent intactes.</div>
 
 <!--
-4 minutes de démo, 38:00–42:00. La diapositive annonce le résultat que l’audience doit pouvoir vérifier, pas le déroulé technique.
-0:00–0:40 : montrer brièvement « Couverture : Non calculée » sur le parcours préparé au jalon 06, puis ouvrir la branche demo-live, la spécification, les tests et la fonction Python à compléter. Le tableau de bord sait déjà afficher la couverture; elle est absente tant que le calcul n’est pas implémenté.
-0:40–2:10 : choisir le modèle validé en répétition, coller le prompt live et limiter la modification à Python. Attendre le résultat réel des tests.
-À 2:10 : si la génération n’est pas prête, annoncer « Je passe à la solution préparée pour garder le temps de vérifier. » Préserver le travail et basculer vers le dossier de secours 07-solution selon le guide.
-2:10–3:00 : lire la comparaison avant/après (diff) et un test. Expliquer diff au moment de l’afficher.
-3:00–4:00 : revenir au même tableau de bord et déplier Qualité par série. Exécuter les cas complet et manquant : le niveau horaire passe de 24/24 = 100 % à 23/24 = 95,83 %. Marquer une pause sur ce changement : une règle en français est devenue du code testé, puis un résultat visible. Déplier la qualité par série : la couverture globale 167/168 = 99,4 % utilise un autre dénominateur. Ne pas présenter la solution de secours comme une génération en direct.
+4 minutes de démo, 36:30–40:30. Le même geste Copilot devient visible : demande délimitée, contexte, autorisations, changement, test. La transition depuis main vers la copie d’exercice a eu lieu pendant la slide 18. Commandes et prompt complets : handouts/conducteur-demos.html, Démo 3.
+0:00–0:40 : montrer Couverture : Non calculée, puis specs/coverage.md, coverage.py et specs/test_coverage_acceptance.py dans $Live, branche codex/repetition-01. Elle part de codex/preparation-demo-06 (9e1ecde) et garde la couverture à implémenter. Les deux tests d’acceptation rouges ont été vérifiés avant la séance.
+0:40–2:10 : nouvelle session Copilot dans cette copie, modèle autorisé préparé; coller le prompt du conducteur. Limiter le changement à la fonction Python et demander les résultats réels des tests; ne pas recréer l’API ou Vue ni assouplir les critères.
+À 2:10 : si code et tests ne sont pas prêts, annoncer « Je passe à la solution préparée pour garder le temps de vérifier. » Arrêter la génération et les services de $Live, préserver ses fichiers, puis démarrer $Depot/main avec -NoBuild. Ne pas basculer le dépôt principal vers un ancien tag.
+2:10–3:00 : lire Changes et les tests réels. Commande depuis la racine active : uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basetemp etl/.test-output/live. La solution préparée passe 43 tests, dont les jours de 23/25 heures. En secours, utiliser le diff historique limité à coverage.py, documenté dans le conducteur, et annoncer sa provenance.
+3:00–4:00 : lancer une nouvelle collecte complète puis une collecte avec Retirer une mesure de niveau d’eau. Déplier Qualité par série : 24/24 = 100 %, puis 23/24 = 95,83 %. Le 99,4 % global utilise un autre dénominateur. Le retrait reste en mémoire. Si les services tardent, montrer la preuve préparée en le disant; ne pas dépasser 4:00. Revenir à la slide 20, sélection de skills.
+-->
+
+---
+class: skill-selection
+---
+
+# Des skills à choisir selon votre tâche
+
+<p class="selection-intro">Des pistes à évaluer dans Copilot, selon la tâche à accomplir.</p>
+
+<div class="skill-table">
+
+| Besoin | Point de départ | Utilité concrète |
+|---|---|---|
+| ETL Python | `validate-etl` · ce dépôt | Tests, unités et exports |
+| Interface Vue | [Playwright CLI · Microsoft](https://github.com/microsoft/playwright-cli) | Parcours navigateur et captures |
+| Application Aspire | [Skills Aspire · officiels](https://aspire.dev/get-started/ai-coding-agents/) | Démarrage, santé et journaux |
+| API .NET | [dotnet/skills · équipe .NET](https://github.com/dotnet/skills) | ASP.NET Core et tests ciblés |
+| Cadrage et tests | [Matt Pocock · grill-me, tdd](https://github.com/mattpocock/skills) | Clarifier le besoin; tester par étapes |
+
+</div>
+
+<div class="exploration-note"><b>Matt Pocock : en exploration.</b> Pas encore validé dans notre démo.</div>
+
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/agent-skills#use-shared-skills">Microsoft · utiliser des skills partagés</a> · Sélection au 19 octobre 2026</div>
+
+<!--
+1 min 30, 40:30–42:00. Après la pratique, choisir une procédure ou un outil pour un besoin récurrent. Pas de liste universelle « must have » : les installations et étoiles ne mesurent pas un consensus ni la qualité pour notre cas. Pour des analystes Python, pytest et des critères métier restent la base; validate-etl est notre procédure locale, pas un standard de la communauté. Playwright est l’outil de navigateur; playwright-cli est sa CLI et le dépôt Microsoft distribue un skill qui guide son emploi. Aspire propose une famille de skills, avec serveur MCP facultatif. dotnet/skills distribue des collections : regarder dotnet-aspnetcore ou dotnet-test selon la tâche, sans installer tout le catalogue. Matt Pocock fournit notamment grill-me pour questionner le besoin et tdd pour la boucle test en échec → correction → amélioration. Développer TDD : Test-Driven Development, développement piloté par les tests. Dire explicitement que nous commençons à explorer ces skills. Leur consultation ne constitue ni une installation ni une validation dans Copilot HQ. Voir handouts/skills-et-veille.md pour les dépôts, limites, indices d’adoption et chemins d’installation à vérifier selon le harnais. Sources S34–S38.
 -->
 
 ---
 
-# Votre prochaine tâche Python
+# Votre prochaine tâche avec Copilot
 
 <div class="lead">Écrivez un résultat attendu, confiez une petite tâche,<br>puis examinez les preuves.</div>
 
 <div class="columns compact"><div>
 
-## Une première mise en pratique
+## Avant de déléguer
 
-Choisir une règle BI.<br>Préparer un petit exemple.<br>Faire générer le test et le code.<br>Relire puis exécuter.
+Définir un résultat attendu.<br>Joindre les fichiers utiles.<br>Vérifier règles et autorisations.
 
 </div><div>
 
-## À découvrir : Canvas
+## Avant d’accepter
 
-Une surface interactive partagée<br>avec l’agent, à côté du chat.<br>Exemple : suivre les étapes de l’ETL<br>dans un tableau de tâches.
-
-[Microsoft · Canvas en préversion](https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness)<br><a href="/25">Voir le fonctionnement →</a>
+Examiner le diff.<br>Lire les résultats des tests.<br>Conserver les décisions utiles.
 
 </div></div>
 
-<div class="strip compact">Quelle règle de vos analyses aimeriez-vous rendre vérifiable?</div>
+<div class="strip compact">Quelle petite tâche pourriez-vous confier à Copilot dès demain?</div>
 
 <!--
-1 min 30, 42:00–43:30, dont 30 secondes pour Canvas. Reprendre la règle mesurable, le contexte sélectionné et les preuves. Canvas est une surface interactive partagée avec l’agent, fournie par une extension; par exemple un tableau de tâches. Le présenter comme une nouveauté 1.142 en preview, sans en faire une dépendance du parcours ETL. L’annexe 25 détaille activation et limites; ne pas l’ouvrir systématiquement. Le composant interactif de nos slides et l’application Vue ne sont pas des Canvas VS Code. La page suivante rassemble les liens pour poursuivre et restera affichée pendant les questions. Le SDD sera approfondi par l’autre équipe.
+1 min 30, 42:00–43:30. Revenir à la pratique Copilot transférable à leurs projets : une demande délimitée, le bon contexte, des règles vérifiables, les permissions nécessaires et une preuve avant acceptation. Inviter chaque personne à choisir mentalement une petite tâche qu’elle connaît assez bien pour juger le résultat; réserver les échanges aux dix minutes de questions. Une correction de script, un test ou une revue convient. Relier au choix « vanille » : ajouter un skill ou un serveur MCP quand le besoin le justifie. Ne pas introduire de nouvelle technologie dans cette conclusion. Le SDD sera approfondi par l’autre équipe. La page suivante rassemble les ressources et restera visible pendant les questions; Canvas reste disponible en annexe 25 sur demande.
 -->
 
 ---
@@ -503,10 +510,10 @@ class: resources
 
 <div class="resource-routine">Routine proposée : 15 minutes de veille par semaine, puis une pratique testée sur votre projet.</div>
 
-<div class="source">Liens publics vérifiés le 19 octobre 2026. Ressources internes à compléter avec le présentateur.</div>
+<div class="source">Liens publics vérifiés le 19 octobre 2026. Ressources HQ à compléter. <a href="/25">Canvas en préversion · annexe 25</a></div>
 
 <!--
-1 min 30, 43:30–45:00. Laisser cette page visible pour les questions. Commencer par les nouveautés officielles : fonctions disponibles, préversions et migrations. Learn pour un exercice guidé; Awesome Copilot pour des exemples à relire; Community pour échanger. Aspire et Spec Kit prolongent le parcours de cette formation. Les espaces HQ sont des emplacements proposés, pas des ressources internes vérifiées. Pour les compléter, éditer uniquement presentation/resources/links.json : label, url et description dans internal. Une URL vide affiche « Lien interne à ajouter » sans créer de faux lien. Garder trois entrées courtes pour la projection; mettre les détails dans la fiche participant. Après modification, reconstruire le site et réexporter le PDF. Sources S39 et liens officiels de la fiche handouts/skills-et-veille.md. Questions 45:00–55:00; marge 55:00–60:00.
+1 min 30, 43:30–45:00. Canvas reste une capsule facultative en annexe 25, pour les questions; ne pas l’ouvrir dans le parcours de 45 minutes. Laisser cette page visible pour les questions. Commencer par les nouveautés officielles : fonctions disponibles, préversions et migrations. Learn pour un exercice guidé; Awesome Copilot pour des exemples à relire; Community pour échanger. Aspire et Spec Kit prolongent le parcours de cette formation. Les espaces HQ sont des emplacements proposés, pas des ressources internes vérifiées. Pour les compléter, éditer uniquement presentation/resources/links.json : label, url et description dans internal. Une URL vide affiche « Lien interne à ajouter » sans créer de faux lien. Garder trois entrées courtes pour la projection; mettre les détails dans la fiche participant. Après modification, reconstruire le site et réexporter le PDF. Sources S39 et liens officiels de la fiche handouts/skills-et-veille.md. Questions 45:00–55:00; marge 55:00–60:00.
 -->
 
 ---
@@ -577,7 +584,7 @@ Application VS Code de bureau.<br>Session locale Copilot / Agent Host.<br>Pas le
 
 </div></div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness">Microsoft · prérequis et fonctionnement</a> · <a href="https://code.visualstudio.com/updates/v1_142#canvases-preview">Nouveauté 1.142</a> · <a href="/21">Retour →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness">Microsoft · prérequis et fonctionnement</a> · <a href="https://code.visualstudio.com/updates/v1_142#canvases-preview">Nouveauté 1.142</a> · <a href="/22">Retour →</a></div>
 
 <!--
 Annexe. Disponible en preview sur desktop pour les sessions locales du harnais Copilot dans Agent Host. Chaque Canvas provient d’une extension. /create-canvas crée une extension dans le workspace quand la skill est disponible. Autre chemin documenté : installer un chat plugin contenant une extension Canvas via l’application GitHub Copilot, puis demander à VS Code les Canvas disponibles. Add Tab (+) > Canvas ouvre une extension déjà disponible; ce menu seul ne crée pas une capacité. Le canvas reste associé à son chat; selon l’extension, les actions utilisateur et agent font évoluer le même état. Exemple de prompt de préparation : « Crée un canvas Kanban pour nos étapes extraire, valider, transformer et exporter. Affiche les critères de réussite de chaque carte. » Faire cela avant la séance si souhaité et autorisé, sans promettre que notre Slidev est relié à Copilot. Aucun Canvas n’a été créé ou installé dans le cadre de cette révision.
