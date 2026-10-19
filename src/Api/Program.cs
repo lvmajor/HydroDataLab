@@ -5,13 +5,17 @@ using OpenTelemetry.Trace;
 using Quartz;
 
 var builder = WebApplication.CreateBuilder(args);
+var pythonBaseUrl = builder.Configuration["Python:BaseUrl"];
+if (!Uri.TryCreate(pythonBaseUrl, UriKind.Absolute, out var pythonEndpoint)
+    || (pythonEndpoint.Scheme != Uri.UriSchemeHttp && pythonEndpoint.Scheme != Uri.UriSchemeHttps))
+    throw new InvalidOperationException("Configurer Python__BaseUrl avec l'adresse HTTP du service Python. Aspire la fournit automatiquement.");
 var dataDirectory = Path.GetFullPath(builder.Configuration["Hydro:DataDir"] ?? ".runtime/api");
 Directory.CreateDirectory(dataDirectory);
 builder.Services.AddSingleton(new RunStore(Path.Combine(dataDirectory, "hydrolab.sqlite")));
 builder.Services.AddSingleton<PipelineCoordinator>();
 builder.Services.AddHttpClient("python", client =>
 {
-    client.BaseAddress = new Uri((builder.Configuration["Python:BaseUrl"] ?? "http://localhost:53172").TrimEnd('/') + "/");
+    client.BaseAddress = new Uri(pythonEndpoint.AbsoluteUri.TrimEnd('/') + "/");
     client.Timeout = TimeSpan.FromMinutes(3);
 });
 builder.Services.AddHealthChecks();
