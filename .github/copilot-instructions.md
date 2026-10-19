@@ -14,4 +14,4 @@ Avant de conclure, examiner le diff et exécuter la validation du composant touc
 Pour toute interface créée ou modifiée, lire [les critères de typographie et de lisibilité](../docs/UI_TYPOGRAPHY.md) et fournir les résultats des vérifications visuelles; une compilation réussie ne suffit pas. Pour Vue, lire aussi [les instructions ciblées](instructions/vue.instructions.md).
 Python : `uv run --project etl pytest etl/tests`. API : `dotnet test tests/Api.Tests`.
 Vue : `npm --prefix web run build`. Formation : `npm --prefix presentation run build`.
-Ne pas déployer vers un cloud ou publier le dépôt dans le cadre de cette formation locale.
+Ne pas déployer vers un cloud. L’utilisateur a autorisé le dépôt GitHub privé `lvmajor/HydroDataLab` pour synchroniser `main`, `codex/preparation-demo-06` et les huit tags pédagogiques. Conserver sa visibilité privée; toute autre publication demande une instruction explicite.

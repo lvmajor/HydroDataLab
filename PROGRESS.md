@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Synchronisation GitHub privée — 19 octobre
+
+- Départ : main `f34f976`, dépôt propre, aucun distant. L’utilisateur demande explicitement la création d’un dépôt GitHub privé et la publication de main, codex/preparation-demo-06 et des huit tags.
+- Cette autorisation remplace la restriction de publication locale pour ce seul dépôt privé; aucun déploiement cloud n’est demandé.
+- Créé : https://github.com/lvmajor/HydroDataLab. Visibilité PRIVATE confirmée par l’API avant transfert. Lecture des 635 blobs des références à publier : aucun fichier de plus de 100 Mio ni motif de clé privée/jeton détecté par le contrôle ciblé.
+- Préparé : `handouts/synchronisation-github.md`, lien README et guide HQ. Le distant du bundle peut rester sous le nom `kit`; GitHub devient `origin`. Vérification d’un dépôt propre, arrêt sur divergence et séparation de la branche d’exercice. La règle commune de publication est alignée sur l’autorisation explicite.
+- À réaliser : commit documentaire, publication des deux branches et huit tags, contrôle distant et essai de connexion depuis le bundle du ZIP.
+
 ## Repères MCP et VS Code 1.142 — 19 octobre
 
 - Départ : main `0987859`, dépôt propre. Ajouter les emplacements Copilot/Local à la slide 11, aux notes et à l’aide-mémoire.

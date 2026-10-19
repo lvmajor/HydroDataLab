@@ -144,7 +144,7 @@ git tag --list
 dotnet --version
 </code></pre>
 <p><strong>Attendu :</strong> branche <code>main</code>, aucun changement local; huit tags <code>00-socle</code> à <code>07-solution</code>; SDK compatible avec <code>global.json</code>. Si <code>doctor</code> signale un outil absent, revenir aux prérequis. Dans VS Code, ouvrir <code>$Depot</code>, se connecter à Copilot avec le compte HQ et vérifier les modèles autorisés. Une licence ou une fonction absente ne se corrige pas avec le bundle.</p>
-<p>Le bundle contient aussi <code>codex/preparation-demo-06</code>, normalement visible après clonage sous <code>origin/codex/preparation-demo-06</code>. Ce dépôt n’a pas de dépôt GitHub distant : <code>origin</code> désigne le fichier de transport local.</p>
+<p>Le bundle contient aussi <code>codex/preparation-demo-06</code>, normalement visible après clonage sous <code>origin/codex/preparation-demo-06</code>. Juste après cette restauration, <code>origin</code> désigne le fichier de transport local. Pour recevoir les retouches suivantes, suivre le <a href="https://github.com/lvmajor/HydroDataLab/blob/main/handouts/synchronisation-github.md">guide de connexion au dépôt GitHub privé</a> : il conserve ce distant sous le nom <code>kit</code> et ajoute GitHub comme <code>origin</code>. Le compte utilisé doit avoir accès au dépôt.</p>
 <h2 id="5-preparer-l-application-locale">5. Préparer l’application locale</h2>
 <p>Dans le dépôt principal, avec le réseau disponible :</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Depot

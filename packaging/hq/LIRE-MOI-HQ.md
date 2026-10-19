@@ -96,7 +96,7 @@ dotnet --version
 
 **Attendu :** branche `main`, aucun changement local; huit tags `00-socle` à `07-solution`; SDK compatible avec `global.json`. Si `doctor` signale un outil absent, revenir aux prérequis. Dans VS Code, ouvrir `$Depot`, se connecter à Copilot avec le compte HQ et vérifier les modèles autorisés. Une licence ou une fonction absente ne se corrige pas avec le bundle.
 
-Le bundle contient aussi `codex/preparation-demo-06`, normalement visible après clonage sous `origin/codex/preparation-demo-06`. Ce dépôt n’a pas de dépôt GitHub distant : `origin` désigne le fichier de transport local.
+Le bundle contient aussi `codex/preparation-demo-06`, normalement visible après clonage sous `origin/codex/preparation-demo-06`. Juste après cette restauration, `origin` désigne le fichier de transport local. Pour recevoir les retouches suivantes, suivre le [guide de connexion au dépôt GitHub privé](https://github.com/lvmajor/HydroDataLab/blob/main/handouts/synchronisation-github.md) : il conserve ce distant sous le nom `kit` et ajoute GitHub comme `origin`. Le compte utilisé doit avoir accès au dépôt.
 
 ## 5. Préparer l’application locale
 
