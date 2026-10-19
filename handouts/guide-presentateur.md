@@ -18,7 +18,7 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 13:00–15:00 | 8 — Une instruction vérifiable | 2 min |  |
 | 15:00–17:00 | 9 — Format, portée et activation | 2 min |  |
 | 17:00–19:00 | 10 — Couches bilingues du contexte | 2 min |  |
-| 19:00–21:00 | 11 — Mécanismes de personnalisation | 2 min |  |
+| 19:00–21:00 | 11 — Le panneau Agent Customizations | 2 min |  |
 | 21:00–22:00 | 12 — Base vanille et ajouts ciblés | 1 min |  |
 | 22:00–24:00 | 13 — Tokens et reprises | 2 min |  |
 | 24:00–25:30 | 14 — Auto | 1 min 30 |  |
@@ -37,11 +37,11 @@ Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**.
 
 Le parcours relie les fichiers d’instructions (8–9) aux couches de contexte (10), puis aux mécanismes de personnalisation (11) et à la base « vanille » (12). Le sujet reste Copilot dans VS Code; Python et l’ETL fournissent les exemples vérifiables. Aucun aperçu ETL supplémentaire n’est ajouté à l’ouverture.
 
-La slide 11 garde les sept concepts : suivre un exemple instruction → skill → outil, puis situer agent personnalisé, MCP, hook et plugin sans entrer dans sept configurations. La fiche [personnalisations-vscode.md](personnalisations-vscode.md) conserve les formats. La sélection de skills rejoint la fin (20), après leur mise en contexte. Matt Pocock reste en exploration; aucune liste universelle de « must have » n’est affirmée.
+La slide 11 suit le panneau réel : 20 secondes pour Overview, Customize Your Agent et les cartes Explore Customizations; 75 secondes pour les sept lignes dans l’ordre du menu; 25 secondes pour relier instruction → skill → outil avec un même test. Ne pas ouvrir sept configurations ni lancer la création de fichiers en direct. La fiche [personnalisations-vscode.md](personnalisations-vscode.md) conserve les formats, conditions et détails des compteurs. La sélection de skills rejoint la fin (20), après leur mise en contexte. Matt Pocock reste en exploration; aucune liste universelle de « must have » n’est affirmée.
 
 La 10 montre les couches en anglais/français, leurs fichiers et leurs conditions d’utilisation. Elles composent le contexte sans définir une priorité officielle. La 15 compare quatre tâches et cinq modèles avec des volumes supposés; les losanges sont des choix à essayer, pas un benchmark. La 18 nomme le SDD et annonce la formation de l’autre équipe. **Canvas reste en annexe 25**, accessible depuis les ressources (22), sans nouveau concept dans la conclusion.
 
-Pour zéro/absence, [10, 0, None] donne deux mesures sur trois, soit 66,67 %. Les contrôles de plausibilité restent propres à chaque série. La capture Instructions en annexe 23 provient d’un autre projet, avec des listes vides : ce n’est pas une preuve de chargement HydroDataLab. Les sources au bas des slides restent cliquables dans le site et le PDF.
+Pour zéro/absence, [10, 0, None] donne deux mesures sur trois, soit 66,67 %. Les contrôles de plausibilité restent propres à chaque série. L’annexe 23 reprend la nouvelle capture Overview du projet Formation Copilot - HQ. Son menu donne des repères; ses compteurs ne prouvent pas l’utilisation des capacités dans une réponse. Les chemins User/Workspace sous l’image expliquent les portées accessibles dans Instructions. Les sources au bas des slides restent cliquables dans le site et le PDF.
 
 La page 22 reste visible pendant les questions. Compléter les trois entrées HQ dans presentation/resources/links.json; la fiche [skills-et-veille.md](skills-et-veille.md) donne les sources et les modalités de mise à jour.
 
@@ -96,7 +96,7 @@ Depuis la racine de la version finale (`main`; les tags restent historiques), ex
 
 1. **0:00–0:45** : ouvrir **Chat: Open Agents Window** dans le dépôt principal, branche `main`. Session = conversation pour une tâche; repérer `/plan` pour une future implémentation, sans lancer une deuxième demande pendant cette mission en lecture seule. Le menu de cette fenêtre ne contient pas actuellement l'agent Plan : utiliser `/plan` dans la session Copilot. Copilot est l'environnement choisi et Auto sélectionne un modèle; ses niveaux seront expliqués ensuite. Présenter les confirmations d'actions.
 2. **0:45–1:30** : ouvrir `Ctrl+,`, ajuster la lisibilité et expliquer la portée : Utilisateur pour ses projets, Espace de travail pour le projet ouvert. Repérer **Changes**; ce panneau peut être vide pendant la mission en lecture seule. Le vrai diff sera montré à la démo 3.
-3. **1:30–2:20** : ouvrir **Chat: Open Customizations**. Instruction = consigne écrite pour l'agent. Retrouver la règle Python qui distingue zéro d'une absence.
+3. **1:30–2:20** : ouvrir **Chat: Open Customizations**. Consacrer 10 secondes à Overview (vue d’ensemble) et Customize Your Agent (aide à créer des fichiers à relire), sans envoyer de demande. Passer à Instructions et retrouver la règle Python qui distingue zéro d’une absence. Les sept rubriques seront expliquées à la slide 11.
 4. **2:20–4:00** : lancer le prompt de découverte du conducteur des démos. Traduire **References** par « sources consultées », ouvrir un fichier cité et vérifier une affirmation avec le public.
 
 Résultat attendu : le public sait où l'agent travaille, quelles actions il peut faire et comment vérifier une affirmation. Si l'authentification est indisponible, montrer les fichiers et les règles locaux en annonçant que la réponse ne sera pas générée en direct. Ne pas créer de worktree pendant cette démonstration.

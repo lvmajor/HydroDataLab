@@ -4,6 +4,8 @@ Sujet central : **GitHub Copilot dans VS Code et les bonnes pratiques des agents
 
 **28 diapositives : 22 principales et 6 annexes.** Prestation du 20 octobre 2026; sources vérifiées les 18 et 19 octobre. Le contenu et les démos occupent 45 minutes : 32 minutes d’explications et 4 + 5 + 4 minutes de démonstrations. Questions : 10 minutes; marge : 5.
 
+La slide 11 explique le panneau Agent Customizations : Overview, création assistée et sept rubriques dans l’ordre de VS Code. La capture réelle est en annexe 23; la fiche `handouts/personnalisations-vscode.md` détaille les formats, déclenchements et compteurs.
+
 ## Lancer localement
 
 Les fichiers de présentation sont disponibles à partir du tag `05-docker`. Au jalon `04-pilotage`, préparer uniquement l’application avec `./scripts/prepare.ps1 -SkipPresentation`.

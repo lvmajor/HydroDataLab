@@ -1,6 +1,14 @@
 # Validation de la présentation
 
-## État courant : progression Copilot et notes synchronisées
+## État courant : panneau Agent Customizations
+
+19 octobre 2026. Slide 11 : Overview, Customize Your Agent, puis Plugins, MCP Servers, Skills, Instructions, Agents, Hooks et Tools dans l’ordre de la capture. Chaque rubrique a une définition, une utilité, un exemple et un lien officiel. Explore Customizations, la composition instruction/skill/outil et les compteurs sont expliqués dans les notes et la fiche. Capture réelle du projet en annexe 23, pixels préservés avec cadrage CSS.
+
+Build et contrôle des 28 routes réussis : aucun débordement détecté, erreur de page ou chargement externe. Interactions contexte/coûts réussies; leur synchronisation n’a pas été modifiée et conserve la preuve de la révision précédente. PDF de 28 pages avec les neuf libellés attendus en page 11, liens officiels et six destinations internes. Rendus 11 et 23 examinés à pleine taille; page 8 actualisée pour le libellé de son renvoi. Avertissement FloatingVue de l’exporteur inchangé, sans défaut constaté dans les rendus.
+
+Notes et guide : mêmes 22 plages, 32 minutes d’explications et 13 de démos. Conducteur HTML : huit rubriques, 21 copies, liens, quatre largeurs et impression vérifiés. La démonstration ne lance aucune personnalisation nouvelle depuis Customize Your Agent. Le rythme de deux minutes pour ce survol reste à répéter humainement sur le portable HQ. Les fichiers sources des captures sont inclus dans le kit pour préserver les liens de la fiche.
+
+## Historique : progression Copilot et notes synchronisées
 
 19 octobre 2026. **28 diapositives : 22 principales et 6 annexes.** Copilot dans VS Code est le sujet central; HydroDataLab reste l’exemple. Instructions 8–9, contexte 10, mécanismes 11, vanille 12; skills 20 près des ressources; Canvas uniquement en annexe 25. Le calendrier des notes et du guide comporte les mêmes 22 plages, soit 32 minutes d’explications et 13 de démos. La répétition humaine doit encore confirmer le rythme en salle.
 

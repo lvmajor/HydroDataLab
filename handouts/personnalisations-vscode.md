@@ -1,6 +1,6 @@
 # Personnalisations de VS Code et du harnais Copilot
 
-Vérifié le **18 octobre 2026**, pour VS Code **1.142**. Cette fiche accompagne les diapositives 8 à 13, 23 et 25. Les formats cités sont liés à leur documentation officielle.
+Vérifié le **19 octobre 2026**, pour VS Code **1.142**. Cette fiche accompagne les diapositives 8 à 12, 20, 23 et 25. Les formats cités sont liés à leur documentation officielle.
 
 ## Choix conseillé pour ce public
 
@@ -53,7 +53,7 @@ Exemple chiffré : trois températures attendues `[10, 0, None]` donnent **deux 
 
 ## Context layers — les couches du contexte
 
-La diapositive 13 relie cinq sources au **Model context — Contexte du modèle** :
+La diapositive 10 relie cinq sources au **Model context — Contexte du modèle** :
 
 1. **Project instructions — Consignes du projet** : les règles communes de `copilot-instructions.md`.
 2. **File-specific instructions — Consignes ciblées** : les règles Python dans `python.instructions.md`, activées selon les mécanismes décrits plus haut.
@@ -62,6 +62,30 @@ La diapositive 13 relie cinq sources au **Model context — Contexte du modèle*
 5. **Tool results — Résultats des outils** : les sorties réelles de pytest, du terminal ou du rapport de qualité.
 
 Les deux premières sources apportent les consignes durables; les suivantes cadrent le travail et permettent de vérifier son résultat. C’est notre organisation pédagogique, pas une liste de niveaux officiels de VS Code. La position dans le dessin ne donne pas une priorité. L’historique et d’autres instructions peuvent également contribuer au contexte. [Guide Microsoft pour structurer le contexte](https://code.visualstudio.com/docs/agents/guides/context-engineering-guide).
+
+## Lire le panneau Agent Customizations
+
+La diapositive 11 reprend les libellés du menu dans l’ordre de la [capture complète fournie le 19 octobre](../presentation/public/vscode-customizations-overview.png), cadrée en annexe 23. Ce menu classe des capacités; sa disposition ne définit pas leur priorité.
+
+- **Overview — Vue d’ensemble :** point d’entrée pour retrouver les personnalisations du harnais et du projet indiqués dans l’en-tête.
+- **Customize Your Agent — Personnaliser votre agent :** décrire ses préférences pour faire préparer des agents, skills ou instructions. Par exemple : « Prépare une instruction de projet demandant des tests pour toute transformation Python. » Examiner les fichiers proposés, leur portée et leur compatibilité avant de les enregistrer. Ce champ aide à créer une personnalisation; il ne garantit pas son application à toutes les sessions.
+- **Explore Customizations — Explorer les personnalisations :** les cartes ouvrent les mêmes catégories que le menu de gauche. Elles ne constituent pas d’autres mécanismes.
+
+[Microsoft : panneau et création assistée](https://code.visualstudio.com/docs/agent-customization/overview).
+
+| Rubrique affichée | Ce que c’est et à quoi elle sert | Exemple à raconter |
+|---|---|---|
+| **Plugins — Extensions de l’agent** | Installer un paquet regroupant plusieurs capacités et faciliter leur distribution. Un plugin d’agent n’est pas synonyme d’extension VS Code. | Distribuer une skill de validation et la connexion MCP utile à l’équipe. |
+| **MCP Servers — Serveurs MCP** | Connecter des outils et des données externes par le Model Context Protocol. | Exposer un outil de lecture SQL; l’agent peut demander cet outil. |
+| **Skills — Procédures réutilisables** | Fournir une méthode, éventuellement accompagnée de scripts et ressources, chargée quand elle est pertinente ou invoquée. | `/validate-etl` guide les tests, puis le bilan qualité. |
+| **Instructions — Consignes** | Donner des règles durables, selon leur portée et leurs conditions d’activation. | Conserver une valeur absente au lieu de la remplacer par zéro. |
+| **Agents — Agents personnalisés** | Préparer un rôle avec ses consignes et ses outils. | Le réviseur BI examine les calculs avec des outils de lecture. |
+| **Hooks — Déclencheurs** | Exécuter une commande à un événement du cycle de vie, sans attendre que le modèle la choisisse. | Enregistrer un appel d’outil dans un journal local. |
+| **Tools — Outils** | Voir les actions accessibles et gérer les outils configurables : lecture, recherche, terminal, etc. | L’outil terminal lance réellement pytest et retourne sa sortie. |
+
+**Même tâche, trois fonctions :** l’instruction demande de préserver les absences; le skill décrit la vérification; l’outil exécute le test. Un serveur MCP peut fournir un outil; un plugin peut distribuer ce serveur et la skill. Ni le skill, ni le plugin ne sont des modèles. [Microsoft : comparer et combiner les mécanismes](https://code.visualstudio.com/docs/agents/concepts/customization).
+
+Les compteurs de la capture ne mesurent ni le coût ni l’utilisation dans une réponse. Plus précisément, pour le harnais Copilot, le nombre à côté de **Tools** compte les outils côté client activés et exclut les outils intégrés au harnais, affichés en lecture seule. Rendre un outil disponible ne supprime pas ses contrôles d’autorisation. Vérifier les appels et leurs résultats dans la session. [Microsoft : gérer les outils](https://code.visualstudio.com/docs/agents/run/tools).
 
 ## Les sept concepts et leur déclenchement
 
@@ -75,7 +99,7 @@ Les deux premières sources apportent les consignes durables; les suivantes cadr
 | Hook | Journaliser un appel | Hooks; configuration du harnais | Événement de cycle de vie, sans dépendre d’une décision du modèle. |
 | Plugin | Distribuer skill et MCP ensemble | Plugins; paquet et manifeste | Installation; chaque composant garde ses règles. |
 
-MCP signifie **Model Context Protocol**. Un outil n’exige pas nécessairement MCP. Un plugin regroupe des capacités; il ne devient pas une nouvelle priorité des instructions. SQL, hook et plugin ci-dessus sont des exemples conceptuels; ils ne sont pas installés dans HydroDataLab. [Comparaison Microsoft](https://code.visualstudio.com/docs/agents/concepts/customization), [serveurs MCP](https://code.visualstudio.com/docs/agent-customization/mcp-servers), [plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins).
+MCP signifie **Model Context Protocol**. Un outil n’exige pas nécessairement MCP. Un plugin regroupe des capacités; il ne devient pas une nouvelle priorité des instructions. SQL, hook et plugin ci-dessus sont des exemples illustratifs; la capture ne permet pas d’identifier les composants précis installés derrière ses compteurs. [Comparaison Microsoft](https://code.visualstudio.com/docs/agents/concepts/customization), [serveurs MCP](https://code.visualstudio.com/docs/agent-customization/mcp-servers), [plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins).
 
 ### Une recette : skill
 
@@ -109,7 +133,7 @@ Pour Copilot, suivre le **schéma GitHub Copilot / SDK**, pas un exemple Local c
 4. Ouvrir l’élément, examiner son fichier et son en-tête.
 5. Faire une petite tâche représentative; examiner **References**, les actions et les tests.
 
-La capture fournie par le présentateur, intégrée en annexe 23, provient d’un autre projet et montre **User 0 / Workspace 0**. Elle illustre le panneau; elle ne certifie pas que les fichiers HydroDataLab y sont chargés. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
+La nouvelle capture fournie par le présentateur, intégrée en annexe 23, montre **Overview** pour **Copilot · Formation Copilot - HQ**. Les portées User et Workspace se consultent en ouvrant Instructions; elles ne sont pas visibles dans cette vue d’ensemble. Les chemins sous la capture expliquent ces portées, sans prétendre être des entrées de l’image. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
 
 Si un fichier manque : vérifier harnais, dossier ouvert, emplacement et activation. Le réglage des dossiers parents et les fichiers AGENTS imbriqués demandent une vérification spécifique. Pour Local, `chat.useNestedAgentsMdFiles` est expérimental; ce n’est pas un commutateur universel pour Copilot. Les anciens `chat.*FilesLocations` peuvent nécessiter une migration.
 

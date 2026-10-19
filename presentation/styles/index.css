@@ -71,9 +71,12 @@
 .slidev-layout .rule-file { font-size:20px; line-height:1.45; }
 .rule-file code { display:block; font-size:15px; margin-top:6px; }
 .slidev-layout .concept-table table { font-size:18px; margin:0 0 16px; }
+.customization-intro { font-size:19px; line-height:1.45; margin-bottom:16px; }
 .slidev-layout .concept-table td,.slidev-layout .concept-table th { padding:8px 10px; }
 .screenshot-window { position:relative; height:222px; overflow:hidden; background:#181818; border:1px solid #78858b; margin-bottom:14px; }
 .screenshot-window img { position:absolute; width:1050px; max-width:none; left:-105px; top:-83px; }
+.screenshot-window.overview-window { height:230px; }
+.screenshot-window.overview-window img { width:100%; left:0; top:0; }
 .scope-map { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:12px 0; }
 .scope-map>div { border-left:4px solid #e8b540; padding-left:12px; font-size:18px; }
 .scope-map code { display:block; font-size:14px; margin:5px 0; }

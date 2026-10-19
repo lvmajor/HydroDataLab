@@ -1,5 +1,5 @@
 {
-  "checkedAtUtc": "2026-10-19T18:03:52.469Z",
+  "checkedAtUtc": "2026-10-19T18:33:02.764Z",
   "focus": "GitHub Copilot dans VS Code; HydroDataLab comme fil conducteur",
   "slideCount": 28,
   "explanationMinutes": 32,
@@ -70,7 +70,7 @@
     },
     {
       "slide": 11,
-      "title": "Les mécanismes de personnalisation",
+      "title": "Le panneau Agent Customizations",
       "start": "19:00",
       "finish": "21:00"
     },

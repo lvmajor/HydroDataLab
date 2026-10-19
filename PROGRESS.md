@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Tour du panneau Agent Customizations — 19 octobre
+
+- Départ : main `2f4e858`, dépôt propre. Demande : conserver Slidev et expliquer chaque élément de la capture fournie, là où les concepts sont introduits.
+- Réalisé : slide 11 avec les sept rubriques dans l’ordre du panneau, définitions, utilités, exemples et liens officiels; Overview et Customize Your Agent explicités. Explore Customizations, compteurs et composition dans les notes et la fiche. Nouvelle capture réelle en annexe 23, notes et guides alignés. Toujours 28 slides et créneau 19:00–21:00.
+- Validé : build, 28 routes sans débordement détecté, erreurs de page ou ressource externe; interactions préservées. PDF de 28 pages, neuf libellés en page 11 et six destinations internes; rendus inspectés. Notes/guide : 32 + 13 minutes. Conducteur : huit rubriques, 21 copies, liens, quatre largeurs et impression. Avertissement FloatingVue de l’exporteur inchangé, sans défaut constaté sur les rendus. La répétition humaine du rythme reste à faire.
+- Livraison : actualiser le kit existant et son inventaire, sans nouvelle archive Docker; conserver les captures sources pour les liens de la fiche. Les reçus artifacts/LIVRAISON.txt et REVISION.txt du kit indiquent le commit et le bundle livrés. En cas d’arrêt avant leur actualisation, relancer scripts/refresh-kit.ps1 depuis un dépôt propre.
+- Prochaine action : rafraîchir les deux vues Slidev, lire la slide 11 et sa capture en annexe 23, puis reprendre la répétition. Les services de démonstration restent en place.
+
 ## Progression Copilot et synchronisation du support — 19 octobre
 
 - Départ : main `9629f7c`, dépôt propre. Demande confirmée : appliquer les recommandations 2 à 5; sujet central = GitHub Copilot dans VS Code et bonnes pratiques, HydroDataLab servant d’exemple. Aucun aperçu ETL supplémentaire au début.

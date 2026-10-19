@@ -23,7 +23,9 @@ for term in ['Project instructions','File-specific instructions','Reference docu
 model_text=reader.pages[14].extract_text()
 for term in ['GPT-6 Luna','Claude Haiku 5.5','Claude Sonnet 5.5','GPT-6.1 Sol','Claude Opus 5.5','Simple','Délimitée','Complexe','Diagnostic difficile','Coûts simulés']:
     assert term in model_text, term
-for page,target in [(8,23),(22,25),(23,8),(25,22)]:
+for term in ['Overview','Customize Your Agent','Plugins','MCP Servers','Skills','Instructions','Agents','Hooks','Tools']:
+    assert term in reader.pages[10].extract_text(), term
+for page,target in [(8,23),(11,23),(22,25),(23,8),(23,11),(25,22)]:
     dests=[a.get_object().get('/Dest') for a in reader.pages[page-1].get('/Annots',[])]
     assert any(d and d[0]==reader.pages[target-1].indirect_reference for d in dests), (page,target)
 assert 'Votre terrain de développement' in reader.pages[1].extract_text()

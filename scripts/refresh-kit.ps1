@@ -46,6 +46,11 @@ Get-ChildItem -LiteralPath (Join-Path $RepoRoot 'presentation/dist') -Force | Wh
     Copy-Item -LiteralPath $_.FullName -Destination "$kit/presentation" -Recurse -Force
 }
 Copy-Item -LiteralPath (Join-Path $RepoRoot 'presentation/dist/index.html') -Destination "$kit/presentation/index.html" -Force
+# Handouts also link to original captures using their source-tree paths.
+New-Item -ItemType Directory -Path "$kit/presentation/public" -Force | Out-Null
+Get-ChildItem -LiteralPath (Join-Path $RepoRoot 'presentation/public') -Force | ForEach-Object {
+    Copy-Item -LiteralPath $_.FullName -Destination "$kit/presentation/public" -Recurse -Force
+}
 Copy-Item -LiteralPath (Join-Path $RepoRoot 'presentation/exports/formation-hydrodatalab.pdf') -Destination "$kit/documents/formation-hydrodatalab.pdf" -Force
 $guide = Get-Content -LiteralPath "$kit/DEMARRER.md" -Raw
 if ($image[0].sha256 -ne $newHash) {

@@ -164,7 +164,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 1 minute d’explication puis 4 minutes de démo, 08:00–13:00. Présenter la mission en lecture seule et la question « Quelles sources permettent de vérifier sa réponse? ». Le dépôt principal reste sur main. Commandes et prompt complets : handouts/conducteur-demos.html, Démo 1.
 0:00–0:45 : ouvrir Chat: Open Agents Window, vérifier dossier, branche main, harnais Copilot et Auto Balance ou le modèle autorisé préparé. Créer une session et garder les confirmations d’actions. Montrer /plan comme possibilité pour une future modification, sans lancer une deuxième demande ici. Dans cette fenêtre, ne pas chercher l’agent Plan du menu de la vue Chat.
 0:45–1:30 : Ctrl+, montrer Utilisateur/Espace de travail et la lisibilité préparée. Repérer Changes; il peut rester vide pendant cette mission. Le vrai diff sera montré à la démo 3.
-1:30–2:20 : Customizations → Instructions; ouvrir les consignes communes et Python. Retrouver zéro/absence. Si un fichier n’est pas listé, ne pas conclure qu’il est chargé simplement parce qu’il existe.
+1:30–2:20 : ouvrir Customizations. Pendant 10 secondes, situer Overview (vue d’ensemble) et Customize Your Agent (aide à créer des personnalisations à relire), sans envoyer de demande. Ouvrir ensuite Instructions et les consignes communes et Python; retrouver zéro/absence. Les sept rubriques seront expliquées en slide 11. Si un fichier n’est pas listé, ne pas conclure qu’il est chargé simplement parce qu’il existe.
 2:20–4:00 : coller le prompt de découverte du conducteur. Lire References comme sources consultées; ouvrir une fonction ou un test cité et vérifier une affirmation. La présence d’une règle ne garantit pas son respect.
 Si Copilot tarde ou est indisponible, ouvrir pipeline.py et un test local, en annonçant que la génération n’a pas abouti en direct. Revenir aux slides à 4:00.
 -->
@@ -185,7 +185,7 @@ Si Copilot tarde ou est indisponible, ouvrir pipeline.py et un test local, en an
 
 <div class="rule-file"><b>Instruction permanente :</b> « Conserver les valeurs manquantes.<br>Compter 0 comme une mesure numérique valide. »<br><code>.github/instructions/python.instructions.md</code></div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions personnalisées</a> · <a href="/23">Voir le panneau Instructions →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions personnalisées</a> · <a href="/23">Se repérer dans Customizations →</a></div>
 
 <!--
 2 minutes, 13:00–15:00. Une instruction est une consigne durable, enregistrée dans le projet et relue comme le code. Montrer trois températures fictives : zéro Celsius est bien une mesure, None signifie qu’on n’en a pas reçu. En pandas, l’absence peut apparaître sous forme NaN ou NA; en JSON, null. La règle ne prétend pas qu’un zéro est physiquement plausible pour toute série : les contrôles métier restent nécessaires. Ici, ne pas convertir un manque en zéro pour remplir un graphique. Si on le faisait, la couverture deviendrait artificiellement 100 %. Le test doit compter deux valeurs, et non une (zéro exclu) ou trois (absence remplacée). Montrer le fichier du dépôt. Le lien interne conduit à la capture réelle en annexe 23; l’ouvrir pendant la démo seulement si nécessaire. Les notes et le guide fournissent la marche à suivre.
@@ -230,31 +230,31 @@ Compter 0 comme une mesure numérique valide.
 
 ---
 
-# Les mécanismes de personnalisation
+# Le panneau Agent Customizations
+
+<div class="customization-intro"><div><b>Overview · vue d’ensemble</b> : retrouver les personnalisations.</div><div><b>Customize Your Agent</b> : décrire ses préférences → créer des fichiers à relire.</div></div>
 
 <div class="concept-table">
 
-| Concept | Question à laquelle il répond | Petit exemple BI |
+| Dans VS Code | Ce que c’est · à quoi cela sert | Exemple |
 |---|---|---|
-| **Instructions** | Quelles règles respecter? | Garder les valeurs manquantes. |
-| **[Skill](https://code.visualstudio.com/docs/agent-customization/agent-skills)** | Quelle procédure réutiliser? | Procédure <code>/validate-etl</code>. |
-| **Tool · outil** | Quelle action exécuter? | Lancer pytest dans le terminal. |
-| **[Agent personnalisé](https://code.visualstudio.com/docs/agent-customization/custom-agents)** | Quel rôle et quels outils? | Réviseur BI en lecture seule. |
-| **[Serveur MCP](https://code.visualstudio.com/docs/agent-customization/mcp-servers)** | Comment connecter un système? | Fournir un outil de lecture SQL. |
-| **Hook** | Que lancer à un événement? | Journaliser un appel d’outil. |
-| **Plugin** | Comment distribuer un ensemble? | Installer une skill et un serveur MCP. |
+| **[Plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins)** | Des paquets pour distribuer des capacités. | Installer skill + serveur MCP. |
+| **[MCP Servers](https://code.visualstudio.com/docs/agent-customization/mcp-servers)** | Des serveurs pour connecter outils et données. | Exposer une lecture SQL. |
+| **[Skills](https://code.visualstudio.com/docs/agent-customization/agent-skills)** | Des procédures réutilisables à charger au besoin. | <code>/validate-etl</code> : tests et bilan. |
+| **[Instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions)** | Des consignes pour guider le travail. | Préserver les valeurs absentes. |
+| **[Agents](https://code.visualstudio.com/docs/agent-customization/custom-agents)** | Des rôles avec leurs consignes et outils. | Réviseur BI en lecture seule. |
+| **[Hooks](https://code.visualstudio.com/docs/agent-customization/hooks)** | Des commandes déclenchées par un événement. | Journaliser un appel d’outil. |
+| **[Tools](https://code.visualstudio.com/docs/agents/run/tools)** | Des outils pour agir : lire, chercher, exécuter… | Le terminal lance pytest. |
 
 </div>
 
-<div class="small">Même tâche : une instruction fixe la règle, un skill guide la vérification,<br>un outil exécute le test. Les autres mécanismes répondent à des besoins précis.</div>
-
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/concepts/customization">Microsoft · comparer les concepts</a> · <a href="https://code.visualstudio.com/docs/agent-customization/agent-skills">Skills</a> · <a href="https://code.visualstudio.com/docs/agent-customization/hooks">Hooks</a> · <a href="https://code.visualstudio.com/docs/agent-customization/agent-plugins">Plugins</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/concepts/customization">Microsoft · comparer les concepts</a> · <a href="https://code.visualstudio.com/docs/agent-customization/overview">Le panneau</a> · <a href="/23">Voir la capture →</a></div>
 
 <!--
-2 minutes, 19:00–21:00. Faire vivre un seul exemple plutôt que réciter sept définitions.
-0:00–0:50 : « Conserver les absences » est l’instruction. Le skill validate-etl, avec son SKILL.md, propose la procédure tests/unités/rapport. Le terminal est l’outil qui lance réellement pytest. Montrer leurs trois premières lignes et rappeler que la compétence du modèle ne remplace pas l’exécution.
-0:50–1:35 : le réviseur BI est un agent personnalisé, configuré avec un rôle et des outils limités. MCP signifie Model Context Protocol : un serveur peut exposer un outil de lecture SQL; il connecte un système et ne désigne pas le modèle. Un hook lance du code sur un événement configuré; il faut en vérifier les permissions et le comportement. Un plugin distribue des capacités, par exemple un skill et un serveur MCP. Ces exemples SQL/hook/plugin ne sont pas installés dans HydroDataLab.
-1:35–2:00 : quelle capacité répond à notre besoin réel? Règles et tests d’abord; ajouter le mécanisme justifié. Les formats et conditions d’activation sont dans handouts/personnalisations-vscode.md; le catalogue de skills arrive en slide 20, après la mise en pratique. Transition : « Nous pouvons personnaliser beaucoup de choses; voici pourquoi je garde une base simple. »
+2 minutes, 19:00–21:00. Les libellés et leur ordre correspondent à la capture du présentateur. Ce menu classe des capacités; ce n’est pas une hiérarchie de priorité.
+0:00–0:20 : Overview est la vue d’ensemble. Customize Your Agent permet de décrire ses préférences pour préparer des agents, skills ou instructions : examiner la proposition, sa portée et ses fichiers avant de les enregistrer. Exemple de demande à montrer oralement, sans l’exécuter : « Prépare une instruction de projet demandant des tests pour toute transformation Python. » Explore Customizations reprend les mêmes rubriques sous forme de cartes; ce ne sont pas des mécanismes supplémentaires.
+0:20–1:35 : parcourir les sept lignes, dans l’ordre. Plugins distribue un ensemble de capacités. MCP signifie Model Context Protocol : un serveur connecte un système et peut exposer une lecture SQL. Skills apporte une procédure réutilisable quand elle est pertinente ou invoquée; notre /validate-etl est volontaire. Instructions apporte des règles selon leur portée et leurs conditions d’activation. Agents définit un rôle et ses outils, pas un nouveau modèle. Hooks exécute une commande à un événement configuré, indépendamment du choix du modèle; vérifier sa configuration et ses permissions. Tools montre les actions accessibles à l’agent et permet de gérer les groupes configurables; un outil peut être natif, fourni par une extension ou exposé via MCP. Les exemples SQL/hook/plugin sont illustratifs; les compteurs de la capture ne prouvent pas que ces exemples précis sont installés ou utilisés.
+1:35–2:00 : relier trois lignes : l’instruction demande de préserver les absences, le skill décrit les vérifications, l’outil terminal exécute pytest. Le résultat du test reste la preuve. La capture en annexe 23 permet de retrouver les rubriques; l’ouvrir seulement au besoin. En-tête = harnais et projet; nombres = compteurs du panneau, pas coût, qualité ni preuve d’activation dans la réponse. Les formats et déclenchements sont dans handouts/personnalisations-vscode.md. Transition : « Nous pouvons personnaliser beaucoup de choses; voici pourquoi je garde une base simple. »
 -->
 
 ---
@@ -520,22 +520,22 @@ class: resources
 class: annex
 ---
 
-# Annexe · du fichier au panneau Instructions
+# Annexe · se repérer dans Customizations
 
-<div class="screenshot-window"><img src="/vscode-customizations-user.png" alt="Capture fournie : Agent Customizations pour Copilot, Instructions sélectionné, sections User et Workspace vides." /></div>
+<div class="screenshot-window overview-window"><img src="/vscode-customizations-overview.png" alt="Capture réelle du projet Formation Copilot - HQ : Overview sélectionné; menu Plugins, MCP Servers, Skills, Instructions, Agents, Hooks, Tools; zone Customize Your Agent." /></div>
 
 <div class="scope-map">
-<div><b>User · vos préférences</b><code>~/.copilot/copilot-instructions.md</code><span>Commun à vos projets, sur ce poste.</span></div>
-<div><b>Workspace · ce projet</b><code>.github/copilot-instructions.md</code><span>Partagé dans Git avec l’équipe.</span></div>
+<div><b>Instructions → User</b><code>~/.copilot/copilot-instructions.md</code><span>Vos préférences communes aux projets.</span></div>
+<div><b>Instructions → Workspace</b><code>.github/copilot-instructions.md</code><span>Les règles du projet, partagées dans Git.</span></div>
 </div>
 
-<div class="small">Règles ciblées : <code>~/.copilot/instructions/</code> ou <code>.github/instructions/</code>.</div>
+<div class="small">Ouvrir une rubrique → examiner le fichier → vérifier son application.</div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/overview#agent-customizations-editor">Microsoft · panneau Customizations</a> · <a href="/8">Retour à l’exemple →</a></div>
-<div class="source">Capture réelle fournie par le présentateur, autre projet, listes vides. Les chemins ci-dessus expliquent les portées; ils ne sont pas des entrées visibles dans cette capture.</div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/overview#agent-customizations-editor">Microsoft · panneau Customizations</a> · <a href="/8">Exemple de règle</a> · <a href="/11">Les rubriques →</a></div>
+<div class="source">Capture fournie le 19 octobre : vue Overview. Les chemins ci-dessus expliquent les portées dans Instructions; ils ne sont pas visibles dans la capture.</div>
 
 <!--
-Annexe. Le harnais Copilot doit être sélectionné avant d’ouvrir Chat: Open Customizations ou Customizations dans la barre latérale. La capture est conservée sans modification de pixels; le site cadre la partie utile par CSS. Elle vient du projet RealEstateFinancing et ne prouve pas la découverte des fichiers HydroDataLab. User 0 et Workspace 0 sont effectivement visibles. Dans HydroDataLab, ouvrir la racine du dépôt, Instructions, puis l’élément découvert et son fichier. Les réglages User de VS Code et les fichiers du harnais sous ~/.copilot ne sont pas le même stockage. ~ désigne le dossier personnel de la machine où l’agent tourne. Les anciens fichiers de profil et chat.*FilesLocations peuvent nécessiter une migration. Vérifier References, puis un test de comportement; présence ne signifie pas conformité. Les réglages de lisibilité, leur portée et le diagnostic sont détaillés dans handouts/personnalisations-vscode.md.
+Annexe. La capture fournie le 19 octobre est conservée sans modification des pixels; seul le cadrage CSS se concentre sur le menu et Customize Your Agent. L’image complète est liée dans handouts/personnalisations-vscode.md; sa partie basse montre Explore Customizations, qui répète les rubriques en cartes. L’en-tête indique Copilot et Formation Copilot - HQ. Les nombres visibles dans la barre latérale ne prouvent pas que toutes ces capacités ont été utilisées dans une réponse. Overview est le point d’entrée; Customize Your Agent aide à préparer des fichiers, à relire et à valider pour le harnais choisi. Pour une règle, ouvrir Instructions, User ou Workspace, puis l’élément et son fichier. Les deux chemins sous l’image sont des repères explicatifs, pas des entrées visibles dans cette capture Overview. Les réglages User de VS Code et les fichiers du harnais sous ~/.copilot ne sont pas le même stockage. ~ désigne le dossier personnel de la machine où l’agent tourne. Vérifier References, puis un test de comportement; présence ne signifie pas conformité. Les formats, conditions et réglages de lisibilité sont détaillés dans handouts/personnalisations-vscode.md.
 -->
 
 ---
