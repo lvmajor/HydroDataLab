@@ -14,9 +14,9 @@ Ouvrir [la version lisible dans le navigateur](conducteur-demos.html) sur le por
 | Démo 3 · slide 20 | Copie d’exercice, branche `codex/repetition-01` issue de `06-specification` | Règle BI → code Python → tests → 100 %, puis 95,83 % | 4 min |
 | Secours, si nécessaire | Retour au dépôt principal, `main` | Solution préparée, annoncée comme telle | Décider à 2:10 de la démo 3 |
 
-**Pourquoi deux dossiers?** Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. Au 19 octobre, `etl/`, `src/`, `web/` et `specs/` sont identiques entre `main` et `07-solution`. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.
+**Pourquoi deux dossiers?** Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. `main` conserve la solution métier du jalon 07 et ajoute les améliorations de préparation, dont les ports dynamiques. La copie du jalon 06 reçoit seulement la correction réseau, sans implémenter la couverture. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.
 
-Un **tag** est un jalon fixe; une **branche** conserve une nouvelle tentative. La branche existante `demo-live` n’est pas nécessaire à ce parcours. **Une seule application à la fois** utilise les ports 53170–53172. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal.
+Un **tag** est un jalon fixe; une **branche** conserve une nouvelle tentative. La branche existante `demo-live` n’est pas nécessaire à ce parcours. **Une seule application à la fois** utilise le port fixe Vue 53170; les ports API/Python sont attribués par Aspire. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal.
 
 ## Avant la séance · préparer une fois
 
@@ -44,7 +44,7 @@ git status --short --branch
 
 **Où faut-il uv?** Sur le poste pour la CLI Python, les tests et l’application Aspire en processus locaux : les trois démos utilisent ce parcours. L’image `hydrodatalab-etl:formation` embarque aussi uv et ses dépendances déjà installées; son exécution seule ou la pile Compose déjà préparée ne demande pas uv sur le poste. L’exécution conteneurisée lance Python/Uvicorn directement. Aspire ne conteneurise pas automatiquement les programmes du parcours local. Voir `etl/Dockerfile` dans le dépôt et la [documentation uv/Docker](https://docs.astral.sh/uv/guides/integration/docker/). Dans le kit, le Dockerfile se trouve dans le code à restaurer depuis le bundle.
 
-**Pourquoi des ports fixes?** Aspire sait attribuer des ports libres quand on ne lui impose pas de port hôte. HydroDataLab fixe 53170–53172 pour les URL du conducteur, et le diaporama indépendant utilise 53173. En Compose, seuls Vue (53170) et le dashboard (53174) sont publiés sur le poste; les ports API/Python restent dans le réseau des conteneurs. Une adresse imposée peut entrer en collision : les numéros élevés réduisent la probabilité sans garantir leur disponibilité. Le passage à des ports dynamiques est possible; le dashboard permettrait alors de retrouver les URL. [Documentation réseau Aspire](https://aspire.dev/fundamentals/networking-overview/).
+**Quels ports utiliser?** Vue garde **http://localhost:53170**. Aspire choisit les ports de l’API et de Python et transmet leurs adresses automatiquement : aucune modification manuelle de configuration après un redémarrage. Pour consulter les URL directes, ouvrir les endpoints **api** et **python** dans le dashboard du lancement courant. Pour consulter l’API depuis le navigateur, utiliser **http://localhost:53170/api/report**; `./scripts/verify-http.ps1` passe également par Vue. Le diaporama indépendant reste sur 53173. En Compose, seuls Vue (53170) et le dashboard (53174) sont publiés sur le poste; les ports internes API/Python restent privés et inchangés. [Documentation réseau Aspire](https://aspire.dev/fundamentals/networking-overview/).
 
 Sur un nouveau poste, installer les dépendances avant la répétition, avec le réseau disponible. Arrêter d’abord l’application native avec `./scripts/stop-demo.ps1` si elle tourne. Si Compose tourne, utiliser `./scripts/docker-demo.ps1 -Action Stop` avec les options de moteur employées au démarrage. Puis :
 
@@ -58,21 +58,26 @@ Set-Location -LiteralPath $Depot
 
 ### B. Créer la copie d’exercice, sans copier les grosses archives
 
-Exécuter ce bloc **une seule fois**. Si le dossier existe déjà, il reste intact : passer à « Fin et nouvelle répétition ». Le clone transporte Git et les sources, pas les images Docker ni les dépendances installées. Il crée un lien Git local vers le dépôt principal; aucun dépôt en ligne n’est créé.
+Exécuter ce bloc **une seule fois**. Si le dossier existe déjà, il reste intact : passer à « Fin et nouvelle répétition ». Un bundle est un fichier de transport Git local; il évite les problèmes de propriété Windows du clonage direct d’un dossier. Il contient l’historique et les sources, pas les images Docker ni les dépendances installées. Aucun dépôt en ligne n’est créé. Le fichier `.runtime/repetition-source.bundle` sert au transfert et sera actualisé lors d’une nouvelle répétition.
 
 ```powershell
 Set-Location -LiteralPath $Depot
 if (Test-Path -LiteralPath $Live) { throw 'Copie existante : la conserver et reprendre la section Fin et nouvelle répétition.' }
-git clone --no-hardlinks --branch main "$Depot" "$Live"
+New-Item -ItemType Directory -Force .runtime | Out-Null
+git bundle create .runtime/repetition-source.bundle --all
+if ($LASTEXITCODE -ne 0) { throw 'Création du bundle interrompue.' }
+git clone --branch main .runtime/repetition-source.bundle "$Live"
 if ($LASTEXITCODE -ne 0) { throw 'Clonage interrompu.' }
 git -C "$Live" switch -c codex/repetition-01 06-specification
 if ($LASTEXITCODE -ne 0) { throw 'Branche exercice non créée.' }
+git -C "$Live" -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397
+if ($LASTEXITCODE -ne 0) { throw 'Correction réseau non appliquée : examiner le message Git avant de poursuivre.' }
 Set-Location -LiteralPath $Live
 ./scripts/prepare.ps1 -SkipPresentation
 git status --short --branch
 ```
 
-**Attendu :** branche `codex/repetition-01`, dossier propre. Ouvrir cette copie dans une deuxième fenêtre VS Code par **Fichier → Nouvelle fenêtre → Ouvrir un dossier**. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.
+**Attendu :** branche `codex/repetition-01`, dossier propre. `cherry-pick` applique un seul commit de correction réseau après le tag 06; il ne modifie pas le calcul de couverture. L’identité pédagogique passée à cette commande ne change pas les réglages Git de l’utilisateur. Les huit tags restent intacts. Ouvrir cette copie dans une deuxième fenêtre VS Code par **Fichier → Nouvelle fenêtre → Ouvrir un dossier**. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.
 
 Contrôler l’état de départ de l’exercice :
 
@@ -93,7 +98,7 @@ Set-Location -LiteralPath $Live
 ./scripts/start-demo.ps1
 ```
 
-Ouvrir **http://localhost:53170**. Choisir **Jeu de démonstration**, laisser **Retirer une mesure de niveau d’eau** décoché, cliquer **Lancer la collecte**. Attendre **Réussi** et vérifier **Couverture : Non calculée**. Cette vérification prépare aussi la compilation nécessaire à un prochain lancement rapide.
+Ouvrir **http://localhost:53170**. Choisir **Jeu de démonstration**, laisser **Retirer une mesure de niveau d’eau** décoché, cliquer **Lancer la collecte**. Attendre **Terminé** et vérifier **Couverture : Non calculée**. Cette vérification prépare aussi la compilation nécessaire à un prochain lancement rapide.
 
 Revenir à la version complète pour le début de la répétition :
 
@@ -200,7 +205,7 @@ Get-Content -LiteralPath (Join-Path $Export 'observations.csv') -TotalCount 4
 
 ### 1:00–2:15 · Explorer dans Vue
 
-**Faire :** ouvrir http://localhost:53170, choisir **Jeu de démonstration**, décocher **Retirer une mesure de niveau d’eau**, puis **Lancer la collecte**. Attendre **Réussi** dans **Dernières exécutions**.
+**Faire :** ouvrir http://localhost:53170, choisir **Jeu de démonstration**, décocher **Retirer une mesure de niveau d’eau**, puis **Lancer la collecte**. Attendre **Terminé** dans **Dernières exécutions**.
 
 **Montrer :** les courbes, la date des observations, les unités et la provenance. La collecte locale peut être très rapide : ne pas promettre que chaque statut intermédiaire restera visible. L’historique est la preuve durable.
 
@@ -214,7 +219,7 @@ Get-Content -LiteralPath (Join-Path $Export 'observations.csv') -TotalCount 4
 
 ### 3:00–4:30 · Provoquer une erreur et reprendre
 
-**Faire :** dans Vue, cliquer **Démontrer un échec contrôlé**. Attendre l’échec et lire son message. Cliquer **Relancer ce traitement**, puis attendre **Réussi**.
+**Faire :** dans Vue, cliquer **Démontrer un échec contrôlé**. Attendre l’échec et lire son message. Cliquer **Relancer ce traitement**, puis attendre **Terminé**.
 
 **Montrer :** l’ancienne erreur reste dans l’historique; la relance crée une nouvelle exécution. Le dernier rapport réussi n’a pas été remplacé par un résultat incomplet.
 
@@ -359,12 +364,18 @@ Depuis un dossier d’exercice propre et les applications arrêtées, créer une
 $BrancheSuivante = 'codex/repetition-' + (Get-Date -Format 'yyyyMMdd-HHmmss')
 Set-Location -LiteralPath $Live
 if (git status --porcelain) { throw 'Conserver les changements avant de repartir.' }
+git -C "$Depot" bundle create .runtime/repetition-source.bundle --all
+if ($LASTEXITCODE -ne 0) { throw 'Actualisation du bundle impossible.' }
+git fetch "$Depot/.runtime/repetition-source.bundle" main
+if ($LASTEXITCODE -ne 0) { throw 'La copie ne peut pas lire le dépôt principal.' }
 git switch -c $BrancheSuivante 06-specification
 if ($LASTEXITCODE -ne 0) { throw 'Bascule interrompue.' }
+git -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397
+if ($LASTEXITCODE -ne 0) { throw 'Correction réseau non appliquée.' }
 ./scripts/start-demo.ps1
 ```
 
-La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial **Non calculée**. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer `$Depot` comme à la préparation C.
+La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial **Non calculée**. Le bundle actualisé et le `fetch` transportent la correction depuis le dépôt principal local; ils ne contactent pas GitHub. Une ancienne copie sans la correction peut suivre ce même parcours de nouvelle branche, après conservation de son travail. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer `$Depot` comme à la préparation C.
 
 ### Reprise après un redémarrage du PC
 

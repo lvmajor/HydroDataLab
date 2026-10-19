@@ -54,6 +54,8 @@ Préférer Node **24 LTS** sur le portable de présentation. Python 3.14.2 est t
 
 La publication part de `src/AppHost/apphost.cs`. Les scripts `prepare-docker.ps1` et `docker-demo.ps1` utilisent Compose généré par Aspire. Voir [docs/DOCKER.md](docs/DOCKER.md). Les images doivent être construites avant la séance. Les ports API/Python restent privés en conteneurs; Vue les utilise via nginx.
 
+En processus locaux, Aspire attribue automatiquement les ports de l’API et de Python et transmet leurs adresses entre composants. **Vue reste sur http://localhost:53170**; l’API est accessible par son proxy `/api`. `scripts/verify-http.ps1` utilise cette adresse fixe. Les endpoints directs se consultent dans le dashboard, sans supposer de numéro. Pour la répétition issue du tag 06, appliquer le commit réseau indiqué dans le conducteur : les tags historiques sont conservés.
+
 ## Restaurer les conteneurs sans réseau
 
 L'archive préparée le **18 octobre 2026**, [artifacts/hydrodatalab-images.tar](artifacts/hydrodatalab-images.tar), contient les **quatre images déjà testées** : Python, API, Vue et dashboard Aspire. Taille : **1 205 382 656 octets** (~1 149,5 Mio). Son SHA-256 est :

@@ -4,16 +4,18 @@ Tableau de bord francophone Vue 3 / TypeScript, graphiques SVG interactifs et AP
 
 ## Développement
 
-Prérequis : Node.js 22.12+ (série 22) ou 24 LTS et le service API démarré.
+Parcours recommandé : `./scripts/start-demo.ps1` depuis la racine. Aspire choisit le port de l’API et injecte `API_BASE_URL` dans Vite; Vue reste sur 53170. Retrouver l’adresse directe de l’API dans le dashboard du lancement courant.
+
+Pour lancer Vue seul **hors Aspire**, prévoir Node.js 22.12+ (série 22) ou 24 LTS et une API déjà démarrée, puis saisir son adresse réelle :
 
 ```powershell
 cd web
 npm ci
-$env:API_BASE_URL = 'http://localhost:53171'
+$env:API_BASE_URL = Read-Host 'Adresse HTTP(S) de votre API active'
 npm run dev
 ```
 
-Ouvrir http://localhost:53170. Le proxy Vite transmet `/api` à `API_BASE_URL`. Ce réglage appartient au serveur de développement; il ne contient aucun secret ni URL embarquée dans le navigateur.
+Ouvrir http://localhost:53170. Le proxy Vite transmet `/api` à `API_BASE_URL`. Ce réglage appartient au serveur de développement; il ne contient aucun secret ni URL embarquée dans le navigateur. Il est obligatoire pour le serveur de développement, mais inutile pour les tests unitaires et la compilation statique. Ne pas démarrer une seconde instance Vue si celle d’Aspire utilise déjà 53170.
 
 ```powershell
 npm test

@@ -58,8 +58,8 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Pourquoi deux dossiers?</strong> Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. Au 19 octobre, <code>etl/</code>, <code>src/</code>, <code>web/</code> et <code>specs/</code> sont identiques entre <code>main</code> et <code>07-solution</code>. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.</p>
-<p>Un <strong>tag</strong> est un jalon fixe; une <strong>branche</strong> conserve une nouvelle tentative. La branche existante <code>demo-live</code> n’est pas nécessaire à ce parcours. <strong>Une seule application à la fois</strong> utilise les ports 53170–53172. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal.</p>
+<p><strong>Pourquoi deux dossiers?</strong> Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. <code>main</code> conserve la solution métier du jalon 07 et ajoute les améliorations de préparation, dont les ports dynamiques. La copie du jalon 06 reçoit seulement la correction réseau, sans implémenter la couverture. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.</p>
+<p>Un <strong>tag</strong> est un jalon fixe; une <strong>branche</strong> conserve une nouvelle tentative. La branche existante <code>demo-live</code> n’est pas nécessaire à ce parcours. <strong>Une seule application à la fois</strong> utilise le port fixe Vue 53170; les ports API/Python sont attribués par Aspire. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal.</p>
 <div class="step-navigation"><span></span><a href="#avant-la-seance-preparer-une-fois">Avant la séance →</a></div></section>
 <section id="avant-la-seance-preparer-une-fois" tabindex="-1"><h2>Avant la séance · préparer une fois</h2>
 <h3>A. Ouvrir un terminal PowerShell 7 de pilotage</h3>
@@ -76,7 +76,7 @@ git status --short --branch
 </code></pre>
 <p><strong>Attendu :</strong> PowerShell 7 ou plus récent, Git, .NET, Aspire, Node, npm et uv trouvés. Ce diagnostic ne teste pas la connexion Copilot. Vérifier celle-ci dans VS Code, avec le compte et les modèles autorisés sur le poste HQ.</p>
 <p><strong>Où faut-il uv?</strong> Sur le poste pour la CLI Python, les tests et l’application Aspire en processus locaux : les trois démos utilisent ce parcours. L’image <code>hydrodatalab-etl:formation</code> embarque aussi uv et ses dépendances déjà installées; son exécution seule ou la pile Compose déjà préparée ne demande pas uv sur le poste. L’exécution conteneurisée lance Python/Uvicorn directement. Aspire ne conteneurise pas automatiquement les programmes du parcours local. Voir <code>etl/Dockerfile</code> dans le dépôt et la <a href="https://docs.astral.sh/uv/guides/integration/docker/">documentation uv/Docker</a>. Dans le kit, le Dockerfile se trouve dans le code à restaurer depuis le bundle.</p>
-<p><strong>Pourquoi des ports fixes?</strong> Aspire sait attribuer des ports libres quand on ne lui impose pas de port hôte. HydroDataLab fixe 53170–53172 pour les URL du conducteur, et le diaporama indépendant utilise 53173. En Compose, seuls Vue (53170) et le dashboard (53174) sont publiés sur le poste; les ports API/Python restent dans le réseau des conteneurs. Une adresse imposée peut entrer en collision : les numéros élevés réduisent la probabilité sans garantir leur disponibilité. Le passage à des ports dynamiques est possible; le dashboard permettrait alors de retrouver les URL. <a href="https://aspire.dev/fundamentals/networking-overview/">Documentation réseau Aspire</a>.</p>
+<p><strong>Quels ports utiliser?</strong> Vue garde <strong><a href="http://localhost:53170">http://localhost:53170</a></strong>. Aspire choisit les ports de l’API et de Python et transmet leurs adresses automatiquement : aucune modification manuelle de configuration après un redémarrage. Pour consulter les URL directes, ouvrir les endpoints <strong>api</strong> et <strong>python</strong> dans le dashboard du lancement courant. Pour consulter l’API depuis le navigateur, utiliser <strong><a href="http://localhost:53170/api/report">http://localhost:53170/api/report</a></strong>; <code>./scripts/verify-http.ps1</code> passe également par Vue. Le diaporama indépendant reste sur 53173. En Compose, seuls Vue (53170) et le dashboard (53174) sont publiés sur le poste; les ports internes API/Python restent privés et inchangés. <a href="https://aspire.dev/fundamentals/networking-overview/">Documentation réseau Aspire</a>.</p>
 <p>Sur un nouveau poste, installer les dépendances avant la répétition, avec le réseau disponible. Arrêter d’abord l’application native avec <code>./scripts/stop-demo.ps1</code> si elle tourne. Si Compose tourne, utiliser <code>./scripts/docker-demo.ps1 -Action Stop</code> avec les options de moteur employées au démarrage. Puis :</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Depot
 ./scripts/prepare.ps1
@@ -84,18 +84,23 @@ git status --short --branch
 </code></pre>
 <p><strong>Attendu sur la version complète :</strong> validations réussies. Ne pas réinstaller les dépendances pendant la séance. Docker est facultatif pour l’application locale.</p>
 <h3>B. Créer la copie d’exercice, sans copier les grosses archives</h3>
-<p>Exécuter ce bloc <strong>une seule fois</strong>. Si le dossier existe déjà, il reste intact : passer à « Fin et nouvelle répétition ». Le clone transporte Git et les sources, pas les images Docker ni les dépendances installées. Il crée un lien Git local vers le dépôt principal; aucun dépôt en ligne n’est créé.</p>
+<p>Exécuter ce bloc <strong>une seule fois</strong>. Si le dossier existe déjà, il reste intact : passer à « Fin et nouvelle répétition ». Un bundle est un fichier de transport Git local; il évite les problèmes de propriété Windows du clonage direct d’un dossier. Il contient l’historique et les sources, pas les images Docker ni les dépendances installées. Aucun dépôt en ligne n’est créé. Le fichier <code>.runtime/repetition-source.bundle</code> sert au transfert et sera actualisé lors d’une nouvelle répétition.</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Depot
 if (Test-Path -LiteralPath $Live) { throw 'Copie existante : la conserver et reprendre la section Fin et nouvelle répétition.' }
-git clone --no-hardlinks --branch main &quot;$Depot&quot; &quot;$Live&quot;
+New-Item -ItemType Directory -Force .runtime | Out-Null
+git bundle create .runtime/repetition-source.bundle --all
+if ($LASTEXITCODE -ne 0) { throw 'Création du bundle interrompue.' }
+git clone --branch main .runtime/repetition-source.bundle &quot;$Live&quot;
 if ($LASTEXITCODE -ne 0) { throw 'Clonage interrompu.' }
 git -C &quot;$Live&quot; switch -c codex/repetition-01 06-specification
 if ($LASTEXITCODE -ne 0) { throw 'Branche exercice non créée.' }
+git -C &quot;$Live&quot; -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397
+if ($LASTEXITCODE -ne 0) { throw 'Correction réseau non appliquée : examiner le message Git avant de poursuivre.' }
 Set-Location -LiteralPath $Live
 ./scripts/prepare.ps1 -SkipPresentation
 git status --short --branch
 </code></pre>
-<p><strong>Attendu :</strong> branche <code>codex/repetition-01</code>, dossier propre. Ouvrir cette copie dans une deuxième fenêtre VS Code par <strong>Fichier → Nouvelle fenêtre → Ouvrir un dossier</strong>. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.</p>
+<p><strong>Attendu :</strong> branche <code>codex/repetition-01</code>, dossier propre. <code>cherry-pick</code> applique un seul commit de correction réseau après le tag 06; il ne modifie pas le calcul de couverture. L’identité pédagogique passée à cette commande ne change pas les réglages Git de l’utilisateur. Les huit tags restent intacts. Ouvrir cette copie dans une deuxième fenêtre VS Code par <strong>Fichier → Nouvelle fenêtre → Ouvrir un dossier</strong>. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.</p>
 <p>Contrôler l’état de départ de l’exercice :</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Live
 New-Item -ItemType Directory -Force etl/.test-output | Out-Null
@@ -107,7 +112,7 @@ uv run --project etl pytest specs/test_coverage_acceptance.py -q --basetemp etl/
 <pre><code class="language-powershell">Set-Location -LiteralPath $Live
 ./scripts/start-demo.ps1
 </code></pre>
-<p>Ouvrir <strong><a href="http://localhost:53170">http://localhost:53170</a></strong>. Choisir <strong>Jeu de démonstration</strong>, laisser <strong>Retirer une mesure de niveau d’eau</strong> décoché, cliquer <strong>Lancer la collecte</strong>. Attendre <strong>Réussi</strong> et vérifier <strong>Couverture : Non calculée</strong>. Cette vérification prépare aussi la compilation nécessaire à un prochain lancement rapide.</p>
+<p>Ouvrir <strong><a href="http://localhost:53170">http://localhost:53170</a></strong>. Choisir <strong>Jeu de démonstration</strong>, laisser <strong>Retirer une mesure de niveau d’eau</strong> décoché, cliquer <strong>Lancer la collecte</strong>. Attendre <strong>Terminé</strong> et vérifier <strong>Couverture : Non calculée</strong>. Cette vérification prépare aussi la compilation nécessaire à un prochain lancement rapide.</p>
 <p>Revenir à la version complète pour le début de la répétition :</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Live
 ./scripts/stop-demo.ps1
@@ -174,14 +179,14 @@ Get-Content -LiteralPath (Join-Path $Export 'observations.csv') -TotalCount 4
 <p><strong>Montrer :</strong> 168 observations, 4 séries, <code>observations.csv</code>, <code>observations.parquet</code>, <code>report.json</code>. Le dossier de résultats inclut un identifiant unique de traitement; il n’est pas simplement <code>outputs/cli/report.json</code>.</p>
 <p><strong>Dire :</strong> « Ce traitement Python est autonome. CSV et Parquet servent à l’analyse; JSON explique le résultat et sa provenance. »</p>
 <h3>1:00–2:15 · Explorer dans Vue</h3>
-<p><strong>Faire :</strong> ouvrir <a href="http://localhost:53170">http://localhost:53170</a>, choisir <strong>Jeu de démonstration</strong>, décocher <strong>Retirer une mesure de niveau d’eau</strong>, puis <strong>Lancer la collecte</strong>. Attendre <strong>Réussi</strong> dans <strong>Dernières exécutions</strong>.</p>
+<p><strong>Faire :</strong> ouvrir <a href="http://localhost:53170">http://localhost:53170</a>, choisir <strong>Jeu de démonstration</strong>, décocher <strong>Retirer une mesure de niveau d’eau</strong>, puis <strong>Lancer la collecte</strong>. Attendre <strong>Terminé</strong> dans <strong>Dernières exécutions</strong>.</p>
 <p><strong>Montrer :</strong> les courbes, la date des observations, les unités et la provenance. La collecte locale peut être très rapide : ne pas promettre que chaque statut intermédiaire restera visible. L’historique est la preuve durable.</p>
 <p><strong>Dire :</strong> « L’interface appelle l’API .NET, qui lance le même moteur Python via FastAPI. La demande est en MW; le niveau Gouin Nord est en mètres. Les températures viennent de Gouin Bois. Ce niveau ne mesure pas une réserve énergétique. »</p>
 <h3>2:15–3:00 · Observer dans Aspire</h3>
 <p><strong>Faire :</strong> ouvrir le dashboard Aspire de la version principale. Montrer les ressources <strong>python</strong>, <strong>api</strong>, <strong>web</strong>, puis les journaux de <strong>python</strong> correspondant au traitement.</p>
 <p><strong>Dire :</strong> « Aspire démarre les composants et rassemble leur état et leurs journaux. Quartz coordonne les tâches côté .NET; SQLite garde leur historique. Les calculs métier restent en Python. »</p>
 <h3>3:00–4:30 · Provoquer une erreur et reprendre</h3>
-<p><strong>Faire :</strong> dans Vue, cliquer <strong>Démontrer un échec contrôlé</strong>. Attendre l’échec et lire son message. Cliquer <strong>Relancer ce traitement</strong>, puis attendre <strong>Réussi</strong>.</p>
+<p><strong>Faire :</strong> dans Vue, cliquer <strong>Démontrer un échec contrôlé</strong>. Attendre l’échec et lire son message. Cliquer <strong>Relancer ce traitement</strong>, puis attendre <strong>Terminé</strong>.</p>
 <p><strong>Montrer :</strong> l’ancienne erreur reste dans l’historique; la relance crée une nouvelle exécution. Le dernier rapport réussi n’a pas été remplacé par un résultat incomplet.</p>
 <p><strong>Dire :</strong> « C’est une panne simulée, annoncée comme telle. Nous testons le comportement de reprise, pas la disponibilité réelle du fournisseur. » Montrer le contrôle de planification sans l’activer.</p>
 <h3>4:30–5:00 · Le même traitement dans une image préparée</h3>
@@ -276,11 +281,17 @@ git status --short --branch
 <pre><code class="language-powershell">$BrancheSuivante = 'codex/repetition-' + (Get-Date -Format 'yyyyMMdd-HHmmss')
 Set-Location -LiteralPath $Live
 if (git status --porcelain) { throw 'Conserver les changements avant de repartir.' }
+git -C &quot;$Depot&quot; bundle create .runtime/repetition-source.bundle --all
+if ($LASTEXITCODE -ne 0) { throw 'Actualisation du bundle impossible.' }
+git fetch &quot;$Depot/.runtime/repetition-source.bundle&quot; main
+if ($LASTEXITCODE -ne 0) { throw 'La copie ne peut pas lire le dépôt principal.' }
 git switch -c $BrancheSuivante 06-specification
 if ($LASTEXITCODE -ne 0) { throw 'Bascule interrompue.' }
+git -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397
+if ($LASTEXITCODE -ne 0) { throw 'Correction réseau non appliquée.' }
 ./scripts/start-demo.ps1
 </code></pre>
-<p>La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial <strong>Non calculée</strong>. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer <code>$Depot</code> comme à la préparation C.</p>
+<p>La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial <strong>Non calculée</strong>. Le bundle actualisé et le <code>fetch</code> transportent la correction depuis le dépôt principal local; ils ne contactent pas GitHub. Une ancienne copie sans la correction peut suivre ce même parcours de nouvelle branche, après conservation de son travail. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer <code>$Depot</code> comme à la préparation C.</p>
 <h3>Reprise après un redémarrage du PC</h3>
 <p>Rouvrir ce conducteur, rejouer le bloc A pour <code>$Depot</code> et <code>$Live</code>, puis :</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Live

@@ -49,3 +49,7 @@ Statuts : `queued`, `running`, `succeeded`, `failed`, `interrupted`. Étapes : `
 
 ## Environnement
 Python : `HYDRO_OUTPUT_DIR`, `HYDRO_FIXTURE_DIR` facultatif. .NET : `Python__BaseUrl`, `Hydro__DataDir`. Vite : `API_BASE_URL` pour son proxy `/api`. Le script `start-demo.ps1` sélectionne un répertoire runtime distinct par branche/tag via `HYDRO_RUNTIME_DIR`.
+
+En mode Aspire natif, les ports hôtes de Python et de l’API sont attribués automatiquement. Leurs adresses sont transmises par références d’endpoints (`Python__BaseUrl` vers .NET, `API_BASE_URL` vers Vite), sans numéro à recopier. Vue reste sur `http://localhost:53170`; le navigateur et `scripts/verify-http.ps1` accèdent à l’API par `/api` sur cette même adresse. Les URL directes du lancement courant figurent dans le dashboard Aspire.
+
+Hors Aspire, fournir explicitement `Python__BaseUrl` à l’API et `API_BASE_URL` au serveur Vite. Une configuration absente est signalée; les anciens ports 53171/53172 ne servent plus de repli. En Compose, les ports internes Python 8001 et API 8080 et leur réseau privé restent inchangés.

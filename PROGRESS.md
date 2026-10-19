@@ -1,5 +1,15 @@
 # HydroDataLab — journal de reprise
 
+## Ports API et Python dynamiques — 19 octobre
+
+- Départ : main `f38def6`, dépôt propre; aucun AppHost actif. Demande explicite : laisser Aspire choisir les ports API/Python et garder Vue sur 53170.
+- Réalisé : ports API/Python attribués par Aspire, références d’endpoints conservées, replis fixes supprimés de .NET et Vite. Vue reste sur 53170 et sert aussi de point d’entrée aux validations HTTP. Commit de configuration `036bb193c778be0ff5a8f1c9681ee2b40f666397`, applicable par cherry-pick sur le jalon 06. Aucun tag historique réécrit.
+- Validé : démarrage natif avec les anciens ports 53171/53172 volontairement réservés; trois ressources saines, adresses transmises automatiquement, parcours HTTP complet via Vue (168 observations, couverture, panne, relance, trois exports). Tests : 8 .NET et 11 Vue réussis, compilation Vue réussie. Navigateur : trois graphiques, couverture 100 % puis 95,83 %, requêtes limitées à l’origine Vue, aucune erreur JavaScript.
+- Exercice : clone de contrôle issu de 06 puis cherry-pick sans conflit; préparation et démarrage réussis, nouveaux ports API/Python, Vue sur 53170. Couverture « Non calculée » visible, deux échecs d’acceptation attendus et aucun échec d’installation. Preuve sans variables sensibles : `docs/validation/dynamic-ports.json`.
+- Le clonage direct du dossier échouait à cause de la propriété Windows du dépôt source. Le conducteur utilise maintenant un bundle Git local, testé avec succès, sans modification de permissions ou de configuration globale. Une tentative déjà créée peut conserver son travail puis créer une nouvelle branche avec cette correction.
+- Guides, README et contrat actualisés; les 19 blocs PowerShell sont syntaxiquement valides. Lecteur HTML : huit rubriques, 21 boutons, copie et repli Ctrl+C, quatre largeurs et impression contrôlés. Les slides et le PDF ne changent pas.
+- Les deux applications de contrôle sont arrêtées. Copie temporaire `.runtime/ports-exercise` retirée après vérification du chemin, de la branche et de l’absence de changements : 365 991 242 octets libérés. Bundle de contrôle et description brute Aspire retirés aussi. Actualiser le kit existant; le reçu `artifacts/LIVRAISON.txt` identifiera le commit final et le bundle. Prochaine action : rafraîchir le conducteur et reprendre la préparation de l’exercice sur le portable.
+
 ## Prérequis du portable et rôle des ports — 19 octobre
 
 - Retour du présentateur : diagnostic exécuté sur son poste personnel; outils présents, accents mal interprétés. La répétition sur le portable HQ reste à effectuer.

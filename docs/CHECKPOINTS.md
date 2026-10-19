@@ -19,6 +19,8 @@ La révision pédagogique du 18 octobre se trouve sur `main` et dans le kit de t
 
 ## Préparer le live
 
+**Parcours recommandé pour la séance :** suivre le [conducteur des trois démos](../handouts/conducteur-demos.html). Il conserve le dépôt principal sur `main`, crée une copie issue de 06 et y applique le commit réseau `036bb193c778be0ff5a8f1c9681ee2b40f666397`. Ce commit laisse la couverture à implémenter et fait attribuer les ports API/Python par Aspire, avec Vue sur 53170. Les huit tags et la branche historique `demo-live` ne sont pas réécrits. Le parcours direct ci-dessous permet encore de consulter leur état historique, avec les anciens ports fixes.
+
 Arrêter le parcours conteneurisé avant de changer de jalon. Après l'arrêt ciblé d'Aspire, le script refuse aussi la bascule si le port 53170 est encore occupé; il ne tue aucune autre application.
 
 ```powershell
