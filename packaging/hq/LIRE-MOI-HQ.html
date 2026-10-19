@@ -1,0 +1,341 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>HydroDataLab · Préparer le portable HQ</title>
+<style>
+:root{color-scheme:light;--ink:#123d51;--teal:#006b83;--line:#bdd0d8}*{box-sizing:border-box}body{margin:0;background:#f4f8fa;color:var(--ink);font:18px/1.55 "Segoe UI",Aptos,system-ui,sans-serif}a{color:var(--teal);text-underline-offset:3px}a,button,summary{overflow-wrap:anywhere}a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:3px solid #a67800;outline-offset:4px}.shell{max-width:1360px;margin:auto;padding:32px;display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px}aside{position:sticky;top:24px;align-self:start;max-height:94vh;overflow:auto;font-size:16px}nav{display:grid;gap:8px}nav a{padding:6px 0;text-decoration:none}nav a:hover{text-decoration:underline}main{min-width:0;background:white;padding:32px;border:1px solid var(--line);border-radius:8px}h1{font-size:36px;line-height:1.2;margin:0 0 24px}h2{font-size:26px;line-height:1.3;margin:48px 0 20px;padding-top:22px;border-top:3px solid #dca92c;scroll-margin-top:18px}p,li{max-width:72ch}li{margin:8px 0}code{font: .95em Consolas,monospace;overflow-wrap:anywhere}pre{position:relative;margin:24px 0;background:#092f40;color:#f1f8fb;border-radius:6px;padding:50px 20px 20px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:16px;line-height:1.6}pre code{font-size:inherit}button{font:inherit;cursor:pointer;background:white;color:var(--ink);border:1px solid var(--line);border-radius:5px;padding:8px 12px}.copy{position:absolute;right:10px;top:10px;font-size:16px;padding:4px 10px}.status{font-size:16px;min-height:3em;margin-top:14px}.table-scroll{overflow-x:auto;margin:24px 0}table{width:100%;border-collapse:collapse;font-size:16px;line-height:1.5;min-width:540px}td,th{padding:12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:#eaf3f6}.hint{font-size:16px;color:#35566a}@media(max-width:900px){.shell{display:block;padding:20px}aside{position:static;max-height:none;margin-bottom:24px}nav{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px}main{padding:20px}h1{font-size:30px}}@media(max-width:480px){.shell{padding:12px}main{padding:16px}nav{grid-template-columns:1fr}h1{font-size:28px}h2{font-size:24px}pre{padding:52px 12px 12px}}@media print{body{background:white;color:#111;font-size:11pt}.shell{display:block;padding:0}aside,.copy{display:none}main{border:0;padding:0}h1{font-size:24pt}h2{font-size:17pt;break-after:avoid}pre{padding:14px;background:#f4f4f4;color:#111;font-size:10pt;break-inside:avoid}.table-scroll{overflow:visible}table{min-width:0;font-size:10pt}a{color:#111}@page{size:A4;margin:16mm}}
+</style></head><body><div class="shell"><aside><nav aria-label="Étapes de préparation"><a href="#1-comprendre-ce-qui-est-pret">1. Comprendre ce qui est prêt</a><a href="#2-installer-ou-verifier-les-prerequis">2. Installer ou vérifier les prérequis</a><a href="#3-extraire-et-verifier-le-kit">3. Extraire et vérifier le kit</a><a href="#4-restaurer-le-depot-principal">4. Restaurer le dépôt principal</a><a href="#5-preparer-l-application-locale">5. Préparer l’application locale</a><a href="#6-charger-docker-et-essayer-l-etl-hors-reseau">6. Charger Docker et essayer l’ETL hors réseau</a><a href="#7-preparer-la-copie-d-exercice">7. Préparer la copie d’exercice</a><a href="#8-repeter-les-deux-demarrages">8. Répéter les deux démarrages</a><a href="#9-ouvrir-la-presentation-sur-deux-ecrans">9. Ouvrir la présentation sur deux écrans</a><a href="#10-le-jour-de-la-presentation">10. Le jour de la présentation</a><a href="#11-secours-application-complete-dans-docker">11. Secours : application complète dans Docker</a><a href="#12-resoudre-les-blocages-courants">12. Résoudre les blocages courants</a></nav><p class="hint">À utiliser avant la séance.<br>Aucune commande ne se lance automatiquement.</p><button id="print" type="button">Imprimer le guide</button><p class="status" aria-live="polite" id="status"></p></aside><main><h1>HydroDataLab · préparer le portable HQ</h1>
+<p><strong>Présentation et trois démos · 20 octobre 2026 · préparation avant la séance</strong></p>
+<p>Ce kit transporte les diapositives avec leurs notes, le PDF de secours, les guides, un dépôt Git et les quatre images Docker préparées. <strong>Ouvrir ce guide HTML par double-clic après extraction du ZIP.</strong> Les boutons Copier ne lancent aucune commande.</p>
+<p>Le parcours de présentation reste : <strong>Copilot dans VS Code → résultats vérifiables → modification Python guidée par une spécification</strong>. Durée : 32 minutes d’explications, 13 de démos, 10 de questions et 5 de marge.</p>
+<h2 id="1-comprendre-ce-qui-est-pret">1. Comprendre ce qui est prêt</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tableau à faire défiler"><table><thead>
+<tr>
+<th>Élément</th>
+<th>Inclus dans le ZIP</th>
+<th>À préparer sur le portable</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Diaporama et notes synchronisées</td>
+<td>Site déjà compilé, polices locales</td>
+<td>Python et navigateur; aucun npm pour projeter</td>
+</tr>
+<tr>
+<td>Secours</td>
+<td>PDF, captures et conducteur des démos</td>
+<td>Lecteur PDF</td>
+</tr>
+<tr>
+<td>Dépôt Git pédagogique</td>
+<td>Sources, données publiques, huit tags et branche d’exercice</td>
+<td>Git, VS Code et dépendances de développement</td>
+</tr>
+<tr>
+<td>Trois démos</td>
+<td>Scripts, spécification, tests et solution</td>
+<td>Deux copies locales à préparer ci-dessous</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>ETL, API, Vue et dashboard Aspire</td>
+<td>Moteur Docker avec Compose, conteneurs Linux</td>
+</tr>
+<tr>
+<td>Copilot</td>
+<td>Instructions et prompts du projet</td>
+<td>Compte HQ autorisé, connexion et modèles disponibles</td>
+</tr>
+</tbody>
+</table></div><p><strong>Après préparation</strong>, les slides, les données de démonstration et les traitements locaux/contenerisés fonctionnent sans Internet. Les demandes à Copilot et la source de données « live » conservent leurs besoins réseau. Les installateurs, SDK et caches de dépendances ne sont pas transportés.</p>
+<p>Le ZIP n’inclut ni les anciennes sauvegardes, ni un second ZIP des sources, ni les dépendances du poste de création. La révision précise est dans <a href="REVISION.json">REVISION.json</a>. Les données et leur licence sont documentées séparément dans <a href="data/README.md">data/README.md</a>.</p>
+<h2 id="2-installer-ou-verifier-les-prerequis">2. Installer ou vérifier les prérequis</h2>
+<p>Utiliser les logiciels et les canaux d’installation autorisés sur le portable HQ. Faire cette étape avec le réseau disponible, avant la répétition. Les liens ci-dessous sont les documentations officielles consultées le 19 octobre 2026; les versions visées viennent du projet préparé.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tableau à faire défiler"><table><thead>
+<tr>
+<th>Outil</th>
+<th>Version ou configuration à viser</th>
+<th>Utilité / documentation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PowerShell</td>
+<td><strong>7 ou plus</strong>, commande <code>pwsh</code></td>
+<td><a href="https://learn.microsoft.com/en-us/powershell/scripting/install/install-powershell-on-windows">Installation Microsoft</a>. Éviter Windows PowerShell 5.1 pour ces scripts UTF-8.</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>Git pour Windows</td>
+<td><a href="https://git-scm.com/downloads/win">Installation Git</a>. Restaurer le dépôt et l’exercice.</td>
+</tr>
+<tr>
+<td>Python</td>
+<td><strong>3.14.x</strong>, testé en 3.14.2; projet compatible 3.12–3.14</td>
+<td><a href="https://www.python.org/downloads/windows/">Python Windows</a>. Ne pas choisir 3.15 pour cet ETL.</td>
+</tr>
+<tr>
+<td>uv</td>
+<td>Version de préparation : <strong>0.11.28</strong></td>
+<td><a href="https://docs.astral.sh/uv/getting-started/installation/">Installation uv</a>. Nécessaire sur le poste pour l’ETL, les tests et Aspire local.</td>
+</tr>
+<tr>
+<td>.NET SDK</td>
+<td><strong>10.0.402</strong>, ou correctif compatible 10.0.4xx</td>
+<td><a href="https://dotnet.microsoft.com/en-us/download/dotnet/10.0">Téléchargement .NET 10</a>. Installer le SDK, pas seulement le runtime; <code>global.json</code> fixe la sélection.</td>
+</tr>
+<tr>
+<td>Aspire CLI</td>
+<td><strong>13.6.1</strong>, comme l’AppHost</td>
+<td><a href="https://aspire.dev/get-started/install-cli/">Installation Aspire</a>. Aucun workload Aspire à installer.</td>
+</tr>
+<tr>
+<td>Node.js et npm</td>
+<td><strong>24 LTS</strong></td>
+<td><a href="https://nodejs.org/en/download">Téléchargement Node.js</a>. Pour le frontend de l’application.</td>
+</tr>
+<tr>
+<td>Docker</td>
+<td>Moteur opérationnel, Compose v2, conteneurs <strong>Linux amd64</strong></td>
+<td><a href="https://docs.docker.com/desktop/setup/install/windows-install/">Installation Windows</a>. Les quatre images fournies sont Linux/amd64.</td>
+</tr>
+<tr>
+<td>VS Code et Copilot</td>
+<td>Version et fonctions retenues pour la séance; compte HQ connecté</td>
+<td><a href="https://code.visualstudio.com/docs/setup/windows">Installation VS Code</a>. Vérifier Agents, Customizations et le sélecteur de modèles.</td>
+</tr>
+</tbody>
+</table></div><p>Un moteur Podman peut convenir s’il est déjà autorisé et vérifié avec son fournisseur Compose. Les commandes du guide utilisent Docker; ne pas changer de moteur pendant la prestation. L’installation du moteur peut nécessiter l’intervention des TI.</p>
+<p>Après installation, ouvrir <strong>un nouveau terminal PowerShell 7</strong>. Ces commandes doivent répondre :</p>
+<pre><code class="language-powershell">$PSVersionTable.PSVersion
+git --version
+python --version
+uv --version
+dotnet --list-sdks
+aspire --version
+node --version
+npm.cmd --version
+docker version
+docker compose version
+</code></pre>
+<p><strong>Attendu :</strong> les outils sont trouvés; Docker affiche client et serveur. Si <code>python</code> ouvre le Microsoft Store, corriger sa résolution ou utiliser l’interpréteur installé, par exemple <code>py -3.14</code>, à la place de <code>python</code> dans ce guide. Le bundle ne remplace pas cette préparation.</p>
+<h2 id="3-extraire-et-verifier-le-kit">3. Extraire et vérifier le kit</h2>
+<p>Copier <strong>le ZIP et son fichier <code>.sha256</code> voisin</strong> sur le portable. Comparer <code>Get-FileHash -Algorithm SHA256 &lt;chemin-du-ZIP&gt;</code> à la valeur du fichier <code>.sha256</code>, puis extraire entièrement le ZIP avec l’Explorateur. Ne pas travailler à l’intérieur de l’archive.</p>
+<p>Choisir un dossier local autorisé, par exemple <code>C:\Formation\HydroDataLab-HQ</code>. Adapter ce chemin une seule fois ci-dessous; il doit contenir ce guide et <code>servir-presentation.py</code>. Prévoir aussi de l’espace pour les dépendances et les images importées : une marge de <strong>10 Go libres</strong> est raisonnable, sans être une mesure garantie de l’installation du moteur.</p>
+<p>Dans le terminal de pilotage, conserver ces variables :</p>
+<pre><code class="language-powershell">$Kit = 'C:\Formation\HydroDataLab-HQ'
+$Depot = Join-Path $Kit 'HydroDataLab'
+$Live = Join-Path $Depot 'artifacts/repetition-live'
+$ErrorActionPreference = 'Stop'
+Set-Location -LiteralPath $Kit
+python ./verifier-kit.py
+if ($LASTEXITCODE -ne 0) { throw 'Kit incomplet ou modifie : verifier la copie avant de continuer.' }
+</code></pre>
+<p><strong>Attendu :</strong> toutes les empreintes sont correctes. Ce contrôle lit les fichiers, sans installer de logiciel ni démarrer l’application. Les fichiers ajoutés plus tard, comme les deux copies de travail, ne l’empêchent pas de vérifier le contenu livré.</p>
+<p>Si le terminal est fermé, rejouer le bloc des variables. <code>$Depot</code> est la solution de secours; <code>$Live</code> sera l’exercice. Ne pas reprendre le chemin <code>F:\PoC\...</code> du poste de création dans les autres guides.</p>
+<h2 id="4-restaurer-le-depot-principal">4. Restaurer le dépôt principal</h2>
+<p>Exécuter une seule fois dans un dossier de destination inexistant :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Kit
+if (Test-Path -LiteralPath $Depot) { throw 'Depot deja present : conserver son travail et reprendre a la preparation.' }
+git clone --branch main ./developpement/HydroDataLab.bundle &quot;$Depot&quot;
+if ($LASTEXITCODE -ne 0) { throw 'Restauration Git interrompue.' }
+Set-Location -LiteralPath $Depot
+git status --short --branch
+git tag --list
+./scripts/doctor.ps1 -WithDocker
+dotnet --version
+</code></pre>
+<p><strong>Attendu :</strong> branche <code>main</code>, aucun changement local; huit tags <code>00-socle</code> à <code>07-solution</code>; SDK compatible avec <code>global.json</code>. Si <code>doctor</code> signale un outil absent, revenir aux prérequis. Dans VS Code, ouvrir <code>$Depot</code>, se connecter à Copilot avec le compte HQ et vérifier les modèles autorisés. Une licence ou une fonction absente ne se corrige pas avec le bundle.</p>
+<p>Le bundle contient aussi <code>codex/preparation-demo-06</code>, normalement visible après clonage sous <code>origin/codex/preparation-demo-06</code>. Ce dépôt n’a pas de dépôt GitHub distant : <code>origin</code> désigne le fichier de transport local.</p>
+<h2 id="5-preparer-l-application-locale">5. Préparer l’application locale</h2>
+<p>Dans le dépôt principal, avec le réseau disponible :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Depot
+./scripts/prepare.ps1 -SkipPresentation
+./scripts/verify.ps1
+</code></pre>
+<p><strong>Attendu :</strong> dépendances installées, tests Python/.NET/Vue et build Vue réussis. Arrêter ici si la préparation échoue. <code>-SkipPresentation</code> évite d’installer et de reconstruire Slidev : le site livré est déjà prêt à présenter.</p>
+<p>NuGet, npm, PyPI et les téléchargements de runtimes doivent être accessibles par les mécanismes autorisés du poste. Faire résoudre les problèmes de proxy/certificats par la configuration habituelle HQ; ne pas désactiver les vérifications TLS. Aucun téléchargement ne doit être découvert pendant la séance.</p>
+<h2 id="6-charger-docker-et-essayer-l-etl-hors-reseau">6. Charger Docker et essayer l’ETL hors réseau</h2>
+<p>Démarrer le moteur en mode conteneurs Linux, puis :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Kit
+docker info --format '{{.OSType}} / {{.Architecture}}'
+docker load --input ./images/hydrodatalab-images.tar
+if ($LASTEXITCODE -ne 0) { throw 'Chargement des images interrompu.' }
+docker image inspect hydrodatalab-etl:formation --format '{{.Id}}'
+docker run --rm --pull never --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
+if ($LASTEXITCODE -ne 0) { throw 'Essai ETL Docker en echec.' }
+</code></pre>
+<p><strong>Attendu :</strong> moteur Linux sur architecture x86-64/amd64; images chargées; ETL avec <strong>168 observations et 4 séries</strong>, sans téléchargement. <code>--network none</code> coupe le réseau de ce conteneur, pas celui du portable. Les données sont déjà dans l’image Python.</p>
+<p>Une seule archive est à charger : ETL, API, Vue et dashboard Aspire. Ne pas récupérer l’ancien complément typographique. Les images chargées appartiennent au moteur; il n’est pas nécessaire de recopier le gros TAR dans <code>$Depot</code> ou <code>$Live</code>.</p>
+<h2 id="7-preparer-la-copie-d-exercice">7. Préparer la copie d’exercice</h2>
+<p>Cette copie garde l’interface et l’analyse ETL récentes, mais laisse le calcul de couverture à réaliser avec Copilot. Les tags historiques restent intacts.</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Kit
+if (Test-Path -LiteralPath $Live) { throw 'Exercice deja present : conserver ses modifications.' }
+New-Item -ItemType Directory -Force (Split-Path -Parent $Live) | Out-Null
+git clone --branch main ./developpement/HydroDataLab.bundle &quot;$Live&quot;
+if ($LASTEXITCODE -ne 0) { throw 'Copie exercice interrompue.' }
+git -C &quot;$Live&quot; switch -c codex/repetition-01 9e1ecde478f4f5d70634a42c720fa10fd224eab7
+if ($LASTEXITCODE -ne 0) { throw 'Branche exercice non creee.' }
+Set-Location -LiteralPath $Live
+./scripts/prepare.ps1 -SkipPresentation
+git status --short --branch
+New-Item -ItemType Directory -Force etl/.test-output | Out-Null
+uv run --project etl pytest specs/test_coverage_acceptance.py -q --basetemp etl/.test-output/avant
+</code></pre>
+<p><strong>Attendu :</strong> <code>codex/repetition-01</code> et <strong>deux tests d’acceptation en échec</strong> (code de sortie 1), car le calcul renvoie encore <code>None</code>. Une erreur d’import, de dépendance ou de fixture n’est pas l’échec pédagogique attendu. Ne pas demander à Copilot de corriger ces deux tests avant la démo.</p>
+<p>Ouvrir <code>$Live</code> dans une deuxième fenêtre VS Code; distinguer les fenêtres par leur chemin. Ne pas utiliser un ancien tag à la place de cette copie préparée. Ne pas lancer le <code>verify.ps1</code> complet de l’exercice en espérant un résultat vert avant l’implémentation.</p>
+<h2 id="8-repeter-les-deux-demarrages">8. Répéter les deux démarrages</h2>
+<p>Une seule application utilise <strong>Vue sur le port 53170</strong>. Aspire attribue automatiquement les ports API/Python. Avant ces essais, arrêter toute pile Compose lancée avec ce kit (section 11).</p>
+<p>Premier démarrage de l’exercice :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Live
+./scripts/start-demo.ps1
+</code></pre>
+<p>Ouvrir <a href="http://localhost:53170">HydroDataLab</a>. Source <strong>Jeu de démonstration</strong>, scénario de retrait décoché → <strong>Lancer la collecte</strong>. Attendre <strong>Terminé</strong> et vérifier <strong>Couverture : Non calculée</strong>. Noter le lien Aspire affiché dans le terminal.</p>
+<p>Revenir au principal :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Live
+./scripts/stop-demo.ps1
+Set-Location -LiteralPath $Depot
+./scripts/start-demo.ps1
+./scripts/verify-http.ps1
+</code></pre>
+<p><strong>Attendu :</strong> application principale saine. Faire une collecte complète, explorer <strong>Parcours ETL</strong>, vérifier <strong>24 moyennes horaires</strong>, puis <strong>Voir les détails</strong> d’une exécution. Garder la planification désactivée. Une collecte avec retrait d’une mesure donne <strong>23/24 = 95,83 %</strong> pour le niveau d’eau; le pourcentage global est différent.</p>
+<p>Après ces deux premiers démarrages réussis, <code>./scripts/start-demo.ps1 -NoBuild</code> peut accélérer les transitions. Chronométrer principal → exercice → principal avant la séance. Le dashboard Aspire et ses adresses directes peuvent changer à chaque lancement.</p>
+<h2 id="9-ouvrir-la-presentation-sur-deux-ecrans">9. Ouvrir la présentation sur deux écrans</h2>
+<p>Dans <strong>un deuxième terminal</strong>, depuis le dossier qui contient ce guide :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath 'C:\Formation\HydroDataLab-HQ'
+python ./servir-presentation.py
+</code></pre>
+<p>Adapter ce chemin à celui choisi en section 3. Garder le terminal ouvert. Le serveur est lié à la boucle locale et ne nécessite ni npm, ni Astro, ni reconstruction.</p>
+<ul>
+<li><strong>Portable :</strong> <a href="http://127.0.0.1:53173/presenter/1">vue présentateur</a>, notes et commandes.</li>
+<li><strong>Projecteur :</strong> <a href="http://127.0.0.1:53173/1">vue audience</a>, plein écran <code>F11</code>.</li>
+<li><strong>Windows :</strong> <code>Win + P</code> → <strong>Étendre</strong>, deux fenêtres du même navigateur et du même profil.</li>
+</ul>
+<p>Garder <strong>127.0.0.1:53173 dans les deux fenêtres</strong>, sans mélanger avec <code>localhost</code>. Vérifier la synchronisation des couches de contexte (slide 10) et des coûts (16). Remettre première couche et 1 essai. Élargir et rehausser le panneau des notes; les précisions se déplient au clic.</p>
+<p>Ouvrir aussi le <a href="handouts/conducteur-demos.html">conducteur des trois démos</a> et le <a href="documents/formation-hydrodatalab.pdf">PDF de secours</a>. Le PDF sert au repli; il fige les interactions.</p>
+<p><strong>Ce guide remplace la préparation initiale du conducteur pour ce kit.</strong> Reprendre ensuite directement à <strong>Démo 1</strong>. Conserver les variables <code>$Depot</code> et <code>$Live</code> définies ici. Ne pas lancer <code>start-presentation.ps1</code> en plus : le serveur du kit occupe déjà 53173. Les slides restent indépendantes des changements de copie Git.</p>
+<h2 id="10-le-jour-de-la-presentation">10. Le jour de la présentation</h2>
+<p>Rejouer les variables de la section 3 dans le terminal de pilotage, puis :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Depot
+git status --short --branch
+./scripts/start-demo.ps1 -NoBuild
+</code></pre>
+<p>Utiliser <code>-NoBuild</code> seulement après les essais réussis de la section 8. Démarrer le serveur des slides dans son autre terminal. Se connecter à Copilot avant l’arrivée du groupe.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tableau à faire défiler"><table><thead>
+<tr>
+<th>Moment</th>
+<th>Manipulation</th>
+<th>Support</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Démo 1 · 4 min</td>
+<td>Copilot en lecture seule dans <code>$Depot</code>, <code>main</code></td>
+<td>Slide 7, conducteur Démo 1</td>
+</tr>
+<tr>
+<td>Démo 2 · 5 min</td>
+<td>CLI, ETL visuel, code/test, détails, ETL Docker</td>
+<td>Slide 18, conducteur Démo 2</td>
+</tr>
+<tr>
+<td>Transition SDD · 2 min</td>
+<td>Arrêter <code>$Depot</code>, lancer <code>$Live</code> avec <code>-NoBuild</code></td>
+<td>Slide 19 reste projetée</td>
+</tr>
+<tr>
+<td>Démo 3 · 4 min</td>
+<td>Nouvelle session Copilot dans <code>$Live</code>, calcul Python, tests, indicateur</td>
+<td>Slide 20, conducteur Démo 3</td>
+</tr>
+<tr>
+<td>Secours à 2:10 de la démo 3</td>
+<td>Annoncer la solution préparée; arrêter <code>$Live</code>, relancer <code>$Depot</code></td>
+<td>Conducteur « Secours »</td>
+</tr>
+</tbody>
+</table></div><p>Ne pas lancer Compose pendant ce parcours : il occuperait le même port Vue et ses images contiennent déjà la solution finale. Le petit conteneur ETL de la démo 2 ne publie aucun port et peut être exécuté pendant le mode local.</p>
+<p>Avant de commencer, confirmer :</p>
+<ul>
+<li>Les deux vues de présentation sont synchronisées et les notes lisibles.</li>
+<li>Les deux dossiers démarrent; l’exercice affiche « Non calculée » et <code>main</code> fournit le secours.</li>
+<li>Copilot fonctionne avec le compte et un modèle autorisé; les prompts sont ouverts.</li>
+<li>Le test Docker <code>--network none</code> réussit; le PDF et les captures s’ouvrent hors ligne.</li>
+<li>La transition tient dans son créneau; notifications coupées et alimentation branchée.</li>
+</ul>
+<p>Après une répétition, ne pas écraser les modifications Copilot de <code>$Live</code>. Utiliser la section <strong>Fin et nouvelle répétition</strong> du conducteur pour une nouvelle tentative. <code>PROGRESS.md</code> du dépôt et l’état Git donnent les repères après une interruption.</p>
+<h2 id="11-secours-application-complete-dans-docker">11. Secours : application complète dans Docker</h2>
+<p>Ce parcours est facultatif et sert à montrer l’application finale quand le parcours natif est indisponible. Il ne remplace pas l’exercice de modification Python en direct. Avant de le lancer, arrêter l’application native depuis <strong>la copie actuellement active</strong> :</p>
+<pre><code class="language-powershell"># Choisir $Depot ou $Live selon la copie active.
+Set-Location -LiteralPath $Depot
+./scripts/stop-demo.ps1
+Set-Location -LiteralPath $Kit
+docker compose -p hydrodatalab-training --env-file compose/images.env -f compose/docker-compose.yaml up -d --pull never --no-build --wait --wait-timeout 90
+if ($LASTEXITCODE -ne 0) { throw 'Demarrage Compose en echec.' }
+</code></pre>
+<p>Ouvrir <a href="http://localhost:53170">Vue</a> et le <a href="http://localhost:53174">dashboard Compose</a>. Le <code>--wait</code> confirme l’état démarré des services configurés; vérifier aussi la page et une collecte complète. Choisir <strong>Jeu de démonstration</strong> pour rester indépendant du réseau. Pour consulter les journaux :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Kit
+docker compose -p hydrodatalab-training --env-file compose/images.env -f compose/docker-compose.yaml logs --tail 80
+</code></pre>
+<p>Arrêter en conservant les volumes, avant de reprendre le mode natif :</p>
+<pre><code class="language-powershell">Set-Location -LiteralPath $Kit
+docker compose -p hydrodatalab-training --env-file compose/images.env -f compose/docker-compose.yaml stop --timeout 30
+</code></pre>
+<h2 id="12-resoudre-les-blocages-courants">12. Résoudre les blocages courants</h2>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Tableau à faire défiler"><table><thead>
+<tr>
+<th>Symptôme</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accents <code>prÃ©...</code></td>
+<td>Ouvrir <code>pwsh</code> (PowerShell 7), pas <code>powershell.exe</code> 5.1.</td>
+</tr>
+<tr>
+<td>Script refusé par la politique HQ</td>
+<td>Faire approuver l’exécution selon les mécanismes internes. Ce guide ne demande pas de contournement.</td>
+</tr>
+<tr>
+<td><code>dotnet --version</code> échoue dans le dépôt</td>
+<td>Installer le SDK demandé par <code>global.json</code>; une autre bande <a href="http://10.0.xxx">10.0.xxx</a> peut ne pas convenir.</td>
+</tr>
+<tr>
+<td>Restauration uv/npm/NuGet impossible</td>
+<td>Traiter les accès réseau/proxy/certificats avant la séance; ne pas improviser une installation en direct.</td>
+</tr>
+<tr>
+<td>Python 3.15 sélectionné pour l’ETL</td>
+<td>Le projet attend Python 3.12 à 3.14; utiliser l’interpréteur compatible préparé.</td>
+</tr>
+<tr>
+<td>Vue 53170 déjà occupé</td>
+<td>Arrêter la pile HydroDataLab active avec sa commande de fin; une seule pile à la fois.</td>
+</tr>
+<tr>
+<td>Slides 53173 déjà servies</td>
+<td>Réutiliser ce serveur ou arrêter son terminal avec Ctrl+C. Ne pas lancer deux serveurs.</td>
+</tr>
+<tr>
+<td>Les vues ne se synchronisent pas</td>
+<td>Même navigateur/profil, même hôte et même port, puis recharger les deux fenêtres.</td>
+</tr>
+<tr>
+<td>Docker ne trouve pas l’image</td>
+<td>Charger le TAR dans le moteur/contexte réellement utilisé; contrôler avec <code>docker image inspect</code>.</td>
+</tr>
+<tr>
+<td>Portable ARM64</td>
+<td>Les images fournies ciblent amd64; vérifier leur exécution avant la séance ou utiliser le parcours local et les captures.</td>
+</tr>
+<tr>
+<td>Copilot indisponible</td>
+<td>Utiliser la solution préparée en l’annonçant; les traitements fixture et les slides restent disponibles.</td>
+</tr>
+</tbody>
+</table></div><p>La validation technique du ZIP ne remplace pas la répétition sur le portable HQ : accès Copilot, politiques du poste et projecteur doivent encore être confirmés sur place.</p>
+</main></div>
+<script>
+document.querySelector('#print').addEventListener('click',()=>window.print());
+document.querySelectorAll('pre').forEach(pre=>{const code=pre.querySelector('code'),button=document.createElement('button');button.type='button';button.className='copy';button.textContent='Copier';button.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(code.textContent);document.querySelector('#status').textContent='Copié. Vérifier les chemins avant de coller dans PowerShell.'}catch{const range=document.createRange();range.selectNodeContents(code);const selection=window.getSelection();selection.removeAllRanges();selection.addRange(range);document.querySelector('#status').textContent='Texte sélectionné : Ctrl+C pour copier.'}});pre.append(button)});
+</script></body></html>

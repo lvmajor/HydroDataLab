@@ -12,6 +12,7 @@ Sont conservés : le kit du 19 octobre, l’archive Docker source, Compose, tous
 
 ## Quelle commande utiliser?
 
+- Transfert allégé vers le portable HQ : `node presentation/scripts/build-hq-guide.mjs`, construire le site courant, enregistrer dans Git, puis `python scripts/package-transfer.py`. Produit un ZIP unique avec guide, présentation, PDF, fiches, données/provenance, un bundle Git et les quatre images consolidées. Les anciennes sauvegardes, caches et dépendances installées sont exclus; le TAR est compressé directement sans copie intermédiaire. Lire `packaging/hq/LIRE-MOI-HQ.html` pour la préparation du portable. Le ZIP voisin de son fichier `.sha256` est le livrable à transférer; la validation est enregistrée dans `.zip.validation.json`.
 - Correction du support ou des fiches : construire, vérifier, enregistrer dans Git, puis `./scripts/refresh-kit.ps1 -KitPath artifacts/kit-hq-20261019-101734`. L’archive Docker est vérifiée mais ne bouge pas. Une sauvegarde Git, le support et l’inventaire sont mis à jour dans le kit existant.
 - Nouvelle version de l’application ou des images : produire et vérifier les images, puis `./scripts/package-kit.ps1` pour une livraison complète distincte.
 - Simple point de reprise du code : commit Git; `./scripts/backup.ps1` si une sauvegarde transportable est nécessaire.

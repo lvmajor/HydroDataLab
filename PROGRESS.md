@@ -1,5 +1,12 @@
 # HydroDataLab — journal de reprise
 
+## ZIP allégé pour le portable HQ — 19 octobre
+
+- Départ : main `1437495`, dépôt propre. Demande : une archive unique pour les slides et les trois démos, Docker inclus, avec guide de préparation du portable.
+- Réalisé : packager direct `scripts/package-transfer.py`, un bundle limité à main/exercice/huit tags, une archive de quatre images Linux/amd64, site compilé, PDF, fiches et provenance. Guide HTML/Markdown en 12 étapes avec commandes à copier; vérificateur d’intégrité inclus. Aucune copie intermédiaire du gros TAR.
+- Prévalidation : build courant, syntaxe Python, 13 blocs PowerShell, guide testé à cinq largeurs (320–1366), copie/navigation/impression, aucun débordement horizontal ou appel réseau. Rendus examinés. Vérificateur : bonne copie acceptée et fichier altéré détecté. Sources officielles d’installation relues; préparation réseau et répétition HQ restent explicites.
+- Prochaine action : enregistrer cette préparation, générer le ZIP puis valider ses empreintes, la restauration Git et le serveur extrait. Le reçu `artifacts/TRANSFERT-HQ.txt` et le rapport `.zip.validation.json` indiqueront le ZIP final, sa révision et les contrôles réellement terminés.
+
 ## Notes du présentateur faciles à parcourir — 19 octobre
 
 - Départ : main `43121d0`, dépôt propre. Demande : ventiler les notes pour retrouver facilement le fil pendant la présentation.
