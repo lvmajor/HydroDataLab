@@ -79,6 +79,7 @@ Avec Podman, utiliser `podman load --input artifacts/hydrodatalab-images.tar`, p
 Le **kit de transfert hors ligne** est assemblé par `./scripts/package-kit.ps1` dans `artifacts/kit-hq-<date-heure>/`, après préparation et depuis un dépôt propre. Il rassemble les sauvegardes Git, les images, Compose, le diaporama statique, le PDF et les guides. Ouvrir son `DEMARRER.md` : la présentation peut être servie avec Python seul, sans npm. Copier ce dossier complet sur le portable et sur un autre support avant la séance.
 
 - [Guide du présentateur minuté](handouts/guide-presentateur.md), [requêtes Copilot](handouts/prompts.md), [aide-mémoire](handouts/aide-memoire.md), [guide participant](handouts/guide-participant.md).
+- [Conducteur des trois démos](handouts/conducteur-demos.html) : lecture sans serveur, commandes et prompts à copier, passages entre les versions, résultats attendus et secours. [Source éditable](handouts/conducteur-demos.md); régénérer la page avec `node presentation/scripts/build-demo-guide.mjs`.
 - [Matrice des modèles datée](handouts/matrice-modeles.md) et [sources officielles](docs/SOURCES.md). Confirmer le sélecteur et les politiques HQ le 19 octobre.
 - [Personnalisations VS Code 1.142](handouts/personnalisations-vscode.md) : formats, portées, AGENTS.md, sept concepts, panneau Instructions et Canvas. Les références des exemples sont cliquables dans le site et le PDF.
 - [Jalons Git et démonstration en direct](docs/CHECKPOINTS.md).

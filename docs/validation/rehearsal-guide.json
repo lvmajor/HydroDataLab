@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-19T14:57:52.441Z",
+  "source": "handouts/conducteur-demos.md",
+  "sections": 8,
+  "copyButtons": 21,
+  "localLinks": 5,
+  "viewports": [
+    1440,
+    1280,
+    900,
+    390
+  ],
+  "clipboard": "Payload and refusal/selection fallback checked; OS clipboard not asserted.",
+  "print": "All eight sections visible, copy controls hidden.",
+  "externalRequests": [],
+  "pageErrors": [],
+  "cli": {
+    "observations": 168,
+    "series": 4
+  },
+  "pythonTestsPassed": 35,
+  "checkpoint06": {"acceptanceFailuresExpected": 2, "acceptanceFailuresObserved": 2, "setupErrors": 0, "isolation": "Archive du tag dans .runtime/guide-06; branche principale conservée."},
+  "powershellBlocksParsed": 19,
+  "hqRehearsal": "Not performed by this verification."
+}

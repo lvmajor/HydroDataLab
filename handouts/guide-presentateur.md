@@ -2,6 +2,8 @@
 
 Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeurs, analystes BI/Python; gestionnaires et développeurs débutants/intermédiaires. Version documentaire : 19 octobre. Objectif : déléguer une petite transformation vérifiable, avec son contrat et ses preuves.
 
+**Pour répéter et piloter les trois démos :** ouvrir le [conducteur avec commandes à copier](conducteur-demos.html), utilisable directement dans un navigateur, ou sa [source Markdown](conducteur-demos.md). Le parcours recommandé conserve `main` pour les démos 1 et 2 ainsi que le secours, et utilise une seule copie d’exercice issue de `06-specification` pour la démo 3. La bascule se prépare pendant la slide 19; le serveur des slides reste sur `main`.
+
 ## Minutage strict
 
 | Horloge | Diapositive | Explication | Démo |
@@ -70,7 +72,7 @@ Depuis la racine de la version finale (`main` ou `07-solution`), exécuter `./sc
 - Vérifier connexion Copilot, modèle autorisé, version VS Code et moteur Copilot. Confirmer Auto Balance et GPT-6.1 Sol; choisir un remplacement autorisé avant la séance si nécessaire.
 - Les paramètres expérimentaux ne sont pas requis pour réussir la formation. HydraFusion reste une capsule facultative; pas d’exécution si le pool/politiques HQ ne le permettent pas.
 - Instantané confirmé : 168 observations du 17 octobre 2026, extraites le 18 octobre à 19:44:01 UTC. Vérifier empreintes et manifeste, sans remplacer les fixtures pour obtenir un résultat plus spectaculaire.
-- Préparer deux dossiers de travail distincts : live depuis `06-specification`, secours depuis `07-solution`. Commande pour créer la branche live depuis un dépôt propre : `./scripts/checkpoint.ps1 -Tag 06-specification -Branch demo-live`. Ce script refuse un dossier modifié et arrête Aspire avant la bascule. Utiliser les scripts de la version finale et le guide `docs/CHECKPOINTS.md` pour préparer les copies : tous les scripts ne sont pas présents dans les premiers tags. Préparer séparément la copie de secours 07-solution; ne pas écraser un dossier sale.
+- Suivre le [conducteur de répétition](conducteur-demos.html) : le dépôt principal reste sur `main` pour les démos 1 et 2, les slides et le secours. Une copie Git locale reçoit une nouvelle branche issue de `06-specification` pour la démo 3. Préparer les dépendances et les deux démarrages avant la séance; basculer pendant la slide SDD. Aucun téléchargement ou changement de branche du dépôt principal n’est nécessaire en direct.
 - Lancer `./scripts/start-demo.ps1` et tester le parcours. Ports réservés : Vue 53170, API 53171, Python 53172, slides 53173.
 - Ouvrir le support : `./scripts/start-presentation.ps1` (ou `cd presentation`, `npm ci`, `npm run dev`); http://localhost:53173. Pour le build autonome : `npm run build` puis `npm run preview`. L’installation réseau se fait avant la séance.
 - Ouvrir aussi `presentation/exports/formation-hydrodatalab.pdf`. Il contient 28 pages; les interactions sont figées mais leur explication reste lisible.
@@ -84,12 +86,12 @@ Depuis la racine de la version finale (`main` ou `07-solution`), exécuter `./sc
 - `05-docker`, `06-specification`, `07-solution` : le script `prepare.ps1` complet est disponible. Au jalon 06, les échecs des tests de couverture sont volontaires avant l’exercice; ils ne signifient pas que l’installation a échoué.
 - Préparer et tester les images avec [DOCKER](../docs/DOCKER.md) avant la séance. `prepare-docker.ps1` arrête l’application native. Après une répétition Compose, appeler `./scripts/docker-demo.ps1 -Action Stop` avec le même contexte, puis relancer le natif. Ne lancer qu’une pile à la fois sur 53170.
 - La génération Python live s’effectue en mode natif au jalon 06 : les images Docker préparées contiennent la solution finale. Le démarrage sélectionne `.runtime/<branche-ou-tag>`; la copie de secours a aussi son dossier distinct.
-- Conserver une copie du PDF et du conducteur hors du dossier qui change de tag. Pour le secours, cloner localement le dépôt dans un nouveau dossier, y sélectionner `07-solution`, exécuter `prepare.ps1` et répéter. Le bundle Git ne transporte pas les dépendances ni les images : les préparer sur place ou les transférer comme indiqué dans DOCKER.
+- Conserver le PDF et le conducteur dans le dépôt principal, qui ne change pas de tag. `main` contient le même code applicatif que `07-solution` et sert de secours. Une copie supplémentaire sur le tag 07 reste possible si l’on veut conserver exactement ce jalon, mais n’est pas nécessaire au parcours recommandé. Le bundle Git ne transporte pas les dépendances ni les images : les préparer sur place ou les transférer comme indiqué dans DOCKER.
 
 ## Démo 1 — 4 minutes
 
 1. **0:00–0:45** : ouvrir **Chat: Open Agents Window** et montrer le dossier et la branche déjà expliqués. Session = conversation pour une tâche; `/plan` demande une démarche avant l'implémentation. Le menu de cette fenêtre ne contient pas actuellement l'agent Plan : utiliser `/plan` dans la session Copilot. Copilot est l'environnement choisi et Auto sélectionne un modèle; ses niveaux seront expliqués ensuite. Présenter les confirmations d'actions.
-2. **0:45–1:30** : ouvrir `Ctrl+,`, ajuster la lisibilité et expliquer la portée : Utilisateur pour ses projets, Espace de travail pour le projet ouvert. Montrer **Changes**, la comparaison avant/après d'un fichier.
+2. **0:45–1:30** : ouvrir `Ctrl+,`, ajuster la lisibilité et expliquer la portée : Utilisateur pour ses projets, Espace de travail pour le projet ouvert. Repérer **Changes**; ce panneau peut être vide pendant la mission en lecture seule. Le vrai diff sera montré à la démo 3.
 3. **1:30–2:20** : ouvrir **Chat: Open Customizations**. Instruction = consigne écrite pour l'agent. Retrouver la règle Python qui distingue zéro d'une absence.
 4. **2:20–4:00** : lancer le prompt de découverte de `prompts.md`. Traduire **References** par « sources consultées », ouvrir un fichier cité et vérifier une affirmation avec le public.
 
@@ -115,7 +117,7 @@ Ne pas dépendre d’un appel live : le snapshot local assure la démonstration.
 
 - **0:00–0:40** : montrer « Couverture : Non calculée » sur le parcours `06-specification`, puis ouvrir `etl/hydrodatalab/coverage.py`, `specs/test_coverage_acceptance.py` et le contrat. Les tests de couverture rouges sont volontaires à cette étape.
 - **0:40–2:10** : coller le prompt live. L’agent modifie Python, sans recréer l’API ni Vue. Attendre une sortie de tests, pas seulement « terminé ».
-- **À 2:10** : si ce n’est pas prêt, dire « Je passe à la solution préparée pour garder le temps de vérifier. » Préserver les modifications, arrêter les services du live et utiliser le dossier de secours `07-solution` avec runtime séparé.
+- **À 2:10** : si ce n’est pas prêt, dire « Je passe à la solution préparée pour garder le temps de vérifier. » Arrêter la génération, conserver les modifications dans la copie d’exercice, arrêter ses services et redémarrer le dépôt principal `main`, qui contient la solution préparée avec son runtime séparé.
 - **2:10–3:00** : montrer le diff et les tests, dont jours de 23/25 heures.
 - **3:00–4:00** : revenir au même écran, lancer scénario complet puis manquant. Déplier **Qualité par série** : le niveau horaire est à 24/24 puis 23/24 = 95,83 %. La couverture globale des quatre séries devient 167/168, soit 99,4 % dans la synthèse : ce n’est pas le même dénominateur. Le retrait est en mémoire; les données originales sont intactes.
 

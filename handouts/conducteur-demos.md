@@ -1,0 +1,379 @@
+# HydroDataLab · les trois démos
+
+**Conducteur privé du présentateur · 20 octobre 2026 · 4 + 5 + 4 minutes**
+
+Ouvrir [la version lisible dans le navigateur](conducteur-demos.html) sur le portable. Elle fonctionne par double-clic, sans serveur, et propose des boutons Copier. Le public voit VS Code, HydroDataLab ou les diapositives, jamais ce conducteur.
+
+## Repères à garder sous les yeux
+
+| Moment | Dossier / version | À montrer | Durée |
+|---|---|---|---:|
+| Démo 1 · slide 7 | Dépôt principal, `main` | Une mission en lecture seule, ses instructions et ses preuves | 4 min |
+| Démo 2 · slide 18 | Dépôt principal, `main` | Python → exports → Vue → Aspire → échec/relance → conteneur | 5 min |
+| Transition · slide 19 | Arrêter `main`, démarrer la copie d’exercice | Garder la slide SDD projetée pendant la manipulation | Dans les 2 min de SDD |
+| Démo 3 · slide 20 | Copie d’exercice, branche `codex/repetition-01` issue de `06-specification` | Règle BI → code Python → tests → 100 %, puis 95,83 % | 4 min |
+| Secours, si nécessaire | Retour au dépôt principal, `main` | Solution préparée, annoncée comme telle | Décider à 2:10 de la démo 3 |
+
+**Pourquoi deux dossiers?** Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. Au 19 octobre, `etl/`, `src/`, `web/` et `specs/` sont identiques entre `main` et `07-solution`. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.
+
+Un **tag** est un jalon fixe; une **branche** conserve une nouvelle tentative. La branche existante `demo-live` n’est pas nécessaire à ce parcours. **Une seule application à la fois** utilise les ports 53170–53172. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal.
+
+## Avant la séance · préparer une fois
+
+### A. Ouvrir un terminal PowerShell de pilotage
+
+Garder ce terminal ouvert pendant la répétition. Adapter uniquement la première ligne si le projet est ailleurs sur le portable HQ. Rejouer ce bloc si le terminal a été fermé : les variables PowerShell ne survivent pas à sa fermeture.
+
+```powershell
+$Depot = 'F:\PoC\Formation Copilot - HQ'
+$Live = Join-Path $Depot 'artifacts/repetition-live'
+Set-Location -LiteralPath $Depot
+git status --short --branch
+```
+
+**Attendu :** `## main`, sans fichiers modifiés. Si des changements apparaissent, les examiner et les enregistrer avant une bascule. Ce guide ne demande aucun `reset --hard`. S’il s’agit d’une autre branche propre, `git switch main` revient à la version de présentation.
+
+```powershell
+./scripts/doctor.ps1
+```
+
+**Attendu :** Git, .NET, Aspire, Node, npm et uv trouvés. Ce diagnostic ne teste pas la connexion Copilot. Vérifier celle-ci dans VS Code, avec le compte et les modèles autorisés sur le poste HQ.
+
+Sur un nouveau poste, installer les dépendances avant la répétition, avec le réseau disponible. Arrêter d’abord l’application native avec `./scripts/stop-demo.ps1` si elle tourne. Si Compose tourne, utiliser `./scripts/docker-demo.ps1 -Action Stop` avec les options de moteur employées au démarrage. Puis :
+
+```powershell
+Set-Location -LiteralPath $Depot
+./scripts/prepare.ps1
+./scripts/verify.ps1
+```
+
+**Attendu sur la version complète :** validations réussies. Ne pas réinstaller les dépendances pendant la séance. Docker est facultatif pour l’application locale.
+
+### B. Créer la copie d’exercice, sans copier les grosses archives
+
+Exécuter ce bloc **une seule fois**. Si le dossier existe déjà, il reste intact : passer à « Fin et nouvelle répétition ». Le clone transporte Git et les sources, pas les images Docker ni les dépendances installées. Il crée un lien Git local vers le dépôt principal; aucun dépôt en ligne n’est créé.
+
+```powershell
+Set-Location -LiteralPath $Depot
+if (Test-Path -LiteralPath $Live) { throw 'Copie existante : la conserver et reprendre la section Fin et nouvelle répétition.' }
+git clone --no-hardlinks --branch main "$Depot" "$Live"
+if ($LASTEXITCODE -ne 0) { throw 'Clonage interrompu.' }
+git -C "$Live" switch -c codex/repetition-01 06-specification
+if ($LASTEXITCODE -ne 0) { throw 'Branche exercice non créée.' }
+Set-Location -LiteralPath $Live
+./scripts/prepare.ps1 -SkipPresentation
+git status --short --branch
+```
+
+**Attendu :** branche `codex/repetition-01`, dossier propre. Ouvrir cette copie dans une deuxième fenêtre VS Code par **Fichier → Nouvelle fenêtre → Ouvrir un dossier**. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.
+
+Contrôler l’état de départ de l’exercice :
+
+```powershell
+Set-Location -LiteralPath $Live
+New-Item -ItemType Directory -Force etl/.test-output | Out-Null
+uv run --project etl pytest specs/test_coverage_acceptance.py -q --basetemp etl/.test-output/avant
+```
+
+**Attendu : deux tests en échec**, parce que `calculate_coverage` renvoie encore `None`. Les dépendances fonctionnent; la règle BI reste à implémenter. Une erreur d’import ou une fixture absente n’est pas cet échec attendu.
+
+### C. Répéter les démarrages avant de chronométrer
+
+Arrêter d’abord la version principale si elle tourne. Puis démarrer l’exercice :
+
+```powershell
+Set-Location -LiteralPath $Live
+./scripts/start-demo.ps1
+```
+
+Ouvrir **http://localhost:53170**. Choisir **Jeu de démonstration**, laisser **Retirer une mesure de niveau d’eau** décoché, cliquer **Lancer la collecte**. Attendre **Réussi** et vérifier **Couverture : Non calculée**. Cette vérification prépare aussi la compilation nécessaire à un prochain lancement rapide.
+
+Revenir à la version complète pour le début de la répétition :
+
+```powershell
+Set-Location -LiteralPath $Live
+./scripts/stop-demo.ps1
+Set-Location -LiteralPath $Depot
+./scripts/start-demo.ps1
+```
+
+Le script attend que Vue soit prêt. Recharger la page et lancer une collecte complète; garder **Qualité par série** replié pour la démo 2. Ouvrir le lien du **dashboard Aspire** donné par le terminal. Son adresse peut changer entre les deux applications : conserver le lien de chaque lancement. Vérifier que la planification reste désactivée.
+
+**Chronométrer maintenant** le passage principal → exercice et le retour. Les prochains démarrages peuvent employer `-NoBuild`, uniquement après ce premier démarrage réussi dans chaque dossier. Si la transition dépasse la plage disponible, privilégier le parcours préparé et annoncer le secours; ne pas découvrir un téléchargement en séance.
+
+### D. Préparer le passage en conteneur
+
+Dans le terminal de pilotage, tester le moteur autorisé et l’image déjà chargée :
+
+```powershell
+docker version
+docker image inspect hydrodatalab-etl:formation --format '{{.Id}}'
+docker run --rm --pull never --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
+```
+
+**Attendu :** résumé avec 168 observations, 4 séries, aucun téléchargement. `--network none` concerne ce conteneur; il prouve que cet ETL utilise la copie locale. L’archive d’images et sa restauration sont décrites dans [DOCKER](../docs/DOCKER.md). Si le poste utilise Podman, remplacer `docker` par `podman`. Avec un contexte Docker explicite, ajouter `--context NOM_VALIDE` après `docker` à chaque commande, sans changer le contexte global.
+
+Si le moteur ne répond pas, garder le parcours Python natif et la [capture Compose préparée](../docs/screenshots/08-compose.png). Ne pas lancer la pile Compose pendant ces démos : elle occuperait les mêmes ports et ses images contiennent déjà la solution finale.
+
+### E. Préparer les écrans et les onglets
+
+Dans **un deuxième terminal**, depuis le dépôt principal, lancer le diaporama si 53173 n’est pas déjà servi :
+
+```powershell
+Set-Location -LiteralPath 'F:\PoC\Formation Copilot - HQ'
+./scripts/start-presentation.ps1
+```
+
+Garder ce terminal ouvert. `Win + P` → **Étendre**. Même navigateur, même profil, mêmes adresses pour la synchronisation :
+
+- Portable : **http://127.0.0.1:53173/presenter/1**, plus ce conducteur.
+- Projecteur : **http://127.0.0.1:53173/1**, plein écran `F11`.
+- Démonstration : **http://localhost:53170**, dashboard Aspire et deux fenêtres VS Code déjà ouvertes.
+
+Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 19. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.
+
+## Démo 1 · cadrer une mission · 4 min
+
+**Slide 7 → VS Code du dépôt principal (`main`). Question au public : « Comment vérifier que l’agent comprend où il travaille et quelles règles suivre? »**
+
+### 0:00–0:45 · Où travaille l’agent?
+
+**Faire :** ouvrir la fenêtre Agents via la palette de commandes de VS Code; utiliser **Chat: Open Agents Window** si ce libellé est disponible dans la version installée. Vérifier le dossier HydroDataLab, la branche `main`, le moteur Copilot et le modèle autorisé préparé, généralement Auto Balance. Créer une session pour cette tâche et garder les confirmations d’actions.
+
+**Dire :** « Une session porte une tâche. Le dossier indique les fichiers accessibles; la branche indique la version du travail. » Ne pas créer de worktree ici : la notion a déjà été expliquée en slide 6.
+
+### 0:45–1:30 · Des réglages qui ont un but
+
+**Faire :** montrer la portée Utilisateur/Espace de travail dans les paramètres (`Ctrl+,`), le zoom préparé pour la projection et le panneau **Changes**.
+
+**Dire :** « Mes préférences de lecture sont personnelles; les règles du projet sont partagées dans Git. Changes permettra d’examiner ce qui a changé. » Le panneau peut être vide : la première mission ne modifie rien. Le vrai diff sera montré à la démo 3.
+
+### 1:30–2:20 · Une règle vérifiable
+
+**Faire :** ouvrir **Customizations → Instructions**, puis montrer `.github/copilot-instructions.md` et `.github/instructions/python.instructions.md`. Retrouver la règle des valeurs absentes et des zéros. Si l’interface ne liste pas un fichier, ouvrir le fichier et vérifier le chargement réel dans les références/diagnostics; ne pas affirmer qu’il a été chargé uniquement parce qu’il existe.
+
+**Dire :** « Dans `[10, 0, None]`, deux valeurs ont été mesurées. Zéro est une mesure; None indique une absence. Inventer un zéro à sa place fausserait le contrôle de qualité. »
+
+### 2:20–4:00 · Demander, puis contrôler une preuve
+
+**Copier dans Copilot :**
+
+```text
+Repère le calcul des indicateurs et explique comment il est testé.
+Ne modifie aucun fichier. Suis le chemin des données locales préparées
+dans data/fixtures jusqu’au rapport. Lis docs/CONTRACT.md et les instructions pertinentes.
+Identifie le fichier Python de transformation et les tests à utiliser.
+Cite les fichiers consultés et signale toute information manquante.
+Réponse attendue : un schéma en quatre étapes et les commandes de vérification.
+```
+
+**Montrer :** les références/fichiers réellement consultés, puis une fonction ou un test cité. **Dire :** « Je peux vérifier cette affirmation dans le code. » Revenir aux slides. Si la réponse tarde ou que Copilot est indisponible, ouvrir `etl/hydrodatalab/pipeline.py` et un test local, en disant que la génération n’a pas abouti en direct.
+
+**Réussite :** le public distingue le lieu de travail, les instructions et une preuve. Aucun fichier n’a été modifié pour cette mission.
+
+## Démo 2 · du Python au résultat · 5 min
+
+**Slide 18 → terminal du dépôt principal (`main`). Question : « Puis-je rejouer ce traitement et comprendre un échec? »**
+
+### 0:00–1:00 · Exécuter le cœur Python
+
+```powershell
+Set-Location -LiteralPath $Depot
+$Execution = uv run --project etl python -m hydrodatalab run --source fixture --date 2026-10-17 --output outputs/cli | ConvertFrom-Json
+if ($LASTEXITCODE -ne 0) { throw 'Le traitement Python a échoué.' }
+$Execution.summary | Format-List
+$Export = Join-Path 'outputs/cli' $Execution.runId
+Get-ChildItem -LiteralPath $Export | Select-Object Name,Length
+Get-Content -LiteralPath (Join-Path $Export 'observations.csv') -TotalCount 4
+```
+
+**Montrer :** 168 observations, 4 séries, `observations.csv`, `observations.parquet`, `report.json`. Le dossier de résultats inclut un identifiant unique de traitement; il n’est pas simplement `outputs/cli/report.json`.
+
+**Dire :** « Ce traitement Python est autonome. CSV et Parquet servent à l’analyse; JSON explique le résultat et sa provenance. »
+
+### 1:00–2:15 · Explorer dans Vue
+
+**Faire :** ouvrir http://localhost:53170, choisir **Jeu de démonstration**, décocher **Retirer une mesure de niveau d’eau**, puis **Lancer la collecte**. Attendre **Réussi** dans **Dernières exécutions**.
+
+**Montrer :** les courbes, la date des observations, les unités et la provenance. La collecte locale peut être très rapide : ne pas promettre que chaque statut intermédiaire restera visible. L’historique est la preuve durable.
+
+**Dire :** « L’interface appelle l’API .NET, qui lance le même moteur Python via FastAPI. La demande est en MW; le niveau Gouin Nord est en mètres. Les températures viennent de Gouin Bois. Ce niveau ne mesure pas une réserve énergétique. »
+
+### 2:15–3:00 · Observer dans Aspire
+
+**Faire :** ouvrir le dashboard Aspire de la version principale. Montrer les ressources **python**, **api**, **web**, puis les journaux de **python** correspondant au traitement.
+
+**Dire :** « Aspire démarre les composants et rassemble leur état et leurs journaux. Quartz coordonne les tâches côté .NET; SQLite garde leur historique. Les calculs métier restent en Python. »
+
+### 3:00–4:30 · Provoquer une erreur et reprendre
+
+**Faire :** dans Vue, cliquer **Démontrer un échec contrôlé**. Attendre l’échec et lire son message. Cliquer **Relancer ce traitement**, puis attendre **Réussi**.
+
+**Montrer :** l’ancienne erreur reste dans l’historique; la relance crée une nouvelle exécution. Le dernier rapport réussi n’a pas été remplacé par un résultat incomplet.
+
+**Dire :** « C’est une panne simulée, annoncée comme telle. Nous testons le comportement de reprise, pas la disponibilité réelle du fournisseur. » Montrer le contrôle de planification sans l’activer.
+
+### 4:30–5:00 · Le même traitement dans une image préparée
+
+```powershell
+docker run --rm --pull never --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
+```
+
+Utiliser la variante Docker/Podman déjà validée avant la séance. **Montrer :** les mêmes nombres dans le résumé. **Dire :** « Le code et ses dépendances sont emballés dans cette image. L’ETL tourne ici sans réseau. » Les fichiers de `/tmp/result` disparaissent avec ce conteneur; les exports persistants ont déjà été montrés côté natif. L’égalité complète CSV/Parquet/JSON se valide avant la séance avec la procédure de [DOCKER](../docs/DOCKER.md), pas avec le seul résumé console.
+
+**Réussite :** un résultat traçable, une erreur compréhensible, une relance réussie. Si Docker échoue, dire « Le moteur conteneur n’est pas disponible; le parcours local vient d’être exécuté » et passer à SDD.
+
+## Transition · préparer la démo 3
+
+**Garder la slide 19 (SDD) sur le projecteur.** Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.
+
+```powershell
+Set-Location -LiteralPath $Depot
+./scripts/stop-demo.ps1
+Set-Location -LiteralPath $Live
+git status --short --branch
+./scripts/start-demo.ps1 -NoBuild
+```
+
+**Attendu :** la branche de cette répétition, avec `coverage.py` encore à implémenter. Recharger Vue, lancer une collecte complète et vérifier **Non calculée**. Si l’indicateur est déjà calculé, ne pas poursuivre comme si l’exercice était neuf : vérifier le chemin et préparer une nouvelle branche selon la dernière section.
+
+**Dire :** « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de `$Live`, puis à la slide 20. La présentation reste servie depuis `$Depot`; aucun ancien support du tag 06 n’est lancé.
+
+## Démo 3 · une règle devient un contrôle · 4 min
+
+**Slide 20 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »**
+
+### 0:00–0:40 · Montrer le besoin et l’état initial
+
+**Montrer :** **Couverture : Non calculée**, puis ces trois fichiers dans la copie d’exercice :
+
+- `specs/coverage.md` : la règle et ses critères;
+- `etl/hydrodatalab/coverage.py` : la fonction qui renvoie encore `None`;
+- `specs/test_coverage_acceptance.py` : les tests de réussite.
+
+**Dire :** « 24 mesures horaires attendues : 24 donnent 100 %, 23 donnent 95,83 %. Les doublons n’ajoutent rien et zéro reste valide. Les journées de changement d’heure n’ont pas toutes 24 heures. » Les deux tests d’acceptation rouges ont été vérifiés pendant la préparation; ne pas gaspiller la fenêtre de génération à les relancer ici.
+
+### 0:40–2:10 · Déléguer une modification délimitée
+
+Créer une nouvelle session Copilot **dans la copie d’exercice**, avec le modèle autorisé retenu avant la séance. **Copier :**
+
+```text
+Implémente calculate_coverage dans etl/hydrodatalab/coverage.py.
+Respecte specs/coverage.md, la signature existante et docs/CONTRACT.md.
+Les timestamps reçus correspondent déjà aux observations dont la valeur est valide.
+Compte des créneaux distincts alignés et inclus dans [début, fin).
+Début et fin sont des dates civiles America/Toronto; fin exclusive.
+Calcule expected à partir des bornes converties en UTC et de interval_minutes,
+pas à partir des lignes reçues. Gère les journées de 23 et 25 heures.
+Retourne observed, expected, percent arrondi à deux décimales.
+Ne recrée pas l’API ni l’interface. Ne modifie pas les données brutes.
+Exécute depuis la racine de cette copie :
+uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basetemp etl/.test-output/live
+Lis les échecs et corrige la fonction. Termine par le diff et les résultats
+vérifiés; n’affirme pas avoir lancé un test sans résultat d’exécution.
+```
+
+**Montrer :** le périmètre demandé et les confirmations d’actions utiles. Ne pas approuver machinalement une modification de tests qui réduirait les critères de réussite.
+
+**À 2:10, décider :** si le code et les tests ne sont pas prêts, arrêter la génération dans Copilot et passer à la section Secours. Phrase : « Je passe à la solution préparée pour garder le temps de vérifier. »
+
+### 2:10–3:00 · Lire la preuve
+
+**Montrer :** le diff dans **Changes**, puis la sortie réelle des tests. Si l’agent n’a pas exécuté la validation, la lancer dans le terminal de cette copie :
+
+```powershell
+Set-Location -LiteralPath $Live
+git diff --stat
+git diff -- etl/hydrodatalab/coverage.py
+uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basetemp etl/.test-output/live
+```
+
+**Attendu pour la solution préparée :** 35 tests réussis. Si des tests utiles ont été ajoutés, le total peut augmenter. Contrôler les jours de 23/25 heures et la mesure manquante. Les tests en échec interdisent d’annoncer une solution validée.
+
+### 3:00–4:00 · Voir le résultat et sa limite
+
+**Faire :** après l’enregistrement Python et son rechargement, retourner à Vue. Lancer une **nouvelle** collecte complète, déplier **Qualité par série**. Montrer le niveau d’eau à **24 / 24 · 100 %**. Cocher **Retirer une mesure de niveau d’eau**, relancer, montrer **23 / 24 · 95,83 %**.
+
+**Dire, puis marquer une pause :** « La règle que nous venons de définir détecte maintenant la mesure manquante. » La synthèse globale affiche **167 / 168, soit 99,4 %** : ce n’est pas le même dénominateur. Le retrait est en mémoire; les données brutes restent intactes.
+
+Si l’ancien rapport reste visible, attendre la fin de la nouvelle collecte et rafraîchir. Modifier le code ne recalcule pas rétroactivement un rapport déjà publié. Si le rechargement Python n’a pas eu lieu, utiliser le secours au lieu de diagnostiquer devant le public.
+
+**Réussite :** une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 21.
+
+## Secours · revenir à la solution préparée
+
+**Déclencheur :** à 2:10 de la démo 3, tests encore rouges, génération trop lente ou indisponible. Arrêter d’abord la génération Copilot, puis annoncer le passage au code préparé. Les modifications de l’exercice restent sur disque : aucun checkout ni nettoyage dans ce dossier.
+
+```powershell
+Set-Location -LiteralPath $Live
+./scripts/stop-demo.ps1
+Set-Location -LiteralPath $Depot
+./scripts/start-demo.ps1 -NoBuild
+```
+
+Recharger Vue, utiliser la fenêtre VS Code principale. Pour montrer la modification déjà préparée :
+
+```powershell
+Set-Location -LiteralPath $Depot
+git diff 06-specification 07-solution -- etl/hydrodatalab/coverage.py
+uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basetemp etl/.test-output/secours
+```
+
+Puis effectuer l’avant/après **100 % → 95,83 %** avec deux nouvelles collectes. Le code n’a pas été généré en direct : le dire explicitement. En cas de panne complète, montrer [la capture de qualité](../docs/screenshots/03-qualite-mesure-absente.png) et les exports préparés. Cette capture montre 99,4 % au global, pas le détail 95,83 % replié; utiliser le rapport JSON ou le test pour cette valeur.
+
+## Fin et nouvelle répétition
+
+### Conserver la tentative
+
+Arrêter la génération et l’application d’exercice avant de changer de branche. Si le secours principal est encore actif, l’arrêter également depuis `$Depot`. Dans la copie d’exercice :
+
+```powershell
+Set-Location -LiteralPath $Live
+./scripts/stop-demo.ps1
+git status --short
+git diff
+```
+
+Après avoir examiné les fichiers, conserver les changements voulus. Exemple si seule la fonction a changé :
+
+```powershell
+git add -- etl/hydrodatalab/coverage.py
+git commit -m "Répétition : calcul de couverture et validation"
+git status --short --branch
+```
+
+Ajouter explicitement les éventuels tests pertinents avant le commit. Si Git n’a pas d’identité configurée sur le portable, renseigner l’identité de travail appropriée **localement à cette copie**. Ne pas faire passer la tentative pour validée si les tests échouent; choisir un message de commit qui le précise. On peut aussi conserver les fichiers tels quels et arrêter ici.
+
+### Repartir sans écraser la tentative précédente
+
+Depuis un dossier d’exercice propre et les applications arrêtées, créer une **nouvelle branche au nom unique**. Cette commande ne réutilise ni ne réinitialise une branche existante.
+
+```powershell
+$BrancheSuivante = 'codex/repetition-' + (Get-Date -Format 'yyyyMMdd-HHmmss')
+Set-Location -LiteralPath $Live
+if (git status --porcelain) { throw 'Conserver les changements avant de repartir.' }
+git switch -c $BrancheSuivante 06-specification
+if ($LASTEXITCODE -ne 0) { throw 'Bascule interrompue.' }
+./scripts/start-demo.ps1
+```
+
+La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial **Non calculée**. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer `$Depot` comme à la préparation C.
+
+### Reprise après un redémarrage du PC
+
+Rouvrir ce conducteur, rejouer le bloc A pour `$Depot` et `$Live`, puis :
+
+```powershell
+Set-Location -LiteralPath $Live
+git status --short --branch
+git log -3 --oneline
+./scripts/resume.ps1
+```
+
+Lire `PROGRESS.md` et `DEMO_STEP.md` dans le dossier concerné avant toute modification. Démarrer seulement la version souhaitée. Relancer séparément le serveur de présentation depuis `$Depot`. Aucun fichier, historique SQLite ou export n’est supprimé par ces commandes.
+
+### À noter après chaque répétition
+
+Dans un fichier local tel que `.runtime/notes-repetition.txt`, noter la branche, les durées réelles des trois démos et de la transition, le moteur conteneur validé, le résultat des tests et le prochain point à revoir. Ce fichier reste privé au poste et n’entre pas dans Git. Copier la tentative et ses notes sur le support de sauvegarde habituel; le bundle du dépôt principal n’inclut pas les nouveaux commits du clone d’exercice.
+
+**Avant de présenter :** les trois durées tiennent dans 4/5/4 minutes; l’avant/après est lisible depuis le fond de la salle; le secours démarre; Copilot est connecté; l’image est chargée; les diapositives et le PDF sont accessibles hors réseau. La répétition humaine sur le portable HQ reste à effectuer, même si les commandes ont été contrôlées sur le poste de préparation.

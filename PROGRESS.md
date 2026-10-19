@@ -1,6 +1,17 @@
 # HydroDataLab — journal de reprise
 
-Mis à jour : 18 octobre 2026. Formation cible : mardi 20 octobre 2026.
+## Conducteur de répétition — 19 octobre
+
+- Départ : main `f9ad107`, dépôt propre. Demande : guider les trois démos pas à pas et fournir un document lisible pendant la présentation.
+- Parcours : main pour les démos 1 et 2 et le secours, une seule copie Git d’exercice sur une nouvelle branche issue de `06-specification` pour la démo 3. L’application main et celle de `07-solution` sont identiques (`etl`, `src`, `web`, `specs`). Aucun changement de branche du dépôt principal, aucun clone d’exercice créé automatiquement, aucun nouveau kit complet.
+- Réalisé : `handouts/conducteur-demos.md`, lecteur HTML hors ligne avec navigation et copie, générateur dans `presentation/scripts/build-demo-guide.mjs`. Préparation, commandes, prompts, libellés Vue, preuves, bascule pendant SDD, secours à 2:10, conservation de la tentative et reprise après incident.
+- Contrôlé : prérequis présents; CLI fixture exécutée, 168 observations et 4 séries; 35 tests Python réussis. Node trouvé dans le terminal sans profil : 25.2.1; Node 24 reste la version recommandée pour le portable. Aucun lancement Docker ou répétition humaine HQ revendiqué.
+- Validé : 8 rubriques, 21 boutons de copie, liens locaux, affichage à 1440/1280/900/390 pixels, zéro requête externe ou erreur JavaScript. Repli Ctrl+C et affichage de toutes les sections à l’impression contrôlés; captures inspectées. Les 19 blocs PowerShell passent l’analyse syntaxique.
+- Contrôle du jalon 06 dans une extraction temporaire : deux échecs d’acceptation dus à `coverage = None`, comme prévu. Ajout de la création de `etl/.test-output` au guide, nécessaire sur une copie neuve. Aucun basculement du dépôt principal ni modification de la fonction de solution.
+- Enregistrement : commit « Ajoute le conducteur des trois démos et la répétition sans perte ». Actualiser le kit existant avec `refresh-kit.ps1`; le reçu `artifacts/LIVRAISON.txt` identifiera le SHA et la sauvegarde livrés.
+- Prochaine action : suivre « Avant la séance » sur le portable, préparer la copie d’exercice et chronométrer la transition ainsi que les démos 4/5/4 minutes. Le guide est prêt; cette répétition humaine reste à faire.
+
+Mis à jour : 19 octobre 2026. Formation cible : mardi 20 octobre 2026.
 
 ## État
 - [x] Plan accepté : public BI/Python, formation française, web local + PDF.
