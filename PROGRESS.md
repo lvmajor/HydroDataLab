@@ -1,5 +1,12 @@
 # HydroDataLab — journal de reprise
 
+## Disponibilité et choix des outils — 19 octobre
+
+- Départ : main `4d63407`, dépôt propre. Demande : clarifier le besoin couvert par Tools et comment l’agent choisit ses outils.
+- Réalisé : slide 11 distingue outils disponibles, choix du modèle et contrôle de l’exécution. Notes et fiche : description et paramètres d’un outil, choix selon demande/contexte, permissions, retour du résultat et référence avec #. Terminal = outil appelé; pytest = programme exécuté dans cet exemple. Guide aligné sur 15 + 60 + 35 + 10 secondes, sans allonger les deux minutes.
+- Validé : build, 28 routes sans débordement détecté, erreur de page ni ressource externe; interactions existantes réussies. PDF de 28 pages, liens et libellés contrôlés, page 11 inspectée; six destinations internes conservées. Notes/guide : mêmes 32 + 13 minutes. Avertissement FloatingVue déjà connu à l’export, sans défaut constaté sur le rendu. Sources S41–S42 relues le 19 octobre.
+- Livraison : commit et bundle actifs indiqués dans artifacts/LIVRAISON.txt et REVISION.txt du kit; actualiser le kit existant sans nouvelle archive Docker. Prochaine action : rafraîchir les deux vues et répéter l’explication de Tools. La répétition humaine reste à faire.
+
 ## Tour du panneau Agent Customizations — 19 octobre
 
 - Départ : main `2f4e858`, dépôt propre. Demande : conserver Slidev et expliquer chaque élément de la capture fournie, là où les concepts sont introduits.

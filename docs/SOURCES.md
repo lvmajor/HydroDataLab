@@ -77,6 +77,8 @@ S40 — [Microsoft : panneau Customizations et création assistée](https://code
 
 S41 — [Microsoft : utiliser et gérer les outils](https://code.visualstudio.com/docs/agents/run/tools), consulté le 19 octobre. Origine des outils, sélection des groupes et outils configurables, compteur Tools côté client pour Copilot, disponibilité distincte des autorisations.
 
+S42 — [Microsoft : outils dans la boucle agentique](https://code.visualstudio.com/docs/agents/concepts/tools) et [Language Model Tool API](https://code.visualstudio.com/api/extension-guides/ai/tools), consultés le 19 octobre. Sélection par le modèle selon demande/contexte et définitions des outils, rôle de modelDescription et du schéma d’entrée, paramètres proposés, exécution contrôlée et retour du résultat. La slide 11 distingue le catalogue Tools du choix d’un appel; la fiche développe la boucle. Terminal/pytest constitue un exemple pédagogique, pas une séquence imposée par Copilot.
+
 Pour S03, la page officielle sans paramètres a été intermittente pendant la consultation; la même page indexée avec un paramètre de suivi a permis de lire les sections sur le format, AGENTS.md, la vérification et les instructions d’organisation. Les supports utilisent son URL canonique. Ne pas confondre une organisation des dossiers avec un ordre de priorité universel, ni transférer les règles GitHub.com à tous les harnais VS Code.
 
 ## Contexte du public et sécurité

@@ -81,11 +81,26 @@ La diapositive 11 reprend les libellés du menu dans l’ordre de la [capture co
 | **Instructions — Consignes** | Donner des règles durables, selon leur portée et leurs conditions d’activation. | Conserver une valeur absente au lieu de la remplacer par zéro. |
 | **Agents — Agents personnalisés** | Préparer un rôle avec ses consignes et ses outils. | Le réviseur BI examine les calculs avec des outils de lecture. |
 | **Hooks — Déclencheurs** | Exécuter une commande à un événement du cycle de vie, sans attendre que le modèle la choisisse. | Enregistrer un appel d’outil dans un journal local. |
-| **Tools — Outils** | Voir les actions accessibles et gérer les outils configurables : lecture, recherche, terminal, etc. | L’outil terminal lance réellement pytest et retourne sa sortie. |
+| **Tools — Outils** | Savoir quels outils sont disponibles pour la tâche et gérer les outils configurables : lecture, recherche, terminal, etc. | L’agent dispose du terminal; il peut l’appeler pour lancer pytest. |
 
 **Même tâche, trois fonctions :** l’instruction demande de préserver les absences; le skill décrit la vérification; l’outil exécute le test. Un serveur MCP peut fournir un outil; un plugin peut distribuer ce serveur et la skill. Ni le skill, ni le plugin ne sont des modèles. [Microsoft : comparer et combiner les mécanismes](https://code.visualstudio.com/docs/agents/concepts/customization).
 
 Les compteurs de la capture ne mesurent ni le coût ni l’utilisation dans une réponse. Plus précisément, pour le harnais Copilot, le nombre à côté de **Tools** compte les outils côté client activés et exclut les outils intégrés au harnais, affichés en lecture seule. Rendre un outil disponible ne supprime pas ses contrôles d’autorisation. Vérifier les appels et leurs résultats dans la session. [Microsoft : gérer les outils](https://code.visualstudio.com/docs/agents/run/tools).
+
+## Comment l’agent choisit-il un outil?
+
+Le panneau **Tools** répond à « Quels outils l’agent peut-il utiliser pour accomplir cette tâche? ». Le choix d’un appel précis intervient ensuite dans la boucle de travail. **Disponible**, **choisi** et **autorisé pour cet appel** sont trois choses distinctes.
+
+1. **Le harnais détermine les outils accessibles.** Leur origine, la configuration et les capacités de la session comptent. Le panneau Tools gère les outils configurables; un agent personnalisé peut aussi définir sa sélection.
+2. **Le modèle choisit un appel si nécessaire.** Il reçoit la demande, le contexte et les définitions des outils disponibles. Leur description indique leur utilité; le schéma des paramètres indique les entrées attendues. Le modèle propose un outil et ses arguments, ou peut répondre sans outil. Les instructions et les résultats précédents influencent cette décision.
+3. **Le harnais applique les contrôles.** Selon les autorisations, il peut demander une confirmation ou refuser l’appel. Activer un outil ne dispense pas de ces contrôles.
+4. **L’outil s’exécute, puis sa sortie revient au modèle.** Le résultat ou l’erreur enrichit le contexte. Le modèle peut appeler un autre outil, corriger sa démarche ou terminer.
+
+[Microsoft : boucle et choix des outils](https://code.visualstudio.com/docs/agents/concepts/tools), [définitions, paramètres et déroulement d’un appel](https://code.visualstudio.com/api/extension-guides/ai/tools#tool-calling-flow).
+
+**Exemple HydroDataLab :** « Vérifie que la transformation préserve les valeurs absentes. » L’agent peut lire le code et le test, puis appeler l’outil terminal avec `uv run --project etl pytest etl/tests/test_pipeline.py`. Après les contrôles applicables, le terminal retourne la sortie de pytest; l’agent s’en sert pour son bilan. C’est un parcours possible, pas un ordre garanti. Dans cet exemple, **terminal** désigne l’outil de l’agent, et **pytest** le programme qu’il lui demande d’exécuter. Un autre environnement pourrait exposer un outil de test spécialisé.
+
+**Pour orienter le choix :** préciser le résultat et la vérification attendus; utiliser `#` pour choisir une référence d’outil proposée par la session; limiter les outils configurables à ceux utiles à la tâche. Le menu `#` propose aussi des fichiers et d’autres éléments de contexte : ce ne sont pas tous des outils. Une référence explicite ne crée pas une capacité absente et ne contourne pas les permissions. Examiner les appels, leurs paramètres et leurs résultats : le modèle peut choisir un outil inadéquat. [Microsoft : sélectionner et référencer les outils](https://code.visualstudio.com/docs/agents/run/tools).
 
 ## Les sept concepts et leur déclenchement
 
@@ -94,7 +109,7 @@ Les compteurs de la capture ne mesurent ni le coût ni l’utilisation dans une 
 | Instruction | Préserver les absences | Fichiers ci-dessus | Selon portée et activation. |
 | Skill | Valider l’ETL | `.github/skills/validate-etl/SKILL.md` | Pertinence ou commande; notre skill est volontaire. |
 | Agent personnalisé | Réviseur BI | `.github/agents/reviseur-bi.agent.md` | Rôle sélectionné / invocation prise en charge. |
-| Tool / outil | Lire CSV, lancer pytest | Catalogue Tools et outils autorisés | Appel demandé par l’agent, avec les contrôles du harnais. |
+| Tool / outil | Terminal pour lancer pytest | Tools : capacités disponibles | Choix du modèle selon la tâche et le contexte, puis contrôles du harnais. |
 | Serveur MCP | Proposer une lecture SQL | MCP Servers; configuration du harnais | Un outil exposé par le serveur est appelé. |
 | Hook | Journaliser un appel | Hooks; configuration du harnais | Événement de cycle de vie, sans dépendre d’une décision du modèle. |
 | Plugin | Distribuer skill et MCP ensemble | Plugins; paquet et manifeste | Installation; chaque composant garde ses règles. |

@@ -1,6 +1,12 @@
 # Validation de la présentation
 
-## État courant : panneau Agent Customizations
+## État courant : disponibilité et choix des outils
+
+19 octobre 2026. Correction de la slide 11 : Tools indique les outils disponibles pour la tâche. La phrase sous le tableau distingue choix du modèle et contrôle du harnais. La fiche et les notes expliquent les définitions d’outils, le contexte, les paramètres, les permissions et le retour du résultat; terminal/pytest sont distingués. Guide aligné sur le même créneau de deux minutes.
+
+Build réussi; 28 routes sans débordement détecté, erreur de page ou requête externe; interactions existantes réussies. PDF de 28 pages, libellés et liens officiels contrôlés, six destinations internes conservées. Page 11 inspectée à pleine taille : aucun chevauchement, tailles de texte conservées. Notes/guide : 32 + 13 minutes. La synchronisation n’a pas changé; la preuve précédente reste applicable. L’avertissement FloatingVue de l’exporteur demeure sans défaut constaté. Répétition humaine encore requise pour le rythme oral.
+
+## Historique : panneau Agent Customizations
 
 19 octobre 2026. Slide 11 : Overview, Customize Your Agent, puis Plugins, MCP Servers, Skills, Instructions, Agents, Hooks et Tools dans l’ordre de la capture. Chaque rubrique a une définition, une utilité, un exemple et un lien officiel. Explore Customizations, la composition instruction/skill/outil et les compteurs sont expliqués dans les notes et la fiche. Capture réelle du projet en annexe 23, pixels préservés avec cadrage CSS.
 
