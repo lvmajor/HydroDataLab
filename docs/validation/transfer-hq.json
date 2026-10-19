@@ -1,0 +1,113 @@
+{
+  "checkedAtUtc": "2026-10-19T19:36:49.475300+00:00",
+  "zip": "HydroDataLab-HQ-20261019-eba8d19.zip",
+  "sourceCommit": "eba8d1990b34fa5a5e39998acff237df3ca97436",
+  "sha256": "988f22b6ac55d3e31056f91d920314cb81af10da8aab62eb26c6d923bca28fd0",
+  "compressedBytes": 477995420,
+  "uncompressedBytes": 1235839753,
+  "fileCount": 226,
+  "allEntryHashesVerified": true,
+  "bundleRefsVerified": true,
+  "dockerManifestVerified": true,
+  "dockerPlatform": "linux/amd64",
+  "hqLaptopRehearsal": "A effectuer",
+  "restoration": {
+    "sourceCommit": "eba8d1990b34fa5a5e39998acff237df3ca97436",
+    "exerciseCommit": "9e1ecde478f4f5d70634a42c720fa10fd224eab7",
+    "eightTags": true,
+    "gitFsck": true,
+    "cleanClones": true,
+    "coverageExerciseUnimplemented": true,
+    "largeTarNotExtractedAgain": true
+  },
+  "guide": {
+    "results": [
+      {
+        "width": 1366,
+        "noPageOverflow": true,
+        "minimumTextPx": 16
+      },
+      {
+        "width": 900,
+        "noPageOverflow": true,
+        "minimumTextPx": 16
+      },
+      {
+        "width": 640,
+        "noPageOverflow": true,
+        "minimumTextPx": 16
+      },
+      {
+        "width": 390,
+        "noPageOverflow": true,
+        "minimumTextPx": 16
+      },
+      {
+        "width": 320,
+        "noPageOverflow": true,
+        "minimumTextPx": 16
+      }
+    ],
+    "headings": 12,
+    "copyButtons": 13,
+    "print": true,
+    "errors": [],
+    "external": [],
+    "powershellBlocksParsed": 13
+  },
+  "browser": {
+    "port": 53175,
+    "slides": [
+      1,
+      7,
+      11,
+      12,
+      13,
+      18,
+      20,
+      23,
+      29
+    ],
+    "presenterNotes": true,
+    "pdfPresent": true,
+    "localLinks": [
+      "LIRE-MOI-HQ.html: REVISION.json",
+      "LIRE-MOI-HQ.html: data/README.md",
+      "LIRE-MOI-HQ.html: handouts/conducteur-demos.html",
+      "LIRE-MOI-HQ.html: documents/formation-hydrodatalab.pdf",
+      "handouts/conducteur-demos.html: ../docs/DOCKER.md",
+      "handouts/conducteur-demos.html: ../docs/screenshots/08-compose.png",
+      "handouts/conducteur-demos.html: ../docs/DOCKER.md",
+      "handouts/conducteur-demos.html: ../docs/screenshots/etl-execution.png",
+      "handouts/conducteur-demos.html: ../docs/screenshots/03-qualite-mesure-absente.png",
+      "handouts/conducteur-demos.html: ../docs/screenshots/etl-avant.png",
+      "handouts/conducteur-demos.html: ../docs/screenshots/etl-apres.png",
+      "handouts/conducteur-demos.html: ../docs/screenshots/etl-synthese.png",
+      "handouts/conducteur-demos.html: ../docs/screenshots/etl-execution.png",
+      "handouts/conducteur-demos.html: conducteur-demos.md"
+    ],
+    "errors": [],
+    "external": []
+  },
+  "synchronization": {
+    "status": "passed",
+    "testedAtUtc": "2026-10-19T19:38:41.376Z",
+    "origin": "http://127.0.0.1:53175",
+    "checks": [
+      "Audience ouverte aprÃ¨s la sÃ©lection : mÃªme couche immÃ©diatement",
+      "Cinq couches : sÃ©lection, texte et flÃ¨che synchronisÃ©s, sans changer de diapositive",
+      "Retour audience â†’ prÃ©sentateur, navigation native Slidev et rechargement conservant la couche",
+      "20 coÃ»ts, compteur et lÃ©gende synchronisÃ©s Ã  chaque hausse, plafond de 8 essais",
+      "CoÃ»ts conservÃ©s Ã  la rÃ©ouverture audience et au rechargement prÃ©sentateur; retour dans les deux sens",
+      "Baisse synchronisÃ©e, plancher de 1 essai, aucun changement de page involontaire",
+      "Les rÃ©glages des deux composants restent indÃ©pendants aprÃ¨s un aller-retour"
+    ],
+    "errors": [],
+    "external": [],
+    "conditions": "Deux pages du mÃªme contexte Chromium; vue prÃ©sentateur rÃ©elle; requÃªtes externes bloquÃ©es"
+  },
+  "composeConfigValid": true,
+  "verificationScriptRejectsModifiedFile": true,
+  "completedAtUtc": "2026-10-19T19:39:43.972175+00:00",
+  "runtimeScope": "Archive de quatre images existante verifiee; aucune nouvelle installation ou execution sur le portable HQ."
+}
