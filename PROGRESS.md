@@ -1,5 +1,14 @@
 # HydroDataLab — journal de reprise
 
+## ETL visible et détails des exécutions — 19 octobre (en cours)
+
+- Départ : main `101de0f`, dépôt propre. Demande : avant/après ETL, synthèse horaire, indicateurs Python, détails des exécutions et conducteur actualisé; Quartz conservé.
+- Décisions : agrégation de la demande par heure complète (4 créneaux valides), pointe horaire moyenne, estimation rectangulaire de l’énergie demandée et variation du niveau observé. Aucune prévision ni conversion du niveau en réserve. Les calculs restent indépendants du calcul de couverture à compléter en démo 3.
+- Préserver les anciens rapports et l’historique SQLite. Ajouter des diagnostics d’étapes Python, les paramètres et le lien entre une relance et sa tentative précédente.
+- Réalisé : calculs purs dans analysis.py, avant/après et synthèse Vue, hourly.csv, étapes mesurées Python et détails persistants API, relances liées. Compatibilité anciens rapports/SQLite.
+- Validé : 43 tests Python, 10 .NET, 11 Vue et build. Navigateur réel : 24 heures, export, erreur/relance, anciens rapports, 320 px et texte 200 %. Audit typographique : 17 états/formats et contraste >=4,5:1. Captures inspectées.
+- Prochaine action : terminer les contrôles après le dernier ajustement transactionnel, reconstruire les images, vérifier la parité, mettre le conducteur et la copie pédagogique à jour. Aucun tag historique à réécrire.
+
 ## Lisibilité de l’interface Vue — 19 octobre
 
 - Départ : main `18c7615`, dépôt propre. Réviser toute la typographie Vue et inscrire des critères vérifiables dans les instructions permanentes.
