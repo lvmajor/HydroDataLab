@@ -49,12 +49,11 @@ else
     Directory.CreateDirectory(runtime);
     var python = builder.AddUvicornApp("python", Path.Combine(root, "etl"), "hydrodatalab.api:app")
         .WithUv(install: false)
-        .WithEndpoint("http", endpoint => endpoint.Port = 53172)
         .WithEnvironment("HYDRO_FIXTURE_DIR", Path.Combine(root, "data", "fixtures"))
         .WithEnvironment("HYDRO_OUTPUT_DIR", Path.Combine(runtime, "exports"))
         .WithHttpHealthCheck("/health");
     var api = builder.AddProject("api", Path.Combine(root, "src", "Api", "HydroDataLab.Api.csproj"), launchProfileName: null)
-        .WithHttpEndpoint(port: 53171)
+        .WithHttpEndpoint()
         .WithEnvironment("Python__BaseUrl", python.GetEndpoint("http"))
         .WithEnvironment("Hydro__DataDir", Path.Combine(runtime, "api"))
         .WithHttpHealthCheck("/health")

@@ -11,5 +11,6 @@ $options = @('start','--apphost',$AppHost,'--launch-profile','http','--non-inter
 if ($NoBuild) { $options += '--no-build' }
 Invoke-Checked aspire $options
 Invoke-Checked aspire @('wait','web','--status','healthy','--timeout','60','--apphost',$AppHost)
-Write-Host 'HydroDataLab : http://localhost:53170 — API : http://localhost:53171'
+Write-Host 'HydroDataLab : http://localhost:53170 — API via http://localhost:53170/api'
+Write-Host 'Ports directs API/Python attribués par Aspire : consulter les endpoints du dashboard.'
 Write-Host 'Ouvrir aussi le lien du tableau de bord Aspire affiché ci-dessus.'
