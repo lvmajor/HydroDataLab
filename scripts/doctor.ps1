@@ -1,5 +1,10 @@
 param([switch]$WithDocker, [string]$DockerContext)
 $ErrorActionPreference = 'Stop'
+# Keep the bootstrap message ASCII: Windows PowerShell 5.1 misreads BOM-less UTF-8.
+Write-Host "PowerShell $($PSVersionTable.PSVersion) - $($PSVersionTable.PSEdition)"
+if ($PSVersionTable.PSVersion.Major -lt 7) {
+    throw 'PowerShell 7 requis pour ce projet. Ouvrir pwsh, puis relancer ./scripts/doctor.ps1.'
+}
 $root = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $root
 Write-Host 'HydroDataLab — diagnostic des prérequis'

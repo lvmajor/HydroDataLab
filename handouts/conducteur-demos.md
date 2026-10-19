@@ -20,14 +20,17 @@ Un **tag** est un jalon fixe; une **branche** conserve une nouvelle tentative. L
 
 ## Avant la séance · préparer une fois
 
-### A. Ouvrir un terminal PowerShell de pilotage
+### A. Ouvrir un terminal PowerShell 7 de pilotage
 
-Garder ce terminal ouvert pendant la répétition. Adapter uniquement la première ligne si le projet est ailleurs sur le portable HQ. Rejouer ce bloc si le terminal a été fermé : les variables PowerShell ne survivent pas à sa fermeture.
+Utiliser **PowerShell 7 (`pwsh`)**, comme prévu dans le README. Windows PowerShell 5.1 (`powershell.exe`) peut afficher les accents comme `prÃ©requis` en lisant nos scripts UTF-8 sans BOM. Si nécessaire, taper `pwsh` pour ouvrir la version 7, puis exécuter le bloc ci-dessous. Sur le portable HQ, vérifier sa présence avant la séance. [Explication Microsoft sur l’encodage](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-5.1).
+
+Garder ce terminal ouvert pendant la répétition. Adapter uniquement le chemin du dépôt si le projet est ailleurs sur le portable HQ. Rejouer ce bloc si le terminal a été fermé : les variables PowerShell ne survivent pas à sa fermeture.
 
 ```powershell
 $Depot = 'F:\PoC\Formation Copilot - HQ'
 $Live = Join-Path $Depot 'artifacts/repetition-live'
 Set-Location -LiteralPath $Depot
+$PSVersionTable.PSVersion
 git status --short --branch
 ```
 
@@ -37,7 +40,11 @@ git status --short --branch
 ./scripts/doctor.ps1
 ```
 
-**Attendu :** Git, .NET, Aspire, Node, npm et uv trouvés. Ce diagnostic ne teste pas la connexion Copilot. Vérifier celle-ci dans VS Code, avec le compte et les modèles autorisés sur le poste HQ.
+**Attendu :** PowerShell 7 ou plus récent, Git, .NET, Aspire, Node, npm et uv trouvés. Ce diagnostic ne teste pas la connexion Copilot. Vérifier celle-ci dans VS Code, avec le compte et les modèles autorisés sur le poste HQ.
+
+**Où faut-il uv?** Sur le poste pour la CLI Python, les tests et l’application Aspire en processus locaux : les trois démos utilisent ce parcours. L’image `hydrodatalab-etl:formation` embarque aussi uv et ses dépendances déjà installées; son exécution seule ou la pile Compose déjà préparée ne demande pas uv sur le poste. L’exécution conteneurisée lance Python/Uvicorn directement. Aspire ne conteneurise pas automatiquement les programmes du parcours local. Voir `etl/Dockerfile` dans le dépôt et la [documentation uv/Docker](https://docs.astral.sh/uv/guides/integration/docker/). Dans le kit, le Dockerfile se trouve dans le code à restaurer depuis le bundle.
+
+**Pourquoi des ports fixes?** Aspire sait attribuer des ports libres quand on ne lui impose pas de port hôte. HydroDataLab fixe 53170–53172 pour les URL du conducteur, et le diaporama indépendant utilise 53173. En Compose, seuls Vue (53170) et le dashboard (53174) sont publiés sur le poste; les ports API/Python restent dans le réseau des conteneurs. Une adresse imposée peut entrer en collision : les numéros élevés réduisent la probabilité sans garantir leur disponibilité. Le passage à des ports dynamiques est possible; le dashboard permettrait alors de retrouver les URL. [Documentation réseau Aspire](https://aspire.dev/fundamentals/networking-overview/).
 
 Sur un nouveau poste, installer les dépendances avant la répétition, avec le réseau disponible. Arrêter d’abord l’application native avec `./scripts/stop-demo.ps1` si elle tourne. Si Compose tourne, utiliser `./scripts/docker-demo.ps1 -Action Stop` avec les options de moteur employées au démarrage. Puis :
 

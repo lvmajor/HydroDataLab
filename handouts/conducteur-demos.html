@@ -62,17 +62,21 @@
 <p>Un <strong>tag</strong> est un jalon fixe; une <strong>branche</strong> conserve une nouvelle tentative. La branche existante <code>demo-live</code> n’est pas nécessaire à ce parcours. <strong>Une seule application à la fois</strong> utilise les ports 53170–53172. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal.</p>
 <div class="step-navigation"><span></span><a href="#avant-la-seance-preparer-une-fois">Avant la séance →</a></div></section>
 <section id="avant-la-seance-preparer-une-fois" tabindex="-1"><h2>Avant la séance · préparer une fois</h2>
-<h3>A. Ouvrir un terminal PowerShell de pilotage</h3>
-<p>Garder ce terminal ouvert pendant la répétition. Adapter uniquement la première ligne si le projet est ailleurs sur le portable HQ. Rejouer ce bloc si le terminal a été fermé : les variables PowerShell ne survivent pas à sa fermeture.</p>
+<h3>A. Ouvrir un terminal PowerShell 7 de pilotage</h3>
+<p>Utiliser <strong>PowerShell 7 (<code>pwsh</code>)</strong>, comme prévu dans le README. Windows PowerShell 5.1 (<code>powershell.exe</code>) peut afficher les accents comme <code>prÃ©requis</code> en lisant nos scripts UTF-8 sans BOM. Si nécessaire, taper <code>pwsh</code> pour ouvrir la version 7, puis exécuter le bloc ci-dessous. Sur le portable HQ, vérifier sa présence avant la séance. <a href="https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-5.1">Explication Microsoft sur l’encodage</a>.</p>
+<p>Garder ce terminal ouvert pendant la répétition. Adapter uniquement le chemin du dépôt si le projet est ailleurs sur le portable HQ. Rejouer ce bloc si le terminal a été fermé : les variables PowerShell ne survivent pas à sa fermeture.</p>
 <pre><code class="language-powershell">$Depot = 'F:\PoC\Formation Copilot - HQ'
 $Live = Join-Path $Depot 'artifacts/repetition-live'
 Set-Location -LiteralPath $Depot
+$PSVersionTable.PSVersion
 git status --short --branch
 </code></pre>
 <p><strong>Attendu :</strong> <code>## main</code>, sans fichiers modifiés. Si des changements apparaissent, les examiner et les enregistrer avant une bascule. Ce guide ne demande aucun <code>reset --hard</code>. S’il s’agit d’une autre branche propre, <code>git switch main</code> revient à la version de présentation.</p>
 <pre><code class="language-powershell">./scripts/doctor.ps1
 </code></pre>
-<p><strong>Attendu :</strong> Git, .NET, Aspire, Node, npm et uv trouvés. Ce diagnostic ne teste pas la connexion Copilot. Vérifier celle-ci dans VS Code, avec le compte et les modèles autorisés sur le poste HQ.</p>
+<p><strong>Attendu :</strong> PowerShell 7 ou plus récent, Git, .NET, Aspire, Node, npm et uv trouvés. Ce diagnostic ne teste pas la connexion Copilot. Vérifier celle-ci dans VS Code, avec le compte et les modèles autorisés sur le poste HQ.</p>
+<p><strong>Où faut-il uv?</strong> Sur le poste pour la CLI Python, les tests et l’application Aspire en processus locaux : les trois démos utilisent ce parcours. L’image <code>hydrodatalab-etl:formation</code> embarque aussi uv et ses dépendances déjà installées; son exécution seule ou la pile Compose déjà préparée ne demande pas uv sur le poste. L’exécution conteneurisée lance Python/Uvicorn directement. Aspire ne conteneurise pas automatiquement les programmes du parcours local. Voir <code>etl/Dockerfile</code> dans le dépôt et la <a href="https://docs.astral.sh/uv/guides/integration/docker/">documentation uv/Docker</a>. Dans le kit, le Dockerfile se trouve dans le code à restaurer depuis le bundle.</p>
+<p><strong>Pourquoi des ports fixes?</strong> Aspire sait attribuer des ports libres quand on ne lui impose pas de port hôte. HydroDataLab fixe 53170–53172 pour les URL du conducteur, et le diaporama indépendant utilise 53173. En Compose, seuls Vue (53170) et le dashboard (53174) sont publiés sur le poste; les ports API/Python restent dans le réseau des conteneurs. Une adresse imposée peut entrer en collision : les numéros élevés réduisent la probabilité sans garantir leur disponibilité. Le passage à des ports dynamiques est possible; le dashboard permettrait alors de retrouver les URL. <a href="https://aspire.dev/fundamentals/networking-overview/">Documentation réseau Aspire</a>.</p>
 <p>Sur un nouveau poste, installer les dépendances avant la répétition, avec le réseau disponible. Arrêter d’abord l’application native avec <code>./scripts/stop-demo.ps1</code> si elle tourne. Si Compose tourne, utiliser <code>./scripts/docker-demo.ps1 -Action Stop</code> avec les options de moteur employées au démarrage. Puis :</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Depot
 ./scripts/prepare.ps1

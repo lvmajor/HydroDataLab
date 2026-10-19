@@ -1,5 +1,12 @@
 # HydroDataLab — journal de reprise
 
+## Prérequis du portable et rôle des ports — 19 octobre
+
+- Retour du présentateur : diagnostic exécuté sur son poste personnel; outils présents, accents mal interprétés. La répétition sur le portable HQ reste à effectuer.
+- Explication vérifiée dans les sources du projet et les documentations officielles : uv local pour CLI/tests/Aspire natif; uv déjà embarqué dans l’image Python, sans besoin local pour exécuter les conteneurs préparés. Les ports hôtes ont été fixés pour les URL de démo; Aspire peut les attribuer dynamiquement si cette contrainte est retirée.
+- Correction : le conducteur précise PowerShell 7, déjà prévu par le README. `doctor.ps1` affiche la version du shell et refuse une version antérieure avec un message ASCII lisible, avant les messages accentués. Pas de modification des ports ni des services.
+- Validé : diagnostic complet sous PowerShell 7.6.7, accents lisibles; arrêt explicite et lisible sous Windows PowerShell 5.1. Guide HTML régénéré avec les mêmes 8 rubriques. SHA de livraison dans `artifacts/LIVRAISON.txt`. Prochaine action : relancer le diagnostic dans `pwsh`, puis préparer la copie d’exercice selon le conducteur.
+
 ## Conducteur de répétition — 19 octobre
 
 - Départ : main `f9ad107`, dépôt propre. Demande : guider les trois démos pas à pas et fournir un document lisible pendant la présentation.
