@@ -1,6 +1,14 @@
 # Validation de la présentation
 
-## État courant : skills et outils sur deux slides visuelles
+## État courant : notes du présentateur structurées
+
+19 octobre 2026. Les 29 notes sont ventilées en horloge, fil rouge, intertitres et listes courtes; les précisions et procédures facultatives se déplient. Les démos indiquent le départ de leurs temps relatifs, et la décision de secours à 2:10 reste visible dans le fil de la démo 3. Guide et README expliquent la lecture et le redimensionnement du panneau.
+
+Build réussi. Vérification des 29 routes présentateur : titres/listes rendus, détails fermés initialement, ouverture/fermeture au clavier, aucun débordement horizontal, aucune erreur JavaScript ni requête externe. Captures des slides 7/11/12/20 examinées sur portable 1366×768, et des notes de la 12 en 1600×900; agrandissement en largeur/hauteur et commandes natives de taille de texte fonctionnels. Le défilement vertical reste normal pour les notes longues; ne pas réduire les caractères pour tout afficher.
+
+Les 23 plages notes/guide correspondent toujours : 32 minutes d’explications et 13 de démos. Synchronisation contexte 10/coûts 16 revalidée dans les deux vues. Contenu audience inchangé, comparaison du source hors commentaires; PDF conservé avec la même empreinte SHA-256. Preuves : docs/validation/presenter-notes.json, presentation-flow.json et presenter-sync.json. Répétition orale sur le portable HQ encore à effectuer.
+
+## Historique : skills et outils sur deux slides visuelles
 
 19 octobre 2026. **29 diapositives : 23 principales et 6 annexes.** La slide 11 relie une capture réelle agrandie aux familles de personnalisations; la slide 12 compare découverte/chargement/ressources d’une skill au choix/contrôle/résultat d’un outil. La skill du dépôt reste volontaire. Réglages par défaut, user-invocable et disable-model-invocation détaillés dans la fiche; sources officielles relues.
 

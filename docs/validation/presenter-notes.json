@@ -1,0 +1,400 @@
+{
+  "checkedAtUtc": "2026-10-19T19:14:32.084Z",
+  "slideCount": 29,
+  "audienceContentUnchanged": true,
+  "audienceSourceSha256": "6f7171128690e557e07b8bd8a80fd300dda029e730f6b5166b816212147a296e",
+  "pdfUnchanged": true,
+  "pdfSha256": "f1f5c442616cd801399879320fbc28187e2e3c7870897b03bbef2146ddc9b04a",
+  "viewports": [
+    [
+      1366,
+      768
+    ],
+    [
+      1600,
+      900
+    ]
+  ],
+  "fontControls": true,
+  "resizer": true,
+  "errors": [],
+  "external": [],
+  "notes": [
+    {
+      "slide": 1,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Dire",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 2,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Partir de leur quotidien",
+        "Donner les quatre réflexes",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 3,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Annoncer le parcours",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 4,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Montrer les trois familles",
+        "Faire retenir",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 5,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Raconter un exemple familier",
+        "Situer notre environnement",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 6,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Définir les repères Git",
+        "Montrer notre choix",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 7,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Avant la démo · 08:00–09:00",
+        "0:00–0:45 · Ouvrir la session",
+        "0:45–1:30 · Régler la lisibilité",
+        "1:30–2:20 · Retrouver les consignes",
+        "2:20–4:00 · Vérifier une réponse"
+      ],
+      "details": 2,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 8,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Définir l’instruction",
+        "Lire l’exemple",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 9,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Lire le format",
+        "Recommander une organisation simple",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 10,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Lire les couches de haut en bas",
+        "Manipuler depuis la vue présentateur",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 11,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "0:00–0:15 · Partir du menu",
+        "0:15–0:40 · Guider le travail",
+        "0:40–1:05 · Donner des moyens et partager",
+        "1:05–1:15 · Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 12,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "0:00–0:35 · Suivre le parcours Skill",
+        "0:35–1:00 · Situer notre cas",
+        "1:00–1:20 · Suivre le parcours Tool",
+        "1:20–1:30 · Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 13,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Dire",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 14,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Expliquer le coût du contexte",
+        "Donner une recette concrète",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 15,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Expliquer Auto",
+        "Montrer ce qui se vérifie",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 16,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Lire le graphique",
+        "Guider les choix",
+        "Manipuler et enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 17,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Distinguer les parcours",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 18,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Avant la démo · 28:30–29:30",
+        "0:00–0:45 · Exécuter la CLI",
+        "0:45–2:15 · Lire l’avant / après ETL",
+        "2:15–3:15 · Retrouver la règle et son test",
+        "3:15–4:15 · Examiner une exécution",
+        "4:15–5:00 · Rejouer dans Docker"
+      ],
+      "details": 3,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 19,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Montrer · garder cette slide projetée",
+        "Dire pendant la transition",
+        "Enchaîner"
+      ],
+      "details": 2,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 20,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "0:00–0:40 · Montrer le point de départ",
+        "0:40–2:10 · Confier la modification à Copilot",
+        "À 2:10 · Décider",
+        "2:10–3:00 · Examiner les preuves",
+        "3:00–4:00 · Voir le contrôle fonctionner"
+      ],
+      "details": 2,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 21,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Relier chaque exemple à une tâche",
+        "Nuancer et enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 22,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Faire choisir un premier essai",
+        "Ancrer la pratique",
+        "Enchaîner"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 23,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Orienter vers les ressources",
+        "Ouvrir les questions"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 24,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Montrer",
+        "Faire retenir",
+        "Revenir au fil"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 25,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Expliquer",
+        "Revenir au fil"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 26,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Situer la fonctionnalité",
+        "Illustrer sans installer",
+        "Revenir au fil"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 27,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Vérifier le contrat",
+        "Revenir au fil"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 28,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Montrer les repères de reprise",
+        "Revenir au fil"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    },
+    {
+      "slide": 29,
+      "width": 360,
+      "overflow": false,
+      "fontSize": "16px",
+      "headings": [
+        "Orienter la réponse",
+        "Clore la réponse"
+      ],
+      "details": 1,
+      "keyboardToggle": true
+    }
+  ]
+}

@@ -16,6 +16,8 @@ Les fichiers de présentation sont disponibles à partir du tag `05-docker`. Au 
 
 Le build est servi à la racine du serveur (`--base /`) pour que les liens directs vers `/presenter/20` chargent aussi leurs ressources. La vue audience affiche les notions et objectifs; les raccourcis, minutages et procédures de secours sont dans les notes du présentateur. Le lexique est dans l'aide-mémoire.
 
+Les 29 notes sont organisées en repères courts : durée et horloge, fil rouge, points à dire/montrer et transition. Les précisions facultatives se déplient au clic; les procédures de secours sont séparées. Les temps des étapes de démo partent du début de la démonstration, après son introduction. Élargir le panneau de notes avec sa poignée et utiliser les commandes natives de taille du texte au besoin. Après une révision des notes, reconstruire le site et recharger la vue présentateur; le PDF audience n’a pas à être régénéré si son contenu n’a pas changé.
+
 Pour une installation qui utilise Chrome/Edge existant, définir `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` avant `npm ci` afin d’éviter de télécharger un autre navigateur. Node 22.12+ est requis par Slidev; un Node LTS 22 ou 24 évite l’avertissement de compatibilité de postcss-nested observé avec Node 25.
 
 ## Présenter avec deux écrans
@@ -35,7 +37,7 @@ La synchronisation utilise le stockage local réactif [VueUse `useStorage`](http
 
 La diapositive **23** utilise [resources/links.json](resources/links.json). Modifier `label`, `url` et `description` dans `internal` pour ajouter les liens HQ. Une URL vide reste un emplacement sans faux lien. Conserver trois entrées courtes pour la projection; compléter la fiche [skills-et-veille.md](../handouts/skills-et-veille.md) pour plus de détails.
 
-Après modification : `npm run build`, `npm run export`, puis recharger les deux fenêtres. La page 12 expose le choix « vanille »; la page 20 propose une sélection par besoin. Matt Pocock y reste « en exploration ».
+Après modification : `npm run build`, `npm run export`, puis recharger les deux fenêtres. La page 13 expose le choix « vanille »; la page 21 propose une sélection par besoin. Matt Pocock y reste « en exploration ».
 
 ## Export PDF
 

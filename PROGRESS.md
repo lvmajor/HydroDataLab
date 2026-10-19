@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Notes du présentateur faciles à parcourir — 19 octobre
+
+- Départ : main `43121d0`, dépôt propre. Demande : ventiler les notes pour retrouver facilement le fil pendant la présentation.
+- Réalisé : 29 notes structurées avec horloge, fil rouge, blocs courts de parole/manipulation et transition. Précisions et secours repliables; décision de secours à 2:10 de la démo 3 toujours dans le fil visible. Guide : repères de lecture et agrandissement du panneau; renvois de numéros périmés corrigés.
+- Validé : build, 23 plages notes/guide et 32 + 13 minutes; 29 routes présentateur avec listes/titres, détails repliés et ouverture au clavier, sans débordement horizontal, erreur JavaScript ni requête externe. Rendus examinés en 1366×768 et 1600×900; contrôles natifs de texte et redimensionnement du panneau préservés. Synchronisation contexte/coûts revalidée.
+- Contenu audience strictement identique après retrait des commentaires; PDF conservé, empreinte inchangée. Preuves : docs/validation/presenter-notes.json et presentation-flow.json. La répétition humaine du rythme reste à faire.
+- Livraison : enregistrer la révision et actualiser le kit existant; les reçus artifacts/LIVRAISON.txt et REVISION.txt identifient le commit et le bundle. Prochaine action : recharger la vue présentateur et ajuster son panneau de notes sur le portable.
+
 ## Skills et tools : deux diapositives visuelles — 19 octobre
 
 - Départ : main `bb479a1`, dépôt propre. Demande : expliquer la sélection automatique des skills, leur chargement progressif et la différence avec les outils; séparer la slide chargée en deux avec capture et schémas.

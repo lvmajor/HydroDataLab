@@ -3,6 +3,18 @@
 @import '@fontsource/barlow-condensed/600.css';
 @import '@fontsource/ibm-plex-mono/400.css';
 :root { --ink:#123d51; --water:#006b83; --deep:#053448; --ice:#eef6f8; --gold:#e8b540; --muted:#476271; }
+/* Presenter-only rhythm: keep native font-size controls and audience styles intact. */
+.slidev-note { line-height:1.5; }
+.slidev-note h3 { font-family:inherit; font-size:1em; line-height:1.4; margin:1.15em 0 .45em; padding-top:.55em; border-top:1px solid currentColor; }
+.slidev-note p { margin:.5em 0; }
+.slidev-note ul { margin:.45em 0 .8em; padding-left:1.25em; }
+.slidev-note li { margin:.45em 0; padding-left:.1em; }
+.slidev-note > blockquote { font-style:normal; border-left:3px solid #b18a2f; margin:.8em 0; padding:.15em .75em; }
+.slidev-note > blockquote p::before,.slidev-note > blockquote p::after { content:none; }
+.slidev-note details { margin:.85em 0; padding:.65em .75em; border:1px solid #7d8b93; border-radius:6px; }
+.slidev-note summary { cursor:pointer; font-weight:600; line-height:1.4; }
+.slidev-note summary:focus-visible { outline:3px solid #b18a2f; outline-offset:4px; }
+.slidev-note details[open] summary { margin-bottom:.65em; }
 .slidev-layout { font-family:'IBM Plex Sans',sans-serif; background:#f9fcfd; color:var(--ink); padding:48px 56px 42px; font-size:24px; line-height:1.35; }
 .slidev-layout h1 { font-family:'Barlow Condensed',sans-serif; font-size:48px; line-height:1.02; margin:0 0 28px; font-weight:600; color:var(--deep); }
 .slidev-layout h2 { font-family:'Barlow Condensed',sans-serif; font-size:32px; margin:14px 0; color:var(--water); }

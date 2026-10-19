@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "testedAtUtc": "2026-10-19T19:01:21.801Z",
+  "testedAtUtc": "2026-10-19T19:15:11.981Z",
   "origin": "http://127.0.0.1:53173",
   "checks": [
     "Audience ouverte après la sélection : même couche immédiatement",

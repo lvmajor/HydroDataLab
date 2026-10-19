@@ -48,6 +48,14 @@ La page 23 reste visible pendant les questions. Compléter les trois entrées HQ
 
 ## Ce que voit le public
 
+### Lire les notes sans perdre le fil
+
+Chaque note commence par **la durée et l’horloge de la séance**, puis un **fil rouge** en une phrase. Les intertitres séparent ce qu’il faut dire, montrer et faire pour passer à la suite. Les blocs **Précisions**, **Pour les questions** et **Secours** se déplient au clic; ils restent fermés tant qu’ils ne servent pas. Le contenu des notes n’est pas projeté.
+
+Dans les trois démos, les repères `0:00`, `0:45`, etc. sont **relatifs au début de la démonstration**, après son introduction. Le démarrage est indiqué explicitement : 09:00, 29:30 et 36:30 sur l’horloge de la séance. La décision de passer au secours à 2:10 de la démo 3 reste dans le fil visible.
+
+Pour davantage d’espace sur le portable, élargir le panneau de notes en glissant sa séparation vers la gauche, puis augmenter sa hauteur en tirant sa bordure supérieure vers le haut (disposition initiale de Slidev). Les commandes de taille de texte restent utilisables. Les notes défilent verticalement : ne pas chercher à tout faire tenir en réduisant les caractères. Les commandes complètes restent dans le conducteur des démos.
+
 ### Piloter depuis le portable
 
 Utiliser deux écrans en mode **Étendre** (`Win + P`) et deux fenêtres du même navigateur/profil. Garder http://127.0.0.1:53173/presenter/1 sur le portable; déplacer http://127.0.0.1:53173/1 sur le projecteur puis passer en plein écran (`F11`). Utiliser exactement le même hôte et le même port dans les deux fenêtres.
@@ -58,7 +66,7 @@ Dans le panneau **Current → Slides** de la vue présentateur, sélectionner le
 
 Les diapositives expliquent les notions et annoncent ce que les participants pourront observer ou vérifier. Les raccourcis clavier, commandes, minutages et procédures de secours se trouvent dans ce guide et dans les notes du mode présentateur. Projeter la fenêtre de présentation, pas la vue des notes.
 
-Ne pas supposer de connaissances Git ou Docker. Définir les termes avant de les employer : modèle et agent (5), dépôt/commit/branche/worktree (6), session/planification/autorisations (7), instruction (8), contexte (10), skill, outils et MCP (11), token (13), API et image Docker (17), spécification et critère de réussite (18). Le worktree est une option expliquée, pas un prérequis ni une manipulation demandée. Le lexique est repris dans l'aide-mémoire.
+Ne pas supposer de connaissances Git ou Docker. Définir les termes avant de les employer : ETL et conteneur (2), modèle et agent (5), dépôt/commit/branche/worktree (6), session/planification/autorisations (7), instruction (8), contexte (10), skill, outils et MCP (11–12), token (14), API et exécution Docker (18), spécification et critère de réussite (19). Le worktree est une option expliquée, pas un prérequis ni une manipulation demandée. Le lexique est repris dans l'aide-mémoire.
 
 À chaque démonstration, donner une question au public : « Quelles sources vérifient cette réponse? », « Quelles preuves faut-il avant d’accepter le résultat de l’agent? », « Une mesure manque : le contrôle le détecte-t-il? ». Les repères de la fenêtre Agents et ses réglages se montrent dans la première démo, avec leur utilité : lisibilité, portée du réglage, confirmation des actions et comparaison avant/après.
 
