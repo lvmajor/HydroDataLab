@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "testedAtUtc": "2026-10-19T14:15:50.421Z",
+  "origin": "http://127.0.0.1:53173",
+  "checks": [
+    "Audience ouverte après la sélection : même couche immédiatement",
+    "Cinq couches : sélection, texte et flèche synchronisés, sans changer de diapositive",
+    "Retour audience → présentateur, navigation native Slidev et rechargement conservant la couche",
+    "20 coûts, compteur et légende synchronisés à chaque hausse, plafond de 8 essais",
+    "Coûts conservés à la réouverture audience et au rechargement présentateur; retour dans les deux sens",
+    "Baisse synchronisée, plancher de 1 essai, aucun changement de page involontaire",
+    "Les réglages des deux composants restent indépendants après un aller-retour"
+  ],
+  "errors": [],
+  "external": [],
+  "conditions": "Deux pages du même contexte Chromium; vue présentateur réelle; requêtes externes bloquées"
+}

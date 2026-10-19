@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue'
-const selected=ref(0)
+import {useSharedSlideNumber} from '../composables/useSharedSlideNumber.js'
+const selected=useSharedSlideNumber('context-layer',0,0,4)
 const layers=[
  {english:'Project instructions',french:'Consignes du projet',example:'.github/copilot-instructions.md',when:'Règles communes',text:'Préserver les données brutes et leur provenance. Indiquer où se trouve le code et comment le valider.',timing:'Consignes durables du projet, découvertes par le harnais.'},
  {english:'File-specific instructions',french:'Consignes ciblées',example:'.github/instructions/python.instructions.md',when:'Selon le fichier',text:'Pour le code Python : conserver les valeurs manquantes et compter zéro comme une mesure valide.',timing:'Chargement selon le fichier, la description ou un ajout manuel.'},

@@ -14,6 +14,19 @@ Le build est servi à la racine du serveur (`--base /`) pour que les liens direc
 
 Pour une installation qui utilise Chrome/Edge existant, définir `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` avant `npm ci` afin d’éviter de télécharger un autre navigateur. Node 22.12+ est requis par Slidev; un Node LTS 22 ou 24 évite l’avertissement de compatibilité de postcss-nested observé avec Node 25.
 
+## Présenter avec deux écrans
+
+Dans Windows, utiliser `Win + P` → **Étendre**. Ouvrir deux fenêtres du **même navigateur et du même profil** :
+
+- Portable : http://127.0.0.1:53173/presenter/1 — notes et commandes.
+- Écran de projection : http://127.0.0.1:53173/1 — audience, en plein écran avec `F11`.
+
+Dans l’aperçu **Current → Slides** du présentateur, cliquer une couche de contexte (diapositive 11) ou les boutons `−`/`+` du comparatif des coûts (14). La vue audience reproduit la sélection, le texte et les coûts. La synchronisation fonctionne dans les deux sens, sans Internet, avec le serveur de développement, le build statique ou le kit Python.
+
+Les réglages sont conservés après navigation, rechargement ou ouverture tardive de la fenêtre audience. Pour revenir au début : sélectionner la première couche et ramener les essais à 1. Garder **la même adresse et le même port** dans les deux fenêtres : `localhost` et `127.0.0.1` sont deux origines distinctes pour le navigateur. Des profils ou navigateurs différents ne partagent pas ces réglages. Après une mise à jour du site, recharger les deux fenêtres.
+
+La synchronisation utilise le stockage local réactif [VueUse `useStorage`](https://vueuse.org/core/usestorage/), avec deux clés propres à HydroDataLab. Les valeurs lues sont validées avant affichage.
+
 ## Export PDF
 
 `npm run export` produit `exports/formation-hydrodatalab.pdf`. Le script détecte Chrome/Edge sur Windows ou Chromium Playwright. Pour un autre emplacement, définir `SLIDEV_BROWSER_PATH`. Aucun téléchargement n’est lancé par ce script d’export. Le PDF contient 25 pages statiques : interactions figées à l’état initial avec leurs hypothèses visibles.
@@ -21,6 +34,8 @@ Pour une installation qui utilise Chrome/Edge existant, définir `PLAYWRIGHT_SKI
 ## Vérifications
 
 Après `npm run build`, démarrer `npm run preview`, puis `node scripts/qa_browser.mjs` sur la machine de création. Le contrôle parcourt 25 routes, vérifie les débordements, bloque les requêtes externes et exerce les deux interactions. Rapport : `exports/qa/browser-report.json`.
+
+`node scripts/qa_presenter_sync.mjs` vérifie les contrôles dans deux pages d’un même navigateur, dont la vraie vue présentateur : couches, coûts, navigation, rechargement et ouverture tardive, avec les requêtes externes bloquées. Rapport : `exports/qa/presenter-sync.json`. `PRESENTATION_URL` permet de contrôler un kit servi sur un autre port.
 
 Le contrôle PDF utilise `scripts/qa_pdf.py` avec pypdf et Pillow, après rendu Poppler vers `exports/qa/page-01.png` à `page-25.png`. Les images et planches sont des artefacts de contrôle, pas des diapositives supplémentaires. Voir `exports/qa/VALIDATION.md`.
 

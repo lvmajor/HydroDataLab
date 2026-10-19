@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue'
-const attempts=ref(1)
+import {useSharedSlideNumber} from '../composables/useSharedSlideNumber.js'
+const attempts=useSharedSlideNumber('cost-attempts',1,1,8)
 const models=[
  {id:'luna',name:'GPT-6 Luna',input:.1,output:.5},
  {id:'haiku',name:'Claude Haiku 5.5',input:.1,output:.5},

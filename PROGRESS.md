@@ -95,3 +95,12 @@ La répétition du 19 octobre et la confirmation des politiques/modèles HQ néc
 - Validé : build; 25 routes sans erreur, débordement ou ressource externe; interactions et notes; PDF de 25 pages, liens et destinations internes, inspection des planches et de la nouvelle page. Preuve : `docs/validation/audience-context.json`. Le serveur de présentation arrêté a été relancé sur 127.0.0.1:53173.
 - Enregistrement : commit « Ajoute le contexte du public et précise le moment fort ». Le kit et le SHA exacts seront consignés par le reçu `artifacts/LIVRAISON.txt` après assemblage; tags pédagogiques conservés.
 - Prochaine action : transférer ce kit et répéter l’avant/après le 19 octobre sur le portable HQ.
+
+## Synchronisation des interactions entre les deux écrans — 19 octobre
+
+- Départ : main `d42ba5c`, dépôt propre. Demande : piloter les couches de contexte et les coûts depuis la vue présentateur.
+- Réalisé : partage des couches de contexte (11) et du nombre d’essais (14), avec sauvegarde locale, valeurs validées et mise à jour entre fenêtres du même navigateur/profil/origine. Les deux contrôles restent indépendants. VueUse 14.4.0, déjà installé, est déclaré explicitement; aucune autre version modifiée.
+- Validé : build réussi; cinq couches, 20 coûts, bornes 1/8, navigation native, rechargement et ouverture tardive, dans deux pages dont la vraie vue présentateur, sans requête externe ni erreur JavaScript. Les 25 diapositives passent le contrôle général sans débordement. Captures inspectées; PDF statique inchangé.
+- Guides mis à jour pour piloter depuis le portable. Test : `presentation/scripts/qa_presenter_sync.mjs`; preuve : `docs/validation/presenter-sync.json`.
+- Enregistrement : commit « Synchronise les interactions entre présentateur et audience ». Le kit, son SHA et sa validation seront consignés dans `artifacts/LIVRAISON.txt` après assemblage. Les tags pédagogiques restent inchangés.
+- Prochaine action : utiliser le kit indiqué dans ce reçu, recharger les deux fenêtres et répéter sur les deux écrans du portable HQ.

@@ -179,6 +179,8 @@ Ouvrir **http://localhost:53173/1** pour l'audience et **http://localhost:53173/
 
 Secours sans serveur : ouvrir `documents/formation-hydrodatalab.pdf`. Les notes et requêtes sont dans `handouts/`, les captures dans `captures/`.
 
+Deux écrans : choisir Étendre (Win + P), ouvrir les deux vues dans le même navigateur/profil avec le même hôte et port. Les couches de contexte (11) et les boutons des coûts (14) se pilotent dans le panneau Current → Slides du présentateur; leurs réglages se synchronisent avec l’audience et sont conservés après rechargement. Avant la séance, sélectionner la première couche et 1 essai. Recharger les deux fenêtres après une mise à jour du kit.
+
 ## Reprendre le développement
 
 ```powershell

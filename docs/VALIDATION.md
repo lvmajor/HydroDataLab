@@ -41,6 +41,12 @@ L'archive hors ligne des quatre images mesure 1 205 382 656 octets. Son manifest
 
 `scripts/package-kit.ps1` a été exécuté : copie vérifiée de l'archive d'images, bundle copié vérifié par Git, inventaire de chaque fichier. Le serveur Python standard livré dans le kit a passé un contrôle navigateur des 24 diapositives, des deux interactions et du mode présentateur `/presenter/1`, avec les requêtes externes bloquées. Aucune erreur JavaScript ni ressource externe; preuve `validation/kit-browser.json`.
 
+## Synchronisation présentateur / audience — 19 octobre
+
+Le build statique a été contrôlé dans deux pages d’un même contexte Chromium, avec les requêtes externes bloquées. Les contrôles de la vraie vue présentateur sont utilisés : cinq couches (sélection, texte et flèches), 20 coûts et légende, essais de 1 à 8, changements dans les deux sens, navigation native Slidev, rechargement et ouverture tardive de l’audience. Les deux réglages restent indépendants. Aucune erreur JavaScript ni ressource externe. Captures des deux vues inspectées; contrôle général des 25 diapositives réussi, sans débordement. Aucune version de dépendance existante n’a changé; VueUse 14.4.0 devient une dépendance explicite.
+
+Test reproductible : `presentation/scripts/qa_presenter_sync.mjs`. Preuve : `validation/presenter-sync.json`; captures : `presentation/exports/qa/sync-*.png`. Le guide précise le mode Étendre, le même navigateur/profil/origine et la remise à l’état initial avant la séance. Le PDF reste le secours statique de 25 pages déjà validé.
+
 ## À confirmer le 19 octobre
 
 Compte Copilot HQ, modèles réellement autorisés, politiques des outils, accès réseau public, moteur de conteneurs approuvé, projection, alimentation et répétition chronométrée. Aucune de ces vérifications spécifiques au portable HQ n'est déclarée effectuée ici.
