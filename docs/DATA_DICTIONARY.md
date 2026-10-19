@@ -42,3 +42,20 @@ Chaque exécution possède un UUID et un dossier contenant `observations.csv`, `
 `generatedAtUtc` est l'instant réel de génération du rapport. `provenance[].retrievedAtUtc` est l'instant réel d'extraction, distinct des dates d'observation. Le snapshot est extrait le 18 octobre 2026 à 19:44:01 UTC et couvre le 17 octobre; il comporte 168 observations valides. Les SHA-256 portent sur les fichiers bruts conservés. Le scénario `missing` indique explicitement la suppression pédagogique en mémoire dans `warnings`.
 
 La licence des données est **CC BY-NC 4.0**, distincte de celle du code; les exports dérivés conservent l'attribution et les restrictions des données sources. Aucune série publique de « réserve énergétique disponible » n'est présentée.
+
+## Synthèse horaire et indicateurs Python
+
+Tous ces résultats décrivent le passé; aucun modèle de prévision n’est entraîné.
+
+| Résultat | Définition et unité | Données incomplètes |
+|---|---|---|
+| Demande moyenne horaire | Somme des valeurs aux créneaux 00, 15, 30, 45 minutes ÷ 4, MW | `null` si un créneau manque ou n’est pas numérique. Les dates hors grille sont ignorées. |
+| Pointe horaire moyenne | Maximum des moyennes horaires complètes, MW; première heure en cas d’égalité | Porte seulement sur les heures complètes; peut manquer une pointe réelle. |
+| Énergie demandée estimée | Σ(demande MW × 0,25 h), MWh; équivalent à Σ(moyenne horaire MW × 1 h) | `null` tant que la période n’est pas terminée ou si un seul créneau manque. Aucune extrapolation. |
+| Variation du niveau observé | (Dernier niveau valide − premier niveau valide) × 100, cm | Au moins deux instants valides; bornes réellement observées affichées. Ce n’est pas la variation de volume ou de réserve énergétique. |
+
+L’estimation d’énergie suppose une puissance constante pendant chacun des intervalles de 15 minutes suivant la mesure. C’est une approximation rectangulaire pédagogique, pas une mesure officielle de consommation ou de facturation. La demande couvre le Québec hors réseaux autonomes selon le jeu source; elle n’est pas la production hydroélectrique.
+
+Les heures sont générées entre les minuits locaux convertis en UTC : 23, 24 ou 25 lignes selon la journée. Une heure non terminée n’entre pas dans la synthèse. `localHour` contient le décalage UTC pour distinguer les deux occurrences de 01 h au changement d’heure. Zéro est valide, les doublons ne créent pas de créneau supplémentaire, aucune absence n’est remplacée par zéro. Les températures minimales/maximales restent deux séries distinctes et ne participent pas à ces trois indicateurs.
+
+Jeu enregistré du 17 octobre 2026 : 96 demandes → 24 moyennes horaires; pointe 22 009,75 MW à 18 h Toronto; énergie estimée 489 442 MWh; niveau +3 cm entre 00 h et 23 h. Ces nombres sont des résultats du calcul, pas des valeurs codées dans l’interface.

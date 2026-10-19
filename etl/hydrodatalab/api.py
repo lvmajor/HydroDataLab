@@ -37,10 +37,10 @@ def run(request: RunRequest):
             report = run_pipeline(request.source, run_id=str(request.runId), simulate_failure=request.simulateFailure,
                                   quality_scenario=request.qualityScenario)
         except ValueError as error:
-            raise HTTPException(status_code=422, detail=str(error)) from error
+            raise HTTPException(status_code=422, detail={"message": str(error), "execution": getattr(error, "execution", None)}) from error
         except (RuntimeError, OSError) as error:
             logger.exception("pipeline failed run_id=%s", request.runId)
-            raise HTTPException(status_code=503, detail=str(error)) from error
+            raise HTTPException(status_code=503, detail={"message": str(error), "execution": getattr(error, "execution", None)}) from error
         logger.info("pipeline complete run_id=%s observations=%s", request.runId, report["summary"]["observationCount"])
         return report
     finally:
@@ -52,8 +52,8 @@ def artifact(run_id: UUID, filename: str):
     try:
         path = artifact_path(str(run_id), filename)
     except ValueError as error:
-        raise HTTPException(status_code=400, detail=str(error)) from error
+        raise HTTPException(status_code=400, detail={"message": str(error), "execution": getattr(error, "execution", None)}) from error
     if not path.is_file():
         raise HTTPException(status_code=404, detail="Export introuvable pour cette exécution")
-    media_type = {"observations.csv": "text/csv", "observations.parquet": "application/vnd.apache.parquet", "report.json": "application/json"}[filename]
+    media_type = {"observations.csv": "text/csv", "hourly.csv": "text/csv", "observations.parquet": "application/vnd.apache.parquet", "report.json": "application/json"}[filename]
     return FileResponse(path, media_type=media_type, filename=filename)

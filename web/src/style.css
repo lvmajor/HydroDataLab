@@ -220,3 +220,30 @@ footer p { max-width: 65ch; }
   .secondary-panels { grid-template-columns: 1fr; }
   body, .site-shell { background: white; }
 }
+
+/* BI walkthrough: the same readable scale as the observation dashboard. */
+.etl-section { background: #fff; border: 1px solid var(--line); border-radius: .6rem; padding: 1.5rem; margin-bottom: 2rem; scroll-margin-top: 1rem; min-width: 0; }
+.eyebrow { color: var(--muted); font-size: var(--text-small); margin-bottom: .5rem; }
+.section-intro { color: var(--muted); max-width: 75ch; margin: 1rem 0; }
+.etl-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .75rem; margin: 1.5rem 0; }
+.etl-steps button { color: var(--ink); border: 1px solid #849eaf; border-radius: .4rem; background: #f4f8fb; padding: 1rem; text-align: left; }
+.etl-steps button.selected { background: #e2f3f2; border: 2px solid #087f8c; padding: calc(1rem - 1px); }
+.etl-steps strong, .etl-steps span { display: block; }
+.etl-steps span { font-size: var(--text-small); margin-top: .4rem; }
+.etl-content { border-left: 3px solid #087f8c; padding: .25rem 0 .25rem 1.25rem; }
+.etl-content > p { max-width: 85ch; margin-top: .75rem; }
+.etl-content .table-scroll { max-height: 19rem; }
+.metrics-title { margin-top: 2rem; }
+.business-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 1rem; }
+.business-metrics article { background: #f2f7fb; padding: 1.25rem; border-radius: .4rem; min-width: 0; }
+.business-metrics h4 { font-size: 1.125rem; margin: 0; }
+.business-metrics p { margin-top: .75rem; font-size: var(--text-small); color: var(--muted); }
+.business-metrics .metric-value { font-size: 2rem; color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+.metric-value span { font-size: 1.125rem; }
+.execution-section { margin-top: 2rem; }
+.execution-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+.execution-facts dt { font-size: var(--text-small); color: var(--muted); }
+.execution-facts dd { margin: .4rem 0 0; overflow-wrap: anywhere; }
+.break-id { overflow-wrap: anywhere; max-width: 100%; }
+@media (max-width: 65rem) { .business-metrics, .execution-facts { grid-template-columns: 1fr; } }
+@media (max-width: 40rem) { .etl-steps { grid-template-columns: 1fr; } .etl-section { padding: 1rem; } .etl-content { padding-left: .75rem; } }

@@ -6,3 +6,5 @@ public sealed record RunRequest(string Source = "fixture", bool SimulateFailure 
 }
 public sealed record RunRecord(string Id, string Source, string Status, string Stage, string CreatedAtUtc, string? StartedAtUtc, string? CompletedAtUtc, string? Error, string QualityScenario);
 public sealed record ScheduleSettings(bool Enabled = false, int IntervalMinutes = 5);
+
+public sealed record RunDetails(RunRecord Run, string? RetryOf, bool? SimulateFailure, System.Text.Json.JsonElement? Report, System.Text.Json.JsonElement? Execution);

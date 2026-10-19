@@ -40,6 +40,7 @@ def main():
     finally:
         subprocess.run(docker + ["rm", name], check=True, capture_output=True)
     local = local_root / run_id
+    assert (local / "hourly.csv").read_bytes() == (container_root / "hourly.csv").read_bytes()
     local_csv = (local / "observations.csv").read_bytes()
     assert local_csv == (container_root / "observations.csv").read_bytes(), "Les octets CSV diffèrent"
     pd.testing.assert_frame_equal(pd.read_parquet(local / "observations.parquet"),
@@ -47,10 +48,12 @@ def main():
     container_report = json.loads((container_root / "report.json").read_text(encoding="utf-8"))
     for report in (local_report, container_report):
         report.pop("generatedAtUtc")
+        execution = report.pop("execution")
+        assert all(step["status"] == "succeeded" and step["durationMs"] >= 0 for step in execution["steps"])
     assert local_report == container_report, "Les rapports métier diffèrent"
     evidence = {"runId": run_id, "image": args.image, "engine": args.engine, "context": args.docker_context,
                 "network": "none", "csvBytesEqual": True, "parquetDataframesEqual": True,
-                "businessReportsEqual": True, "csvSha256": hashlib.sha256(local_csv).hexdigest(),
+                "businessReportsEqual": True, "hourlyCsvBytesEqual": True, "csvSha256": hashlib.sha256(local_csv).hexdigest(),
                 "summary": local_report["summary"]}
     (root / "verification.json").write_text(json.dumps(evidence, indent=2), encoding="utf-8")
     print(json.dumps(evidence, ensure_ascii=False))

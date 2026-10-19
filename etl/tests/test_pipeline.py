@@ -30,7 +30,7 @@ def test_real_fixture_roundtrip_csv_parquet_and_report(tmp_path):
         assert series["points"] == sorted(series["points"], key=lambda point: point["timestamp"])
         assert all(point["timestamp"].endswith("Z") for point in series["points"])
     directory = tmp_path / report["runId"]
-    assert sorted(file.name for file in directory.iterdir()) == ["observations.csv", "observations.parquet", "report.json"]
+    assert sorted(file.name for file in directory.iterdir()) == ["hourly.csv", "observations.csv", "observations.parquet", "report.json"]
     csv = pd.read_csv(directory / "observations.csv", parse_dates=["timestamp_utc"])
     parquet = pd.read_parquet(directory / "observations.parquet")
     pd.testing.assert_frame_equal(csv, parquet, check_dtype=False)

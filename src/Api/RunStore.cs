@@ -1,4 +1,5 @@
 using Microsoft.Data.Sqlite;
+using System.Text.Json;
 namespace HydroDataLab.Api;
 
 public sealed class RunStore(string databasePath)
@@ -20,12 +21,13 @@ public sealed class RunStore(string databasePath)
               id TEXT PRIMARY KEY, source TEXT NOT NULL, status TEXT NOT NULL, stage TEXT NOT NULL,
               created TEXT NOT NULL, started TEXT, completed TEXT, error TEXT, scenario TEXT NOT NULL, report TEXT);
             CREATE UNIQUE INDEX IF NOT EXISTS one_active_run ON runs ((1)) WHERE status IN ('queued','running');
+            CREATE TABLE IF NOT EXISTS run_details (run_id TEXT PRIMARY KEY, parent_id TEXT, simulate_failure INTEGER NOT NULL, execution TEXT);
             CREATE TABLE IF NOT EXISTS settings (id INTEGER PRIMARY KEY CHECK(id=1), enabled INTEGER NOT NULL, minutes INTEGER NOT NULL);
             INSERT OR IGNORE INTO settings VALUES(1,0,5);
             """;
         command.ExecuteNonQuery();
     }
-    public string? TryCreate(RunRequest request)
+    public string? TryCreate(RunRequest request, string? retryOf = null)
     {
         using var connection = Open();
         using var transaction = connection.BeginTransaction();
@@ -40,6 +42,10 @@ public sealed class RunStore(string databasePath)
         command.Parameters.AddWithValue("$created", DateTimeOffset.UtcNow.ToString("O"));
         command.Parameters.AddWithValue("$scenario", request.QualityScenario);
         command.ExecuteNonQuery();
+        command.CommandText = "INSERT INTO run_details(run_id,parent_id,simulate_failure) VALUES($id,$parent,$simulate)";
+        command.Parameters.AddWithValue("$parent", (object?)retryOf ?? DBNull.Value);
+        command.Parameters.AddWithValue("$simulate", request.SimulateFailure ? 1 : 0);
+        command.ExecuteNonQuery();
         transaction.Commit();
         return id;
     }
@@ -51,9 +57,11 @@ public sealed class RunStore(string databasePath)
         cmd.Parameters.AddWithValue("$now", DateTimeOffset.UtcNow.ToString("O"));
         return cmd.ExecuteNonQuery() == 1;
     }
-    public void Complete(string id, string? report, string? error, bool interrupted = false)
+    public void Complete(string id, string? report, string? error, bool interrupted = false, string? execution = null)
     {
         using var c = Open(); using var cmd = c.CreateCommand();
+        using var transaction = c.BeginTransaction();
+        cmd.Transaction = transaction;
         cmd.CommandText = "UPDATE runs SET status=$status,stage=$stage,completed=$now,error=$error,report=$report WHERE id=$id";
         cmd.Parameters.AddWithValue("$id", id);
         cmd.Parameters.AddWithValue("$status", interrupted ? "interrupted" : error is null ? "succeeded" : "failed");
@@ -62,6 +70,25 @@ public sealed class RunStore(string databasePath)
         cmd.Parameters.AddWithValue("$error", (object?)error ?? DBNull.Value);
         cmd.Parameters.AddWithValue("$report", (object?)report ?? DBNull.Value);
         cmd.ExecuteNonQuery();
+        cmd.CommandText = "UPDATE run_details SET execution=$execution WHERE run_id=$id";
+        cmd.Parameters.AddWithValue("$execution", (object?)execution ?? DBNull.Value);
+        cmd.ExecuteNonQuery();
+        transaction.Commit();
+    }
+    public RunDetails? Details(string id)
+    {
+        var run = Get(id);
+        if (run is null) return null;
+        using var c = Open(); using var cmd = c.CreateCommand();
+        cmd.CommandText = "SELECT r.report,d.parent_id,d.simulate_failure,d.execution FROM runs r LEFT JOIN run_details d ON d.run_id=r.id WHERE r.id=$id";
+        cmd.Parameters.AddWithValue("$id", id);
+        using var reader = cmd.ExecuteReader();
+        reader.Read();
+        JsonElement? report = reader.IsDBNull(0) ? null : JsonSerializer.Deserialize<JsonElement>(reader.GetString(0));
+        JsonElement? execution = reader.IsDBNull(3) ? null : JsonSerializer.Deserialize<JsonElement>(reader.GetString(3));
+        if (execution is null && report is { } json && json.TryGetProperty("execution", out var measured)) execution = measured;
+        return new(run, reader.IsDBNull(1) ? null : reader.GetString(1),
+                   reader.IsDBNull(2) ? null : reader.GetInt32(2) == 1, report, execution);
     }
     public void InterruptInFlight()
     {
