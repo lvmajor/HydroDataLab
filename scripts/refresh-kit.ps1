@@ -1,7 +1,7 @@
 param([Parameter(Mandatory)][string]$KitPath)
 . "$PSScriptRoot/common.ps1"
 
-# Refresh only lightweight content. The validated Docker archive stays in place.
+# Keep the four-image archive; copy only the separate Vue update with the documents.
 $artifactRoot = (Resolve-Path -LiteralPath (Join-Path $RepoRoot 'artifacts')).Path
 $kit = (Resolve-Path -LiteralPath $KitPath).Path
 $kitItem = Get-Item -LiteralPath $kit -Force
@@ -20,6 +20,9 @@ foreach ($relative in @('presentation/dist/index.html','presentation/exports/for
     if (-not (Test-Path -LiteralPath (Join-Path $RepoRoot $relative))) { throw "Source manquante : $relative" }
 }
 $manifest = Get-Content -LiteralPath "$kit/SHA256SUMS.json" -Raw | ConvertFrom-Json
+$webArchive = Join-Path $RepoRoot 'artifacts/hydrodatalab-web-typography.tar'
+$webHash = ((Get-Content -LiteralPath "$webArchive.sha256" -Raw).Trim() -split '\s+')[0]
+if ((Get-FileHash -LiteralPath $webArchive -Algorithm SHA256).Hash.ToLowerInvariant() -ne $webHash) { throw 'Archive de mise à jour Vue invalide.' }
 $image = @($manifest.files | Where-Object path -eq 'images/hydrodatalab-images.tar')
 if ($image.Count -ne 1 -or (Get-FileHash -LiteralPath "$kit/images/hydrodatalab-images.tar" -Algorithm SHA256).Hash.ToLowerInvariant() -ne $image[0].sha256) {
     throw 'Archive Docker conservée invalide; ne pas poursuivre.'
@@ -44,6 +47,11 @@ Get-ChildItem -LiteralPath (Join-Path $RepoRoot 'presentation/dist') -Force | Wh
 Copy-Item -LiteralPath (Join-Path $RepoRoot 'presentation/dist/index.html') -Destination "$kit/presentation/index.html" -Force
 Copy-Item -LiteralPath (Join-Path $RepoRoot 'presentation/exports/formation-hydrodatalab.pdf') -Destination "$kit/documents/formation-hydrodatalab.pdf" -Force
 $guide = Get-Content -LiteralPath "$kit/DEMARRER.md" -Raw
+Copy-Item -LiteralPath $webArchive, "$webArchive.sha256" -Destination "$kit/images/" -Force
+if (-not $guide.Contains('docker load --input images/hydrodatalab-web-typography.tar')) {
+    $guide = $guide.Replace('docker load --input images/hydrodatalab-images.tar', "docker load --input images/hydrodatalab-images.tar`nGet-FileHash images/hydrodatalab-web-typography.tar -Algorithm SHA256`ndocker load --input images/hydrodatalab-web-typography.tar")
+    $guide += "`nMise à jour Vue : charger l’archive typographique APRÈS l’archive complète, avant Compose. Comparer son empreinte à images/hydrodatalab-web-typography.tar.sha256. La petite archive remplace uniquement l’image web; les autres images restent conservées.`n"
+}
 $guide = $guide -replace 'HydroDataLab-\d{8}-\d{6}\.bundle', $bundle.Name
 $guide = $guide.Replace('couches de contexte (11)', 'couches de contexte').Replace('boutons des coûts (14)', 'boutons des coûts')
 $guide | Set-Content -LiteralPath "$kit/DEMARRER.md" -Encoding utf8NoBOM
@@ -56,5 +64,5 @@ $files = @(Get-ChildItem -LiteralPath $kit -File -Recurse -Force | Where-Object 
 [pscustomobject]@{schemaVersion=1;generatedAtUtc=[DateTime]::UtcNow.ToString('o');excludes=@('SHA256SUMS.json');files=$files} |
     ConvertTo-Json -Depth 5 | Set-Content -LiteralPath "$kit/SHA256SUMS.json" -Encoding utf8NoBOM
 Invoke-Checked 'git' @('bundle','verify',"$kit/developpement/$($bundle.Name)")
-Write-Host "Kit actualisé sans recopier les images : $kit"
+Write-Host "Kit actualisé avec la petite mise à jour Vue, sans recopier l’archive complète : $kit"
 Write-Host "$($files.Count) fichiers inventoriés; commit $head"

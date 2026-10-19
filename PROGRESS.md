@@ -1,5 +1,17 @@
 # HydroDataLab — journal de reprise
 
+## Lisibilité de l’interface Vue — 19 octobre
+
+- Départ : main `18c7615`, dépôt propre. Réviser toute la typographie Vue et inscrire des critères vérifiables dans les instructions permanentes.
+- Audit : textes de 9 à 12 px, couleurs secondaires trop pâles et SVG qui réduisent leurs libellés avec la largeur. Conserver la palette et les parcours; adopter 18 px pour la lecture, 16 px pour les informations secondaires et des graphiques dont les textes ne rétrécissent plus.
+- Références : WCAG 2.2 (contraste, agrandissement, redistribution, espacement) et documentation officielle des instructions VS Code. Les tailles choisies sont une convention du projet, pas un minimum WCAG universel.
+- Réalisé : Segoe UI/Aptos, corps 18 px, secondaire 16 px, tailles en rem, titres 20/24/32–48 px; panneau élargi, contrastes renforcés, redistribution des colonnes et tableaux défilables au clavier. SVG mesurés avec ResizeObserver : aucune réduction des lettres; graduation assez précise pour distinguer les petits écarts de niveau d’eau.
+- Instructions permanentes : renvoi depuis le socle commun et règles `web/**` dans `vue.instructions.md`. Critères, sources, portée User et distinction convention/WCAG dans `docs/UI_TYPOGRAPHY.md`; contrôle reproductible `web/qa/typography.mjs`.
+- Validé : 11 tests Vue et build réussis; 17 états/formats, texte >=16 px, contrastes >=4,5:1, pas de débordement de page ni de texte SVG coupé, tableaux ouverts, clavier et filtres, texte 200 %, redistribution 320 CSS px, espacement personnalisé. Pas d’erreur JavaScript ni de requête navigateur externe. États supplémentaires simulés dans le navigateur uniquement; aucune collecte ni modification des données/planification. Captures examinées. Preuve : `docs/validation/typography.json`. Le vrai projecteur et le zoom manuel restent à vérifier à la répétition HQ; pas de certification WCAG revendiquée.
+- Commit de typographie `30d9b5e7e06d9fe0dbbff3cc8aafc47bb3464f18`, appliqué sans conflit après le commit réseau sur une copie temporaire de 06. Python et spécification restent strictement identiques au tag 06. Conducteur et checkpoints mis à jour; aucun tag historique réécrit.
+- Conteneur Vue reconstruit depuis le Dockerfile existant. CSS/JS identiques au build natif par SHA-256; archive séparée de 49 800 192 octets, chargement et configuration nginx vérifiés sans réseau ni port publié. `docs/DOCKER.md` précise son chargement après la grande archive conservée. Ne pas dupliquer le kit complet. L’AppHost du présentateur, déjà actif au début, reste lancé; Compose n’est pas redémarré pendant sa répétition.
+- Prochaine action : rafraîchir Vue et le conducteur; utiliser les deux commits de préparation pour une nouvelle tentative. Le commit documentaire et le bundle final sont indiqués dans `artifacts/LIVRAISON.txt` après actualisation du kit existant.
+
 ## Ports API et Python dynamiques — 19 octobre
 
 - Départ : main `f38def6`, dépôt propre; aucun AppHost actif. Demande explicite : laisser Aspire choisir les ports API/Python et garder Vue sur 53170.

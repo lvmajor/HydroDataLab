@@ -1,0 +1,238 @@
+{
+  "status": "passed",
+  "date": "2026-10-19T16:02:39.871Z",
+  "results": [
+    {
+      "name": "laptop",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 975,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "projection",
+      "width": 1920,
+      "pageWidth": 1920,
+      "textCount": 975,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "desktop",
+      "width": 1280,
+      "pageWidth": 1280,
+      "textCount": 975,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "pageWidth": 390,
+      "textCount": 974,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "reflow",
+      "width": 320,
+      "pageWidth": 320,
+      "textCount": 974,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "zoom-200-layout",
+      "width": 640,
+      "pageWidth": 640,
+      "textCount": 974,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "text-200",
+      "width": 1280,
+      "pageWidth": 1280,
+      "textCount": 121,
+      "minSize": 32,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "text-spacing-1280",
+      "width": 1280,
+      "pageWidth": 1280,
+      "textCount": 121,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "text-spacing-320",
+      "width": 320,
+      "pageWidth": 320,
+      "textCount": 120,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "unknown",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 122,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "missing",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 122,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "active",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 123,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "failed",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 122,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "interrupted",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 122,
+      "minSize": 16,
+      "minContrast": 5.005997556682844,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "empty",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 39,
+      "minSize": 16,
+      "minContrast": 5.436757966455569,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "offline",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 40,
+      "minSize": 16,
+      "minContrast": 5.569532685409499,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    },
+    {
+      "name": "loading",
+      "width": 1366,
+      "pageWidth": 1366,
+      "textCount": 37,
+      "minSize": 16,
+      "minContrast": 5.436757966455569,
+      "small": [],
+      "contrast": [],
+      "overflow": [],
+      "svgOverflow": []
+    }
+  ],
+  "errors": [],
+  "checks": [
+    "browser-only alternate states; no service mutations",
+    "keyboard chart inspection and focus",
+    "6h filter",
+    "no external requests"
+  ],
+  "limits": [
+    "Targeted review, not WCAG certification",
+    "200% layout uses a 640 CSS-pixel viewport; actual room projector and browser zoom require human rehearsal"
+  ],
+  "unitTestsPassed": 11,
+  "build": "passed",
+  "uiCommit": "30d9b5e7e06d9fe0dbbff3cc8aafc47bb3464f18",
+  "exercise": {
+    "step": "06-specification",
+    "cherryPick": "network + typography, no conflict",
+    "pythonAndSpecUnchanged": true
+  },
+  "container": {
+    "imageId": "099dfdff4e004796c2a9a53660761e3a70f89dc235445fd07e85ef62fb277224",
+    "archiveBytes": 49800192,
+    "archiveSha256": "6cc848ed9081ba5144201579baa9cca644819f446a786e41fe768ce65212e7be",
+    "assetsMatchNative": true,
+    "archiveLoad": "passed",
+    "nginxConfiguration": "passed",
+    "composeRerun": false
+  }
+}

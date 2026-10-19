@@ -37,7 +37,7 @@ Le suivi des tâches interroge l’API toutes les trois secondes sans chevaucher
 
 ## Direction visuelle
 
-Palette : bleu encre `#173650`, bleu réseau `#006cbb`, bleu profond `#003f88`, cyan eau `#13a5b1`, blanc bleuté `#f2f7fb`, ambre qualité `#975e09`. Typographies locales Aptos / Bahnschrift / Segoe UI. Une grande courbe de demande, deux lectures complémentaires et un poste de contrôle distinct; aucun logo officiel ni police distante. Interface adaptable aux petits écrans, focus clavier visibles, mouvement réduit et impression simplifiée.
+Palette : bleu encre `#173650`, bleu réseau `#006cbb`, bleu profond `#003f88`, cyan eau `#087f8c`, blanc bleuté `#f2f7fb`, ambre qualité `#805009`. Police locale Segoe UI / Aptos, corps de 18 px et informations secondaires de 16 px, tailles en rem. Les graphiques conservent la taille de leurs textes quelle que soit leur largeur. Une grande courbe de demande, deux lectures complémentaires et un poste de contrôle distinct; aucun logo officiel ni police distante. Interface adaptable aux petits écrans, focus clavier visibles, mouvement réduit et impression simplifiée.
 
 
 ## Vérification du parcours dans Edge
@@ -49,3 +49,7 @@ node qa/browser-smoke.mjs
 ```
 
 `HYDRO_WEB_URL` permet de remplacer l’URL par défaut `http://127.0.0.1:53170`. Résultat détaillé dans `web/qa-results/browser-smoke.json` (ignoré par Git). La simulation de mesure manquante peut retirer une observation entière : les courbes sont aussi interrompues lorsqu’un écart dépasse 1,5 fois le pas attendu. Une absence en bordure raccourcit la série sans créer de rupture intérieure.
+
+## Validation typographique
+
+Lire [les critères et leur fondement WCAG](../docs/UI_TYPOGRAPHY.md). Depuis la racine, application lancée : `node web/qa/typography.mjs`. Ce contrôle utilise Edge et simule les états uniquement dans son navigateur; aucune collecte ni modification des services. Il produit les mesures et captures dans `.runtime/typography-qa/`. Les instructions permanentes sont dans `.github/instructions/vue.instructions.md`, reliées depuis le socle commun.

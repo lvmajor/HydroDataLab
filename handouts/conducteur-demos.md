@@ -14,9 +14,9 @@ Ouvrir [la version lisible dans le navigateur](conducteur-demos.html) sur le por
 | Démo 3 · slide 20 | Copie d’exercice, branche `codex/repetition-01` issue de `06-specification` | Règle BI → code Python → tests → 100 %, puis 95,83 % | 4 min |
 | Secours, si nécessaire | Retour au dépôt principal, `main` | Solution préparée, annoncée comme telle | Décider à 2:10 de la démo 3 |
 
-**Pourquoi deux dossiers?** Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. `main` conserve la solution métier du jalon 07 et ajoute les améliorations de préparation, dont les ports dynamiques. La copie du jalon 06 reçoit seulement la correction réseau, sans implémenter la couverture. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.
+**Pourquoi deux dossiers?** Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. `main` conserve la solution métier du jalon 07 et ajoute les améliorations de préparation, dont les ports dynamiques. La copie du jalon 06 reçoit les corrections réseau et typographiques, sans implémenter la couverture. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.
 
-Un **tag** est un jalon fixe; une **branche** conserve une nouvelle tentative. La branche existante `demo-live` n’est pas nécessaire à ce parcours. **Une seule application à la fois** utilise le port fixe Vue 53170; les ports API/Python sont attribués par Aspire. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal.
+Un **tag** est un jalon fixe; une **branche** conserve une nouvelle tentative. La branche existante `demo-live` n’est pas nécessaire à ce parcours. **Une seule application à la fois** utilise le port fixe Vue 53170; les ports API/Python sont attribués par Aspire. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal. La typographie Vue utilise un corps de 18 px et des libellés de 16 px : faire défiler la page pour montrer chaque zone, plutôt que réduire le zoom pour tout faire tenir.
 
 ## Avant la séance · préparer une fois
 
@@ -70,14 +70,14 @@ git clone --branch main .runtime/repetition-source.bundle "$Live"
 if ($LASTEXITCODE -ne 0) { throw 'Clonage interrompu.' }
 git -C "$Live" switch -c codex/repetition-01 06-specification
 if ($LASTEXITCODE -ne 0) { throw 'Branche exercice non créée.' }
-git -C "$Live" -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397
-if ($LASTEXITCODE -ne 0) { throw 'Correction réseau non appliquée : examiner le message Git avant de poursuivre.' }
+git -C "$Live" -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397 30d9b5e7e06d9fe0dbbff3cc8aafc47bb3464f18
+if ($LASTEXITCODE -ne 0) { throw 'Corrections réseau et typographique non appliquées : examiner le message Git avant de poursuivre.' }
 Set-Location -LiteralPath $Live
 ./scripts/prepare.ps1 -SkipPresentation
 git status --short --branch
 ```
 
-**Attendu :** branche `codex/repetition-01`, dossier propre. `cherry-pick` applique un seul commit de correction réseau après le tag 06; il ne modifie pas le calcul de couverture. L’identité pédagogique passée à cette commande ne change pas les réglages Git de l’utilisateur. Les huit tags restent intacts. Ouvrir cette copie dans une deuxième fenêtre VS Code par **Fichier → Nouvelle fenêtre → Ouvrir un dossier**. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.
+**Attendu :** branche `codex/repetition-01`, dossier propre. `cherry-pick` applique deux commits après le tag 06 : configuration réseau et lisibilité Vue. Ils ne modifient pas le calcul de couverture. L’identité pédagogique passée à cette commande ne change pas les réglages Git de l’utilisateur. Les huit tags restent intacts. Ouvrir cette copie dans une deuxième fenêtre VS Code par **Fichier → Nouvelle fenêtre → Ouvrir un dossier**. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.
 
 Contrôler l’état de départ de l’exercice :
 
@@ -370,12 +370,12 @@ git fetch "$Depot/.runtime/repetition-source.bundle" main
 if ($LASTEXITCODE -ne 0) { throw 'La copie ne peut pas lire le dépôt principal.' }
 git switch -c $BrancheSuivante 06-specification
 if ($LASTEXITCODE -ne 0) { throw 'Bascule interrompue.' }
-git -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397
-if ($LASTEXITCODE -ne 0) { throw 'Correction réseau non appliquée.' }
+git -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397 30d9b5e7e06d9fe0dbbff3cc8aafc47bb3464f18
+if ($LASTEXITCODE -ne 0) { throw 'Corrections réseau et typographique non appliquées.' }
 ./scripts/start-demo.ps1
 ```
 
-La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial **Non calculée**. Le bundle actualisé et le `fetch` transportent la correction depuis le dépôt principal local; ils ne contactent pas GitHub. Une ancienne copie sans la correction peut suivre ce même parcours de nouvelle branche, après conservation de son travail. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer `$Depot` comme à la préparation C.
+La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial **Non calculée**. Le bundle actualisé et le `fetch` transportent les corrections depuis le dépôt principal local; ils ne contactent pas GitHub. Une ancienne copie sans ces corrections peut suivre ce même parcours de nouvelle branche, après conservation de son travail. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer `$Depot` comme à la préparation C.
 
 ### Reprise après un redémarrage du PC
 

@@ -28,6 +28,8 @@ La preuve compare CSV, table Parquet et rapport JSON, hors horodatage de génér
 
 ## Transporter et restaurer les images avant la séance
 
+**Mise à jour typographique du 19 octobre :** la grande archive du 18 octobre reste conservée. Charger ensuite `artifacts/hydrodatalab-web-typography.tar` (49 800 192 octets, environ 47,5 Mio) pour remplacer uniquement l’image Vue par la version lisible. Son SHA-256 est `6cc848ed9081ba5144201579baa9cca644819f446a786e41fe768ce65212e7be`; son image est `099dfdff4e004796c2a9a53660761e3a70f89dc235445fd07e85ef62fb277224`. Les fichiers CSS/JS de l’image sont identiques par SHA-256 au build natif contrôlé. Le parcours Compose complet historique reste documenté; il n’a pas été relancé pendant cette correction pour préserver la session native du présentateur.
+
 L'export réalisé le **18 octobre 2026 à 20:25:37 UTC** est disponible dans `artifacts/hydrodatalab-images.tar`. C'est une archive Docker non compressée de **1 205 382 656 octets** (~1 149,5 Mio), dont le manifest a été vérifié : il contient exactement les quatre images et les configurations attendues.
 
 | Image | Début de l'identifiant vérifié |
@@ -49,6 +51,7 @@ Copier ensemble le projet et les éléments suivants, en conservant leur emplace
 
 - `artifacts/hydrodatalab-images.tar`;
 - `artifacts/hydrodatalab-images.tar.sha256` et `artifacts/hydrodatalab-images.tar.manifest.json`;
+- `artifacts/hydrodatalab-web-typography.tar` et son fichier `.sha256`, à charger après l’archive complète;
 - **le dossier complet `artifacts/compose/`**, contenant `docker-compose.yaml`, `images.env` et `.env`.
 
 Le dossier `artifacts/` est ignoré par Git. **Un bundle Git ou le ZIP du code seul ne transporte donc ni les images ni Compose généré.** Ajouter ces fichiers séparément à l'archive finale ou au support de transport. Les scripts utilisent explicitement `--env-file artifacts/compose/images.env` : `docker-compose.yaml` et `images.env` sont indispensables au démarrage. Le `.env` généré par Aspire est conservé avec le dossier pour la traçabilité.
@@ -66,6 +69,10 @@ if ($imageArchiveHash -ne '3c3c775373607b6f6cec5f2bdea7cc9506bfe4c5182e9df04bfce
 }
 Test-Path artifacts/compose/docker-compose.yaml
 Test-Path artifacts/compose/images.env
+$webArchiveHash = (Get-FileHash artifacts/hydrodatalab-web-typography.tar -Algorithm SHA256).Hash.ToLowerInvariant()
+if ($webArchiveHash -ne '6cc848ed9081ba5144201579baa9cca644819f446a786e41fe768ce65212e7be') {
+    throw 'La mise à jour Vue ne correspond pas à la version validée.'
+}
 ```
 
 Les deux vérifications de chemins doivent renvoyer `True`. Choisir ensuite la séquence correspondant au moteur installé. **Le chargement précède le démarrage hors ligne** et ne nécessite ni reconstruction ni téléchargement.
@@ -74,6 +81,7 @@ Avec Docker :
 
 ```powershell
 docker load --input artifacts/hydrodatalab-images.tar
+docker load --input artifacts/hydrodatalab-web-typography.tar
 ./scripts/docker-demo.ps1
 ./scripts/verify-http.ps1 -BaseUrl http://localhost:53170
 ```
@@ -82,6 +90,7 @@ Avec Podman :
 
 ```powershell
 podman load --input artifacts/hydrodatalab-images.tar
+podman load --input artifacts/hydrodatalab-web-typography.tar
 ./scripts/docker-demo.ps1 -Engine podman
 ./scripts/verify-http.ps1 -BaseUrl http://localhost:53170
 ```
