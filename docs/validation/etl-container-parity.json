@@ -1,0 +1,18 @@
+{
+  "runId": "c9b353a8-a002-493b-8a9b-425fb3c8c5fd",
+  "image": "hydrodatalab-etl:formation",
+  "engine": "podman",
+  "context": null,
+  "network": "none",
+  "csvBytesEqual": true,
+  "parquetDataframesEqual": true,
+  "businessReportsEqual": true,
+  "hourlyCsvBytesEqual": true,
+  "csvSha256": "e7b8e903869e406a0af50ae261801251e4adb1691362997aec8003357846d04f",
+  "summary": {
+    "observationCount": 168,
+    "seriesCount": 4,
+    "invalidCount": 0,
+    "duplicateCount": 0
+  }
+}

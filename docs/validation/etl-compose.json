@@ -1,0 +1,33 @@
+{
+  "completedAt": "2026-10-19T16:33:09.128Z",
+  "status": "passed",
+  "base": "http://localhost:53170",
+  "ids": {
+    "id": "eaa404d8-87b8-4e6d-8332-f230a6f76174",
+    "failedId": "99675598-f160-42d8-8a4c-873a1f3ba79e",
+    "retryId": "3a8df878-1220-44a5-a5f6-3ce861bd2d5e"
+  },
+  "indicators": {
+    "peakHourlyMW": 22009.75,
+    "peakHourUtc": "2026-10-17T22:00:00Z",
+    "estimatedEnergyMWh": 489442,
+    "waterChangeCm": 3,
+    "waterStartUtc": "2026-10-17T04:00:00Z",
+    "waterEndUtc": "2026-10-18T03:00:00Z"
+  },
+  "checks": [
+    "real Python calculations",
+    "raw and normalized samples",
+    "24 hourly rows",
+    "hourly CSV download",
+    "4 measured stages",
+    "failure diagnostics",
+    "last successful report preserved",
+    "linked retry",
+    "legacy report",
+    "320px reflow",
+    "200% text",
+    "text spacing",
+    "no JS errors or external requests"
+  ]
+}

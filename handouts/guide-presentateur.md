@@ -67,13 +67,13 @@ Le passage du même cœur Python de la commande locale au conteneur, pendant la 
 
 ## Préparer lundi, sur le portable HQ
 
-Depuis la racine de la version finale (`main` ou `07-solution`), exécuter `./scripts/doctor.ps1`, `./scripts/prepare.ps1`, puis `./scripts/verify.ps1`. Lire leur aide et le README avant d’ajouter des options. Le pipeline ne nécessite aucune donnée interne. Docker/Compose et Aspire doivent être vérifiés sur ce portable avant la séance; ne pas installer ni télécharger d’image devant le public.
+Depuis la racine de la version finale (`main`; les tags restent historiques), exécuter `./scripts/doctor.ps1`, `./scripts/prepare.ps1`, puis `./scripts/verify.ps1`. Lire leur aide et le README avant d’ajouter des options. Le pipeline ne nécessite aucune donnée interne. Docker/Compose et Aspire doivent être vérifiés sur ce portable avant la séance; ne pas installer ni télécharger d’image devant le public.
 
 - Vérifier connexion Copilot, modèle autorisé, version VS Code et moteur Copilot. Confirmer Auto Balance et GPT-6.1 Sol; choisir un remplacement autorisé avant la séance si nécessaire.
 - Les paramètres expérimentaux ne sont pas requis pour réussir la formation. HydraFusion reste une capsule facultative; pas d’exécution si le pool/politiques HQ ne le permettent pas.
 - Instantané confirmé : 168 observations du 17 octobre 2026, extraites le 18 octobre à 19:44:01 UTC. Vérifier empreintes et manifeste, sans remplacer les fixtures pour obtenir un résultat plus spectaculaire.
 - Suivre le [conducteur de répétition](conducteur-demos.html) : le dépôt principal reste sur `main` pour les démos 1 et 2, les slides et le secours. Une copie Git locale reçoit une nouvelle branche issue de `06-specification` pour la démo 3. Préparer les dépendances et les deux démarrages avant la séance; basculer pendant la slide SDD. Aucun téléchargement ou changement de branche du dépôt principal n’est nécessaire en direct.
-- Lancer `./scripts/start-demo.ps1` et tester le parcours. Ports fixes : Vue 53170 et slides 53173. Aspire attribue les ports API/Python et fournit leurs adresses aux composants; les retrouver dans son dashboard. La copie d’exercice reçoit les commits réseau et typographique indiqués dans le conducteur, car les tags historiques gardent leur ancienne configuration.
+- Lancer `./scripts/start-demo.ps1` et tester le parcours. Ports fixes : Vue 53170 et slides 53173. Aspire attribue les ports API/Python et fournit leurs adresses aux composants; les retrouver dans son dashboard. La copie d’exercice part de la branche préparée issue de 06, indiquée dans le conducteur; elle contient aussi les nouvelles analyses ETL, mais garde la couverture à implémenter.
 - Ouvrir le support : `./scripts/start-presentation.ps1` (ou `cd presentation`, `npm ci`, `npm run dev`); http://localhost:53173. Pour le build autonome : `npm run build` puis `npm run preview`. L’installation réseau se fait avant la séance.
 - Ouvrir aussi `presentation/exports/formation-hydrodatalab.pdf`. Il contient 28 pages; les interactions sont figées mais leur explication reste lisible.
 - Pour régénérer ce PDF : `npm --prefix presentation run export` utilise Chrome/Edge/Chromium et Python avec `pypdf`. Au besoin, définir `SLIDEV_PYTHON_PATH` vers cet interpréteur. Le post-traitement convertit les liens d’annexes en destinations PDF sans serveur; projeter le PDF déjà préparé ne demande aucune de ces dépendances.
@@ -99,11 +99,11 @@ Résultat attendu : le public sait où l'agent travaille, quelles actions il peu
 
 ## Démo 2 — 5 minutes
 
-- 0:00–1:00 : depuis la racine, `uv run --project etl python -m hydrodatalab run --source fixture --date 2026-10-17 --output outputs/cli`; montrer `report.json`, CSV et Parquet.
-- 1:00–2:15 : depuis Vue, lancer fixture, suivre l’état et ouvrir les séries/provenance. Les températures ne sont pas implicitement le capteur de niveau Gouin.
-- 2:15–3:00 : montrer les ressources et un journal dans Aspire. Python CLI/FastAPI partagent le même cœur, .NET/Quartz coordonne, SQLite conserve les runs.
-- 3:00–4:30 : exécuter le scénario d’échec préparé et relancer. Montrer l’erreur lisible et la trace conservée.
-- 4:30–5:00 : exécuter la commande Docker CLI ci-dessous, déjà préremplie et avec une image chaude. Montrer le résumé produit. Les valeurs calculées doivent correspondre au natif, hors métadonnées d’exécution.
+- 0:00–1:00 : lancer la CLI Python; montrer résumé, indicateurs et `hourly.csv` (24 lignes).
+- 1:00–2:45 : Vue → **Parcours ETL** → **Extraire**, **Transformer**, **Charger / exporter**. Montrer champs bruts, schéma normalisé, synthèse horaire et trois cartes métier. Formules et limites restent affichées.
+- 2:45–3:15 : **Voir les détails** d’un succès : paramètres, étapes Python, durées, exports. Retrouver rapidement les ressources et le journal dans Aspire.
+- 3:15–4:30 : échec contrôlé → détails de l’extraction échouée → relance → lien vers la tentative précédente. Le dernier rapport valide est préservé.
+- 4:30–5:00 : exécuter la commande Docker déjà préparée. Résumé et indicateurs identiques au natif. Privilégier la partie ETL si le temps se resserre; le [conducteur détaillé](conducteur-demos.html) donne les phrases et valeurs attendues.
 
 ```powershell
 docker run --rm --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
@@ -151,3 +151,5 @@ La capture 03 garde le détail de qualité par série replié : elle ne montre d
 - **Les règles garantissent-elles la conformité?** Non; elles orientent. Les tests, permissions, revue et outils déterministes apportent d’autres contrôles.
 - **Ce niveau nous dit-il les réserves?** Non. Le cas affiche un niveau en mètres, pas une conversion en énergie ni une prévision de gestion.
 - **Pourquoi une spec pour 20 lignes?** Parce qu’un doublon, null ou changement d’heure peut invalider un indicateur convaincant.
+
+Nouvelles captures ETL du 19 octobre : [avant](../docs/screenshots/etl-avant.png), [après](../docs/screenshots/etl-apres.png), [synthèse](../docs/screenshots/etl-synthese.png), [exécution](../docs/screenshots/etl-execution.png).

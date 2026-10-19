@@ -1,13 +1,17 @@
 # HydroDataLab — journal de reprise
 
-## ETL visible et détails des exécutions — 19 octobre (en cours)
+## ETL visible et détails des exécutions — 19 octobre
 
 - Départ : main `101de0f`, dépôt propre. Demande : avant/après ETL, synthèse horaire, indicateurs Python, détails des exécutions et conducteur actualisé; Quartz conservé.
 - Décisions : agrégation de la demande par heure complète (4 créneaux valides), pointe horaire moyenne, estimation rectangulaire de l’énergie demandée et variation du niveau observé. Aucune prévision ni conversion du niveau en réserve. Les calculs restent indépendants du calcul de couverture à compléter en démo 3.
 - Préserver les anciens rapports et l’historique SQLite. Ajouter des diagnostics d’étapes Python, les paramètres et le lien entre une relance et sa tentative précédente.
 - Réalisé : calculs purs dans analysis.py, avant/après et synthèse Vue, hourly.csv, étapes mesurées Python et détails persistants API, relances liées. Compatibilité anciens rapports/SQLite.
 - Validé : 43 tests Python, 10 .NET, 11 Vue et build. Navigateur réel : 24 heures, export, erreur/relance, anciens rapports, 320 px et texte 200 %. Audit typographique : 17 états/formats et contraste >=4,5:1. Captures inspectées.
-- Prochaine action : terminer les contrôles après le dernier ajustement transactionnel, reconstruire les images, vérifier la parité, mettre le conducteur et la copie pédagogique à jour. Aucun tag historique à réécrire.
+- Enregistré : fonctionnalité `66d8bd8`. Trois images reconstruites; parité Python locale/conteneur hors réseau (deux CSV, Parquet, rapport métier) et parcours complet Vue/erreur/relance sur Compose réussis. Nouvelle archive complète vérifiée : SHA-256 `7e5a7b8d6258cd2ee2bf62c0b6e3bfebe7d2cbef2880981e61ee923e4d312046`. Elle remplace l’archive source et celle du kit; ne plus charger l’ancien complément Vue.
+- Préparation pédagogique : un conflit documentaire constaté lors du cherry-pick a été résolu dans une copie dédiée. Branche `codex/preparation-demo-06`, commit `9e1ecde478f4f5d70634a42c720fa10fd224eab7`, descendant de 06 avec trois améliorations. Couverture identique au tag 06, 8 tests d’analyse réussis et les 2 tests d’acceptation de couverture rouges attendus. Clone via bundle et création de branche testés. Les tags historiques sont intacts; aucune copie d’exercice de l’utilisateur n’a été modifiée.
+- Conducteur actualisé (4/5/4 min), guide du présentateur, dictionnaire/contrat, documentation Docker et quatre captures de secours. Lecteur HTML : 8 rubriques, 21 copies, 4 largeurs, impression et liens vérifiés; 19 blocs PowerShell et scripts de kit syntaxiquement valides. Preuves dans `docs/validation/etl*.json`.
+- Compose arrêté sans supprimer les volumes; application native main redémarrée et saine sur http://localhost:53170. Dernière validation .NET faite dans un répertoire de compilation isolé pour éviter les verrous Windows.
+- Prochaine action : rafraîchir le kit existant après le commit documentaire et vérifier son inventaire. Le reçu final et le bundle figurent dans `artifacts/LIVRAISON.txt`. La répétition humaine sur le portable HQ reste à effectuer. Aucun nouveau kit complet ni réécriture des tags.
 
 ## Lisibilité de l’interface Vue — 19 octobre
 

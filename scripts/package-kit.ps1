@@ -12,8 +12,6 @@ $required = @(
     'artifacts/hydrodatalab-images.tar',
     'artifacts/hydrodatalab-images.tar.sha256',
     'artifacts/hydrodatalab-images.tar.manifest.json',
-    'artifacts/hydrodatalab-web-typography.tar',
-    'artifacts/hydrodatalab-web-typography.tar.sha256',
     'artifacts/compose/docker-compose.yaml',
     'artifacts/compose/images.env',
     'artifacts/compose/.env',
@@ -81,10 +79,6 @@ function Copy-KitDirectory {
 New-Item -ItemType Directory -Path "$kit/developpement", "$kit/images", "$kit/documents" | Out-Null
 Copy-Item -LiteralPath $bundle.FullName, $zip -Destination "$kit/developpement/"
 Copy-Item -LiteralPath $archive, "$archive.sha256", "$archive.manifest.json" -Destination "$kit/images/"
-$webArchive = Join-Path $RepoRoot 'artifacts/hydrodatalab-web-typography.tar'
-$webHash = ((Get-Content -LiteralPath "$webArchive.sha256" -Raw).Trim() -split '\s+')[0]
-if ((Get-FileHash -LiteralPath $webArchive -Algorithm SHA256).Hash.ToLowerInvariant() -ne $webHash) { throw 'Archive de mise à jour Vue invalide.' }
-Copy-Item -LiteralPath $webArchive, "$webArchive.sha256" -Destination "$kit/images/"
 Copy-KitDirectory 'artifacts/compose' "$kit/compose"
 Copy-KitDirectory 'presentation/dist' "$kit/presentation"
 Copy-KitDirectory 'handouts' "$kit/handouts"
@@ -164,14 +158,12 @@ Ouvrir PowerShell dans ce dossier. SHA-256 de l'archive d'images : `__IMAGE_HASH
 ```powershell
 Get-FileHash images/hydrodatalab-images.tar -Algorithm SHA256
 docker load --input images/hydrodatalab-images.tar
-Get-FileHash images/hydrodatalab-web-typography.tar -Algorithm SHA256
-docker load --input images/hydrodatalab-web-typography.tar
 docker compose -p hydrodatalab-training --env-file compose/images.env -f compose/docker-compose.yaml up -d --pull never --no-build --wait --wait-timeout 90
 ```
 
 Comparer l'empreinte à celle indiquée ci-dessus avant le chargement. Avec Podman, remplacer `docker` par `podman` dans les commandes; son fournisseur Compose doit être disponible. L'application écoute sur **http://localhost:53170** et le dashboard sur **http://localhost:53174**. Choisir la source **fixture** pour fonctionner sans réseau. La source live et les agents Copilot demandent leurs accès réseau habituels.
 
-Charger la mise à jour typographique APRÈS l’archive complète. Comparer son empreinte au fichier `images/hydrodatalab-web-typography.tar.sha256`. Cette petite archive remplace uniquement l’image web.
+L’archive complète contient les analyses ETL et la typographie actuelle. Ne pas charger ensuite un ancien complément d’images Vue.
 
 Arrêter les conteneurs en conservant les volumes SQLite et les exports :
 

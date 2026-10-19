@@ -19,7 +19,7 @@ La révision pédagogique du 18 octobre se trouve sur `main` et dans le kit de t
 
 ## Préparer le live
 
-**Parcours recommandé pour la séance :** suivre le [conducteur des trois démos](../handouts/conducteur-demos.html). Il conserve le dépôt principal sur `main`, crée une copie issue de 06 et y applique le commit réseau `036bb193c778be0ff5a8f1c9681ee2b40f666397` puis la révision typographique `30d9b5e7e06d9fe0dbbff3cc8aafc47bb3464f18`. Ces commits laissent la couverture à implémenter et font attribuer les ports API/Python par Aspire, avec Vue sur 53170. Les huit tags et la branche historique `demo-live` ne sont pas réécrits. Le parcours direct ci-dessous permet encore de consulter leur état historique, avec les anciens ports fixes.
+**Parcours recommandé pour la séance :** suivre le [conducteur des trois démos](../handouts/conducteur-demos.html). Le dépôt principal reste sur `main`. La copie d’exercice part du commit `9e1ecde478f4f5d70634a42c720fa10fd224eab7` de `codex/preparation-demo-06` : descendant de 06, il regroupe ports dynamiques, typographie et analyses ETL. La fonction de couverture est strictement identique à 06; ses deux tests d’acceptation restent rouges. La préparation évite un conflit documentaire de cherry-pick pendant la répétition. Les huit tags et `demo-live` ne sont pas réécrits. Le parcours direct ci-dessous consulte leur état historique, avec l’ancienne interface.
 
 Arrêter le parcours conteneurisé avant de changer de jalon. Après l'arrêt ciblé d'Aspire, le script refuse aussi la bascule si le port 53170 est encore occupé; il ne tue aucune autre application.
 

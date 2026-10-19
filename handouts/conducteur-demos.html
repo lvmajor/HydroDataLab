@@ -35,7 +35,7 @@
 <tr>
 <td>Démo 2 · slide 18</td>
 <td>Dépôt principal, <code>main</code></td>
-<td>Python → exports → Vue → Aspire → échec/relance → conteneur</td>
+<td>Python → avant/après → synthèse horaire → détails/relance → conteneur</td>
 <td style="text-align:right">5 min</td>
 </tr>
 <tr>
@@ -58,7 +58,7 @@
 </tr>
 </tbody>
 </table>
-<p><strong>Pourquoi deux dossiers?</strong> Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. <code>main</code> conserve la solution métier du jalon 07 et ajoute les améliorations de préparation, dont les ports dynamiques. La copie du jalon 06 reçoit les corrections réseau et typographiques, sans implémenter la couverture. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.</p>
+<p><strong>Pourquoi deux dossiers?</strong> Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. <code>main</code> conserve la solution métier du jalon 07 et ajoute les améliorations de préparation, dont les ports dynamiques. La branche préparée <code>codex/preparation-demo-06</code>, issue du jalon 06, intègre les ports dynamiques, la typographie et le parcours ETL détaillé, sans implémenter la couverture. Le commit préparé <code>9e1ecde</code> est transporté dans le bundle; aucune résolution de conflit ou application manuelle de commits n’est nécessaire. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.</p>
 <p>Un <strong>tag</strong> est un jalon fixe; une <strong>branche</strong> conserve une nouvelle tentative. La branche existante <code>demo-live</code> n’est pas nécessaire à ce parcours. <strong>Une seule application à la fois</strong> utilise le port fixe Vue 53170; les ports API/Python sont attribués par Aspire. Le serveur des diapositives, sur 53173, reste lancé depuis le dépôt principal. La typographie Vue utilise un corps de 18 px et des libellés de 16 px : faire défiler la page pour montrer chaque zone, plutôt que réduire le zoom pour tout faire tenir.</p>
 <div class="step-navigation"><span></span><a href="#avant-la-seance-preparer-une-fois">Avant la séance →</a></div></section>
 <section id="avant-la-seance-preparer-une-fois" tabindex="-1"><h2>Avant la séance · préparer une fois</h2>
@@ -92,15 +92,13 @@ git bundle create .runtime/repetition-source.bundle --all
 if ($LASTEXITCODE -ne 0) { throw 'Création du bundle interrompue.' }
 git clone --branch main .runtime/repetition-source.bundle &quot;$Live&quot;
 if ($LASTEXITCODE -ne 0) { throw 'Clonage interrompu.' }
-git -C &quot;$Live&quot; switch -c codex/repetition-01 06-specification
+git -C &quot;$Live&quot; switch -c codex/repetition-01 9e1ecde478f4f5d70634a42c720fa10fd224eab7
 if ($LASTEXITCODE -ne 0) { throw 'Branche exercice non créée.' }
-git -C &quot;$Live&quot; -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397 30d9b5e7e06d9fe0dbbff3cc8aafc47bb3464f18
-if ($LASTEXITCODE -ne 0) { throw 'Corrections réseau et typographique non appliquées : examiner le message Git avant de poursuivre.' }
 Set-Location -LiteralPath $Live
 ./scripts/prepare.ps1 -SkipPresentation
 git status --short --branch
 </code></pre>
-<p><strong>Attendu :</strong> branche <code>codex/repetition-01</code>, dossier propre. <code>cherry-pick</code> applique deux commits après le tag 06 : configuration réseau et lisibilité Vue. Ils ne modifient pas le calcul de couverture. L’identité pédagogique passée à cette commande ne change pas les réglages Git de l’utilisateur. Les huit tags restent intacts. Ouvrir cette copie dans une deuxième fenêtre VS Code par <strong>Fichier → Nouvelle fenêtre → Ouvrir un dossier</strong>. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.</p>
+<p><strong>Attendu :</strong> branche <code>codex/repetition-01</code>, dossier propre. La branche part d’une préparation déjà validée issue de 06 : ports, typographie, parcours ETL et détails d’exécution. La couverture reste à implémenter. Aucun cherry-pick n’est nécessaire. Les huit tags restent intacts. Ouvrir cette copie dans une deuxième fenêtre VS Code par <strong>Fichier → Nouvelle fenêtre → Ouvrir un dossier</strong>. Garder aussi la fenêtre du dépôt principal. Identifier les deux fenêtres par leur chemin, même si leur nom de projet ressemble au même nom.</p>
 <p>Contrôler l’état de départ de l’exercice :</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Live
 New-Item -ItemType Directory -Force etl/.test-output | Out-Null
@@ -172,28 +170,41 @@ Réponse attendue : un schéma en quatre étapes et les commandes de vérificati
 $Execution = uv run --project etl python -m hydrodatalab run --source fixture --date 2026-10-17 --output outputs/cli | ConvertFrom-Json
 if ($LASTEXITCODE -ne 0) { throw 'Le traitement Python a échoué.' }
 $Execution.summary | Format-List
+$Execution.indicators | Format-List
 $Export = Join-Path 'outputs/cli' $Execution.runId
 Get-ChildItem -LiteralPath $Export | Select-Object Name,Length
-Get-Content -LiteralPath (Join-Path $Export 'observations.csv') -TotalCount 4
+Get-Content -LiteralPath (Join-Path $Export 'hourly.csv') -TotalCount 5
 </code></pre>
-<p><strong>Montrer :</strong> 168 observations, 4 séries, <code>observations.csv</code>, <code>observations.parquet</code>, <code>report.json</code>. Le dossier de résultats inclut un identifiant unique de traitement; il n’est pas simplement <code>outputs/cli/report.json</code>.</p>
+<p><strong>Montrer :</strong> 168 observations, 4 séries, <code>observations.csv</code>, <code>observations.parquet</code>, <code>hourly.csv</code>, <code>report.json</code>. Le CSV horaire contient 24 lignes calculées à partir des 96 demandes de 15 minutes. Le dossier de résultats inclut un identifiant unique de traitement; il n’est pas simplement <code>outputs/cli/report.json</code>.</p>
 <p><strong>Dire :</strong> « Ce traitement Python est autonome. CSV et Parquet servent à l’analyse; JSON explique le résultat et sa provenance. »</p>
-<h3>1:00–2:15 · Explorer dans Vue</h3>
+<h3>1:00–2:45 · Rendre la transformation visible dans Vue</h3>
 <p><strong>Faire :</strong> ouvrir <a href="http://localhost:53170">http://localhost:53170</a>, choisir <strong>Jeu de démonstration</strong>, décocher <strong>Retirer une mesure de niveau d’eau</strong>, puis <strong>Lancer la collecte</strong>. Attendre <strong>Terminé</strong> dans <strong>Dernières exécutions</strong>.</p>
-<p><strong>Montrer :</strong> les courbes, la date des observations, les unités et la provenance. La collecte locale peut être très rapide : ne pas promettre que chaque statut intermédiaire restera visible. L’historique est la preuve durable.</p>
-<p><strong>Dire :</strong> « L’interface appelle l’API .NET, qui lance le même moteur Python via FastAPI. La demande est en MW; le niveau Gouin Nord est en mètres. Les températures viennent de Gouin Bois. Ce niveau ne mesure pas une réserve énergétique. »</p>
-<h3>2:15–3:00 · Observer dans Aspire</h3>
-<p><strong>Faire :</strong> ouvrir le dashboard Aspire de la version principale. Montrer les ressources <strong>python</strong>, <strong>api</strong>, <strong>web</strong>, puis les journaux de <strong>python</strong> correspondant au traitement.</p>
-<p><strong>Dire :</strong> « Aspire démarre les composants et rassemble leur état et leurs journaux. Quartz coordonne les tâches côté .NET; SQLite garde leur historique. Les calculs métier restent en Python. »</p>
-<h3>3:00–4:30 · Provoquer une erreur et reprendre</h3>
-<p><strong>Faire :</strong> dans Vue, cliquer <strong>Démontrer un échec contrôlé</strong>. Attendre l’échec et lire son message. Cliquer <strong>Relancer ce traitement</strong>, puis attendre <strong>Terminé</strong>.</p>
-<p><strong>Montrer :</strong> l’ancienne erreur reste dans l’historique; la relance crée une nouvelle exécution. Le dernier rapport réussi n’a pas été remplacé par un résultat incomplet.</p>
-<p><strong>Dire :</strong> « C’est une panne simulée, annoncée comme telle. Nous testons le comportement de reprise, pas la disponibilité réelle du fournisseur. » Montrer le contrôle de planification sans l’activer.</p>
+<p><strong>Faire et montrer :</strong> dans <strong>Parcours ETL</strong>, cliquer successivement :</p>
+<ol>
+<li><strong>1 · Extraire</strong> : <code>date</code>, <code>valeurs_demandetotal</code> — vrais champs du fournisseur, 168 lignes sur les quatre séries.</li>
+<li><strong>2 · Transformer</strong> : <code>timestamp_utc</code>, <code>value</code>, <code>unit</code> — dates UTC, nombres typés, unités vérifiées, doublons retirés. Sur le jeu propre, le nombre de lignes reste le même : nettoyer ne signifie pas supprimer arbitrairement des données.</li>
+<li><strong>3 · Charger / exporter</strong> : ouvrir <strong>Afficher la synthèse horaire</strong>. Quatre créneaux de 15 minutes deviennent une moyenne; une heure incomplète reste absente. Montrer la courbe horaire et télécharger son CSV.</li>
+</ol>
+<p><strong>Dire :</strong> « C’est ici que Python apporte la valeur BI : des sources hétérogènes deviennent une table et des indicateurs réutilisables. Vue affiche les résultats; elle ne refait pas les calculs. »</p>
+<p><strong>Montrer les trois cartes, en faisant défiler à zoom normal :</strong></p>
+<ul>
+<li>Pointe horaire moyenne : <strong>22 009,75 MW</strong>, 17 octobre à <strong>18 h</strong> Toronto. Maximum des heures complètes, différent du maximum ponctuel de la courbe de 15 minutes.</li>
+<li>Énergie demandée estimée : <strong>489 442 MWh</strong>, somme de la demande × 0,25 h. Hypothèse : puissance constante pendant chaque créneau; estimation descriptive, pas facturation ni prévision.</li>
+<li>Variation du niveau observé : <strong>+3 cm</strong> entre 00 h et 23 h, à Gouin Nord. Ce n’est pas un volume d’eau ou une réserve d’énergie.</li>
+</ul>
+<p>Les calculs lisibles sont dans <strong><code>etl/hydrodatalab/analysis.py</code></strong>; les petits exemples vérifiables sont dans <strong><code>etl/tests/test_analysis.py</code></strong>. Les onglets sont une exploration du résultat enregistré, pas des étapes exécutées au clic. Les températures minimale et maximale restent deux séries distinctes.</p>
+<h3>2:45–3:15 · Relier Python à son exécution</h3>
+<p><strong>Faire :</strong> dans <strong>Dernières exécutions</strong>, cliquer <strong>Voir les détails</strong> sur le traitement terminé. Montrer les paramètres, les quatre étapes et leurs durées réelles, puis l’export de cette exécution. Copier mentalement le même identifiant dans les journaux Aspire; montrer rapidement les ressources <strong>python</strong>, <strong>api</strong>, <strong>web</strong>.</p>
+<p><strong>Dire :</strong> « Quartz planifie; Python traite; SQLite conserve le bilan. Aspire montre les processus et les journaux. Les étapes Python arrivent à la fin du traitement, pas en animation temps réel. » Les exports d’une ancienne exécution restent liés à son propre rapport.</p>
+<h3>3:15–4:30 · Provoquer une erreur et reprendre</h3>
+<p><strong>Faire :</strong> cliquer <strong>Démontrer un échec contrôlé</strong>, attendre <strong>Échec</strong>, puis <strong>Voir les détails</strong>. Montrer l’étape <strong>Extraire les sources</strong> en échec et le message. Les étapes suivantes n’ont pas été exécutées. Cliquer <strong>Relancer ce traitement</strong> dans l’historique, attendre <strong>Terminé</strong>, ouvrir ses détails.</p>
+<p><strong>Montrer :</strong> la nouvelle tentative pointe vers l’identifiant de l’échec; l’ancienne erreur et le dernier rapport réussi sont préservés. Les durées peuvent être très courtes : aucune attente artificielle n’a été ajoutée. La planification reste désactivée.</p>
+<p><strong>Dire :</strong> « C’est une panne simulée et annoncée. Nous démontrons une reprise vérifiable, pas la disponibilité du fournisseur. »</p>
 <h3>4:30–5:00 · Le même traitement dans une image préparée</h3>
 <pre><code class="language-powershell">docker run --rm --pull never --network none hydrodatalab-etl:formation python -m hydrodatalab run --source fixture --date 2026-10-17 --output /tmp/result
 </code></pre>
-<p>Utiliser la variante Docker/Podman déjà validée avant la séance. <strong>Montrer :</strong> les mêmes nombres dans le résumé. <strong>Dire :</strong> « Le code et ses dépendances sont emballés dans cette image. L’ETL tourne ici sans réseau. » Les fichiers de <code>/tmp/result</code> disparaissent avec ce conteneur; les exports persistants ont déjà été montrés côté natif. L’égalité complète CSV/Parquet/JSON se valide avant la séance avec la procédure de <a href="../docs/DOCKER.md">DOCKER</a>, pas avec le seul résumé console.</p>
-<p><strong>Réussite :</strong> un résultat traçable, une erreur compréhensible, une relance réussie. Si Docker échoue, dire « Le moteur conteneur n’est pas disponible; le parcours local vient d’être exécuté » et passer à SDD.</p>
+<p>Utiliser la variante Docker/Podman déjà validée avant la séance. <strong>Montrer :</strong> les mêmes nombres dans le résumé et les trois indicateurs Python. <strong>Dire :</strong> « Le code et ses dépendances sont emballés dans cette image. L’ETL tourne ici sans réseau. » Les fichiers de <code>/tmp/result</code> disparaissent avec ce conteneur; les exports persistants ont déjà été montrés côté natif. L’égalité complète CSV/Parquet/JSON se valide avant la séance avec la procédure de <a href="../docs/DOCKER.md">DOCKER</a>, pas avec le seul résumé console.</p>
+<p><strong>Réussite :</strong> expliquer ce qui change entre les données brutes et les 24 moyennes horaires, puis montrer une erreur comprise et une relance reliée. Si le temps manque, raccourcir Aspire; conserver l’avant/après ETL et les indicateurs, qui sont le cœur de la démo pour ce public. Si Docker échoue, dire « Le moteur conteneur n’est pas disponible; le parcours local vient d’être exécuté » et passer à SDD.</p>
 <div class="step-navigation"><a href="#demo-1-cadrer-une-mission-4-min">← Démo 1 · 4 min</a><a href="#transition-preparer-la-demo-3">Transition vers Python →</a></div></section>
 <section id="transition-preparer-la-demo-3" tabindex="-1"><h2>Transition · préparer la démo 3</h2>
 <p><strong>Garder la slide 19 (SDD) sur le projecteur.</strong> Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.</p>
@@ -241,7 +252,7 @@ git diff --stat
 git diff -- etl/hydrodatalab/coverage.py
 uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basetemp etl/.test-output/live
 </code></pre>
-<p><strong>Attendu pour la solution préparée :</strong> 35 tests réussis. Si des tests utiles ont été ajoutés, le total peut augmenter. Contrôler les jours de 23/25 heures et la mesure manquante. Les tests en échec interdisent d’annoncer une solution validée.</p>
+<p><strong>Attendu pour la solution préparée :</strong> 43 tests réussis. Si des tests utiles ont été ajoutés, le total peut augmenter. Contrôler les jours de 23/25 heures et la mesure manquante. Les tests en échec interdisent d’annoncer une solution validée.</p>
 <h3>3:00–4:00 · Voir le résultat et sa limite</h3>
 <p><strong>Faire :</strong> après l’enregistrement Python et son rechargement, retourner à Vue. Lancer une <strong>nouvelle</strong> collecte complète, déplier <strong>Qualité par série</strong>. Montrer le niveau d’eau à <strong>24 / 24 · 100 %</strong>. Cocher <strong>Retirer une mesure de niveau d’eau</strong>, relancer, montrer <strong>23 / 24 · 95,83 %</strong>.</p>
 <p><strong>Dire, puis marquer une pause :</strong> « La règle que nous venons de définir détecte maintenant la mesure manquante. » La synthèse globale affiche <strong>167 / 168, soit 99,4 %</strong> : ce n’est pas le même dénominateur. Le retrait est en mémoire; les données brutes restent intactes.</p>
@@ -283,15 +294,13 @@ Set-Location -LiteralPath $Live
 if (git status --porcelain) { throw 'Conserver les changements avant de repartir.' }
 git -C &quot;$Depot&quot; bundle create .runtime/repetition-source.bundle --all
 if ($LASTEXITCODE -ne 0) { throw 'Actualisation du bundle impossible.' }
-git fetch &quot;$Depot/.runtime/repetition-source.bundle&quot; main
+git fetch &quot;$Depot/.runtime/repetition-source.bundle&quot; main codex/preparation-demo-06
 if ($LASTEXITCODE -ne 0) { throw 'La copie ne peut pas lire le dépôt principal.' }
-git switch -c $BrancheSuivante 06-specification
+git switch -c $BrancheSuivante 9e1ecde478f4f5d70634a42c720fa10fd224eab7
 if ($LASTEXITCODE -ne 0) { throw 'Bascule interrompue.' }
-git -c user.name=HydroDataLab -c user.email=formation@example.invalid cherry-pick 036bb193c778be0ff5a8f1c9681ee2b40f666397 30d9b5e7e06d9fe0dbbff3cc8aafc47bb3464f18
-if ($LASTEXITCODE -ne 0) { throw 'Corrections réseau et typographique non appliquées.' }
 ./scripts/start-demo.ps1
 </code></pre>
-<p>La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial <strong>Non calculée</strong>. Le bundle actualisé et le <code>fetch</code> transportent les corrections depuis le dépôt principal local; ils ne contactent pas GitHub. Une ancienne copie sans ces corrections peut suivre ce même parcours de nouvelle branche, après conservation de son travail. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer <code>$Depot</code> comme à la préparation C.</p>
+<p>La tentative précédente reste dans sa branche. Le nouveau nom donne un historique applicatif distinct; relancer une collecte pour obtenir le rapport initial <strong>Non calculée</strong>. Le bundle actualisé et le <code>fetch</code> transportent la branche préparée depuis le dépôt principal local; ils ne contactent pas GitHub. Une ancienne copie sans ces corrections peut suivre ce même parcours de nouvelle branche, après conservation de son travail. Il est inutile de recloner le projet ou de recopier les archives Docker à chaque répétition. Pour le début du parcours complet, arrêter cette copie puis relancer <code>$Depot</code> comme à la préparation C.</p>
 <h3>Reprise après un redémarrage du PC</h3>
 <p>Rouvrir ce conducteur, rejouer le bloc A pour <code>$Depot</code> et <code>$Live</code>, puis :</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Live
@@ -303,6 +312,7 @@ git log -3 --oneline
 <h3>À noter après chaque répétition</h3>
 <p>Dans un fichier local tel que <code>.runtime/notes-repetition.txt</code>, noter la branche, les durées réelles des trois démos et de la transition, le moteur conteneur validé, le résultat des tests et le prochain point à revoir. Ce fichier reste privé au poste et n’entre pas dans Git. Copier la tentative et ses notes sur le support de sauvegarde habituel; le bundle du dépôt principal n’inclut pas les nouveaux commits du clone d’exercice.</p>
 <p><strong>Avant de présenter :</strong> les trois durées tiennent dans 4/5/4 minutes; l’avant/après est lisible depuis le fond de la salle; le secours démarre; Copilot est connecté; l’image est chargée; les diapositives et le PDF sont accessibles hors réseau. La répétition humaine sur le portable HQ reste à effectuer, même si les commandes ont été contrôlées sur le poste de préparation.</p>
+<p>Captures de secours de la nouvelle analyse : <a href="../docs/screenshots/etl-avant.png">avant</a>, <a href="../docs/screenshots/etl-apres.png">après</a>, <a href="../docs/screenshots/etl-synthese.png">synthèse et indicateurs</a>, <a href="../docs/screenshots/etl-execution.png">détail d’exécution</a>. Elles montrent un traitement réellement exécuté; les annoncer comme captures préparées.</p>
 <div class="step-navigation"><a href="#secours-revenir-a-la-solution-preparee">← Secours à 2:10</a><a href="#reperes-a-garder-sous-les-yeux">Retour aux repères ↑</a></div></section></main></div>
 <footer>Source éditable : <a href="conducteur-demos.md">conducteur-demos.md</a> · Fonctionne hors réseau et sans serveur · Aucune commande n’est exécutée par cette page.</footer>
 <script>
