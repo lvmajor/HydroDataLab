@@ -1,6 +1,6 @@
 # Personnalisations de VS Code et du harnais Copilot
 
-Vérifié le **19 octobre 2026**, pour VS Code **1.142**. Cette fiche accompagne les diapositives 8 à 12, 20, 23 et 25. Les formats cités sont liés à leur documentation officielle.
+Vérifié le **19 octobre 2026**, pour VS Code **1.142**. Cette fiche accompagne les diapositives 8 à 13, 21, 24 et 26. Les formats cités sont liés à leur documentation officielle.
 
 ## Choix conseillé pour ce public
 
@@ -65,7 +65,7 @@ Les deux premières sources apportent les consignes durables; les suivantes cadr
 
 ## Lire le panneau Agent Customizations
 
-La diapositive 11 reprend les libellés du menu dans l’ordre de la [capture complète fournie le 19 octobre](../presentation/public/vscode-customizations-overview.png), cadrée en annexe 23. Ce menu classe des capacités; sa disposition ne définit pas leur priorité.
+La diapositive 11 relie les libellés du menu à trois familles pédagogiques, à partir de la [capture complète fournie le 19 octobre](../presentation/public/vscode-customizations-overview.png), cadrée en annexe 24. Ce menu classe des capacités; sa disposition ne définit pas leur priorité.
 
 - **Overview — Vue d’ensemble :** point d’entrée pour retrouver les personnalisations du harnais et du projet indiqués dans l’en-tête.
 - **Customize Your Agent — Personnaliser votre agent :** décrire ses préférences pour faire préparer des agents, skills ou instructions. Par exemple : « Prépare une instruction de projet demandant des tests pour toute transformation Python. » Examiner les fichiers proposés, leur portée et leur compatibilité avant de les enregistrer. Ce champ aide à créer une personnalisation; il ne garantit pas son application à toutes les sessions.
@@ -86,6 +86,31 @@ La diapositive 11 reprend les libellés du menu dans l’ordre de la [capture co
 **Même tâche, trois fonctions :** l’instruction demande de préserver les absences; le skill décrit la vérification; l’outil exécute le test. Un serveur MCP peut fournir un outil; un plugin peut distribuer ce serveur et la skill. Ni le skill, ni le plugin ne sont des modèles. [Microsoft : comparer et combiner les mécanismes](https://code.visualstudio.com/docs/agents/concepts/customization).
 
 Les compteurs de la capture ne mesurent ni le coût ni l’utilisation dans une réponse. Plus précisément, pour le harnais Copilot, le nombre à côté de **Tools** compte les outils côté client activés et exclut les outils intégrés au harnais, affichés en lecture seule. Rendre un outil disponible ne supprime pas ses contrôles d’autorisation. Vérifier les appels et leurs résultats dans la session. [Microsoft : gérer les outils](https://code.visualstudio.com/docs/agents/run/tools).
+
+## Quand une skill est-elle chargée?
+
+La diapositive 12 compare deux parcours. Une **skill** apporte une méthode dans le contexte; un **outil** est appelé avec des paramètres pour agir ou obtenir un résultat. L’agent peut sélectionner les deux, mais leur activation n’a pas le même effet.
+
+Dans Copilot, le chargement normal d’une skill est progressif :
+
+1. **Découvrir :** le nom et la description rendent la skill repérable, sans charger d’avance toutes ses consignes et ressources.
+2. **Sélectionner et charger :** si la tâche correspond, le modèle peut choisir la skill; le corps de `SKILL.md` rejoint alors le contexte. Une invocation explicite `/nom` peut aussi déclencher ce chargement.
+3. **Consulter au besoin :** les fichiers associés et référencés sont utilisés pendant le travail. Charger la procédure ne lance pas automatiquement ses scripts : leur exécution passe par des outils et les contrôles applicables.
+
+Une description précise indique ce que la skill apporte **et quand l’utiliser**. Une skill découverte n’est pas forcément choisie pour chaque tâche pertinente. Le chargement progressif limite le contenu ajouté; ce n’est pas une garantie de coût nul. [Microsoft : chargement des skills](https://code.visualstudio.com/docs/agent-customization/agent-skills#how-copilot-uses-skills).
+
+### Deux réglages distincts dans le YAML de SKILL.md
+
+| Configuration Copilot | Invocation avec `/nom` | Sélection automatique |
+|---|---|---|
+| Champs omis (valeurs par défaut) | Oui | Possible selon la pertinence |
+| `disable-model-invocation: true` | Oui | Non |
+| `user-invocable: false` | Non, commande masquée | Possible selon la pertinence |
+| Les deux réglages ci-dessus | Non | Non |
+
+**Dans HydroDataLab**, `.github/skills/validate-etl/SKILL.md` contient `disable-model-invocation: true`. Le lancement est donc volontaire avec `/validate-etl`; ce n’est pas le comportement par défaut de toutes les skills. Ces contrôles sont documentés pour Copilot; vérifier leur prise en charge dans un autre harnais. [Microsoft : commandes et activation](https://code.visualstudio.com/docs/agent-customization/agent-skills#use-skills-as-slash-commands).
+
+**Une skill peut guider plusieurs appels d’outils** : lire la spécification, exécuter pytest, lire le rapport, résumer les preuves. Inversement, un outil peut servir sans aucune skill. Une skill ne crée pas un outil absent et ne lui accorde pas de permissions supplémentaires. Dans le parcours présenté, son contenu rejoint le contexte courant; le mode expérimental `context: fork` n’est pas utilisé.
 
 ## Comment l’agent choisit-il un outil?
 
@@ -148,7 +173,7 @@ Pour Copilot, suivre le **schéma GitHub Copilot / SDK**, pas un exemple Local c
 4. Ouvrir l’élément, examiner son fichier et son en-tête.
 5. Faire une petite tâche représentative; examiner **References**, les actions et les tests.
 
-La nouvelle capture fournie par le présentateur, intégrée en annexe 23, montre **Overview** pour **Copilot · Formation Copilot - HQ**. Les portées User et Workspace se consultent en ouvrant Instructions; elles ne sont pas visibles dans cette vue d’ensemble. Les chemins sous la capture expliquent ces portées, sans prétendre être des entrées de l’image. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
+La nouvelle capture fournie par le présentateur, intégrée en annexe 24, montre **Overview** pour **Copilot · Formation Copilot - HQ**. Les portées User et Workspace se consultent en ouvrant Instructions; elles ne sont pas visibles dans cette vue d’ensemble. Les chemins sous la capture expliquent ces portées, sans prétendre être des entrées de l’image. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
 
 Si un fichier manque : vérifier harnais, dossier ouvert, emplacement et activation. Le réglage des dossiers parents et les fichiers AGENTS imbriqués demandent une vérification spécifique. Pour Local, `chat.useNestedAgentsMdFiles` est expérimental; ce n’est pas un commutateur universel pour Copilot. Les anciens `chat.*FilesLocations` peuvent nécessiter une migration.
 

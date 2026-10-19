@@ -82,8 +82,8 @@ try {
   await presenter.screenshot({ path: path.join(output, 'sync-context-presenter.png') })
   await audience.screenshot({ path: path.join(output, 'sync-context-audience.png') })
 
-  await presenter.goto(`${origin}/presenter/15`, { waitUntil: 'networkidle' })
-  await audience.goto(`${origin}/15`, { waitUntil: 'networkidle' })
+  await presenter.goto(`${origin}/presenter/16`, { waitUntil: 'networkidle' })
+  await audience.goto(`${origin}/16`, { waitUntil: 'networkidle' })
   await Promise.all([waitAttempts(presenter, 1), waitAttempts(audience, 1)])
   for (let attempts = 2; attempts <= 8; attempts++) {
     await current().getByRole('button', { name: 'Ajouter une tentative', exact: true }).click()
@@ -97,7 +97,7 @@ try {
   await audience.getByRole('button', { name: 'Réduire les tentatives', exact: true }).click()
   await waitAttempts(presenter, 7)
   await audience.close()
-  audience = await openAudience(15)
+  audience = await openAudience(16)
   await waitAttempts(audience, 7)
   await presenter.reload({ waitUntil: 'networkidle' })
   await Promise.all([waitAttempts(presenter, 7), waitAttempts(audience, 7)])
@@ -110,8 +110,8 @@ try {
   }
   await current().getByRole('button', { name: 'Réduire les tentatives', exact: true }).click()
   await Promise.all([waitAttempts(presenter, 1), waitAttempts(audience, 1)])
-  assert.equal(new URL(presenter.url()).pathname, '/presenter/15')
-  assert.equal(new URL(audience.url()).pathname, '/15')
+  assert.equal(new URL(presenter.url()).pathname, '/presenter/16')
+  assert.equal(new URL(audience.url()).pathname, '/16')
   checks.push('Baisse synchronisée, plancher de 1 essai, aucun changement de page involontaire')
   await presenter.screenshot({ path: path.join(output, 'sync-costs-presenter.png') })
   await audience.screenshot({ path: path.join(output, 'sync-costs-audience.png') })

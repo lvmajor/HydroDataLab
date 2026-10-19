@@ -1,6 +1,16 @@
 # Validation de la présentation
 
-## État courant : disponibilité et choix des outils
+## État courant : skills et outils sur deux slides visuelles
+
+19 octobre 2026. **29 diapositives : 23 principales et 6 annexes.** La slide 11 relie une capture réelle agrandie aux familles de personnalisations; la slide 12 compare découverte/chargement/ressources d’une skill au choix/contrôle/résultat d’un outil. La skill du dépôt reste volontaire. Réglages par défaut, user-invocable et disable-model-invocation détaillés dans la fiche; sources officielles relues.
+
+Les 23 plages du guide correspondent aux notes : 32 minutes d’explications et 13 de démonstrations. Les nouvelles slides totalisent 2 min 45; vanille dure 45 secondes et tokens 1 min 30. L’horloge des trois démonstrations reste inchangée. Numéros actualisés : contexte 10, coûts 16, démos 7/18/20, SDD 19, ressources 23, annexes 24–29.
+
+Build réussi; 29 routes sans débordement détecté, erreur de page ou ressource externe. Le premier rendu de la slide 12 débordait vers les références : espacements corrigés sans diminuer les polices, puis rendu inspecté et contrôle repassé. PDF de 29 pages, six destinations internes et liens officiels vérifiés; pages 11–12 et planches examinées. Avertissement FloatingVue d’export déjà connu, sans défaut constaté dans le PDF final.
+
+Synchronisation présentateur/audience repassée pour contexte 10 et coûts 16 : sélection, valeurs, navigation, réouverture et rechargement. Conducteur : huit rubriques, 21 copies, liens, quatre largeurs et impression contrôlés. Preuves : browser-report.json, presenter-sync.json, docs/validation/presentation-flow.json et presentation-guide.json. Répétition orale sur le portable HQ encore à effectuer.
+
+## Historique : disponibilité et choix des outils
 
 19 octobre 2026. Correction de la slide 11 : Tools indique les outils disponibles pour la tâche. La phrase sous le tableau distingue choix du modèle et contrôle du harnais. La fiche et les notes expliquent les définitions d’outils, le contexte, les paramètres, les permissions et le retour du résultat; terminal/pytest sont distingués. Guide aligné sur le même créneau de deux minutes.
 

@@ -37,6 +37,12 @@ Définir objectif, entrée, sortie, contraintes et critères de réussite. Ouvri
 
 Une branche ou un worktree ne sauvegarde pas automatiquement les changements non enregistrés. Un worktree partage l'historique du dépôt et n'isole pas les services externes. [Référence Git](https://git-scm.com/docs/git-worktree).
 
+## Skills et outils : quand interviennent-ils?
+
+Une skill charge une méthode dans le contexte : nom/description repérés, puis `SKILL.md` sélectionné selon la tâche ou invoqué avec `/nom`, puis références consultées au besoin. Un outil est appelé avec des paramètres : le harnais contrôle l’exécution et le résultat revient au modèle. Charger une skill ne lance pas automatiquement ses scripts.
+
+Notre `/validate-etl` est volontaire (`disable-model-invocation: true`). Sans ce réglage, le modèle peut choisir une skill pertinente. `user-invocable: false` masque la commande du menu `/`, sans interdire à lui seul le choix automatique. Voir les [conditions complètes et les références](personnalisations-vscode.md#quand-une-skill-est-elle-chargée).
+
 ## Où ranger quoi?
 
 | Besoin | Support |
@@ -70,7 +76,7 @@ Les tarifs actuels sont en AI credits : 1 crédit = 0,01 $ US. Le coût dépend 
 
 ## Garder une configuration facile à entretenir
 
-Partir des fonctions natives, des consignes du projet et des tests. Ajouter un skill pour une tâche répétée, puis vérifier son utilité. La sélection Python, Playwright, Aspire, .NET et les pistes de Matt Pocock est détaillée dans [Skills et veille](skills-et-veille.md). Matt Pocock reste en exploration dans cette formation. Les ressources pour suivre les nouveautés et les emplacements HQ sont en diapositive 22.
+Partir des fonctions natives, des consignes du projet et des tests. Ajouter un skill pour une tâche répétée, puis vérifier son utilité. La sélection Python, Playwright, Aspire, .NET et les pistes de Matt Pocock est détaillée dans [Skills et veille](skills-et-veille.md). Matt Pocock reste en exploration dans cette formation. Les ressources pour suivre les nouveautés et les emplacements HQ sont en diapositive 23.
 
 ## Vérifier une transformation
 

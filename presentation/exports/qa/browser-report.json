@@ -1,5 +1,5 @@
 {
-  "slideCount": 28,
+  "slideCount": 29,
   "titles": [
     "GitHub Copilot\ndans VS Code",
     "Votre terrain de développement",
@@ -11,7 +11,8 @@
     "Écrire une règle que l’on peut vérifier",
     "Où écrire la règle, et quand s’applique-t-elle?",
     "Context layers · les couches du contexte",
-    "Le panneau Agent Customizations",
+    "Les personnalisations, dans VS Code",
+    "Skills et tools : deux choix distincts",
     "Une base « vanille », des ajouts ciblés",
     "Les tokens : lire et produire",
     "Auto : un bon point de départ",

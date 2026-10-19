@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Skills et tools : deux diapositives visuelles — 19 octobre
+
+- Départ : main `bb479a1`, dépôt propre. Demande : expliquer la sélection automatique des skills, leur chargement progressif et la différence avec les outils; séparer la slide chargée en deux avec capture et schémas.
+- Réalisé : slide 11 = capture du menu et trois familles de capacités; nouvelle 12 = deux parcours skill/outil. Cas de déclenchement, formats et matrice des deux réglages dans la fiche. `validate-etl` reste volontaire, sans modification de sa configuration. Renvois, guides et contrôles renumérotés.
+- Minutage vérifié : 11 en 19:00–20:15, 12 en 20:15–21:45; vanille en 21:45–22:30 et tokens en 22:30–24:00. Tous les créneaux suivants restent inchangés. Total 29 slides (23 + 6), 32 minutes d’explications et 13 de démos; 23 plages notes/guide concordantes.
+- Validé : build, 29 routes, PDF complet et six liens internes; capture et schémas inspectés. Un débordement initial en 12 a été corrigé par les espacements, sans réduire les polices. Synchronisation contexte 10/coûts 16 repassée dans les deux vues. Conducteur : huit rubriques, 21 copies, liens, quatre largeurs et impression. Avertissement FloatingVue d’export inchangé, sans défaut constaté dans les rendus.
+- Livraison : enregistrer la révision puis actualiser le kit existant; les reçus artifacts/LIVRAISON.txt et REVISION.txt indiquent le commit et le bundle actifs. Prochaine action : rafraîchir les deux vues et répéter les slides 11–12. Les démos sont maintenant en 7/18/20, SDD en 19. La répétition humaine reste à effectuer.
+
 ## Disponibilité et choix des outils — 19 octobre
 
 - Départ : main `4d63407`, dépôt propre. Demande : clarifier le besoin couvert par Tools et comment l’agent choisit ses outils.
