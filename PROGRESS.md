@@ -6,7 +6,9 @@
 - Cette autorisation remplace la restriction de publication locale pour ce seul dépôt privé; aucun déploiement cloud n’est demandé.
 - Créé : https://github.com/lvmajor/HydroDataLab. Visibilité PRIVATE confirmée par l’API avant transfert. Lecture des 635 blobs des références à publier : aucun fichier de plus de 100 Mio ni motif de clé privée/jeton détecté par le contrôle ciblé.
 - Préparé : `handouts/synchronisation-github.md`, lien README et guide HQ. Le distant du bundle peut rester sous le nom `kit`; GitHub devient `origin`. Vérification d’un dépôt propre, arrêt sur divergence et séparation de la branche d’exercice. La règle commune de publication est alignée sur l’autorisation explicite.
-- À réaliser : commit documentaire, publication des deux branches et huit tags, contrôle distant et essai de connexion depuis le bundle du ZIP.
+- Publié : commit documentaire `fdb5c92`, main et codex/preparation-demo-06, huit tags annotés. Origin HTTPS configuré; suivi des deux branches installé. La branche locale demo-live n’est pas publiée. Aucun tag réécrit.
+- Validé : dépôt PRIVATE, branche par défaut main, dix références distantes identiques aux références locales. Sept blocs PowerShell parsés. Test depuis le bundle `eba8d19` du ZIP : mise à jour en avance rapide, distant kit préservé, suivi origin/main, branche d’exercice disponible, deuxième exécution sûre; arrêt et conservation d’un fichier local non enregistré. Preuve : `docs/validation/github-sync.json`. Copie temporaire de validation retirée après vérification.
+- Prochaine action : sur le portable HQ, ouvrir le guide `handouts/synchronisation-github.md` depuis GitHub et exécuter la connexion dans le dépôt restauré. Le ZIP garde Docker et le site de secours; lancer la version actuelle depuis le dépôt Git. Le portable HQ n’a pas été testé directement. La présente entrée de clôture est publiée après le commit initial contrôlé.
 
 ## Repères MCP et VS Code 1.142 — 19 octobre
 

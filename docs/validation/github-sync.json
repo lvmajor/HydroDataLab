@@ -1,0 +1,29 @@
+{
+  "checkedAtUtc": "2026-10-19T20:29:15.775537+00:00",
+  "repository": {
+    "defaultBranchRef": {
+      "name": "main"
+    },
+    "isPrivate": true,
+    "nameWithOwner": "lvmajor/HydroDataLab",
+    "url": "https://github.com/lvmajor/HydroDataLab"
+  },
+  "references": {
+    "refs/heads/codex/preparation-demo-06": "9e1ecde478f4f5d70634a42c720fa10fd224eab7",
+    "refs/heads/main": "fdb5c927c85bd4db796e5665eda60897a457fd8a",
+    "refs/tags/00-socle": "7fb11b3c95e794040f73d15ce1d3b82e3bfe55af",
+    "refs/tags/01-instructions": "b41fb35dc005a5807ac6a65a8b3efe7ccbb8d22f",
+    "refs/tags/02-extraction": "ced01825fa75c7606846a4555095174fd9eaea04",
+    "refs/tags/03-transformation-bi": "fa7ee6272145658b331b7ca0b72f730b03a9e04f",
+    "refs/tags/04-pilotage": "636f2791ddea490215a1ad1e635a9a76351132b9",
+    "refs/tags/05-docker": "0f09eceae564e202bea2f9cdcde09cb1f45606ef",
+    "refs/tags/06-specification": "7366a0d4c2f0cfc89c6389c0467aab3e65fa44c2",
+    "refs/tags/07-solution": "a3124e0a0e25416183c107c1c37dcce161321c51"
+  },
+  "zipSourceCommit": "eba8d1990b34fa5a5e39998acff237df3ca97436",
+  "hqGuideFastForward": true,
+  "bundleRemotePreserved": true,
+  "rerunSafe": true,
+  "uncommittedChangesPreservedAndBlocked": true,
+  "actualHqLaptop": "Not tested"
+}
