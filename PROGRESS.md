@@ -6,7 +6,7 @@
 - Preuve enregistrée : six infobulles publiques Sol/Codex et Sonnet/Claude Code, Low/High/Max; lectures et réglages dans docs/screenshots/artificial-analysis/. Capture réelle locale dans presentation/public/. Aucun export de données payant utilisé.
 - Réalisé : vraie capture sur la slide 17, tableau des six valeurs, comparaisons Sol High/Max (+74 %, indice affiché 60) et Sonnet High/Max (×11,4, indice 55 → 68). Indices arrondis, axe logarithmique, harnais et distinction coût API/facture Copilot explicites. Notes de 90 secondes, guide, matrice, aide-mémoire et sources alignés. Compteur du diaporama corrigé pour utiliser le total réel.
 - Vérifié : build; slide 17 audience/présentateur en 1366×768 et 1920×1080, aucun débordement, marges de 23,6/33,2 pixels; notes ouvertes au clavier, repliées après rechargement. PDF de 30 pages régénéré, textes/liens et six destinations internes validés, page 17 inspectée. Avertissement FloatingVue connu sans défaut constaté. Les 24 plages notes/guide concordent : 32 + 13 minutes, slide 17 à 26:30–28:00. Preuves : docs/validation/thinking-effort.json et presentation/exports/qa/VALIDATION.md.
-- Prochaine action : enregistrer et synchroniser main sur le dépôt privé, puis côté HQ faire un pull, reconstruire Slidev et recharger les deux vues. Tags, branche d’exercice, Docker et ZIP existant inchangés.
+- Livraison : commit de contenu validé `d646f7c`, publié sur origin/main. Prochaine action côté HQ : faire un pull, reconstruire Slidev et recharger les deux vues; répéter les deux comparaisons dans leur créneau de 90 secondes. Tags, branche d’exercice, Docker et ZIP existant inchangés.
 
 ## Thinking effort et coût par tâche — 19 octobre
 
