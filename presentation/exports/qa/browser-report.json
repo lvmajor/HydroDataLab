@@ -1,5 +1,5 @@
 {
-  "slideCount": 29,
+  "slideCount": 30,
   "titles": [
     "GitHub Copilot\ndans VS Code",
     "Votre terrain de développement",
@@ -17,6 +17,7 @@
     "Les tokens : lire et produire",
     "Auto : un bon point de départ",
     "Comparer 4 tâches et 5 modèles",
+    "Thinking effort et coût par tâche",
     "Auto choisit; HydraFusion orchestre",
     "Démo 2 · vérifier un résultat",
     "SDD : une spécification avant le code",

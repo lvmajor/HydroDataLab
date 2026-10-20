@@ -6,7 +6,7 @@ const errors=[]; const external=new Set(); const issues=[]; const titles=[];
 page.on('pageerror',e=>errors.push(e.message));
 page.on('request',r=>{const u=r.url();if(!u.startsWith('http://127.0.0.1:53173')&&!u.startsWith('data:')&&!u.startsWith('blob:'))external.add(u)});
 await page.route('**/*',route=>{const u=route.request().url();if(!u.startsWith('http://127.0.0.1:53173')&&!u.startsWith('data:')&&!u.startsWith('blob:'))return route.abort();return route.continue()});
-for(let i=1;i<=29;i++){
+for(let i=1;i<=30;i++){
  await page.goto(`http://127.0.0.1:53173/${i}`,{waitUntil:'networkidle'});
  const slide=page.locator('.slidev-layout:visible').first();
  await slide.waitFor();
@@ -14,7 +14,7 @@ for(let i=1;i<=29;i++){
  const out=await slide.evaluate(el=>{const r=el.getBoundingClientRect();const footers=[...el.querySelectorAll('.doc-link,.source')];const limit=Math.min(r.bottom-25,...footers.map(n=>n.getBoundingClientRect().top-4));return [...el.children].filter(n=>!['source','doc-link','slide-number'].some(c=>n.classList.contains(c))).map(n=>({tag:n.tagName,text:n.textContent.slice(0,70),r:n.getBoundingClientRect()})).filter(n=>n.r.bottom>limit||n.r.right>r.right+2).map(n=>({tag:n.tag,text:n.text,bottom:n.r.bottom-limit,right:n.r.right-r.right}))});
  if(out.length)issues.push({slide:i,out});
 }
-if(titles.length!==29||titles[1]!=='Votre terrain de développement')throw new Error('Opening slide order');
+if(titles.length!==30||titles[1]!=='Votre terrain de développement')throw new Error('Opening slide order');
 await page.goto('http://127.0.0.1:53173/10',{waitUntil:'networkidle'});
 for(const term of ['Project instructions','File-specific instructions','Reference documents','Task prompt','Tool results']){
  if(!await page.getByRole('button',{name:new RegExp(term)}).isVisible())throw new Error('Missing bilingual layer: '+term);
@@ -44,16 +44,16 @@ const headerOverflow=await page.locator('.task-header').evaluateAll(headers=>hea
 if(headerOverflow.length)issues.push({slide:16,headers:headerOverflow,problem:'Header content overflow'});
 await page.getByRole('button',{name:'Réduire les tentatives',exact:true}).click();
 await page.screenshot({path:'exports/qa/model-interactive.png'});
-for(const i of [1,2,3,6,7,8,9,10,11,12,13,18,19,20,21,22,23,24,26]){await page.goto(`http://127.0.0.1:53173/${i}`,{waitUntil:'networkidle'});await page.screenshot({path:`exports/qa/revision-${i}.png`})}
+for(const i of [1,2,3,6,7,8,9,10,11,12,13,17,18,19,20,21,22,23,24,25,27]){await page.goto(`http://127.0.0.1:53173/${i}`,{waitUntil:'networkidle'});await page.screenshot({path:`exports/qa/revision-${i}.png`})}
 await page.goto('http://127.0.0.1:53173/9',{waitUntil:'networkidle'});
 if(!await page.getByRole('link',{name:'Microsoft · format et activation',exact:true}).isVisible())throw new Error('Official format reference missing');
-await page.goto('http://127.0.0.1:53173/presenter/20',{waitUntil:'networkidle'});
+await page.goto('http://127.0.0.1:53173/presenter/21',{waitUntil:'networkidle'});
 if(!(await page.locator('body').innerText()).includes('solution préparée'))throw new Error('Presenter notes missing');
-await page.goto('http://127.0.0.1:53173/23',{waitUntil:'networkidle'});
+await page.goto('http://127.0.0.1:53173/24',{waitUntil:'networkidle'});
 if(await page.locator('.resource-columns a').count()!==7)throw new Error('Expected seven public resources');
 if(await page.locator('.internal-resources a').count()!==0)throw new Error('No HQ URL supplied: placeholders must not be links');
 if(await page.getByText('Lien interne à ajouter',{exact:true}).count()!==3)throw new Error('Expected three editable HQ slots');
-if(titles[12]!=='Une base « vanille », des ajouts ciblés'||titles[20]!=='Des skills à choisir selon votre tâche'||titles[22]!=='Pour continuer et rester à jour')throw new Error('New slide order');
+if(titles[12]!=='Une base « vanille », des ajouts ciblés'||titles[21]!=='Des skills à choisir selon votre tâche'||titles[23]!=='Pour continuer et rester à jour')throw new Error('New slide order');
 await fs.writeFile('exports/qa/browser-report.json',JSON.stringify({slideCount:titles.length,titles,issues,errors,external:[...external],interactions:'passed',offline:'external resources blocked throughout'},null,2));
 await browser.close();
 console.log(JSON.stringify({slideCount:titles.length,issues,errors,external:[...external],interactions:'passed'}));

@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Thinking effort et coût par tâche — 19 octobre
+
+- Départ : main `e86847f`, propre et synchronisé avec origin/main. Demande : ajouter une slide après la 16 et référencer les benchmarks de code/coût d’Artificial Analysis.
+- Réalisé : slide 17 visuelle, niveaux de raisonnement, différence avec Auto, coût des reprises et lecture du benchmark. Sources Microsoft et Artificial Analysis relues le 19 octobre; pas de classement ou de points inventés. Notes ventilées, guide, conducteur HTML, aide-mémoire et matrice actualisés.
+- Minutage validé : 30 slides, dont 24 principales; 32 minutes d’explications et 13 de démos. Auto 1 min, matrice 1 min 30, nouvelle slide 1 min 30, HydraFusion 30 s; horaires des démos inchangés. Les 24 plages notes/guide concordent.
+- Vérifié : build, 30 routes sans débordement/erreur/requête externe, interactions contexte/coûts, nouvelle slide audience/présentateur en 1366×768 et 1920×1080, notes repliables au clavier. Chevauchement initial corrigé. PDF de 30 pages, textes/liens officiels et six destinations internes validés; page 17 et planches examinées. Avertissement FloatingVue d’export inchangé, sans défaut constaté. Preuves : docs/validation/thinking-effort.json, presentation-flow.json et presentation/exports/qa/.
+- Livraison : enregistrer cette révision validée et la synchroniser sur main. Prochaine action côté HQ : pull en avance rapide, reconstruire le site et recharger les deux vues, puis répéter le créneau 24:00–28:30. Aucun changement des tags, de la branche d’exercice ou des images Docker; ZIP antérieur conservé.
+
 ## Synchronisation GitHub privée — 19 octobre
 
 - Départ : main `f34f976`, dépôt propre, aucun distant. L’utilisateur demande explicitement la création d’un dépôt GitHub privé et la publication de main, codex/preparation-demo-06 et des huit tags.

@@ -50,6 +50,20 @@ La diapositive 16 montre **les quatre tâches en colonnes et les cinq modèles e
 
 Le volume identique entre modèles d’un scénario isole l’effet du tarif. En réel, appels, raisonnement, cache et reprises diffèrent. Deux modèles au même tarif peuvent produire des résultats différents. Auto Balance reste le défaut conseillé; on ne lui attribue pas un prix fixe puisqu’il route les requêtes. Valider les choix sur quelques tâches représentatives : exactitude, tests, temps, reprises et crédits totaux. [Comparaison officielle des modèles](https://docs.github.com/en/copilot/reference/ai-models/model-comparison).
 
+## Thinking effort : effort de raisonnement
+
+Ajout vérifié le **19 octobre 2026**. Ce paramètre module le raisonnement consacré à une requête. Commencer par le réglage recommandé; le raisonnement adaptatif ajuste l’effort lorsqu’il est disponible. Dans le sélecteur, ouvrir la flèche du modèle puis **Thinking Effort**. Les niveaux proposés varient : Low, Medium et High ne sont pas un menu universel, ni Medium un défaut universel. Auto choisit un modèle; ce réglage concerne son effort. [Microsoft : configuration](https://code.visualstudio.com/docs/agent-customization/language-models#configure-thinking-effort).
+
+Exemples pédagogiques à tester : effort faible pour une correction mécanique; intermédiaire pour une modification délimitée; élevé pour un diagnostic complexe. Davantage de raisonnement consomme plus de tokens; cela ne remplace pas un contexte clair et des tests. Noter modèle, effort, résultat, nombre de reprises, durée et crédits pour quelques tâches représentatives.
+
+## Coût par tâche et benchmarks de code
+
+La diapositive **17** complète les montants simulés de la 16. Le **coût du résultat validé** additionne les appels et les reprises nécessaires. Exemple fictif : trois essais à 0,10 $ totalisent 0,30 $; un essai réussi à 0,20 $ est moins cher. Évaluer aussi le temps de validation humaine.
+
+[Artificial Analysis — Coding Agents](https://artificialanalysis.ai/agents/coding-agents) propose le graphique **Coding Agent Index vs. Cost per Task** : score de code vers le haut, coût API moyen par tâche vers la droite. Comparer les configurations **agent + modèle + réglages**, et examiner leurs résultats sur des tâches proches des vôtres. Le repère dessiné dans la slide n’invente aucun point du classement.
+
+Le coût affiché tient compte des tarifs API et du cache applicable. Il ne mesure ni la facture Copilot ni un coût par réussite garantie; l’indice agrège plusieurs évaluations. Lire la [méthodologie](https://artificialanalysis.ai/methodology/coding-agents-benchmarking) et la date des résultats. Utiliser ces mesures pour présélectionner, puis confirmer sur vos tâches et dans le sélecteur HQ. Aucun classement chiffré n’est figé dans le support.
+
 ## Auto et HydraFusion
 
 [Auto](https://docs.github.com/en/copilot/concepts/models/auto-model-selection) propose Efficiency, Balance et Intelligence dans VS Code. Le routage considère tâche, disponibilité et politiques; les modèles autorisés peuvent évoluer. Les plans payants bénéficient d’une remise annoncée de 10 % sur le coût des modèles en Auto. Cela ne garantit pas qu’une tâche coûtera moins qu’avec un choix manuel donné.

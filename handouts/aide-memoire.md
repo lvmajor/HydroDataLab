@@ -8,6 +8,12 @@ La [fiche des personnalisations VS Code](personnalisations-vscode.md) explique l
 
 Développer et tester localement des ETL Python et des visualisations, puis préparer leur exécution dans un environnement conteneurisé. Utiliser la marge d’expérimentation pour comparer des approches et conserver des résultats reproductibles. Au quotidien : données autorisées pour l’outil utilisé, secrets protégés, accès limités, changements relus et testés. Les politiques HQ continuent de s’appliquer aux prototypes. [Référence Microsoft sur la sécurité](https://code.visualstudio.com/docs/agents/run/security).
 
+## Modèle, effort et coût du résultat
+
+- **Auto** choisit le modèle; **Thinking Effort** règle le raisonnement pour les modèles compatibles. Commencer par les réglages recommandés, puis augmenter l’effort si la difficulté le justifie. Davantage d’effort consomme plus de tokens. [Réglage dans VS Code](https://code.visualstudio.com/docs/agent-customization/language-models#configure-thinking-effort).
+- Comparer le coût de **tous les appels, reprises comprises**, avec les tests réussis et le temps passé. Un premier essai moins cher ne garantit pas une tâche moins chère.
+- [Artificial Analysis : code et coût par tâche](https://artificialanalysis.ai/agents/coding-agents) aide à comparer des configurations agent/modèle/réglages. Son coût API par tâche n’est pas la facture Copilot ni un coût par réussite garantie. Détails et exemple dans la [matrice des modèles](matrice-modeles.md#thinking-effort--effort-de-raisonnement).
+
 ## Avant de lancer
 
 Définir objectif, entrée, sortie, contraintes et critères de réussite. Ouvrir le bon dossier du projet et choisir sa branche d'essai. Vérifier le modèle et les actions autorisées. Un worktree supplémentaire est facultatif. Pour HydroDataLab, Python réalise les transformations et les données brutes restent intactes.
@@ -89,7 +95,7 @@ Les tarifs actuels sont en AI credits : 1 crédit = 0,01 $ US. Le coût dépend 
 
 ## Garder une configuration facile à entretenir
 
-Partir des fonctions natives, des consignes du projet et des tests. Ajouter un skill pour une tâche répétée, puis vérifier son utilité. La sélection Python, Playwright, Aspire, .NET et les pistes de Matt Pocock est détaillée dans [Skills et veille](skills-et-veille.md). Matt Pocock reste en exploration dans cette formation. Les ressources pour suivre les nouveautés et les emplacements HQ sont en diapositive 23.
+Partir des fonctions natives, des consignes du projet et des tests. Ajouter un skill pour une tâche répétée, puis vérifier son utilité. La sélection Python, Playwright, Aspire, .NET et les pistes de Matt Pocock est détaillée dans [Skills et veille](skills-et-veille.md). Matt Pocock reste en exploration dans cette formation. Les ressources pour suivre les nouveautés et les emplacements HQ sont en diapositive 24.
 
 ## Vérifier une transformation
 

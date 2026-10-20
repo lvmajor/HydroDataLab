@@ -1,0 +1,25 @@
+{
+  "checkedAtUtc": "2026-10-20T00:19:04.146Z",
+  "slide": 17,
+  "sourcesDate": "2026-10-19",
+  "chart": "Reading guide only; no fabricated benchmark points",
+  "durationSeconds": 90,
+  "results": [
+    {
+      "width": 1366,
+      "height": 768,
+      "gapToFooter": 29.152175903320312,
+      "overflow": [],
+      "notesExpandedByKeyboard": true
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "gapToFooter": 40.99525451660156,
+      "overflow": [],
+      "notesExpandedByKeyboard": true
+    }
+  ],
+  "errors": [],
+  "external": []
+}

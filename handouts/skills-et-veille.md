@@ -1,6 +1,6 @@
 # Personnaliser avec mesure et rester à jour
 
-Sélection préparée le **19 octobre 2026** pour des analystes BI/Python dans VS Code et GitHub Copilot. Diapositives 11, 12 et 22. Aucun skill tiers n’est installé par cette révision du support.
+Sélection préparée le **19 octobre 2026** pour des analystes BI/Python dans VS Code et GitHub Copilot. Diapositives 11, 12 et 22–24. Aucun skill tiers n’est installé par cette révision du support.
 
 ## Notre recommandation « vanille »
 

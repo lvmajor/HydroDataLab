@@ -1,6 +1,14 @@
 # Validation de la présentation
 
-## État courant : notes du présentateur structurées
+## État courant : Thinking Effort et coût par tâche
+
+19 octobre 2026. **30 slides, dont 24 principales et 6 annexes.** Nouvelle slide 17 : niveaux de raisonnement, réglage distinct d’Auto, coût des appels/reprises et lecture du graphique Artificial Analysis. Le schéma ne contient pas de points mesurés. Liens Microsoft, benchmark et méthodologie accessibles dans le site et le PDF.
+
+Build et 30 routes audience validés : aucun débordement, erreur de page ou chargement externe. Interactions contexte/coûts réussies. Rendus audience/présentateur de la 17 examinés en 1366×768 et 1920×1080; marges au-dessus des références de 29 et 41 pixels. Notes en quatre repères, détails ouverts au clavier; pas de débordement horizontal. Le premier chevauchement a été corrigé avant livraison.
+
+PDF : 30 pages, textes et liens attendus, six liens internes convertis en destinations autonomes. Page 17 inspectée à pleine taille, planches 2–3 parcourues; pages précédentes inchangées à part les liens d’annexe. Avertissement FloatingVue connu dans l’export, sans effet constaté sur les rendus. Les 24 plages notes/guide concordent : **32 + 13 minutes**; trois démos aux mêmes horaires. La répétition orale sur le portable HQ reste à faire. Preuves : `../../../docs/validation/thinking-effort.json`, `presentation-flow.json`, `browser-report.json` et captures `thinking-*`.
+
+## Historique : notes du présentateur structurées
 
 19 octobre 2026. Les 29 notes sont ventilées en horloge, fil rouge, intertitres et listes courtes; les précisions et procédures facultatives se déplient. Les démos indiquent le départ de leurs temps relatifs, et la décision de secours à 2:10 reste visible dans le fil de la démo 3. Guide et README expliquent la lecture et le redimensionnement du panneau.
 

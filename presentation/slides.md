@@ -146,7 +146,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 <summary>Repères · niveau du public et annexes</summary>
 
 - Aucune maîtrise de Git, Docker, .NET ou Vue n’est supposée : expliquer les mots avant de les utiliser.
-- Les annexes 24 à 29 servent aux questions.
+- Les annexes 25 à 30 servent aux questions.
 
 </details>
 -->
@@ -373,7 +373,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 <div class="rule-file"><b>Instruction permanente :</b> « Conserver les valeurs manquantes.<br>Compter 0 comme une mesure numérique valide. »<br><code>.github/instructions/python.instructions.md</code></div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions personnalisées</a> · <a href="/24">Se repérer dans Customizations →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions personnalisées</a> · <a href="/25">Se repérer dans Customizations →</a></div>
 
 <!--
 **2 min · 13:00–15:00**
@@ -402,7 +402,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 - En pandas, l’absence peut apparaître comme `NaN` ou `NA`; en JSON, `null`.
 - Le test compte deux valeurs : ni une (zéro exclu), ni trois (absence remplacée).
 - Zéro n’est pas physiquement plausible pour toute série : les contrôles métier restent nécessaires.
-- La capture réelle est en annexe 24; l’ouvrir pendant la démo seulement si nécessaire.
+- La capture réelle est en annexe 25; l’ouvrir pendant la démo seulement si nécessaire.
 
 </details>
 -->
@@ -509,7 +509,7 @@ Compter 0 comme une mesure numérique valide.
 
 <CustomizationMap />
 
-<div class="doc-link"><a href="https://code.visualstudio.com/updates/v1_142#copilot-harness">Microsoft · version 1.142</a> · <a href="https://code.visualstudio.com/docs/agent-customization/mcp-servers#choose-a-configuration-destination">Fichiers MCP</a> · <a href="https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers">Migration</a> · <a href="/24">Capture du panneau →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/updates/v1_142#copilot-harness">Microsoft · version 1.142</a> · <a href="https://code.visualstudio.com/docs/agent-customization/mcp-servers#choose-a-configuration-destination">Fichiers MCP</a> · <a href="https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers">Migration</a> · <a href="/25">Capture du panneau →</a></div>
 
 <!--
 **1 min 15 · 19:00–20:15**
@@ -518,7 +518,7 @@ Compter 0 comme une mesure numérique valide.
 
 ### 0:00–0:10 · Partir du menu
 
-- **Situer Overview :** point d’entrée des personnalisations; capture disponible en annexe 24.
+- **Situer Overview :** point d’entrée des personnalisations; capture disponible en annexe 25.
 - **Dire :** « Ces trois familles nous aident à nous repérer. »
 
 ### 0:10–0:35 · Lire les trois familles
@@ -541,7 +541,7 @@ Compter 0 comme une mesure numérique valide.
 <details>
 <summary>Pour les questions · interface et exemples</summary>
 
-- **Customize Your Agent** aide à préparer des fichiers à relire; visible en annexe 24.
+- **Customize Your Agent** aide à préparer des fichiers à relire; visible en annexe 25.
 - **Explore Customizations** ouvre les mêmes rubriques sous forme de cartes.
 - Les compteurs ne prouvent pas l’utilisation dans une réponse. La capture de l’annexe est agrandie sans retoucher ses pixels.
 - MCP = *Model Context Protocol*. SQL, hook et plugin sont des exemples illustratifs, pas des composants identifiés dans la capture.
@@ -732,7 +732,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 <div class="source"><a href="https://docs.github.com/en/copilot/concepts/models/auto-model-selection">GitHub · Auto model selection</a>, consulté le 18 octobre 2026. Politiques et abonnement restent déterminants.</div>
 
 <!--
-**1 min 30 · 24:00–25:30**
+**1 min · 24:00–25:00**
 
 > **Fil rouge :** Auto Balance est notre point de départ, puis nous vérifions le résultat et le coût.
 
@@ -770,7 +770,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 <div class="doc-link"><a href="https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing">GitHub · tarifs au 18 octobre 2026</a> · <a href="https://docs.github.com/en/copilot/reference/ai-models/model-comparison">Comparer les modèles</a></div>
 
 <!--
-**2 min · 25:30–27:30**
+**1 min 30 · 25:00–26:30**
 
 > **Fil rouge :** comparer le coût d’un résultat validé, pas seulement celui d’un essai.
 
@@ -789,7 +789,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 ### Manipuler et enchaîner
 
 - Depuis le présentateur, passer de **1 à 2 essais** avec `+`, puis revenir à **1** avec `−`.
-- **Dire :** « Les reprises se cumulent. Plusieurs passages peuvent aussi être organisés par HydraFusion. »
+- **Dire :** « Les reprises se cumulent. Un autre réglage change aussi le travail effectué : le niveau de raisonnement. »
 
 <details>
 <summary>Précisions · hypothèses des coûts</summary>
@@ -798,6 +798,53 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 - Sonnet et Sol ont le même tarif, sans preuve d’une qualité identique.
 - Le volume réel des essais peut varier. Cache et remise Auto exclus; aucun prix fixe inventé pour Auto.
 - Ce n’est ni un benchmark ni une mesure du coût d’un projet. Confirmer les modèles disponibles dans le sélecteur HQ.
+
+</details>
+-->
+
+---
+
+# Thinking effort et coût par tâche
+
+<ThinkingEffort />
+
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/language-models#configure-thinking-effort">Microsoft · régler l’effort</a> · <a href="https://artificialanalysis.ai/agents/coding-agents">Artificial Analysis · score de code / coût par tâche ↗</a><br>Repères consultés le 19 octobre 2026 · <a href="https://artificialanalysis.ai/methodology/coding-agents-benchmarking">Méthodologie du benchmark</a></div>
+
+<!--
+**1 min 30 · 26:30–28:00**
+
+> **Fil rouge :** choisir un niveau d’effort utile et comparer le coût d’un résultat qui passe nos tests.
+
+### 0:00–0:30 · Régler l’effort
+
+- **Dire :** « Thinking effort, c’est l’effort de raisonnement consacré à une requête. »
+- Commencer avec le réglage recommandé. Low pour une correction mécanique; augmenter pour un diagnostic difficile si le résultat le justifie.
+- Le sélecteur du modèle donne accès à **Thinking Effort** quand le modèle le permet. Medium et High sont des exemples de niveaux; leurs noms et leur disponibilité varient.
+
+### 0:30–0:55 · Raisonner par tâche
+
+- **Distinguer :** Auto choisit le modèle; Thinking Effort règle son raisonnement. Un niveau élevé consomme davantage de tokens et ne garantit pas une réussite.
+- Additionner les appels, y compris les reprises. Exemple **fictif** : trois essais à 0,10 $ coûtent 0,30 $; un seul essai réussi à 0,20 $ revient moins cher.
+- Comparer aussi les tests réussis et le temps passé, avec la même tâche et les mêmes critères.
+
+### 0:55–1:20 · Lire Artificial Analysis
+
+- Pointer le repère : **plus haut = meilleur score; plus à gauche = coût API moindre**. Le dessin ne contient aucun point mesuré.
+- Sur le site lié, chercher **Coding Agent Index vs. Cost per Task**. Comparer la combinaison **agent, modèle et réglages**, pas seulement un nom de modèle.
+- Le coût par tâche du benchmark n’est ni un coût par réussite garantie ni notre facture Copilot. Utiliser ce repère pour présélectionner, puis tester nos tâches.
+
+### 1:20–1:30 · Enchaîner
+
+« Nous pouvons régler l’effort d’un modèle. HydraFusion peut aussi organiser plusieurs passages. »
+
+<details>
+<summary>Pour les questions · réglages et méthode</summary>
+
+- Les réglages recommandés et le raisonnement adaptatif sont le point de départ documenté. Ne pas présenter Medium comme le défaut universel ni High comme une qualité garantie.
+- Le réglage est mémorisé par session; une nouvelle conversation reprend le dernier niveau choisi pour ce modèle. Vérifier le sélecteur du portable HQ avant la séance.
+- Artificial Analysis mesure des tâches de développement dans des conditions fixées. Son indice v1.5 combine plusieurs évaluations; le coût est calculé aux tarifs API, avec cache lorsqu’il s’applique. Les configurations et le classement évoluent.
+- La page et sa méthodologie sont liées, sans figer un classement non vérifié dans le support. Le schéma local reste lisible sans Internet; la consultation du site est facultative, après la séance ou en questions.
+- La facture Copilot dépend de ses tarifs, crédits et politiques. Le temps de validation humaine s’évalue en plus du coût des appels.
 
 </details>
 -->
@@ -825,16 +872,14 @@ Un modèle choisi pour la requête.<br>Préférence Efficiency, Balance<br>ou In
 <div class="doc-link"><a href="https://docs.github.com/en/early-access/copilot/hydrafusion">GitHub · fonctionnement et facturation HydraFusion</a><br><a href="https://github.blog/changelog/2026-10-14-hydrafusion-updates-and-new-max-option/">Annonce du 14 octobre</a> · <a href="https://docs.github.com/en/copilot/concepts/models/auto-model-selection">Documentation Auto</a></div>
 
 <!--
-**1 min · 27:30–28:30**
+**30 s · 28:00–28:30**
 
 > **Fil rouge :** HydraFusion organise un parcours; ce n’est pas un modèle supplémentaire.
 
-### Distinguer les parcours
+### 0:00–0:20 · Distinguer les parcours
 
-- **Single :** un passage peut suffire.
-- **Cascade :** évalue puis peut escalader.
-- **Critique :** ajoute revue puis révision.
-- Le parcours et l’effort varient selon le prompt; les passages supplémentaires peuvent augmenter durée et crédits.
+- **Dire :** « Single : un modèle; Cascade : une proposition évaluée; Critique : une revue suivie d’une révision. »
+- Les coûts des modèles utilisés s’additionnent, sans remise Auto. Préversion à explorer après la séance.
 
 ### Enchaîner
 
@@ -1039,14 +1084,14 @@ class: breakwater
 
 - Collecte complète, puis collecte avec **Retirer une mesure de niveau d’eau**.
 - **Qualité par série : 24/24 = 100 %, puis 23/24 = 95,83 %.** Marquer une pause.
-- **Enchaîner à 4:00 :** « Vous voyez ce que cette règle permet de détecter. » Revenir à la slide 21.
+- **Enchaîner à 4:00 :** « Vous voyez ce que cette règle permet de détecter. » Revenir à la slide 22.
 
 <details>
 <summary>Secours · preuve préparée et limites</summary>
 
 - Si les services tardent, montrer la preuve préparée en le disant; ne pas dépasser 4:00.
 - En secours, utiliser le diff historique limité à `coverage.py` décrit dans le conducteur et annoncer sa provenance.
-- Ne pas basculer le dépôt principal sur un ancien tag. La transition vers la copie préparée a déjà eu lieu en slide 19.
+- Ne pas basculer le dépôt principal sur un ancien tag. La transition vers la copie préparée a déjà eu lieu en slide 20.
 - La copie vient de `codex/preparation-demo-06` (`9e1ecde`) et conserve la couverture à implémenter.
 
 </details>
@@ -1160,7 +1205,7 @@ Examiner le diff.<br>Lire les résultats des tests.<br>Conserver les décisions 
 <summary>Repères · conclusion</summary>
 
 - Ne pas introduire de nouvelle technologie dans cette conclusion.
-- Canvas reste disponible en annexe 26 sur demande.
+- Canvas reste disponible en annexe 27 sur demande.
 
 </details>
 -->
@@ -1175,7 +1220,7 @@ class: resources
 
 <div class="resource-routine">Routine proposée : 15 minutes de veille par semaine, puis une pratique testée sur votre projet.</div>
 
-<div class="source">Liens publics vérifiés le 19 octobre 2026. Ressources HQ à compléter. <a href="/26">Canvas en préversion · annexe 26</a></div>
+<div class="source">Liens publics vérifiés le 19 octobre 2026. Ressources HQ à compléter. <a href="/27">Canvas en préversion · annexe 27</a></div>
 
 <!--
 **1 min 30 · 43:30–45:00**
@@ -1192,7 +1237,7 @@ class: resources
 ### Ouvrir les questions
 
 - Laisser cette page visible de **45:00 à 55:00**; marge jusqu’à **60:00**.
-- Canvas en annexe 26 seulement si demandé; ne pas l’ajouter aux 45 minutes.
+- Canvas en annexe 27 seulement si demandé; ne pas l’ajouter aux 45 minutes.
 
 <details>
 <summary>Préparation · ajouter les ressources HQ</summary>
@@ -1241,7 +1286,7 @@ class: annex
 
 ### Revenir au fil
 
-Revenir aux ressources, slide 23, après la réponse.
+Revenir aux ressources, slide 24, après la réponse.
 
 <details>
 <summary>Précisions · capture et stockage</summary>
@@ -1286,7 +1331,7 @@ class: annex
 
 ### Revenir au fil
 
-Coût réel = usage et contrat de facturation. Revenir à la slide 23.
+Coût réel = usage et contrat de facturation. Revenir à la slide 24.
 
 <details>
 <summary>Précisions · seuils et simulation</summary>
@@ -1321,7 +1366,7 @@ Application VS Code de bureau.<br>Session locale Copilot / Agent Host.<br>Pas le
 
 </div></div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness">Microsoft · prérequis et fonctionnement</a> · <a href="https://code.visualstudio.com/updates/v1_142#canvases-preview">Nouveauté 1.142</a> · <a href="/23">Retour →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness">Microsoft · prérequis et fonctionnement</a> · <a href="https://code.visualstudio.com/updates/v1_142#canvases-preview">Nouveauté 1.142</a> · <a href="/24">Retour →</a></div>
 
 <!--
 **Annexe · pendant les questions**
@@ -1341,7 +1386,7 @@ Application VS Code de bureau.<br>Session locale Copilot / Agent Host.<br>Pas le
 
 ### Revenir au fil
 
-Revenir aux ressources, slide 23.
+Revenir aux ressources, slide 24.
 
 <details>
 <summary>Pour les questions · chemins de création</summary>
@@ -1384,7 +1429,7 @@ class: annex
 
 ### Revenir au fil
 
-« Ce sont des décisions à écrire dans la spec. » Revenir à la slide 23.
+« Ce sont des décisions à écrire dans la spec. » Revenir à la slide 24.
 
 <details>
 <summary>Précisions · instants et fréquences</summary>
@@ -1426,7 +1471,7 @@ class: annex
 
 ### Revenir au fil
 
-« Le dernier message n’est pas la preuve qu’une commande est entièrement terminée. » Revenir à la slide 23.
+« Le dernier message n’est pas la preuve qu’une commande est entièrement terminée. » Revenir à la slide 24.
 
 <details>
 <summary>Précautions · branches et données</summary>
@@ -1475,7 +1520,7 @@ class: annex
 
 ### Clore la réponse
 
-Revenir à la slide 23 pour poursuivre les questions.
+Revenir à la slide 24 pour poursuivre les questions.
 
 <details>
 <summary>Repères · hors ligne</summary>

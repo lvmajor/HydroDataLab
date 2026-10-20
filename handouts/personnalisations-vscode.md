@@ -65,7 +65,7 @@ Les deux premières sources apportent les consignes durables; les suivantes cadr
 
 ## Lire le panneau Agent Customizations
 
-La diapositive 11 relie les libellés du menu à trois familles pédagogiques, à partir de la [capture complète fournie le 19 octobre](../presentation/public/vscode-customizations-overview.png), cadrée en annexe 24. Ce menu classe des capacités; sa disposition ne définit pas leur priorité.
+La diapositive 11 relie les libellés du menu à trois familles pédagogiques, à partir de la [capture complète fournie le 19 octobre](../presentation/public/vscode-customizations-overview.png), cadrée en annexe 25. Ce menu classe des capacités; sa disposition ne définit pas leur priorité.
 
 - **Overview — Vue d’ensemble :** point d’entrée pour retrouver les personnalisations du harnais et du projet indiqués dans l’en-tête.
 - **Customize Your Agent — Personnaliser votre agent :** décrire ses préférences pour faire préparer des agents, skills ou instructions. Par exemple : « Prépare une instruction de projet demandant des tests pour toute transformation Python. » Examiner les fichiers proposés, leur portée et leur compatibilité avant de les enregistrer. Ce champ aide à créer une personnalisation; il ne garantit pas son application à toutes les sessions.
@@ -179,7 +179,7 @@ Pour Copilot, suivre le **schéma GitHub Copilot / SDK**, pas un exemple Local c
 4. Ouvrir l’élément, examiner son fichier et son en-tête.
 5. Faire une petite tâche représentative; examiner **References**, les actions et les tests.
 
-La nouvelle capture fournie par le présentateur, intégrée en annexe 24, montre **Overview** pour **Copilot · Formation Copilot - HQ**. Les portées User et Workspace se consultent en ouvrant Instructions; elles ne sont pas visibles dans cette vue d’ensemble. Les chemins sous la capture expliquent ces portées, sans prétendre être des entrées de l’image. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
+La nouvelle capture fournie par le présentateur, intégrée en annexe 25, montre **Overview** pour **Copilot · Formation Copilot - HQ**. Les portées User et Workspace se consultent en ouvrant Instructions; elles ne sont pas visibles dans cette vue d’ensemble. Les chemins sous la capture expliquent ces portées, sans prétendre être des entrées de l’image. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
 
 Si un fichier manque : vérifier harnais, dossier ouvert, emplacement et activation. Le réglage des dossiers parents et les fichiers AGENTS imbriqués demandent une vérification spécifique. Pour Local, `chat.useNestedAgentsMdFiles` est expérimental; ce n’est pas un commutateur universel pour Copilot. Les anciens `chat.*FilesLocations` peuvent nécessiter une migration.
 

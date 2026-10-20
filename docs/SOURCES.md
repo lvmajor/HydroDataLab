@@ -83,6 +83,10 @@ S43 — [Microsoft : Agent Skills](https://code.visualstudio.com/docs/agent-cust
 
 Pour S03, la page officielle sans paramètres a été intermittente pendant la consultation; la même page indexée avec un paramètre de suivi a permis de lire les sections sur le format, AGENTS.md, la vérification et les instructions d’organisation. Les supports utilisent son URL canonique. Ne pas confondre une organisation des dossiers avec un ordre de priorité universel, ni transférer les règles GitHub.com à tous les harnais VS Code.
 
+S44 — [Microsoft : Configure thinking effort](https://code.visualstudio.com/docs/agent-customization/language-models#configure-thinking-effort), consulté le 19 octobre 2026. Réglages recommandés, raisonnement adaptatif et sélection dans le menu du modèle. Les niveaux dépendent du modèle; l’effort de raisonnement est distinct du routage Auto. Slide 17, notes et matrice.
+
+S45 — [Artificial Analysis : Coding Agents](https://artificialanalysis.ai/agents/coding-agents) et [méthodologie Coding Agent Index v1.5](https://artificialanalysis.ai/methodology/coding-agents-benchmarking), consultés le 19 octobre 2026. Performance sur tâches de code et coût API par tâche pour des configurations d’agents; prix API/cache distincts des crédits Copilot. Slide 17 : repère de lecture sans données ni classement inventés. Le coût d’un résultat validé, reprises comprises, est notre critère pédagogique complémentaire.
+
 ## Contexte du public et sécurité
 
 S31 — [Microsoft : sécurité du développement avec les agents](https://code.visualstudio.com/docs/agents/run/security), consulté le 18 octobre 2026. Référence de la diapositive 2 : contrôle des permissions, protection des secrets et revue des changements. Le contexte d’expérimentation plus souple vient du présentateur; il ne constitue pas une politique HQ vérifiée.

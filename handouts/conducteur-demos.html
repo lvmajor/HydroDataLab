@@ -34,19 +34,19 @@
 <td style="text-align:right">4 min</td>
 </tr>
 <tr>
-<td>Démo 2 · slide 18</td>
+<td>Démo 2 · slide 19</td>
 <td>Dépôt principal, <code>main</code></td>
 <td>Exécution → avant/après → code/test → détails → conteneur</td>
 <td style="text-align:right">5 min</td>
 </tr>
 <tr>
-<td>Transition · slide 19</td>
+<td>Transition · slide 20</td>
 <td>Arrêter <code>main</code>, démarrer la copie d’exercice</td>
 <td>Garder la slide SDD projetée pendant la manipulation</td>
 <td style="text-align:right">Dans les 2 min de SDD</td>
 </tr>
 <tr>
-<td>Démo 3 · slide 20</td>
+<td>Démo 3 · slide 21</td>
 <td>Copie d’exercice, branche <code>codex/repetition-01</code> issue de <code>codex/preparation-demo-06</code></td>
 <td>Règle BI → code Python → tests → 100 %, puis 95,83 %</td>
 <td style="text-align:right">4 min</td>
@@ -139,7 +139,7 @@ docker run --rm --pull never --network none hydrodatalab-etl:formation python -m
 <li>Projecteur : <strong><a href="http://127.0.0.1:53173/1">http://127.0.0.1:53173/1</a></strong>, plein écran <code>F11</code>.</li>
 <li>Démonstration : <strong><a href="http://localhost:53170">http://localhost:53170</a></strong>, dashboard Aspire et deux fenêtres VS Code déjà ouvertes.</li>
 </ul>
-<p>Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 19. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.</p>
+<p>Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 20. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.</p>
 <div class="step-navigation"><a href="#reperes-a-garder-sous-les-yeux">← Repères</a><a href="#demo-1-cadrer-une-mission-4-min">Démo 1 · 4 min →</a></div></section>
 <section id="demo-1-cadrer-une-mission-4-min" tabindex="-1"><h2>Démo 1 · cadrer une mission · 4 min</h2>
 <p><strong>Slide 7 → VS Code du dépôt principal (<code>main</code>). Question au public : « Quelles sources permettent de vérifier sa réponse? »</strong></p>
@@ -165,7 +165,7 @@ Réponse attendue : un schéma en quatre étapes et les commandes de vérificati
 <p><strong>Réussite :</strong> le public distingue le lieu de travail, les instructions et une preuve. Aucun fichier n’a été modifié pour cette mission.</p>
 <div class="step-navigation"><a href="#avant-la-seance-preparer-une-fois">← Avant la séance</a><a href="#demo-2-verifier-un-resultat-5-min">Démo 2 · 5 min →</a></div></section>
 <section id="demo-2-verifier-un-resultat-5-min" tabindex="-1"><h2>Démo 2 · vérifier un résultat · 5 min</h2>
-<p><strong>Slide 18 → terminal du dépôt principal (<code>main</code>). Question : « Quelles preuves faut-il avant d’accepter le résultat de l’agent? »</strong></p>
+<p><strong>Slide 19 → terminal du dépôt principal (<code>main</code>). Question : « Quelles preuves faut-il avant d’accepter le résultat de l’agent? »</strong></p>
 <h3>0:00–0:45 · Rejouer un résultat</h3>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Depot
 $Execution = uv run --project etl python -m hydrodatalab run --source fixture --date 2026-10-17 --output outputs/cli | ConvertFrom-Json
@@ -211,7 +211,7 @@ Get-Content -LiteralPath (Join-Path $Export 'hourly.csv') -TotalCount 5
 <p><strong>Réussite :</strong> le public sait relier un résultat aux données, au code, au test et à une exécution. La démo illustre comment évaluer le travail de Copilot; les détails BI et l’infrastructure restent disponibles pour les questions.</p>
 <div class="step-navigation"><a href="#demo-1-cadrer-une-mission-4-min">← Démo 1 · 4 min</a><a href="#transition-preparer-la-demo-3">Transition vers Python →</a></div></section>
 <section id="transition-preparer-la-demo-3" tabindex="-1"><h2>Transition · préparer la démo 3</h2>
-<p><strong>Garder la slide 19 (SDD) sur le projecteur.</strong> Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.</p>
+<p><strong>Garder la slide 20 (SDD) sur le projecteur.</strong> Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.</p>
 <pre><code class="language-powershell">Set-Location -LiteralPath $Depot
 ./scripts/stop-demo.ps1
 Set-Location -LiteralPath $Live
@@ -219,10 +219,10 @@ git status --short --branch
 ./scripts/start-demo.ps1 -NoBuild
 </code></pre>
 <p><strong>Attendu :</strong> la branche de cette répétition, avec <code>coverage.py</code> encore à implémenter. Recharger Vue, lancer une collecte complète et vérifier <strong>Non calculée</strong>. Si l’indicateur est déjà calculé, ne pas poursuivre comme si l’exercice était neuf : vérifier le chemin et préparer une nouvelle branche selon la dernière section.</p>
-<p><strong>Dire :</strong> « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de <code>$Live</code>, puis à la slide 20. La présentation reste servie depuis <code>$Depot</code>; aucun ancien support du tag 06 n’est lancé.</p>
+<p><strong>Dire :</strong> « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de <code>$Live</code>, puis à la slide 21. La présentation reste servie depuis <code>$Depot</code>; aucun ancien support du tag 06 n’est lancé.</p>
 <div class="step-navigation"><a href="#demo-2-verifier-un-resultat-5-min">← Démo 2 · 5 min</a><a href="#demo-3-une-regle-devient-un-controle-4-min">Démo 3 · 4 min →</a></div></section>
 <section id="demo-3-une-regle-devient-un-controle-4-min" tabindex="-1"><h2>Démo 3 · une règle devient un contrôle · 4 min</h2>
-<p><strong>Slide 20 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »</strong></p>
+<p><strong>Slide 21 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »</strong></p>
 <h3>0:00–0:40 · Montrer le besoin et l’état initial</h3>
 <p><strong>Montrer :</strong> <strong>Couverture : Non calculée</strong>, puis ces trois fichiers dans la copie d’exercice :</p>
 <ul>
@@ -261,7 +261,7 @@ uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basete
 <p><strong>Faire :</strong> après l’enregistrement Python et son rechargement, retourner à Vue. Lancer une <strong>nouvelle</strong> collecte complète, déplier <strong>Qualité par série</strong>. Montrer le niveau d’eau à <strong>24 / 24 · 100 %</strong>. Cocher <strong>Retirer une mesure de niveau d’eau</strong>, relancer, montrer <strong>23 / 24 · 95,83 %</strong>.</p>
 <p><strong>Dire, puis marquer une pause :</strong> « La règle que nous venons de définir détecte maintenant la mesure manquante. » La synthèse globale affiche <strong>167 / 168, soit 99,4 %</strong> : ce n’est pas le même dénominateur. Le retrait est en mémoire; les données brutes restent intactes.</p>
 <p>Si l’ancien rapport reste visible, attendre la fin de la nouvelle collecte et rafraîchir. Modifier le code ne recalcule pas rétroactivement un rapport déjà publié. Si le rechargement Python n’a pas eu lieu, utiliser le secours au lieu de diagnostiquer devant le public.</p>
-<p><strong>Réussite :</strong> une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 21, sélection de skills.</p>
+<p><strong>Réussite :</strong> une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 22, sélection de skills.</p>
 <div class="step-navigation"><a href="#transition-preparer-la-demo-3">← Transition vers Python</a><a href="#secours-revenir-a-la-solution-preparee">Secours à 2:10 →</a></div></section>
 <section id="secours-revenir-a-la-solution-preparee" tabindex="-1"><h2>Secours · revenir à la solution préparée</h2>
 <p><strong>Déclencheur :</strong> à 2:10 de la démo 3, tests encore rouges, génération trop lente ou indisponible. Arrêter d’abord la génération Copilot, puis annoncer le passage au code préparé. Les modifications de l’exercice restent sur disque : aucun checkout ni nettoyage dans ce dossier.</p>

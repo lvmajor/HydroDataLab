@@ -2,9 +2,9 @@
 
 Sujet central : **GitHub Copilot dans VS Code et les bonnes pratiques des agents**. HydroDataLab sert de fil conducteur.
 
-**29 diapositives : 23 principales et 6 annexes.** Prestation du 20 octobre 2026; sources vérifiées les 18 et 19 octobre. Le contenu et les démos occupent 45 minutes : 32 minutes d’explications et 4 + 5 + 4 minutes de démonstrations. Questions : 10 minutes; marge : 5.
+**30 diapositives : 24 principales et 6 annexes.** Prestation du 20 octobre 2026; sources vérifiées les 18 et 19 octobre. Le contenu et les démos occupent 45 minutes : 32 minutes d’explications et 4 + 5 + 4 minutes de démonstrations. Questions : 10 minutes; marge : 5.
 
-La slide 11 relie le panneau Agent Customizations à trois familles de capacités, avec une capture réelle. La nouvelle slide 12 compare chargement progressif d’une skill et appel d’un outil. La capture élargie est en annexe 24; la fiche `handouts/personnalisations-vscode.md` détaille les formats, déclenchements et compteurs.
+La slide 11 relie le panneau Agent Customizations à trois familles de capacités, avec une capture réelle. La slide 12 compare chargement progressif d’une skill et appel d’un outil. La slide 17 explique Thinking Effort et le coût par tâche, avec un repère de lecture et des liens vers Artificial Analysis. La capture élargie est en annexe 25; la fiche `handouts/personnalisations-vscode.md` détaille les formats, déclenchements et compteurs.
 
 ## Lancer localement
 
@@ -16,7 +16,7 @@ Les fichiers de présentation sont disponibles à partir du tag `05-docker`. Au 
 
 Le build est servi à la racine du serveur (`--base /`) pour que les liens directs vers `/presenter/20` chargent aussi leurs ressources. La vue audience affiche les notions et objectifs; les raccourcis, minutages et procédures de secours sont dans les notes du présentateur. Le lexique est dans l'aide-mémoire.
 
-Les 29 notes sont organisées en repères courts : durée et horloge, fil rouge, points à dire/montrer et transition. Les précisions facultatives se déplient au clic; les procédures de secours sont séparées. Les temps des étapes de démo partent du début de la démonstration, après son introduction. Élargir le panneau de notes avec sa poignée et utiliser les commandes natives de taille du texte au besoin. Après une révision des notes, reconstruire le site et recharger la vue présentateur; le PDF audience n’a pas à être régénéré si son contenu n’a pas changé.
+Les 30 notes sont organisées en repères courts : durée et horloge, fil rouge, points à dire/montrer et transition. Les précisions facultatives se déplient au clic; les procédures de secours sont séparées. Les temps des étapes de démo partent du début de la démonstration, après son introduction. Élargir le panneau de notes avec sa poignée et utiliser les commandes natives de taille du texte au besoin. Après une révision des notes, reconstruire le site et recharger la vue présentateur; le PDF audience n’a pas à être régénéré si son contenu n’a pas changé.
 
 Pour une installation qui utilise Chrome/Edge existant, définir `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` avant `npm ci` afin d’éviter de télécharger un autre navigateur. Node 22.12+ est requis par Slidev; un Node LTS 22 ou 24 évite l’avertissement de compatibilité de postcss-nested observé avec Node 25.
 
@@ -35,21 +35,21 @@ La synchronisation utilise le stockage local réactif [VueUse `useStorage`](http
 
 ## Modifier la page finale de ressources
 
-La diapositive **23** utilise [resources/links.json](resources/links.json). Modifier `label`, `url` et `description` dans `internal` pour ajouter les liens HQ. Une URL vide reste un emplacement sans faux lien. Conserver trois entrées courtes pour la projection; compléter la fiche [skills-et-veille.md](../handouts/skills-et-veille.md) pour plus de détails.
+La diapositive **24** utilise [resources/links.json](resources/links.json). Modifier `label`, `url` et `description` dans `internal` pour ajouter les liens HQ. Une URL vide reste un emplacement sans faux lien. Conserver trois entrées courtes pour la projection; compléter la fiche [skills-et-veille.md](../handouts/skills-et-veille.md) pour plus de détails.
 
-Après modification : `npm run build`, `npm run export`, puis recharger les deux fenêtres. La page 13 expose le choix « vanille »; la page 21 propose une sélection par besoin. Matt Pocock y reste « en exploration ».
+Après modification : `npm run build`, `npm run export`, puis recharger les deux fenêtres. La page 13 expose le choix « vanille »; la page 22 propose une sélection par besoin. Matt Pocock y reste « en exploration ».
 
 ## Export PDF
 
-`npm run export` produit `exports/formation-hydrodatalab.pdf`. Le script détecte Chrome/Edge sur Windows ou Chromium Playwright. Pour un autre emplacement, définir `SLIDEV_BROWSER_PATH`. Aucun téléchargement n’est lancé par ce script d’export. Le PDF contient 29 pages statiques : interactions figées à l’état initial avec leurs hypothèses visibles.
+`npm run export` produit `exports/formation-hydrodatalab.pdf`. Le script détecte Chrome/Edge sur Windows ou Chromium Playwright. Pour un autre emplacement, définir `SLIDEV_BROWSER_PATH`. Aucun téléchargement n’est lancé par ce script d’export. Le PDF contient 30 pages statiques : interactions figées à l’état initial avec leurs hypothèses visibles.
 
 ## Vérifications
 
-Après `npm run build`, démarrer `npm run preview`, puis `node scripts/qa_browser.mjs` sur la machine de création. Le contrôle parcourt 29 routes, vérifie les débordements, bloque les requêtes externes et exerce les deux interactions. Rapport : `exports/qa/browser-report.json`.
+Après `npm run build`, démarrer `npm run preview`, puis `node scripts/qa_browser.mjs` sur la machine de création. Le contrôle parcourt 30 routes, vérifie les débordements, bloque les requêtes externes et exerce les deux interactions. Rapport : `exports/qa/browser-report.json`.
 
 `node scripts/qa_presenter_sync.mjs` vérifie les contrôles dans deux pages d’un même navigateur, dont la vraie vue présentateur : couches, coûts, navigation, rechargement et ouverture tardive, avec les requêtes externes bloquées. Rapport : `exports/qa/presenter-sync.json`. `PRESENTATION_URL` permet de contrôler un kit servi sur un autre port.
 
-Le contrôle PDF utilise `scripts/qa_pdf.py` avec pypdf et Pillow, après rendu Poppler vers `exports/qa/page-01.png` à `page-29.png`. Les images et planches sont des artefacts de contrôle, pas des diapositives supplémentaires. Voir `exports/qa/VALIDATION.md`.
+Le contrôle PDF utilise `scripts/qa_pdf.py` avec pypdf et Pillow, après rendu Poppler vers `exports/qa/page-01.png` à `page-30.png`. Les images et planches sont des artefacts de contrôle, pas des diapositives supplémentaires. Voir `exports/qa/VALIDATION.md`.
 
 ## Direction visuelle
 
