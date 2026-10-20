@@ -1,0 +1,134 @@
+{
+  "checkedAtUtc": "2026-10-20T01:22:04.214Z",
+  "slidesChanged": [
+    11,
+    13
+  ],
+  "notesChanged": [
+    11,
+    12,
+    13
+  ],
+  "geometry": [
+    {
+      "slide": 11,
+      "state": 0,
+      "boxGap": 5.3565521240234375,
+      "gap": 21.634719848632812,
+      "overflow": []
+    },
+    {
+      "slide": 11,
+      "state": 1,
+      "boxGap": 5.3565521240234375,
+      "gap": 21.634719848632812,
+      "overflow": []
+    },
+    {
+      "slide": 11,
+      "state": 2,
+      "boxGap": 5.3565521240234375,
+      "gap": 21.634719848632812,
+      "overflow": []
+    },
+    {
+      "slide": 13,
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "gap": 11.339065551757812,
+      "overflow": []
+    },
+    {
+      "slide": 13,
+      "gap": 15.945709228515623,
+      "overflow": [],
+      "viewport": {
+        "height": 1080,
+        "width": 1920
+      }
+    },
+    {
+      "slide": 11,
+      "gap": 30.423919677734375,
+      "overflow": [],
+      "viewport": {
+        "height": 1080,
+        "width": 1920
+      }
+    }
+  ],
+  "notes": [
+    {
+      "slide": 11,
+      "headings": [
+        "0:00–0:15 · Au départ",
+        "0:15–0:35 · Quand le fichier correspond",
+        "0:35–0:50 · Lire les détails utiles",
+        "0:50–1:00 · Passer aux réglages"
+      ],
+      "open": false,
+      "overflow": false,
+      "viewport": {
+        "height": 768,
+        "width": 1366
+      }
+    },
+    {
+      "slide": 12,
+      "headings": [
+        "0:00–0:10 · Partir du menu",
+        "0:10–0:35 · Lire les trois familles",
+        "0:35–1:05 · Montrer l’encadré MCP",
+        "1:05–1:15 · Enchaîner"
+      ],
+      "open": false,
+      "overflow": false,
+      "viewport": {
+        "height": 768,
+        "width": 1366
+      }
+    },
+    {
+      "slide": 13,
+      "headings": [
+        "0:00–0:30 · Charger la méthode",
+        "0:30–0:45 · Situer notre exemple",
+        "0:45–1:15 · Appeler un outil",
+        "1:15–1:30 · Vérifier la différence"
+      ],
+      "open": false,
+      "overflow": false,
+      "viewport": {
+        "height": 768,
+        "width": 1366
+      }
+    }
+  ],
+  "synchronization": {
+    "threeStates": true,
+    "reloadPreservesSelection": true,
+    "audienceToPresenter": true,
+    "resetToFirst": true
+  },
+  "pdf": {
+    "pages": 31,
+    "internalDestinations": 6,
+    "modifiedPagesInspected": [
+      11,
+      13
+    ],
+    "skillLoadingDetailsOnlyOn13": true
+  },
+  "timing": {
+    "slide11Seconds": 60,
+    "slide12Seconds": 75,
+    "slide13Seconds": 90,
+    "explanationMinutes": 32,
+    "demoMinutes": 13,
+    "notesMatchGuide": true
+  },
+  "knownWarning": "FloatingVue/Popper connu dans l’export; pas de défaut observé lors des contrôles ciblés.",
+  "limits": "Contrôle local CUA; répétition sur le portable HQ et test réseau coupé non réalisés pendant cette révision."
+}

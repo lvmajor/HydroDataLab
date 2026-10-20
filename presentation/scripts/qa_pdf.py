@@ -24,14 +24,15 @@ for fragment in ['configure-thinking-effort','artificialanalysis.ai/agents/codin
 assert '66,67' in reader.pages[7].extract_text()
 assert 'Spec-Driven Development' in reader.pages[20].extract_text()
 context_text=reader.pages[9].extract_text()+reader.pages[10].extract_text()
-for term in ['Context scope','Tiered-context architecture','Task scoped','On demand','Règles communes','Progressive loading','applyTo','SKILL.md','Nom + description']:
+for term in ['Context scope','Tiered-context architecture','Task scoped','On demand','Règles communes','Progressive loading','applyTo','Contexte utile','références pertinentes']:
     assert term in context_text, term
 model_text=reader.pages[16].extract_text()
 for term in ['GPT-6 Luna','Claude Haiku 5.5','Claude Sonnet 5.5','GPT-6.1 Sol','Claude Opus 5.5','Simple','Délimitée','Complexe','Diagnostic difficile','Coûts simulés']:
     assert term in model_text, term
 for term in ['Overview','Customize Your Agent','Plugins','MCP Servers','Skills','Instructions','Agents','Hooks','Tools']:
     assert term in reader.pages[11].extract_text(), term
-for term in ['SKILL.md','disable-model-invocation','Le modèle choisit','Le harnais contrôle']:
+assert 'SKILL.md' not in reader.pages[10].extract_text()
+for term in ['Charger une skill, appeler un outil','Nom + description','SKILL.md','disable-model-invocation','Le modèle choisit','Le harnais contrôle']:
     assert term in reader.pages[12].extract_text(), term
 for page,target in [(8,26),(12,26),(25,28),(26,8),(26,12),(28,25)]:
     dests=[a.get_object().get('/Dest') for a in reader.pages[page-1].get('/Annots',[])]

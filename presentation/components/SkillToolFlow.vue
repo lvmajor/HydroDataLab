@@ -8,13 +8,13 @@
         <div><b>3 · Consulter au besoin</b><span>Fichiers de référence<br>et scripts associés</span></div>
       </div>
     </section>
-    <p class="activation-bridge">La méthode peut guider les outils. Un outil peut aussi servir sans skill.</p>
+    <p class="activation-bridge"><b>Exemple :</b> la skill décrit « vérifier les absences »; le terminal exécute pytest.</p>
     <section class="tool-lane" aria-label="Choix et exécution d’un outil">
       <header><h2>Tool · exécuter une action</h2><span>Selon la demande, le contexte et les outils disponibles</span></header>
       <div class="activation-steps">
         <div><b>1 · Le modèle choisit</b><span>Outil + paramètres<br>ex. terminal → pytest</span></div><span class="activation-arrow" aria-hidden="true">→</span>
         <div><b>2 · Le harnais contrôle</b><span>Permissions, puis<br>exécution autorisée</span></div><span class="activation-arrow" aria-hidden="true">→</span>
-        <div><b>3 · Le résultat revient</b><span>Le modèle décide<br>de la suite</span></div>
+        <div><b>3 · Le résultat revient</b><span>Sortie de pytest →<br>prochaine décision</span></div>
       </div>
     </section>
     <div class="activation-example"><b>* Notre skill <code>/validate-etl</code> est volontaire :</b> <code>disable-model-invocation: true</code>.<br>Charger ses consignes ne lance pas ses scripts; leur exécution passe par des outils.</div>

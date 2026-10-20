@@ -1,6 +1,16 @@
 # Validation de la présentation
 
-## État courant : portée et chargement progressif
+## État courant : contexte → interface → skill et outil
+
+19 octobre 2026. La slide 11 montre les règles et les références qui enrichissent une tâche, sans reprendre le parcours d’une skill. La 12 situe les rubriques de configuration et prépare la comparaison. La 13, « Charger une skill, appeler un outil », porte seule le détail nom/description → SKILL.md → références et choix d’outil → permissions → résultat. Le temps de parole distingue mieux méthode disponible et preuve d’exécution. Notes, guide, aide-mémoire, fiche et sources alignés.
+
+Build réussi. Contrôle CUA des slides 11/13 en 1366×768 et 1920×1080 : aucun débordement; marges avant les références respectivement 21,6/11,3 px et 30,4/15,9 px. Les trois états du contexte sont contrôlés et synchronisés; sélection conservée après rechargement, retour audience → présentateur vérifié, premier état restauré. Notes 11–13 contrôlées sur portable : quatre repères chronométrés par slide, détails fermés, pas de débordement horizontal. Scripts de vérification existants adaptés; validation interactive de cette révision effectuée avec CUA.
+
+PDF régénéré et contrôlé : 31 pages, six destinations internes, pages 11/13 inspectées. L’absence de SKILL.md sur la 11 et sa présence sur la 13 sont vérifiées. Les 25 plages notes/guide correspondent, total **32 + 13 minutes**, créneaux **60 / 75 / 90 secondes** inchangés. Message FloatingVue/Popper d’export déjà connu; aucun défaut observé dans ces contrôles. La répétition humaine sur HQ et un nouveau test réseau coupé restent à faire.
+
+Preuves : `../../../docs/validation/context-skill-sequence.json`, `presentation-flow.json`, captures `context-flow-*` et rendus PDF `page-11.png` / `page-13.png`.
+
+## Historique : portée et chargement progressif
 
 19 octobre 2026. Slides 10–11 remaniées sans ajout de page : **31 slides, dont 25 principales**. La portée (projet, fichiers ou tâche) est distincte du chargement. Une skill peut être Task scoped ET On demand. Exemples : brut/provenance, règle Python applicable, procédure /validate-etl volontaire, dictionnaire et test de couverture. Progression nom/description → corps SKILL.md → références utiles. Notes ventilées, aide-mémoire, fiche et guide synchronisés.
 

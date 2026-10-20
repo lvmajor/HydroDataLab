@@ -53,7 +53,7 @@ Exemple chiffré : trois températures attendues `[10, 0, None]` donnent **deux 
 
 ## Tiered-context architecture — architecture du contexte par paliers
 
-La slide 10 montre la **portée** : projet entier, fichiers ciblés ou tâche courante. La slide 11 montre le **chargement progressif** : règles communes reconnues, activation conditionnelle, puis lectures et résultats utiles. **Task scoped décrit la portée; On demand décrit le chargement. Une skill peut être les deux**, et une instruction ciblée est elle aussi conditionnelle. La progression d’une skill va du nom/description au corps de SKILL.md, puis aux références utiles. Notre `/validate-etl` est volontaire. Ces apports se combinent sans définir un ordre de priorité universel. [Conditions détaillées et exceptions dans l’aide-mémoire](aide-memoire.md#tiered-context-architecture--architecture-du-contexte-par-paliers).
+La slide 10 montre la **portée** : projet entier, fichiers ciblés ou tâche courante. La slide 11 montre le **chargement progressif** : règles communes reconnues, activation conditionnelle, puis lectures et résultats utiles. **Task scoped décrit la portée; On demand décrit le chargement. Une skill peut être les deux**, et une instruction ciblée est elle aussi conditionnelle. Les exemples de la 11 restent les règles communes, le motif Python et le dictionnaire. La 12 situe les rubriques dans l’interface. La progression détaillée d’une skill et les étapes d’un appel d’outil sont réservées à la 13, sans les expliquer deux fois. Ces apports se combinent sans définir un ordre de priorité universel. [Conditions détaillées et exceptions dans l’aide-mémoire](aide-memoire.md#tiered-context-architecture--architecture-du-contexte-par-paliers).
 
 Architecture et standards : garder leur résumé essentiel dans les instructions communes, puis faire lire les détails au besoin. La seule présence d’un document dans Git ne le rend pas permanent. IDE/CLI : joindre explicitement les éléments importants; dans la fenêtre Agents, le contexte implicite est désactivé par défaut. Les fichiers ouverts ne sont pas tous transmis. [Microsoft : composition du contexte](https://code.visualstudio.com/docs/agents/concepts/context).
 
@@ -85,7 +85,7 @@ Les compteurs de la capture ne mesurent ni le coût ni l’utilisation dans une 
 
 ## Quand une skill est-elle chargée?
 
-La diapositive 13 compare deux parcours. Une **skill** apporte une méthode dans le contexte; un **outil** est appelé avec des paramètres pour agir ou obtenir un résultat. L’agent peut sélectionner les deux, mais leur activation n’a pas le même effet.
+La diapositive 13, « Charger une skill, appeler un outil », compare deux parcours après le repérage du menu en 12. Une **skill** apporte une méthode dans le contexte; un **outil** est appelé avec des paramètres pour agir ou obtenir un résultat. L’agent peut sélectionner les deux, mais leur activation n’a pas le même effet.
 
 Dans Copilot, le chargement normal d’une skill est progressif :
 

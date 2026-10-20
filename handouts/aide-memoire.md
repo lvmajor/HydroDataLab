@@ -45,7 +45,7 @@ Une branche ou un worktree ne sauvegarde pas automatiquement les changements non
 
 ## Skills et outils : quand interviennent-ils?
 
-Une skill charge une méthode dans le contexte : nom/description repérés, puis `SKILL.md` sélectionné selon la tâche ou invoqué avec `/nom`, puis références consultées au besoin. Un outil est appelé avec des paramètres : le harnais contrôle l’exécution et le résultat revient au modèle. Charger une skill ne lance pas automatiquement ses scripts.
+La **slide 13** détaille ces deux mécanismes. Une skill charge une méthode dans le contexte : nom/description repérés, puis `SKILL.md` sélectionné selon la tâche ou invoqué avec `/nom`, puis références consultées au besoin. Un outil est appelé avec des paramètres : le harnais contrôle l’exécution et le résultat revient au modèle. Charger une skill ne lance pas automatiquement ses scripts.
 
 Notre `/validate-etl` est volontaire (`disable-model-invocation: true`). Sans ce réglage, le modèle peut choisir une skill pertinente. `user-invocable: false` masque la commande du menu `/`, sans interdire à lui seul le choix automatique. Voir les [conditions complètes et les références](personnalisations-vscode.md#quand-une-skill-est-elle-chargée).
 
@@ -95,7 +95,7 @@ Les préférences utilisateur et les directives d’organisation applicables peu
 - **Quand c’est pertinent :** une instruction ciblée peut s’activer par correspondance `applyTo`, par pertinence de sa `description` ou par ajout explicite. Une skill peut être sélectionnée par l’agent ou invoquée par l’utilisateur, selon sa configuration.
 - **Pendant le travail :** joindre ou faire lire le dictionnaire, la spécification et le code utiles; recevoir les résultats des outils. Une lecture peut aussi avoir lieu dès le début. Ce sont des mécanismes qui se combinent, pas trois cases exclusives.
 
-**Une skill est à la fois Task scoped (portée) et On demand (chargement).** « Au besoin » n’implique pas « manuel seulement ». Pour une skill auto-sélectionnable : découverte du **nom et de la description → chargement du corps de SKILL.md si choisie → lecture des références utiles**. Charger le texte n’exécute pas automatiquement ses commandes. Dans HydroDataLab, **`/validate-etl` est volontaire** : `disable-model-invocation: true` empêche son activation automatique. [Microsoft : chargement des skills](https://code.visualstudio.com/docs/agent-customization/agent-skills#how-copilot-uses-skills).
+**Une skill est à la fois Task scoped (portée) et On demand (chargement).** « Au besoin » n’implique pas « manuel seulement ». Le fonctionnement détaillé des skills et des appels d’outils est présenté **uniquement en slide 13**, et résumé dans la [section Skills et outils](#skills-et-outils--quand-interviennent-ils). La slide 11 illustre le contexte avec les règles communes, la règle Python applicable et le dictionnaire lu; la 12 situe les rubriques de configuration dans l’interface.
 
 **Architecture et standards :** mettre les quelques exigences essentielles dans les règles communes, puis référencer les documents détaillés et préciser quand les lire. Un `ARCHITECTURE.md` ou un lien ne garantit pas l’inclusion intégrale du document. Une instruction ciblée par chemin est automatique **sous condition**, pas permanente pour toutes les tâches. [Microsoft : instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions), [organiser le contexte](https://code.visualstudio.com/docs/agents/guides/context-engineering-guide).
 
@@ -105,7 +105,7 @@ Les préférences utilisateur et les directives d’organisation applicables peu
 
 **Prompt et workflow :** le prompt est la demande courante. Les fichiers `.prompt.md` s’exécutent dans **Local / Chat**; avec le harnais **Copilot**, employer une skill compatible pour un workflow réutilisable. Un agent personnalisé fournit son rôle quand il est sélectionné. [Microsoft : prompt files](https://code.visualstudio.com/docs/agent-customization/prompt-files).
 
-**Composition HydroDataLab :** règles communes + règle Python applicable + demande de couverture + dictionnaire/code lus + résultat `pytest` (23/24 = 95,83 %). S’y ajoutent les instructions système et l’historique utile de cette session, dans une fenêtre de contexte limitée. Vérifier References, activité de lecture et résultats; « disponible » ne signifie pas « utilisé ». [Microsoft : assemblage du contexte](https://code.visualstudio.com/docs/agents/concepts/context#how-vs-code-assembles-context).
+**Composition HydroDataLab (slide 11) :** règles communes + règle Python applicable + demande de couverture + dictionnaire/code lus. Un résultat d’outil peut ensuite enrichir le contexte; la slide 13 explique cet appel et son retour. S’y ajoutent les instructions système et l’historique utile de cette session, dans une fenêtre de contexte limitée. Vérifier References, activité de lecture et résultats; « disponible » ne signifie pas « utilisé ». [Microsoft : assemblage du contexte](https://code.visualstudio.com/docs/agents/concepts/context#how-vs-code-assembles-context).
 
 ## Économiser sans sacrifier la qualité
 

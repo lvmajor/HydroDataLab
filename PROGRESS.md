@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Enchaînement contexte, personnalisations, skills et outils — 19 octobre
+
+- Départ : main `7b04966`, propre et synchronisé. Demande : éviter le doublon entre les slides 11 et 13 tout en distinguant chargement d’une skill et appel d’un outil.
+- Décision : la 11 traite seulement les apports au contexte (règles reconnues, règle Python applicable, dictionnaire lu); la 12 repère les fonctions dans Customizations; la 13 porte seule le parcours détaillé skill/outils, avec un temps mieux réparti. Aucun changement de durée ni de numérotation.
+- Réalisé : suppression du détail des skills et de validate-etl en 11; bandeau de composition du contexte; transitions 11 → 12 → 13 réécrites. La 13 est nommée « Charger une skill, appeler un outil », avec un exemple lié aux absences et au terminal, puis une question sur la preuve d’exécution. Notes, guide, aide-mémoire, fiche et sources alignés.
+- Vérifié : build, audience 11/13 en 1366×768 et 1920×1080 sans débordement; trois états synchronisés et conservés après rechargement; notes 11–13 lisibles avec détails repliés. PDF de 31 pages, six liens internes, pages 11/13 examinées. Les 25 plages notes/guide concordent : 32 + 13 minutes; créneaux 11/12/13 de 60/75/90 secondes inchangés. Message FloatingVue connu sans défaut observé. Preuve : docs/validation/context-skill-sequence.json.
+- Prochaine étape : publication sur main, puis pull/rebuild et rechargement des deux vues sur HQ. Tags et branche d’exercice inchangés.
+
 ## Portée et chargement progressif — 19 octobre
 
 - Départ : main `314dbcd`, propre et synchronisé. Demande : clarifier les slides 10–11, leurs notes et l’aide-mémoire sans allonger la séance.

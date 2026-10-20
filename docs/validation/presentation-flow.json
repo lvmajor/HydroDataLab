@@ -1,5 +1,5 @@
 {
-  "checkedAtUtc": "2026-10-20T01:13:11.369Z",
+  "checkedAtUtc": "2026-10-20T01:21:41.672Z",
   "focus": "GitHub Copilot dans VS Code; HydroDataLab comme fil conducteur",
   "slideCount": 31,
   "explanationMinutes": 32,
@@ -82,7 +82,7 @@
     },
     {
       "slide": 13,
-      "title": "Skills et tools : deux choix distincts",
+      "title": "Charger une skill, appeler un outil",
       "start": "20:15",
       "finish": "21:45"
     },

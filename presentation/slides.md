@@ -518,44 +518,43 @@ Compter 0 comme une mesure numérique valide.
 
 <ContextLayers />
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/agent-skills#how-copilot-uses-skills">Microsoft · chargement progressif des skills</a> · <a href="https://code.visualstudio.com/docs/agents/concepts/context#how-vs-code-assembles-context">Assemblage du contexte</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions applicables</a> · <a href="https://code.visualstudio.com/docs/agents/concepts/context#how-vs-code-assembles-context">Assemblage du contexte</a></div>
 
 <!--
 **1 min · 18:00–19:00**
 
-> **Fil rouge :** inclure les consignes utiles, activer les procédures pertinentes, puis lire les détails nécessaires.
+> **Fil rouge :** construire un contexte utile avec les règles et les références nécessaires au travail.
 
 ### 0:00–0:15 · Au départ
 
-- Montrer **Automatic / Inclus automatiquement** : la règle commune reconnue accompagne la demande de couverture.
-- Les documents présents dans Git ne sont pas tous chargés. Les apports se combinent; le clic en montre seulement un détail.
+- Montrer **Automatic / Inclus automatiquement** : préserver le brut, règle commune reconnue.
+- La demande arrive avec ces consignes; tout le dépôt n’est pas chargé.
 
-### 0:15–0:35 · Quand c’est pertinent
+### 0:15–0:35 · Quand le fichier correspond
 
-- Cliquer **Conditional / Activé sous condition** : modifier `coverage.py` fait correspondre le motif Python.
-- Une skill peut être choisie par l’agent selon sa description ou invoquée par l’utilisateur.
-- **Ici, `/validate-etl` est volontaire** : son activation automatique est désactivée. « Au besoin » ne veut donc pas toujours dire « manuel ».
+- Cliquer **Conditional / Activé sous condition** : modifier `coverage.py` correspond au motif Python.
+- « Une absence ne devient pas zéro » complète les règles communes; elle ne les remplace pas.
 
-### 0:35–0:50 · Pendant le travail
+### 0:35–0:50 · Lire les détails utiles
 
-- Cliquer **Retrieve / Lire ou recevoir** : l’agent consulte le dictionnaire; le test vérifie 23/24 = 95,83 %.
-- Pointer le bandeau : **nom/description → corps de SKILL.md → références utiles**. Charger une procédure n’exécute pas à lui seul ses commandes.
+- Cliquer **Retrieve / Lire ou recevoir** : le dictionnaire précise fréquence et fuseau.
+- Exemple : pour le niveau d’eau, un créneau par heure. L’agent peut décider de lire cette référence au besoin.
 
-### 0:50–1:00 · Vérifier, puis enchaîner
+### 0:50–1:00 · Passer aux réglages
 
-- Vérifier **References**, lectures et résultats; un fichier disponible n’est pas forcément utilisé.
-- Enchaîner : « Retrouvons maintenant ces mécanismes dans Customizations. » Les skills et outils seront comparés en slide 13.
+- Pointer **Règles + demande + références pertinentes**. Vérifier les lectures, pas seulement les fichiers disponibles.
+- Enchaîner : « Où retrouve-t-on ces possibilités dans VS Code? »
 
 <details>
-<summary>Manipulation et limites du schéma</summary>
+<summary>Précisions · contexte et manipulation</summary>
 
-- Les trois lignes illustrent des moments/mécanismes de chargement, pas trois catégories exclusives : charger une skill sous condition est aussi un chargement au besoin. Des lectures peuvent avoir lieu dès le début. Ce n’est ni une priorité ni une trace technique capturée d’une requête.
-- Cliquer dans Current → Slides de la vue présentateur; les trois détails se synchronisent vers l’audience. Remettre la première ligne avant la séance. Le PDF montre les trois lignes et la progression de la skill, avec le premier détail.
-- Pour une skill auto-sélectionnable, le harnais découvre le nom et la description. Le corps de SKILL.md est chargé quand la skill est choisie; les ressources associées le sont selon le besoin. La découverte ne garantit pas l’utilisation. Notre fichier `.github/skills/validate-etl/SKILL.md` contient `disable-model-invocation: true` : ne pas promettre son activation automatique.
-- Les instructions ciblées peuvent être chargées par correspondance de chemin, par pertinence de description ou par ajout explicite. Ces mécanismes sont différents de la sélection d’un outil.
-- Les instructions système, la demande et l’historique utile contribuent aussi à la requête. La fenêtre est limitée; l’historique peut être compacté. Le détail affiché n’est donc pas l’intégralité du contexte.
-- Le contexte implicite IDE dépend de l’interface, du harnais et des réglages; il est désactivé par défaut dans la fenêtre Agents. Joindre les éléments indispensables. Un onglet ouvert n’est pas une garantie de lecture; en CLI, ne pas supposer les onglets de VS Code disponibles.
-- Le retour d’un outil enrichit les étapes suivantes. Une sortie d’un autre terminal doit être jointe ou lue. Le 95,83 % est le résultat métier contrôlé par le test, pas une transcription de sa sortie.
+- Ne pas expliquer ici le parcours d’une skill ni le choix d’un outil : la slide 13 leur est réservée. La slide 11 répond uniquement à « Quelles informations contribuent à cette tâche, et quand? »
+- Les trois lignes illustrent des moments/mécanismes qui se combinent, pas une priorité ni une trace technique capturée. Des lectures peuvent avoir lieu dès le début. La portée reste l’axe de la slide 10.
+- Cliquer dans Current → Slides du présentateur; les trois détails se synchronisent vers l’audience. Le clic met un apport en évidence sans retirer les autres. Remettre la première ligne avant la séance. Le PDF affiche toutes les lignes et le premier détail.
+- Une instruction ciblée peut aussi être chargée selon sa description ou jointe explicitement. Les modalités dépendent du harnais.
+- Le schéma simplifie l’assemblage : instructions système, historique utile et retours d’outils peuvent aussi contribuer. La fenêtre est limitée; l’historique peut être compacté.
+- Le contexte implicite IDE dépend de la vue et des réglages; il est désactivé par défaut dans la fenêtre Agents. Joindre les éléments indispensables. En CLI, ne pas supposer les onglets VS Code disponibles.
+- Une sortie d’un autre terminal doit être jointe ou lue; elle n’est pas automatiquement partagée.
 
 </details>
 -->
@@ -571,12 +570,12 @@ Compter 0 comme une mesure numérique valide.
 <!--
 **1 min 15 · 19:00–20:15**
 
-> **Fil rouge :** repérer les personnalisations, puis choisir le fichier MCP selon le harnais actif.
+> **Fil rouge :** relier les notions au menu Customizations; situer les fichiers MCP selon le harnais.
 
 ### 0:00–0:10 · Partir du menu
 
 - **Situer Overview :** point d’entrée des personnalisations; capture disponible en annexe 26.
-- **Dire :** « Ces trois familles nous aident à nous repérer. »
+- **Dire :** « Nous avons vu les informations utiles; voici où configurer les capacités qui nous aident à travailler. »
 
 ### 0:10–0:35 · Lire les trois familles
 
@@ -593,7 +592,7 @@ Compter 0 comme une mesure numérique valide.
 
 ### 1:05–1:15 · Enchaîner
 
-« Une skill apporte la méthode; un outil permet d’agir. Voyons quand chacun intervient. »
+« Dans ce menu, Skills et Tools sont deux rubriques. Voyons maintenant la différence entre charger une procédure et appeler un outil. »
 
 <details>
 <summary>Pour les questions · interface et exemples</summary>
@@ -620,7 +619,7 @@ Compter 0 comme une mesure numérique valide.
 
 ---
 
-# Skills et tools : deux choix distincts
+# Charger une skill, appeler un outil
 
 <SkillToolFlow />
 
@@ -629,39 +628,40 @@ Compter 0 comme une mesure numérique valide.
 <!--
 **1 min 30 · 20:15–21:45**
 
-> **Fil rouge :** une skill apporte une méthode au contexte; un outil exécute une action.
+> **Fil rouge :** charger une skill fournit une méthode; appeler un outil exécute une opération et renvoie un résultat.
 
-### 0:00–0:35 · Suivre le parcours Skill
+### 0:00–0:30 · Charger la méthode
 
-- **Repérer :** nom et description rendent la skill découvrable.
-- **Charger :** si la tâche correspond, le modèle peut choisir la skill et lire son `SKILL.md`. On peut aussi utiliser `/nom`.
-- **Approfondir :** références et scripts sont consultés au besoin, pas tous chargés d’avance.
+- Suivre le haut : **nom/description → choix et chargement de SKILL.md → références utiles**.
+- L’agent peut choisir une skill pertinente; l’utilisateur peut aussi l’invoquer avec `/nom`.
+- Ce chargement apporte des consignes. À lui seul, il ne lance aucun test.
 
-### 0:35–1:00 · Situer notre cas
+### 0:30–0:45 · Situer notre exemple
 
-- `validate-etl` contient **`disable-model-invocation: true`**.
-- **Dire :** « Ici, nous l’invoquons avec `/validate-etl`. C’est notre réglage, pas le comportement par défaut de toutes les skills. »
+- Ici, **`/validate-etl` est volontaire** : `disable-model-invocation: true`.
+- Sa procédure demande notamment de vérifier les absences et de lancer les tests. Ce réglage n’est pas le comportement par défaut de toutes les skills.
 
-### 1:00–1:20 · Suivre le parcours Tool
+### 0:45–1:15 · Appeler un outil
 
-- Le modèle choisit **le terminal et ses paramètres** parmi les outils disponibles.
-- Le harnais vérifie les permissions, demande confirmation si nécessaire, puis lance l’appel autorisé.
-- Le résultat revient au modèle : **terminal = outil; pytest = programme lancé**.
+- Suivre le bas : selon la tâche, le contexte et les descriptions des outils disponibles, **le modèle choisit le terminal et ses paramètres**.
+- **Le harnais contrôle** les permissions; il peut demander confirmation ou refuser. L’appel autorisé lance pytest.
+- **Le résultat revient** au modèle pour décider de la suite. Terminal = outil; pytest = programme exécuté.
 
-### 1:20–1:30 · Enchaîner
+### 1:15–1:30 · Vérifier la différence
 
-« Charger une méthode ne lance pas automatiquement ses scripts et n’accorde aucune permission. Gardons une configuration simple. »
+- « La procédure est chargée : les tests ont-ils tourné? » **Pas encore : il faut l’appel et son résultat.**
+- Une skill peut guider plusieurs appels; un outil peut servir sans skill. Elle n’accorde aucune permission.
+- Enchaîner : « Ajoutons seulement les personnalisations qui nous sont utiles. »
 
 <details>
 <summary>Pour les questions · activation et choix</summary>
 
-- Le choix dépend de la demande, du contexte et des descriptions. Être découvrable ne garantit pas une sélection à chaque demande pertinente.
-- La description d’une skill doit donc expliquer **quand** l’utiliser. Le schéma décrit son chargement dans le contexte courant, hors modes expérimentaux.
-- Une skill n’est pas obligatoire avant chaque appel d’outil. Elle ne crée ni outil ni permission.
-- `user-invocable: false` masque la commande du menu `/`, mais permet encore le choix automatique.
-- Avec aussi `disable-model-invocation: true`, les deux voies sont désactivées. Matrice détaillée dans la fiche.
-- Une référence `#` peut orienter le choix d’outil, sans contourner les contrôles.
-- Ne pas modifier `validate-etl` ni lancer sa procédure pendant cette explication.
+- Ce parcours détaillé est présenté uniquement ici. La slide 11 expliquait l’assemblage du contexte; la 12 situait les rubriques dans VS Code.
+- La description d’une skill explique ce qu’elle apporte et quand l’utiliser. Être découvrable ne garantit pas une sélection. Les références sont lues au besoin; le schéma reste dans le contexte courant, hors modes expérimentaux.
+- `user-invocable: false` masque la commande `/`, tout en permettant le choix automatique. Avec aussi `disable-model-invocation: true`, les deux voies sont désactivées. Matrice dans la fiche.
+- Une skill ne crée pas d’outil absent. Le modèle peut aussi répondre sans outil; une référence `#` peut orienter son choix sans contourner les contrôles.
+- La sortie ou l’erreur d’un outil alimente les décisions suivantes; vérifier cette preuve avant d’accepter le bilan de l’agent.
+- Ne pas modifier ni invoquer validate-etl pendant cette explication. Les schémas sont pédagogiques, pas une exécution en direct.
 
 </details>
 -->

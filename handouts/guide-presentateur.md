@@ -20,7 +20,7 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 16:30–18:00 | 10 — Portée du contexte | 1 min 30 |  |
 | 18:00–19:00 | 11 — Chargement progressif | 1 min |  |
 | 19:00–20:15 | 12 — Les personnalisations, dans VS Code | 1 min 15 |  |
-| 20:15–21:45 | 13 — Skills et tools : deux choix distincts | 1 min 30 |  |
+| 20:15–21:45 | 13 — Charger une skill, appeler un outil | 1 min 30 |  |
 | 21:45–22:30 | 14 — Base vanille et ajouts ciblés | 45 s |  |
 | 22:30–24:00 | 15 — Tokens et reprises | 1 min 30 |  |
 | 24:00–25:00 | 16 — Auto | 1 min |  |
@@ -40,7 +40,7 @@ Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**.
 
 Le parcours relie les fichiers d’instructions (8–9) à la portée du contexte (10) et à son chargement progressif (11), puis aux personnalisations (12), à l’activation skills/outils (13) et à la base « vanille » (14). Le sujet reste Copilot dans VS Code; Python et l’ETL fournissent les exemples vérifiables. Aucun aperçu ETL supplémentaire n’est ajouté à l’ouverture.
 
-La slide 12 (1 min 15) présente trois familles puis l’encadré MCP : 10 s pour le panneau, 25 s pour les concepts, 30 s pour les emplacements Copilot/Local, 10 s de transition. La capture réelle reste accessible en annexe 26. Dire « repères pour VS Code 1.142 » : cette version déploie progressivement Copilot par défaut, sans annoncer que les chemins MCP viennent d’apparaître. Les détails de migration et le réglage expérimental restent dans les notes repliées et l’[aide-mémoire](aide-memoire.md#mcp--emplacements-selon-le-harnais-repères-vs-code-1142), sans manipulation en direct. La slide 13 (1 min 30) montre deux parcours : découvrir puis charger une skill, choisir puis exécuter un outil. Notre validate-etl reste volontaire. Le guide de parole et les cas de déclenchement sont dans les notes et la fiche [personnalisations-vscode.md](personnalisations-vscode.md). Les démonstrations et leur horloge restent inchangées.
+La slide 12 (1 min 15) présente trois familles puis l’encadré MCP : 10 s pour le panneau, 25 s pour les concepts, 30 s pour les emplacements Copilot/Local, 10 s de transition. La capture réelle reste accessible en annexe 26. Dire « repères pour VS Code 1.142 » : cette version déploie progressivement Copilot par défaut, sans annoncer que les chemins MCP viennent d’apparaître. Les détails de migration et le réglage expérimental restent dans les notes repliées et l’[aide-mémoire](aide-memoire.md#mcp--emplacements-selon-le-harnais-repères-vs-code-1142), sans manipulation en direct. La slide 13 (1 min 30) porte seule le parcours détaillé : 30 s pour charger la méthode, 15 s pour notre invocation volontaire, 30 s pour l’appel d’outil et 15 s pour vérifier la différence. Notre validate-etl reste volontaire. Le guide de parole et les cas de déclenchement sont dans les notes et la fiche [personnalisations-vscode.md](personnalisations-vscode.md). Les démonstrations et leur horloge restent inchangées.
 
 Les 10–11 séparent deux axes : portée (projet, fichiers ou tâche) et chargement (inclusion automatique, activation conditionnelle, lecture ou retour d’outil). Une skill est à la fois Task scoped et On demand; ces termes ne forment pas des catégories exclusives. Les configurations MCP et permissions encadrent les actions; elles ne chargent pas toutes les données. La 17 compare quatre tâches et cinq modèles avec des volumes supposés; les losanges sont des choix à essayer, pas un benchmark. La 21 nomme le SDD et annonce la formation de l’autre équipe. **Canvas reste en annexe 28**, accessible depuis les ressources (25), sans nouveau concept dans la conclusion.
 
@@ -78,11 +78,28 @@ Préserver le créneau global 15:00–19:00 : format et activation (9) en 1 min 
 **Slide 11 · 18:00–19:00**
 
 - **0:00–0:15 :** premier détail **Automatic / Inclus automatiquement**; les instructions reconnues accompagnent la demande, pas toute la documentation.
-- **0:15–0:35 :** cliquer **Conditional / Activé sous condition**; motif Python correspondant, skill choisie ou invoquée. Notre `/validate-etl` est volontaire, contrairement à une skill autorisée à s’activer automatiquement.
-- **0:35–0:50 :** cliquer **Retrieve / Lire ou recevoir**; dictionnaire puis résultat du test 23/24 = 95,83 %. Pointer nom/description → SKILL.md → références. Charger le texte n’exécute pas ses commandes.
-- **0:50–1:00 :** vérifier References, lectures et résultats, puis ouvrir les personnalisations. Réserver les variantes et exceptions aux notes repliées.
+- **0:15–0:35 :** cliquer **Conditional / Activé sous condition**; modifier coverage.py correspond au motif Python. La consigne sur les absences complète les règles communes.
+- **0:35–0:50 :** cliquer **Retrieve / Lire ou recevoir**; le dictionnaire précise fréquence/fuseau : un créneau par heure pour le niveau d’eau. L’agent peut décider de lire la référence au besoin.
+- **0:50–1:00 :** pointer règles + demande + références, vérifier les lectures et enchaîner : « Où retrouve-t-on ces possibilités dans VS Code? »
 
-Les clics sélectionnent un détail pédagogique; ils ne remplacent pas les autres apports du contexte. « Au besoin » peut inclure une sélection automatique. Remettre le premier détail avant la séance; les trois états se synchronisent depuis le panneau Current → Slides. La slide 13 approfondit ensuite la distinction skill/outils.
+Les clics sélectionnent un détail pédagogique; ils ne remplacent pas les autres apports du contexte. « Au besoin » peut inclure une sélection automatique. Remettre le premier détail avant la séance; les trois états se synchronisent depuis le panneau Current → Slides. Ne pas anticiper le fonctionnement des skills et des outils sur cette slide.
+
+### Du contexte à l’action · slides 11–13
+
+| Slide | Question à laquelle elle répond | Transition |
+|---|---|---|
+| **11 · Contexte** | Quelles informations arrivent dans le contexte, et quand? | « Où retrouve-t-on ces possibilités dans VS Code? » |
+| **12 · Interface** | À quoi servent les rubriques Customizations? | « Skills et Tools : que se passe-t-il dans chaque cas? » |
+| **13 · Fonctionnement** | Charger une procédure ou exécuter une opération : quelle différence? | « Ajoutons seulement les personnalisations utiles. » |
+
+**Slide 13 · 20:15–21:45**
+
+- **0:00–0:30 :** haut du schéma, nom/description → SKILL.md → références utiles; choix automatique possible ou `/nom`. Le chargement ne lance pas les tests.
+- **0:30–0:45 :** notre `/validate-etl` est volontaire (`disable-model-invocation: true`); sa méthode demande de vérifier les absences.
+- **0:45–1:15 :** bas du schéma, choix terminal + paramètres par le modèle; permissions contrôlées par le harnais; exécution de pytest et retour du résultat.
+- **1:15–1:30 :** « La procédure est chargée : les tests ont-ils tourné? » Pas encore : il faut un appel et son résultat. Une skill peut guider plusieurs appels, un outil peut servir sans skill. Transition vers la configuration simple.
+
+La 11 ne détaille ni SKILL.md ni validate-etl. La 12 sert de carte de l’interface, sans refaire les deux parcours de la 13. Aucun clic ne lance réellement la skill ou les tests pendant cette explication. Les trois créneaux restent 1 min / 1 min 15 / 1 min 30.
 
 ### Contenu projeté
 

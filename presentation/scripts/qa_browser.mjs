@@ -23,10 +23,10 @@ for(const term of ['Inclus automatiquement','Activé sous condition','Lire ou re
  if(overflow)issues.push({slide:11,layer:term,problem:'Context overlaps references'});
 }
 await page.getByRole('button',{name:/Activé sous condition/}).click();
-if(!(await page.locator('.context-preview').innerText()).includes('/validate-etl'))throw new Error('Reference layer failed');
+if(!(await page.locator('.context-preview').innerText()).includes('une absence ne devient pas zéro'))throw new Error('Reference layer failed');
 await page.emulateMedia({reducedMotion:'reduce'});
 await page.getByRole('button',{name:/Lire ou recevoir/}).click();
-if(!(await page.locator('.context-preview').innerText()).includes('95,83'))throw new Error('Tool results failed');
+if(!(await page.locator('.context-preview').innerText()).includes('un créneau par heure'))throw new Error('Tool results failed');
 if(await page.locator('.context-preview').evaluate(el=>parseFloat(getComputedStyle(el).animationDuration))!==0)throw new Error('Reduced motion failed');
 await page.screenshot({path:'exports/qa/context-interactive.png'});
 await page.goto('http://127.0.0.1:53173/17',{waitUntil:'networkidle'});

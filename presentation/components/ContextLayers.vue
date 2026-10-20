@@ -3,8 +3,8 @@ import {useSharedSlideNumber} from '../composables/useSharedSlideNumber.js'
 const selected=useSharedSlideNumber('context-loading',0,0,2)
 const layers=[
  {english:'Automatic',french:'Inclus automatiquement',example:'Les instructions communes reconnues',when:'Au départ',text:'« Préserver les données brutes. » La règle du dépôt accompagne la demande de couverture.',timing:'Le harnais doit reconnaître le fichier. La présence de documents dans Git ne charge pas tout leur contenu.'},
- {english:'Conditional',french:'Activé sous condition',example:'applyTo correspondant · skill choisie',when:'Quand c’est pertinent',text:'Modifier coverage.py : règle Python. /validate-etl charge notre procédure de validation.',timing:'Une skill peut être choisie par l’agent ou invoquée. Ici, validate-etl est volontaire : activation automatique désactivée.'},
- {english:'Retrieve',french:'Lire ou recevoir',example:'Dictionnaire consulté · résultat de pytest',when:'Pendant le travail',text:'Le dictionnaire précise les créneaux attendus. Un test vérifie que 23/24 donne 95,83 %.',timing:'Lecture par l’agent, fichier joint ou retour d’outil : le contexte s’enrichit. « Au besoin » ne signifie pas « manuel seulement ».'},
+ {english:'Conditional',french:'Activé sous condition',example:'applyTo: "etl/**/*.py"',when:'Quand c’est pertinent',text:'Modifier coverage.py rend la règle Python applicable : une absence ne devient pas zéro.',timing:'Le motif correspond au fichier modifié. La règle ciblée complète les consignes communes; elle ne les remplace pas.'},
+ {english:'Retrieve',french:'Lire ou recevoir',example:'Dictionnaire + exemple de données',when:'Pendant le travail',text:'Niveau d’eau : un créneau par heure. Le dictionnaire précise la fréquence et le fuseau.',timing:'Joindre ou faire lire cette référence au bon moment. « Au besoin » peut être décidé par l’agent.'},
 ]
 </script>
 <template>
@@ -27,8 +27,8 @@ const layers=[
     <div class="context-preview" :key="selected"><span class="preview-label">Apport {{selected+1}} · {{layers[selected].when}}</span><p>{{layers[selected].text}}</p><small>{{layers[selected].timing}}</small></div>
    </div>
   </div>
-  <div class="skill-loading"><b>Skill · chargement progressif</b><span>Nom + description <b>→</b> <code>SKILL.md</code> <b>→</b> références utiles</span></div>
-  <p class="map-note">Les apports se combinent. Vérifier <b>References</b>, lectures et résultats; la portée reste distincte.</p>
+  <div class="context-composition"><b>Contexte utile</b><span>Règles + demande + références pertinentes</span></div>
+  <p class="map-note">Des résultats d’outils peuvent s’ajouter. Vérifier <b>References</b> et les lectures effectuées.</p>
  </section>
 </template>
 <style scoped>
@@ -46,7 +46,7 @@ const layers=[
 .context-heading{background:#053448;color:white;padding:9px 11px}.context-heading b{display:block;font-size:21px}
 .context-preview{padding:10px 11px;animation:context-in .3s ease-out}.preview-label{font-size:16px;color:#476271}
 .context-preview p{font-size:20px;line-height:1.35;margin:8px 0 10px}.context-preview small{font-size:16px;line-height:1.35;display:block}
-.skill-loading{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#e1f1ee;margin-top:8px;padding:7px 12px;font-size:17px;line-height:1.4}.skill-loading span>b{margin:0 5px}.skill-loading code{font-size:17px}
+.context-composition{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#e1f1ee;margin-top:8px;padding:7px 12px;font-size:18px;line-height:1.4}
 .context-map .map-note{font-size:16px;margin:5px 0 0;color:#476271;line-height:1.3}
 @keyframes context-in{from{opacity:.35;transform:translateX(-5px)}to{opacity:1;transform:translateX(0)}}
 @media(prefers-reduced-motion:reduce){.context-preview{animation:none}.context-map button.context-layer{transition:none}}
