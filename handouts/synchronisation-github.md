@@ -1,6 +1,6 @@
 # Synchroniser HydroDataLab entre les deux postes
 
-Dépôt privé : **https://github.com/lvmajor/HydroDataLab**. Le compte utilisé sur le portable doit y avoir accès. Git peut ouvrir son écran de connexion lors du premier accès. Si GitHub CLI est installé, `gh auth login --hostname github.com --git-protocol https --web` permet aussi de se connecter; ne jamais insérer un jeton dans l’URL.
+Dépôt public : **https://github.com/lvmajor/HydroDataLab**. La publication publique a été explicitement autorisée le 19 octobre 2026. La lecture est publique; pour pousser des changements, le compte utilisé sur le portable doit disposer d’un accès en écriture. Git peut ouvrir son écran de connexion lors du premier accès authentifié. Si GitHub CLI est installé, `gh auth login --hostname github.com --git-protocol https --web` permet aussi de se connecter; ne jamais insérer un jeton dans l’URL.
 
 GitHub contient `main`, `codex/preparation-demo-06` et les huit tags `00-socle` à `07-solution`. La branche locale `demo-live` n’est pas publiée. Le ZIP déjà transféré reste utile pour les images Docker et la présentation de secours. `artifacts/`, `node_modules/`, `.venv/`, `.runtime/` et les sites compilés ne sont pas synchronisés par Git.
 

@@ -8,7 +8,7 @@ Le support contient **24 diapositives + 6 annexes**, trois démonstrations (4 + 
 
 ## Commencer
 
-Pour poursuivre sur un autre poste : [connecter et synchroniser le dépôt GitHub privé](handouts/synchronisation-github.md). Le ZIP conserve les images Docker et les secours; GitHub synchronise le code, les slides, les fiches et l’historique pédagogique.
+Pour poursuivre sur un autre poste : [connecter et synchroniser le dépôt GitHub](handouts/synchronisation-github.md). Le dépôt est public, avec publication autorisée le 19 octobre 2026. Le ZIP conserve les images Docker et les secours; GitHub synchronise le code, les slides, les fiches et l’historique pédagogique.
 
 Dans **PowerShell 7**, à la racine du dossier :
 
