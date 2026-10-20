@@ -17,8 +17,8 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 08:00–13:00 | 7 — Première mission dans Agents | 1 min | 4 min |
 | 13:00–15:00 | 8 — Une instruction vérifiable | 2 min |  |
 | 15:00–16:30 | 9 — Format, portée et activation | 1 min 30 |  |
-| 16:30–18:00 | 10 — Tiered-context architecture | 1 min 30 |  |
-| 18:00–19:00 | 11 — Composition du contexte sur une tâche | 1 min |  |
+| 16:30–18:00 | 10 — Portée du contexte | 1 min 30 |  |
+| 18:00–19:00 | 11 — Chargement progressif | 1 min |  |
 | 19:00–20:15 | 12 — Les personnalisations, dans VS Code | 1 min 15 |  |
 | 20:15–21:45 | 13 — Skills et tools : deux choix distincts | 1 min 30 |  |
 | 21:45–22:30 | 14 — Base vanille et ajouts ciblés | 45 s |  |
@@ -38,11 +38,11 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 
 Total contenu : **32 minutes d’explications + 13 minutes de démonstrations**. Questions : 10 minutes; marge : 5. Les 25 diapositives principales occupent exactement 45 minutes sur le conducteur. Les annexes 26–31 sont réservées aux questions; la répétition humaine doit confirmer le rythme réel.
 
-Le parcours relie les fichiers d’instructions (8–9) aux paliers de contexte (10) et à leur composition (11), puis aux personnalisations (12), à l’activation skills/outils (13) et à la base « vanille » (14). Le sujet reste Copilot dans VS Code; Python et l’ETL fournissent les exemples vérifiables. Aucun aperçu ETL supplémentaire n’est ajouté à l’ouverture.
+Le parcours relie les fichiers d’instructions (8–9) à la portée du contexte (10) et à son chargement progressif (11), puis aux personnalisations (12), à l’activation skills/outils (13) et à la base « vanille » (14). Le sujet reste Copilot dans VS Code; Python et l’ETL fournissent les exemples vérifiables. Aucun aperçu ETL supplémentaire n’est ajouté à l’ouverture.
 
 La slide 12 (1 min 15) présente trois familles puis l’encadré MCP : 10 s pour le panneau, 25 s pour les concepts, 30 s pour les emplacements Copilot/Local, 10 s de transition. La capture réelle reste accessible en annexe 26. Dire « repères pour VS Code 1.142 » : cette version déploie progressivement Copilot par défaut, sans annoncer que les chemins MCP viennent d’apparaître. Les détails de migration et le réglage expérimental restent dans les notes repliées et l’[aide-mémoire](aide-memoire.md#mcp--emplacements-selon-le-harnais-repères-vs-code-1142), sans manipulation en direct. La slide 13 (1 min 30) montre deux parcours : découvrir puis charger une skill, choisir puis exécuter un outil. Notre validate-etl reste volontaire. Le guide de parole et les cas de déclenchement sont dans les notes et la fiche [personnalisations-vscode.md](personnalisations-vscode.md). Les démonstrations et leur horloge restent inchangées.
 
-Les 10–11 distinguent Always on (règles communes), Task scoped (selon la tâche) et On demand (au besoin), puis montrent la composition concrète. Les configurations MCP et permissions encadrent les actions; elles ne chargent pas toutes les données. La 17 compare quatre tâches et cinq modèles avec des volumes supposés; les losanges sont des choix à essayer, pas un benchmark. La 21 nomme le SDD et annonce la formation de l’autre équipe. **Canvas reste en annexe 28**, accessible depuis les ressources (25), sans nouveau concept dans la conclusion.
+Les 10–11 séparent deux axes : portée (projet, fichiers ou tâche) et chargement (inclusion automatique, activation conditionnelle, lecture ou retour d’outil). Une skill est à la fois Task scoped et On demand; ces termes ne forment pas des catégories exclusives. Les configurations MCP et permissions encadrent les actions; elles ne chargent pas toutes les données. La 17 compare quatre tâches et cinq modèles avec des volumes supposés; les losanges sont des choix à essayer, pas un benchmark. La 21 nomme le SDD et annonce la formation de l’autre équipe. **Canvas reste en annexe 28**, accessible depuis les ressources (25), sans nouveau concept dans la conclusion.
 
 Pour zéro/absence, [10, 0, None] donne deux mesures sur trois, soit 66,67 %. Les contrôles de plausibilité restent propres à chaque série. L’annexe 26 reprend la nouvelle capture Overview du projet Formation Copilot - HQ. Son menu donne des repères; ses compteurs ne prouvent pas l’utilisation des capacités dans une réponse. Les chemins User/Workspace sous l’image expliquent les portées accessibles dans Instructions. Les sources au bas des slides restent cliquables dans le site et le PDF.
 
@@ -62,11 +62,27 @@ Pour davantage d’espace sur le portable, élargir le panneau de notes en gliss
 
 Utiliser deux écrans en mode **Étendre** (`Win + P`) et deux fenêtres du même navigateur/profil. Garder http://127.0.0.1:53173/presenter/1 sur le portable; déplacer http://127.0.0.1:53173/1 sur le projecteur puis passer en plein écran (`F11`). Utiliser exactement le même hôte et le même port dans les deux fenêtres.
 
-Dans le panneau **Current → Slides** de la vue présentateur, sélectionner les apports au contexte (11) et actionner les boutons `−`/`+` des coûts (17). Le public voit les changements automatiquement. Les réglages restent conservés après navigation ou rechargement; avant la séance, sélectionner la première couche et 1 essai. Cette synchronisation fonctionne hors ligne, y compris dans le kit. Recharger les deux fenêtres après une mise à jour du support. Pour une démo, afficher VS Code ou HydroDataLab sur l’écran de projection, puis revenir à la fenêtre audience.
+Dans le panneau **Current → Slides** de la vue présentateur, sélectionner les trois détails de chargement (11) et actionner les boutons `−`/`+` des coûts (17). Le public voit les changements automatiquement. Les réglages restent conservés après navigation ou rechargement; avant la séance, sélectionner le premier détail et 1 essai. Cette synchronisation fonctionne hors ligne, y compris dans le kit. Recharger les deux fenêtres après une mise à jour du support. Pour une démo, afficher VS Code ou HydroDataLab sur l’écran de projection, puis revenir à la fenêtre audience.
 
 ### Contexte par paliers · slides 10–11
 
-Préserver le créneau global 15:00–19:00 : format et activation (9) en 1 min 30; paliers (10) en 1 min 30; composition (11) en 1 minute. Les trois démos ne changent pas d’heure. En 10 : 25 s pour le commun, 25 s pour le conditionnel, 20 s pour les apports au besoin, 20 s pour le rôle du harnais. En 11 : montrer les règles, puis cliquer Documents et code et Résultats des outils. Réserver les variantes Local/Copilot et les exceptions aux notes repliées.
+Préserver le créneau global 15:00–19:00 : format et activation (9) en 1 min 30; portée (10) en 1 min 30; chargement progressif (11) en 1 minute. Les trois démos ne changent pas d’heure.
+
+**Slide 10 · 16:30–18:00**
+
+- **0:00–0:25 :** portée du projet : préserver brut/provenance. Les règles utilisateur/organisation applicables peuvent couvrir plusieurs projets.
+- **0:25–0:45 :** portée des fichiers Python : absence ≠ zéro; le motif cible `etl/**/*.py`.
+- **0:45–1:05 :** tâche courante : calcul de couverture, spécification, méthode de validation; rôle spécialisé facultatif.
+- **1:05–1:30 :** lire l’encadré : « Une skill peut être Task scoped ET On demand. » Portée et moment de chargement sont deux axes; passer à la mécanique de chargement.
+
+**Slide 11 · 18:00–19:00**
+
+- **0:00–0:15 :** premier détail **Automatic / Inclus automatiquement**; les instructions reconnues accompagnent la demande, pas toute la documentation.
+- **0:15–0:35 :** cliquer **Conditional / Activé sous condition**; motif Python correspondant, skill choisie ou invoquée. Notre `/validate-etl` est volontaire, contrairement à une skill autorisée à s’activer automatiquement.
+- **0:35–0:50 :** cliquer **Retrieve / Lire ou recevoir**; dictionnaire puis résultat du test 23/24 = 95,83 %. Pointer nom/description → SKILL.md → références. Charger le texte n’exécute pas ses commandes.
+- **0:50–1:00 :** vérifier References, lectures et résultats, puis ouvrir les personnalisations. Réserver les variantes et exceptions aux notes repliées.
+
+Les clics sélectionnent un détail pédagogique; ils ne remplacent pas les autres apports du contexte. « Au besoin » peut inclure une sélection automatique. Remettre le premier détail avant la séance; les trois états se synchronisent depuis le panneau Current → Slides. La slide 13 approfondit ensuite la distinction skill/outils.
 
 ### Contenu projeté
 
@@ -104,7 +120,7 @@ Depuis la racine de la version finale (`main`; les tags restent historiques), ex
 - Suivre le [conducteur de répétition](conducteur-demos.html) : le dépôt principal reste sur `main` pour les démos 1 et 2, les slides et le secours. Une copie Git locale reçoit `codex/repetition-01` depuis la branche préparée `codex/preparation-demo-06` (9e1ecde), descendante de `06-specification` pour la démo 3. Préparer les dépendances et les deux démarrages avant la séance; basculer pendant la slide SDD. Aucun téléchargement ou changement de branche du dépôt principal n’est nécessaire en direct.
 - Lancer `./scripts/start-demo.ps1` et tester le parcours. Ports fixes : Vue 53170 et slides 53175. Aspire attribue les ports API/Python et fournit leurs adresses aux composants; les retrouver dans son dashboard. La copie d’exercice part de la branche préparée issue de 06, indiquée dans le conducteur; elle contient aussi les nouvelles analyses ETL, mais garde la couverture à implémenter.
 - Ouvrir le support : `./scripts/start-presentation.ps1` (ou `cd presentation`, `npm ci`, `npm run dev`); http://localhost:53173. Pour le build autonome : `npm run build` puis `npm run preview`. L’installation réseau se fait avant la séance.
-- Ouvrir aussi `presentation/exports/formation-hydrodatalab.pdf`. Il contient 30 pages; les interactions sont figées mais leur explication reste lisible.
+- Ouvrir aussi `presentation/exports/formation-hydrodatalab.pdf`. Il contient 31 pages; les interactions sont figées mais leur explication reste lisible.
 - Pour régénérer ce PDF : `npm --prefix presentation run export` utilise Chrome/Edge/Chromium et Python avec `pypdf`. Au besoin, définir `SLIDEV_PYTHON_PATH` vers cet interpréteur. Le post-traitement convertit les liens d’annexes en destinations PDF sans serveur; projeter le PDF déjà préparé ne demande aucune de ces dépendances.
 - Tester projection 16:9, zoom du navigateur, notifications désactivées et alimentation branchée. Faire une répétition chronométrée sans dépendre du réseau.
 

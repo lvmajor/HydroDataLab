@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Portée et chargement progressif — 19 octobre
+
+- Départ : main `314dbcd`, propre et synchronisé. Demande : clarifier les slides 10–11, leurs notes et l’aide-mémoire sans allonger la séance.
+- Décision : séparer les deux axes. « Task scoped » décrit la portée; « On demand » décrit un chargement qui peut être choisi par l’agent ou demandé explicitement. La skill locale validate-etl reste volontaire (`disable-model-invocation: true`).
+- Réalisé : portée projet/fichiers/tâche en slide 10; chargement automatique, conditionnel et lecture/retour en slide 11, avec progression nom/description → SKILL.md → références. Exemples du brut, de coverage.py, de /validate-etl et du test 23/24. Notes en quatre séquences courtes par slide; aide-mémoire, fiche, guide et sources alignés.
+- Vérifié : build; audience en 1366×768 et 1920×1080, sans débordement; notes sur portable, détails repliés et ouverture au clavier; trois états synchronisés, retour audience → présentateur, rechargement et navigation conservant la sélection. PDF de 31 pages et six destinations internes contrôlé, pages 10–11 examinées. Message FloatingVue/Popper déjà connu sans effet constaté. Preuves : docs/validation/context-scope-loading.json et presentation/exports/qa/VALIDATION.md.
+- Minutage : 16:30–18:00 / 18:00–19:00 conservés; 25 plages notes/guide concordantes, 32 + 13 minutes. Prochaine étape : commit et publication sur main, puis pull/rebuild sur HQ et répétition humaine. Aucun changement aux tags ou à la branche d’exercice.
+
 ## Architecture du contexte par paliers — 19 octobre
 
 - Départ : main `dac5d19`, propre et synchronisé. Demande : remplacer « socle » par un libellé concret et expliquer la tiered-context architecture sur deux slides si nécessaire.

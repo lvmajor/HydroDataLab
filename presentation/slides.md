@@ -464,97 +464,98 @@ Compter 0 comme une mesure numérique valide.
 
 ---
 
-# Tiered-context architecture
+# Portée du contexte · Context scope
 
 <TieredContext />
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · conditions des instructions</a> · <a href="https://code.visualstudio.com/docs/agents/concepts/context">Composition et contexte implicite</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · portée et activation des instructions</a> · <a href="https://code.visualstudio.com/docs/agent-customization/agent-skills">Skills ciblées, chargées au besoin</a></div>
 
 <!--
 **1 min 30 · 16:30–18:00**
 
-> **Fil rouge :** garder les règles essentielles disponibles; charger les détails quand le travail en a besoin.
+> **Fil rouge :** la portée dit à quel travail une information s’applique; elle ne dit pas quand elle est chargée.
 
-### 0:00–0:25 · Always on — règles communes
+### 0:00–0:25 · Project-wide — tout le projet
 
-- **Dire :** « Architecture du contexte par paliers : nous organisons quoi charger, et quand. »
-- Instructions du dépôt, préférences utilisateur et directives d’organisation reconnues et activées dans le harnais choisi.
-- Mettre le **résumé** d’architecture et les standards essentiels dans ces instructions. Le document détaillé n’est pas permanent par sa seule présence.
+- **Dire :** « Dans la tiered-context architecture, séparons deux questions : pour quel travail? Puis, quand charger? »
+- Pointer **Règles communes** : préserver le brut et la provenance dans tout HydroDataLab.
+- Les préférences utilisateur et les directives d’organisation applicables peuvent couvrir plusieurs projets; elles complètent les règles du dépôt.
 
-### 0:25–0:50 · Task scoped — selon la tâche
+### 0:25–0:45 · File-specific — fichiers ciblés
 
-- Une règle `applyTo` est automatique **si le chemin correspond** : elle ne s’applique pas à chaque demande.
-- L’agent personnalisé apporte son rôle s’il est choisi; le prompt décrit le travail. Une skill apporte une méthode quand elle est chargée.
-- Un fichier de procédure disponible n’est pas forcément utilisé.
+- Pointer **Règles Python** : une absence ne devient pas zéro.
+- Le motif `etl/**/*.py` cible nos fichiers Python. Il donne aussi une condition d’activation, expliquée ensuite.
+- Les règles applicables se combinent; ce dessin n’établit pas un ordre de priorité.
 
-### 0:50–1:10 · On demand — au besoin
+### 0:45–1:05 · Task scoped — tâche ciblée
 
-- Joindre une référence utile, lire un fichier, rechercher du code ou recevoir la sortie d’un outil.
-- IDE = environnement de développement; CLI = interface en ligne de commande.
-- **Fenêtre Agents :** contexte implicite de l’éditeur désactivé par défaut. Ajouter explicitement les fichiers indispensables.
+- Pointer **But et méthode** : ajouter la couverture selon la spécification, puis vérifier le calcul.
+- Une skill est une procédure réutilisable pour ce type de travail. Un agent personnalisé peut ajouter un rôle spécialisé s’il est choisi.
+- Un même document ou une même skill peut servir à plusieurs tâches.
 
-### 1:10–1:30 · Distinguer informations et autorisations
+### 1:05–1:30 · La distinction à retenir
 
-- Le harnais prépare le contexte et contrôle les actions permises. Les outils et serveurs MCP disponibles définissent les capacités.
-- **Configurer MCP ne charge pas ses données.** Une réponse d’outil pourra ensuite enrichir le contexte.
-- Enchaîner : « Suivons ces apports sur une tâche concrète. »
+- Lire l’encadré : **« Une skill peut être Task scoped ET On demand. »**
+- **Task scoped = portée ciblée. On demand = chargement au besoin.** Ce ne sont pas deux cases exclusives.
+- Une instruction Python est elle aussi ciblée et conditionnelle. Enchaîner : « Regardons maintenant ce qui entre dans le contexte, et à quel moment. »
 
 <details>
-<summary>Pour les questions · portée, activation et harnais</summary>
+<summary>Pour les questions · portée, formats et autorité</summary>
 
-- Ces trois paliers sont une méthode de conception pédagogique, pas trois niveaux normatifs de VS Code ni une règle de priorité. « Always on » désigne des instructions permanentes applicables, pas une garantie d’obéissance.
-- Copilot : `.github/copilot-instructions.md` et les formats compatibles comme `AGENTS.md`; préférences permanentes dans `~/.copilot/copilot-instructions.md`. Organisation : prise en charge, accès et `github.copilot.chat.organizationInstructions.enabled`.
-- Pour une règle ciblée, `description` peut aussi conduire à son chargement selon la tâche; sans motif ni description, ajout manuel. Supprimer les contradictions entre instructions applicables.
-- Le **contenu essentiel** d’un standard peut être inclus dans les instructions permanentes. Conserver la référence détaillée à part, indiquer quand la lire, puis vérifier sa lecture. Les règles de liens diffèrent selon le harnais.
-- Un prompt est une demande. Un **prompt file `.prompt.md`** est une fonction Local dans la vue Chat; pour un workflow réutilisable avec le harnais Copilot, utiliser une skill compatible. Ne pas confondre texte du prompt et format de fichier.
-- Le contexte de l’éditeur dépend de l’interface, du harnais et des réglages. L’IDE peut ajouter une sélection; un fichier ouvert n’implique pas son inclusion complète. En CLI, ne pas supposer que les onglets de VS Code sont visibles.
-- Les configurations MCP et permissions peuvent persister au niveau utilisateur/projet; elles ne sont donc pas « spécifiques à la tâche » par nature. Les définitions d’outils disponibles peuvent contribuer à la requête; les secrets de connexion n’ont pas à être copiés dans le prompt.
-- La sélection d’un outil ne dispense jamais des permissions du harnais. Cette distinction sera reprise avec Tools et MCP.
-- Sources : Microsoft instructions, concepts de contexte, prompt files et outils. Le guide context engineering illustre principalement Local; adapter à Copilot.
+- Les cartes sont des portées pédagogiques qui peuvent se recouper, pas une hiérarchie universelle d’autorité ni des niveaux officiels de VS Code. Résoudre les contradictions entre consignes applicables.
+- Copilot : `.github/copilot-instructions.md` et les formats compatibles comme `AGENTS.md`; préférences personnelles dans `~/.copilot/copilot-instructions.md`. Les directives d’organisation dépendent du support, des accès et de `github.copilot.chat.organizationInstructions.enabled`.
+- Le fichier ciblé complet est `.github/instructions/python.instructions.md`. `applyTo` correspond aux fichiers manipulés; une `description` pertinente peut aussi conduire à son chargement. Sans motif ni description, joindre le fichier manuellement.
+- Mettre les exigences essentielles d’architecture/standards dans les instructions communes; conserver les détails dans des documents en précisant quand les lire. Un lien ne prouve pas une lecture intégrale.
+- MCP, outils disponibles et permissions sont des réglages du harnais, parfois persistants par utilisateur/projet. Ils contrôlent les capacités et les actions; configurer un serveur ne charge pas ses données. Les définitions et résultats des outils peuvent contribuer au contexte.
+- Le prompt courant est une demande. Les fichiers `.prompt.md` sont une fonction Local/Chat; pour un workflow réutilisable Copilot, utiliser une skill compatible.
 
 </details>
 -->
 
 ---
 
-# Comment ces apports composent le contexte
+# Chargement progressif · Progressive loading
 
 <ContextLayers />
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/concepts/context#how-vs-code-assembles-context">Microsoft · assemblage du contexte</a> · <a href="https://code.visualstudio.com/docs/chat/copilot-chat-context">Ajouter les références utiles</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/agent-skills#how-copilot-uses-skills">Microsoft · chargement progressif des skills</a> · <a href="https://code.visualstudio.com/docs/agents/concepts/context#how-vs-code-assembles-context">Assemblage du contexte</a></div>
 
 <!--
 **1 min · 18:00–19:00**
 
-> **Fil rouge :** ce qui est disponible dans le projet doit encore être sélectionné, joint ou lu pour contribuer à la requête.
+> **Fil rouge :** inclure les consignes utiles, activer les procédures pertinentes, puis lire les détails nécessaires.
 
-### 0:00–0:20 · Partir du commun
+### 0:00–0:15 · Au départ
 
-- Montrer **Always on / Règles communes** : préserver le brut, tester les calculs hors réseau.
-- Pointer **Task scoped / Règles Python** : le motif correspond au fichier modifié.
-- Les apports se combinent; sélectionner une ligne met seulement sa contribution en évidence.
+- Montrer **Automatic / Inclus automatiquement** : la règle commune reconnue accompagne la demande de couverture.
+- Les documents présents dans Git ne sont pas tous chargés. Les apports se combinent; le clic en montre seulement un détail.
 
-### 0:20–0:45 · Ajouter ce qui répond à la tâche
+### 0:15–0:35 · Quand c’est pertinent
 
-- Cliquer **Documents et code** : dictionnaire, spécification et fonction utiles.
-- Cliquer **Résultats des outils** : l’exemple 23/24 = 95,83 % illustre le retour d’un test.
-- Souligner la différence entre **fichier présent** et **information réellement fournie au modèle**.
+- Cliquer **Conditional / Activé sous condition** : modifier `coverage.py` fait correspondre le motif Python.
+- Une skill peut être choisie par l’agent selon sa description ou invoquée par l’utilisateur.
+- **Ici, `/validate-etl` est volontaire** : son activation automatique est désactivée. « Au besoin » ne veut donc pas toujours dire « manuel ».
 
-### 0:45–1:00 · Vérifier, puis enchaîner
+### 0:35–0:50 · Pendant le travail
 
-- **References**, activité de lecture et résultats observés donnent les preuves.
-- Instructions système et historique de la session contribuent aussi; tout ne tient pas sans limite.
-- Enchaîner : « Où voit-on ces mécanismes dans Customizations? »
+- Cliquer **Retrieve / Lire ou recevoir** : l’agent consulte le dictionnaire; le test vérifie 23/24 = 95,83 %.
+- Pointer le bandeau : **nom/description → corps de SKILL.md → références utiles**. Charger une procédure n’exécute pas à lui seul ses commandes.
+
+### 0:50–1:00 · Vérifier, puis enchaîner
+
+- Vérifier **References**, lectures et résultats; un fichier disponible n’est pas forcément utilisé.
+- Enchaîner : « Retrouvons maintenant ces mécanismes dans Customizations. » Les skills et outils seront comparés en slide 13.
 
 <details>
 <summary>Manipulation et limites du schéma</summary>
 
-- Les cinq lignes illustrent les **trois paliers** de la slide précédente. Ce ne sont ni cinq niveaux de priorité, ni une trace technique de notre requête réelle.
-- Cliquer dans Current → Slides de la vue présentateur; la sélection et le détail se synchronisent vers l’audience. Remettre la première ligne avant la séance.
-- L’agent personnalisé est facultatif dans l’exemple : la demande peut utiliser l’agent Copilot habituel. Ses consignes spécialisées ne contribuent que si cet agent est choisi.
-- Un appel d’outil renvoie un résultat pour les étapes suivantes. Une sortie de terminal externe doit être jointe ou lue; elle n’est pas automatiquement partagée entre sessions.
-- La fenêtre de contexte peut être résumée/compactée. La mémoire des autres sessions n’est pas automatiquement l’historique de celle-ci.
-- Le PDF affiche toutes les lignes avec le premier détail; les notes expliquent les deux autres points à commenter.
+- Les trois lignes illustrent des moments/mécanismes de chargement, pas trois catégories exclusives : charger une skill sous condition est aussi un chargement au besoin. Des lectures peuvent avoir lieu dès le début. Ce n’est ni une priorité ni une trace technique capturée d’une requête.
+- Cliquer dans Current → Slides de la vue présentateur; les trois détails se synchronisent vers l’audience. Remettre la première ligne avant la séance. Le PDF montre les trois lignes et la progression de la skill, avec le premier détail.
+- Pour une skill auto-sélectionnable, le harnais découvre le nom et la description. Le corps de SKILL.md est chargé quand la skill est choisie; les ressources associées le sont selon le besoin. La découverte ne garantit pas l’utilisation. Notre fichier `.github/skills/validate-etl/SKILL.md` contient `disable-model-invocation: true` : ne pas promettre son activation automatique.
+- Les instructions ciblées peuvent être chargées par correspondance de chemin, par pertinence de description ou par ajout explicite. Ces mécanismes sont différents de la sélection d’un outil.
+- Les instructions système, la demande et l’historique utile contribuent aussi à la requête. La fenêtre est limitée; l’historique peut être compacté. Le détail affiché n’est donc pas l’intégralité du contexte.
+- Le contexte implicite IDE dépend de l’interface, du harnais et des réglages; il est désactivé par défaut dans la fenêtre Agents. Joindre les éléments indispensables. Un onglet ouvert n’est pas une garantie de lecture; en CLI, ne pas supposer les onglets de VS Code disponibles.
+- Le retour d’un outil enrichit les étapes suivantes. Une sortie d’un autre terminal doit être jointe ou lue. Le 95,83 % est le résultat métier contrôlé par le test, pas une transcription de sa sortie.
 
 </details>
 -->

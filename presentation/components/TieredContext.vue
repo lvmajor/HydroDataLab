@@ -1,37 +1,38 @@
 <template>
-  <section class="tiered-context" aria-label="Architecture du contexte par paliers">
-    <p class="tier-intro">Architecture du contexte par paliers : <b>quoi charger, et quand?</b></p>
+  <section class="tiered-context" aria-label="Portée du contexte : projet, fichiers et tâche">
+    <p class="tier-intro"><b>Tiered-context architecture</b> · Premier axe : à quel travail cela s’applique?</p>
     <div class="tier-grid">
-      <article class="tier always">
-        <span class="tier-index">01 · Always on</span>
+      <article class="tier project">
+        <span class="tier-index">Project-wide · Tout le projet</span>
         <h2>Règles communes</h2>
-        <ul><li>Dépôt + utilisateur</li><li>Organisation, si activée</li><li>Architecture : résumé et standards essentiels</li></ul>
-        <p>Incluses si reconnues par le harnais.</p>
+        <p class="tier-example">« Préserver les données brutes et leur provenance. »</p>
+        <p class="tier-file"><code>.github/<br>copilot-instructions.md</code></p>
       </article>
-      <article class="tier scoped">
-        <span class="tier-index">02 · Task scoped</span>
-        <h2>Selon la tâche</h2>
-        <ul><li>Règles de chemin : <code>applyTo</code></li><li>Rôle et prompt choisis</li><li>Skill chargée</li></ul>
-        <p>Chargement conditionnel : fichier, rôle ou travail demandé.</p>
+      <article class="tier files">
+        <span class="tier-index">File-specific · Fichiers ciblés</span>
+        <h2>Règles Python</h2>
+        <p class="tier-example">« Une valeur absente ne devient pas zéro. »</p>
+        <p class="tier-file"><code>python.instructions.md<br>applyTo: "etl/**/*.py"</code></p>
       </article>
-      <article class="tier demand">
-        <span class="tier-index">03 · On demand</span>
-        <h2>Au besoin</h2>
-        <ul><li>Documents et code utiles</li><li>Sélection IDE, contexte CLI</li><li>Lectures et sortie terminal</li></ul>
-        <p>Joint, récupéré par un outil ou fourni par l’interface.</p>
+      <article class="tier task">
+        <span class="tier-index">Task scoped · Tâche ciblée</span>
+        <h2>But et méthode</h2>
+        <p class="tier-example">« Ajouter la couverture, puis vérifier le calcul. »</p>
+        <p class="tier-file">Demande + spécification<br>Skill de validation, si utilisée</p>
       </article>
     </div>
-    <div class="harness-band"><b>Harnais : outils disponibles · serveurs MCP · permissions</b><br>Ils encadrent les actions. Configurer un serveur ne charge pas ses données.</div>
+    <div class="scope-loading"><b>Une skill peut être les deux :</b><br><span>Task scoped = portée ciblée</span><b class="plus">+</b><span>On demand = chargée au besoin</span></div>
   </section>
 </template>
 <style scoped>
 .tiered-context{font-size:18px;line-height:1.35}.tiered-context p{margin:0;opacity:1}
-.tier-intro{margin:0 0 12px!important;font-size:20px}
+.tier-intro{margin:0 0 12px!important;font-size:19px}
 .tier-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.tier{padding:13px 14px 12px;background:#edf3f5;border-top:5px solid #006b83}
-.scoped{background:#e1f1ee;border-color:#007b68}.demand{background:#fcf3db;border-color:#a66c00}
-.tier-index{font-size:17px;font-weight:600}.tier h2{font-family:inherit;font-size:22px;margin:6px 0 10px;line-height:1.2}
-.tier ul{padding-left:19px;margin:0;min-height:124px}.tier li{margin:0 0 8px;padding:0;font-size:18px;line-height:1.35}
-.tier p{font-size:16px;line-height:1.35;border-top:1px solid #9eb9c3;padding-top:9px}.tier code{font-size:16px}
-.harness-band{margin-top:8px;border-left:5px solid #073748;padding:3px 12px;font-size:17px;line-height:1.45;background:#edf3f5}
+.tier{padding:13px 14px;background:#edf3f5;border-top:5px solid #006b83}
+.files{background:#e1f1ee;border-color:#007b68}.task{background:#fcf3db;border-color:#a66c00}
+.tier-index{font-size:16px;font-weight:600}.tier h2{font-family:inherit;font-size:22px;margin:8px 0 12px;line-height:1.2}
+.tier .tier-example{font-size:20px;line-height:1.35;min-height:81px}
+.tier .tier-file{font-size:16px;line-height:1.45;min-height:60px;margin-top:10px}.tier code{font-size:16px}
+.scope-loading{margin-top:12px;border-left:5px solid #073748;padding:8px 12px;font-size:18px;line-height:1.5;background:#edf3f5}
+.scope-loading .plus{display:inline-block;margin:0 15px;color:#006b83}
 </style>

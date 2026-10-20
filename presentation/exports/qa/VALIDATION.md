@@ -1,6 +1,16 @@
 # Validation de la présentation
 
-## État courant : architecture du contexte par paliers
+## État courant : portée et chargement progressif
+
+19 octobre 2026. Slides 10–11 remaniées sans ajout de page : **31 slides, dont 25 principales**. La portée (projet, fichiers ou tâche) est distincte du chargement. Une skill peut être Task scoped ET On demand. Exemples : brut/provenance, règle Python applicable, procédure /validate-etl volontaire, dictionnaire et test de couverture. Progression nom/description → corps SKILL.md → références utiles. Notes ventilées, aide-mémoire, fiche et guide synchronisés.
+
+Build réussi. Contrôle CUA des deux slides audience en **1366×768 et 1920×1080**; dimensions réellement lues dans le DOM. Marges avant les références : 30,7/23,6 px sur portable et 43,1/33,2 px en projection. Aucun débordement dans les trois états interactifs. Notes 10–11 contrôlées sur portable : quatre repères chronométrés par slide, détails initialement repliés, aucun débordement horizontal; ouverture au clavier vérifiée en 11. Les trois sélections se synchronisent présentateur → audience et dans l’autre sens, persistent après rechargement et retour de navigation native. L’override de viewport ne redimensionnant pas uniformément tous les onglets, les captures ont été prises uniquement après confirmation des dimensions effectives.
+
+PDF régénéré : **31 pages, six destinations internes**, textes et liens attendus présents; pages 10–11 inspectées. Les 25 plages notes/guide correspondent; **1 min 30 + 1 min**, de 16:30 à 19:00, et **32 + 13 minutes** au total. Message console FloatingVue/Popper connu, sans défaut observé dans ces vérifications. Pas de nouveau test réseau coupé ni de répétition sur le portable HQ. Les scripts QA existants ont été adaptés aux trois contrôles; leur syntaxe est vérifiée, la validation interactive de cette révision a été réalisée avec CUA.
+
+Preuves : `../../../docs/validation/context-scope-loading.json`, `presentation-flow.json`, captures `scope-loading-*`, rendus PDF `page-10.png` et `page-11.png`. Les rapports précédents restent historiques.
+
+## Historique : architecture du contexte par paliers
 
 19 octobre 2026. **31 slides, dont 25 principales et 6 annexes.** La 9 emploie « règles communes du projet ». La 10 distingue Always on, Task scoped et On demand; la 11 montre les contributions à une tâche de couverture. Documents détaillés, règles de chemin, contexte implicite IDE/CLI, rôle choisi et workflow sont distingués. MCP/outils/permissions figurent dans le rôle du harnais; aucune inclusion automatique de toutes leurs données n’est affirmée. Notes, aide-mémoire, fiche, guide et conducteur HTML alignés.
 

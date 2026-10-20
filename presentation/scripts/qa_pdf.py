@@ -24,7 +24,7 @@ for fragment in ['configure-thinking-effort','artificialanalysis.ai/agents/codin
 assert '66,67' in reader.pages[7].extract_text()
 assert 'Spec-Driven Development' in reader.pages[20].extract_text()
 context_text=reader.pages[9].extract_text()+reader.pages[10].extract_text()
-for term in ['Tiered-context architecture','Always on','Task scoped','On demand','Règles communes','Model context','applyTo','MCP']:
+for term in ['Context scope','Tiered-context architecture','Task scoped','On demand','Règles communes','Progressive loading','applyTo','SKILL.md','Nom + description']:
     assert term in context_text, term
 model_text=reader.pages[16].extract_text()
 for term in ['GPT-6 Luna','Claude Haiku 5.5','Claude Sonnet 5.5','GPT-6.1 Sol','Claude Opus 5.5','Simple','Délimitée','Complexe','Diagnostic difficile','Coûts simulés']:

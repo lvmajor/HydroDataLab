@@ -1,5 +1,5 @@
 {
-  "checkedAtUtc": "2026-10-20T00:54:13.254Z",
+  "checkedAtUtc": "2026-10-20T01:13:11.369Z",
   "focus": "GitHub Copilot dans VS Code; HydroDataLab comme fil conducteur",
   "slideCount": 31,
   "explanationMinutes": 32,
@@ -64,13 +64,13 @@
     },
     {
       "slide": 10,
-      "title": "Tiered-context architecture",
+      "title": "Portée du contexte · Context scope",
       "start": "16:30",
       "finish": "18:00"
     },
     {
       "slide": 11,
-      "title": "Comment ces apports composent le contexte",
+      "title": "Chargement progressif · Progressive loading",
       "start": "18:00",
       "finish": "19:00"
     },

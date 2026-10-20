@@ -16,16 +16,16 @@ for(let i=1;i<=31;i++){
 }
 if(titles.length!==31||titles[1]!=='Votre terrain de développement')throw new Error('Opening slide order');
 await page.goto('http://127.0.0.1:53173/11',{waitUntil:'networkidle'});
-for(const term of ['Règles communes','Règles Python','Rôle et demande','Documents et code','Résultats des outils']){
+for(const term of ['Inclus automatiquement','Activé sous condition','Lire ou recevoir']){
  if(!await page.getByRole('button',{name:new RegExp(term)}).isVisible())throw new Error('Missing bilingual layer: '+term);
  await page.getByRole('button',{name:new RegExp(term)}).click();
  const overflow=await page.locator('.context-map').evaluate(el=>{const footer=el.closest('.slidev-layout').querySelector('.doc-link').getBoundingClientRect();return el.getBoundingClientRect().bottom>footer.top-4});
  if(overflow)issues.push({slide:11,layer:term,problem:'Context overlaps references'});
 }
-await page.getByRole('button',{name:/Documents et code/}).click();
-if(!(await page.locator('.context-preview').innerText()).includes('Une mesure par heure'))throw new Error('Reference layer failed');
+await page.getByRole('button',{name:/Activé sous condition/}).click();
+if(!(await page.locator('.context-preview').innerText()).includes('/validate-etl'))throw new Error('Reference layer failed');
 await page.emulateMedia({reducedMotion:'reduce'});
-await page.getByRole('button',{name:/Résultats des outils/}).click();
+await page.getByRole('button',{name:/Lire ou recevoir/}).click();
 if(!(await page.locator('.context-preview').innerText()).includes('95,83'))throw new Error('Tool results failed');
 if(await page.locator('.context-preview').evaluate(el=>parseFloat(getComputedStyle(el).animationDuration))!==0)throw new Error('Reduced motion failed');
 await page.screenshot({path:'exports/qa/context-interactive.png'});

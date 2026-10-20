@@ -77,13 +77,25 @@ Le personnel Copilot concerne plusieurs projets et reste distinct d’un profil 
 
 ## Tiered-context architecture — architecture du contexte par paliers
 
-Les slides 10–11 distinguent **la portée** (pour quel projet/utilisateur), **le déclenchement** (quand charger) et **le contexte effectivement fourni**. Les paliers organisent notre méthode; ils ne définissent pas une priorité universelle entre consignes.
+Les slides 10–11 séparent deux questions. **Scope — portée : à quel travail cela s’applique? Progressive loading — chargement progressif : quand et comment le contenu entre-t-il dans le contexte?** Une portée ne définit ni un moment de chargement ni une priorité entre consignes.
 
-| Palier | Ce qu’on y place | Condition de chargement |
+### 1. Portée : projet, fichiers ou tâche
+
+| Portée | Exemple HydroDataLab | Support |
 |---|---|---|
-| **Always on — règles communes** | Instructions du dépôt, préférences utilisateur permanentes, directives d’organisation activées; résumé d’architecture et standards essentiels | Formats découverts et pris en charge par le harnais; accès/réglages de l’organisation applicables |
-| **Task scoped — selon la tâche** | Règles ciblées par chemin; rôle d’agent choisi; prompt du travail; skill pertinente | `applyTo` correspondant, description pertinente, agent choisi ou procédure invoquée/chargée |
-| **On demand — au besoin** | Documents détaillés, code, échantillons, sélection IDE/contexte CLI, sorties d’outils | Ajout explicite, lecture/recherche par l’agent ou inclusion implicite par l’interface |
+| **Project-wide — tout le projet** | Préserver les données brutes et la provenance | `.github/copilot-instructions.md` ou `AGENTS.md` compatible |
+| **File-specific — fichiers ciblés** | Ne pas remplacer une absence par zéro dans l’ETL Python | `.github/instructions/python.instructions.md`, motif `etl/**/*.py` |
+| **Task scoped — tâche ciblée** | Ajouter la couverture, selon la spécification, puis la valider | Demande courante, spécification, rôle choisi et skill pertinente |
+
+Les préférences utilisateur et les directives d’organisation applicables peuvent couvrir plusieurs projets. Ces sources sont complémentaires; résoudre les contradictions explicitement. Une skill ou une référence peut être réutilisée pour plusieurs tâches.
+
+### 2. Chargement : automatique, conditionnel, puis au fil du travail
+
+- **Au départ :** les instructions communes reconnues par le harnais accompagnent la demande. « Always on » désigne ces consignes permanentes applicables, pas tous les documents du dépôt ni une garantie d’obéissance.
+- **Quand c’est pertinent :** une instruction ciblée peut s’activer par correspondance `applyTo`, par pertinence de sa `description` ou par ajout explicite. Une skill peut être sélectionnée par l’agent ou invoquée par l’utilisateur, selon sa configuration.
+- **Pendant le travail :** joindre ou faire lire le dictionnaire, la spécification et le code utiles; recevoir les résultats des outils. Une lecture peut aussi avoir lieu dès le début. Ce sont des mécanismes qui se combinent, pas trois cases exclusives.
+
+**Une skill est à la fois Task scoped (portée) et On demand (chargement).** « Au besoin » n’implique pas « manuel seulement ». Pour une skill auto-sélectionnable : découverte du **nom et de la description → chargement du corps de SKILL.md si choisie → lecture des références utiles**. Charger le texte n’exécute pas automatiquement ses commandes. Dans HydroDataLab, **`/validate-etl` est volontaire** : `disable-model-invocation: true` empêche son activation automatique. [Microsoft : chargement des skills](https://code.visualstudio.com/docs/agent-customization/agent-skills#how-copilot-uses-skills).
 
 **Architecture et standards :** mettre les quelques exigences essentielles dans les règles communes, puis référencer les documents détaillés et préciser quand les lire. Un `ARCHITECTURE.md` ou un lien ne garantit pas l’inclusion intégrale du document. Une instruction ciblée par chemin est automatique **sous condition**, pas permanente pour toutes les tâches. [Microsoft : instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions), [organiser le contexte](https://code.visualstudio.com/docs/agents/guides/context-engineering-guide).
 

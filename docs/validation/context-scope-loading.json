@@ -1,0 +1,96 @@
+{
+  "checkedAtUtc": "2026-10-20T01:12:41.008Z",
+  "slides": [
+    10,
+    11
+  ],
+  "audience": [
+    {
+      "width": 1366,
+      "slide": 10,
+      "gap": 30.678237915039062,
+      "overflow": []
+    },
+    {
+      "width": 1366,
+      "slide": 11,
+      "gap": 23.582595825195312,
+      "overflow": []
+    },
+    {
+      "slide": 10,
+      "gap": 43.141326904296875,
+      "overflow": [],
+      "viewport": {
+        "height": 1080,
+        "width": 1920
+      }
+    },
+    {
+      "slide": 11,
+      "gap": 33.163055419921875,
+      "overflow": [],
+      "viewport": {
+        "height": 1080,
+        "width": 1920
+      }
+    }
+  ],
+  "presenter": [
+    {
+      "slide": 10,
+      "headings": [
+        "0:00–0:25 · Project-wide — tout le projet",
+        "0:25–0:45 · File-specific — fichiers ciblés",
+        "0:45–1:05 · Task scoped — tâche ciblée",
+        "1:05–1:30 · La distinction à retenir"
+      ],
+      "open": false,
+      "overflow": false,
+      "viewport": {
+        "height": 768,
+        "width": 1366
+      }
+    },
+    {
+      "slide": 11,
+      "headings": [
+        "0:00–0:15 · Au départ",
+        "0:15–0:35 · Quand c’est pertinent",
+        "0:35–0:50 · Pendant le travail",
+        "0:50–1:00 · Vérifier, puis enchaîner"
+      ],
+      "open": false,
+      "overflow": false,
+      "viewport": {
+        "height": 768,
+        "width": 1366
+      }
+    }
+  ],
+  "synchronization": {
+    "threeStates": true,
+    "audienceToPresenter": true,
+    "reloadPreservesSelection": true,
+    "nativeNavigationAndReturn": true
+  },
+  "notes": {
+    "fourTimedSectionsPerSlide": true,
+    "detailsCollapsedInitially": true,
+    "keyboardDisclosureTestedOnSlide": 11
+  },
+  "pdf": {
+    "pages": 31,
+    "internalDestinations": 6,
+    "changedPagesVisuallyInspected": true
+  },
+  "timing": {
+    "slide10Seconds": 90,
+    "slide11Seconds": 60,
+    "explanationMinutes": 32,
+    "demoMinutes": 13,
+    "notesMatchGuide": true
+  },
+  "knownWarning": "FloatingVue/Popper warning remains in export; no observed rendering or interaction defect in checks.",
+  "limits": "Validation locale dans le navigateur intégré; répétition réelle sur le portable HQ toujours nécessaire. Pas de nouveau test réseau coupé."
+}

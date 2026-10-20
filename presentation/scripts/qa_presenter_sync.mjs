@@ -54,30 +54,30 @@ const openAudience = async slide => {
 
 try {
   await presenter.goto(`${origin}/presenter/11`, { waitUntil: 'networkidle' })
-  await current().getByRole('button', { name: /Documents et code/ }).click()
+  await current().getByRole('button', { name: /Lire ou recevoir/ }).click()
   audience = await openAudience(11)
-  await waitLayer(audience, 3)
+  await waitLayer(audience, 2)
   checks.push('Audience ouverte après la sélection : même couche immédiatement')
 
-  for (let layer = 0; layer < 5; layer++) {
+  for (let layer = 0; layer < 3; layer++) {
     await current().locator('.context-layer').nth(layer).click()
     await Promise.all([waitLayer(presenter, layer), waitLayer(audience, layer)])
     assert.equal(await audience.locator('.context-preview').innerText(), await current().locator('.context-preview').innerText())
     assert.equal(new URL(presenter.url()).pathname, '/presenter/11')
     assert.equal(new URL(audience.url()).pathname, '/11')
   }
-  checks.push('Cinq couches : sélection, texte et flèche synchronisés, sans changer de diapositive')
+  checks.push('Trois détails de chargement : sélection, texte et flèche synchronisés, sans changer de diapositive')
 
-  await audience.getByRole('button', { name: /Rôle et demande/ }).click()
-  await waitLayer(presenter, 2)
+  await audience.getByRole('button', { name: /Activé sous condition/ }).click()
+  await waitLayer(presenter, 1)
   await presenter.getByTitle('Go to next slide', { exact: true }).click()
   await audience.waitForURL(url => url.pathname === '/12')
   await presenter.getByTitle('Go to previous slide', { exact: true }).click()
   await audience.waitForURL(url => url.pathname === '/11')
-  await Promise.all([waitLayer(presenter, 2), waitLayer(audience, 2)])
+  await Promise.all([waitLayer(presenter, 1), waitLayer(audience, 1)])
   await presenter.reload({ waitUntil: 'networkidle' })
   await audience.reload({ waitUntil: 'networkidle' })
-  await Promise.all([waitLayer(presenter, 2), waitLayer(audience, 2)])
+  await Promise.all([waitLayer(presenter, 1), waitLayer(audience, 1)])
   checks.push('Retour audience → présentateur, navigation native Slidev et rechargement conservant la couche')
   await presenter.screenshot({ path: path.join(output, 'sync-context-presenter.png') })
   await audience.screenshot({ path: path.join(output, 'sync-context-audience.png') })
@@ -117,7 +117,7 @@ try {
   await audience.screenshot({ path: path.join(output, 'sync-costs-audience.png') })
 
   await presenter.goto(`${origin}/presenter/11`, { waitUntil: 'networkidle' })
-  await waitLayer(presenter, 2)
+  await waitLayer(presenter, 1)
   checks.push('Les réglages des deux composants restent indépendants après un aller-retour')
   assert.deepEqual(errors, [])
   assert.deepEqual([...external], [])

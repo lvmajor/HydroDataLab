@@ -4,7 +4,7 @@ Sujet central : **GitHub Copilot dans VS Code et les bonnes pratiques des agents
 
 **31 diapositives : 25 principales et 6 annexes.** Prestation du 20 octobre 2026; sources vérifiées les 18 et 19 octobre. Le contenu et les démos occupent 45 minutes : 32 minutes d’explications et 4 + 5 + 4 minutes de démonstrations. Questions : 10 minutes; marge : 5.
 
-La slide 12 relie le panneau Agent Customizations à trois familles de capacités, avec une capture réelle. La slide 13 compare chargement progressif d’une skill et appel d’un outil. La slide 18 explique Thinking Effort et le coût par tâche, avec une vraie capture datée d’Artificial Analysis et six valeurs modèle/effort/coût vérifiées. La capture élargie est en annexe 26; la fiche `handouts/personnalisations-vscode.md` détaille les formats, déclenchements et compteurs.
+Les slides 10–11 séparent la portée (projet, fichiers, tâche) du chargement progressif; une skill peut être ciblée et chargée au besoin. Les trois détails de la slide 11 se synchronisent entre présentateur et audience. La slide 12 relie le panneau Agent Customizations à trois familles de capacités, avec une capture réelle. La slide 13 compare chargement progressif d’une skill et appel d’un outil. La slide 18 explique Thinking Effort et le coût par tâche, avec une vraie capture datée d’Artificial Analysis et six valeurs modèle/effort/coût vérifiées. La capture élargie est en annexe 26; la fiche `handouts/personnalisations-vscode.md` détaille les formats, déclenchements et compteurs.
 
 ## Lancer localement
 
@@ -16,7 +16,7 @@ Les fichiers de présentation sont disponibles à partir du tag `05-docker`. Au 
 
 Le build est servi à la racine du serveur (`--base /`) pour que les liens directs vers `/presenter/20` chargent aussi leurs ressources. La vue audience affiche les notions et objectifs; les raccourcis, minutages et procédures de secours sont dans les notes du présentateur. Le lexique est dans l'aide-mémoire.
 
-Les 30 notes sont organisées en repères courts : durée et horloge, fil rouge, points à dire/montrer et transition. Les précisions facultatives se déplient au clic; les procédures de secours sont séparées. Les temps des étapes de démo partent du début de la démonstration, après son introduction. Élargir le panneau de notes avec sa poignée et utiliser les commandes natives de taille du texte au besoin. Après une révision des notes, reconstruire le site et recharger la vue présentateur; le PDF audience n’a pas à être régénéré si son contenu n’a pas changé.
+Les 31 notes sont organisées en repères courts : durée et horloge, fil rouge, points à dire/montrer et transition. Les précisions facultatives se déplient au clic; les procédures de secours sont séparées. Les temps des étapes de démo partent du début de la démonstration, après son introduction. Élargir le panneau de notes avec sa poignée et utiliser les commandes natives de taille du texte au besoin. Après une révision des notes, reconstruire le site et recharger la vue présentateur; le PDF audience n’a pas à être régénéré si son contenu n’a pas changé.
 
 Pour une installation qui utilise Chrome/Edge existant, définir `PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1` avant `npm ci` afin d’éviter de télécharger un autre navigateur. Node 22.12+ est requis par Slidev; un Node LTS 22 ou 24 évite l’avertissement de compatibilité de postcss-nested observé avec Node 25.
 
@@ -29,7 +29,7 @@ Dans Windows, utiliser `Win + P` → **Étendre**. Ouvrir deux fenêtres du **m�
 
 Dans l’aperçu **Current → Slides** du présentateur, cliquer un apport au contexte (diapositive 11) ou les boutons `−`/`+` du comparatif des coûts (17). La vue audience reproduit la sélection, le texte et les coûts. La synchronisation fonctionne dans les deux sens, sans Internet, avec le serveur de développement, le build statique ou le kit Python.
 
-Les réglages sont conservés après navigation, rechargement ou ouverture tardive de la fenêtre audience. Pour revenir au début : sélectionner la première couche et ramener les essais à 1. Garder **la même adresse et le même port** dans les deux fenêtres : `localhost` et `127.0.0.1` sont deux origines distinctes pour le navigateur. Des profils ou navigateurs différents ne partagent pas ces réglages. Après une mise à jour du site, recharger les deux fenêtres.
+Les réglages sont conservés après navigation, rechargement ou ouverture tardive de la fenêtre audience. Pour revenir au début : sélectionner le premier détail de chargement et ramener les essais à 1. Garder **la même adresse et le même port** dans les deux fenêtres : `localhost` et `127.0.0.1` sont deux origines distinctes pour le navigateur. Des profils ou navigateurs différents ne partagent pas ces réglages. Après une mise à jour du site, recharger les deux fenêtres.
 
 La synchronisation utilise le stockage local réactif [VueUse `useStorage`](https://vueuse.org/core/usestorage/), avec deux clés propres à HydroDataLab. Les valeurs lues sont validées avant affichage.
 
@@ -37,7 +37,7 @@ La synchronisation utilise le stockage local réactif [VueUse `useStorage`](http
 
 La diapositive **25** utilise [resources/links.json](resources/links.json). Modifier `label`, `url` et `description` dans `internal` pour ajouter les liens HQ. Une URL vide reste un emplacement sans faux lien. Conserver trois entrées courtes pour la projection; compléter la fiche [skills-et-veille.md](../handouts/skills-et-veille.md) pour plus de détails.
 
-Après modification : `npm run build`, `npm run export`, puis recharger les deux fenêtres. La page 13 expose le choix « vanille »; la page 22 propose une sélection par besoin. Matt Pocock y reste « en exploration ».
+Après modification : `npm run build`, `npm run export`, puis recharger les deux fenêtres. La page 14 expose le choix « vanille »; la page 23 propose une sélection par besoin. Matt Pocock y reste « en exploration ».
 
 ## Export PDF
 
