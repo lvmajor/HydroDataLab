@@ -2,7 +2,7 @@
 
 Formation « Des agents IA aux pipelines Python fiables » — Hydro-Québec, 20 octobre 2026.
 
-Projet pédagogique local : données publiques, ETL Python, API ASP.NET Core, Vue, Quartz et Aspire.
+Projet pédagogique local : données publiques, ETL Python ou .NET, API ASP.NET Core, Vue, Quartz et Aspire.
 
 Le support contient **24 diapositives + 6 annexes**, trois démonstrations (4 + 5 + 4 minutes), les notes et un PDF. Le pipeline utilise les données publiques du **17 octobre 2026** : 96 demandes électriques, 24 niveaux d'eau et 48 températures. Les stations Gouin Nord et Gouin Bois sont distinctes. Un niveau en mètres ne représente pas une réserve en GWh.
 
@@ -20,6 +20,29 @@ Dans **PowerShell 7**, à la racine du dossier :
 ```
 
 Ouvrir **http://localhost:53170**, puis « Lancer le traitement ». L'historique et les exports sont conservés dans `.runtime/main/`. Aspire affiche son propre lien de tableau de bord au démarrage. Le mode natif ne demande pas Docker. Pour arrêter : `./scripts/stop-demo.ps1`.
+
+### Utiliser le moteur .NET sans Python
+
+Le clone .NET produit le même rapport et les quatre mêmes exports. À la racine du dépôt, dans PowerShell 7 :
+
+```powershell
+./scripts/doctor.ps1 -EtlEngine dotnet
+./scripts/prepare.ps1 -EtlEngine dotnet -SkipPresentation
+./scripts/verify.ps1 -EtlEngine dotnet
+./scripts/start-demo.ps1 -EtlEngine dotnet
+```
+
+Ce parcours utilise NuGet pour l'ETL et ne lance ni `uv` ni Python. Node/npm restent nécessaires pour Vue; le SDK .NET et Aspire doivent être installés. `-SkipPresentation` évite de préparer le diaporama. La configuration des sources NuGet de votre poste est conservée, notamment le miroir d'entreprise.
+
+Le choix peut aussi être conservé pour la console : `$env:Hydro__EtlEngine = 'dotnet'`. Les scripts et `aspire run` le lisent. Ou, directement depuis la racine :
+
+```powershell
+aspire run --apphost src/AppHost/apphost.cs -- --Hydro:EtlEngine=dotnet
+```
+
+Python reste le choix par défaut. Pour changer de moteur, arrêter l'AppHost avec `./scripts/stop-demo.ps1`, puis le relancer avec `-EtlEngine python` ou `dotnet`. Préparer chaque moteur avant sa première utilisation. Le paramètre explicite prime sur la variable d'environnement. Les données .NET sont isolées dans `.runtime/<branche>/dotnet/`; l'historique Python existant reste dans `.runtime/<branche>/`.
+
+Voir [le moteur .NET](src/Etl/README.md) pour la CLI autonome, les tests et les limites réseau. Le mode `fixture` fonctionne sans accès aux sources publiques après préparation.
 
 Dans un deuxième terminal :
 
@@ -46,6 +69,7 @@ uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basete
 |---|---|---|
 | Python / pandas / pytest | Extraire, valider, transformer, exporter | Versions exactes dans `etl/uv.lock` |
 | FastAPI | Adapter le même cœur Python à HTTP | `etl/uv.lock` |
+| ETL ASP.NET Core + Parquet.Net | Alternative .NET : extraction, calculs, CSV/Parquet/JSON | .NET 10 / Parquet.Net 6.1.0, `src/Etl/packages.lock.json` |
 | ASP.NET Core | Consulter les résultats, piloter les tâches | .NET SDK 10.0.402 / runtime 10.0.13 |
 | Quartz + SQLite | Planifier et conserver l'historique | Quartz 4.5.1 |
 | Vue / TypeScript | Explorer les séries et leur qualité | `web/package-lock.json` |

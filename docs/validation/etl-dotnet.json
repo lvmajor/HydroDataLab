@@ -1,0 +1,54 @@
+{
+  "date": "2026-10-19",
+  "status": "passed",
+  "scope": "Moteur ETL .NET alternatif, sélection Aspire et scripts natifs",
+  "environment": { "os": "Windows", "dotnetSdk": "10.0.402", "dotnetRuntime": "10.0.13", "aspire": "13.6.1", "parquetNet": "6.1.0", "corporateHqMachineTested": false },
+  "tests": {
+    "etlDotnet": { "passed": 38, "failed": 0, "lockedRestore": true },
+    "apiDotnet": { "passed": 10, "failed": 0 },
+    "vue": { "passed": 11, "failed": 0, "build": "passed" },
+    "parity": {
+      "cases": 8,
+      "scenarios": ["fixture complete", "fixture missing", "anomalies complete", "anomalies missing", "23h complete", "23h missing", "25h complete", "25h missing"],
+      "reports": "Identiques hors generatedAtUtc, horodatages et durées des étapes",
+      "csv": "observations.csv et hourly.csv identiques octet par octet",
+      "parquet": "Types logiques, nullabilité, horodatages UTC et valeurs identiques; métadonnées de bibliothèque non comparées"
+    },
+    "aspire": {
+      "isolatedCopy": true,
+      "existingUserSessionUntouched": true,
+      "dotnetSelectedViaEnvironment": true,
+      "pythonSelectedViaCommandLine": true,
+      "commandLineOverridesEnvironment": true,
+      "exclusiveBackendResource": true,
+      "healthy": ["etl-dotnet", "api", "web", "python (autre lancement)"],
+      "httpBothEngines": ["complete 168", "missing 167 / 95.83%", "simulated failure", "explicit retry", "CSV", "Parquet", "JSON", "hourly CSV"],
+      "testSessionStopped": true
+    },
+    "scripts": {
+      "method": "Commandes externes substituées pour contrôler le routage sans retélécharger ni redémarrer la session utilisateur",
+      "dotnetPrepareVerifyStartWithoutUv": true,
+      "defaultPython": true,
+      "explicitParameterOverridesEnvironment": true,
+      "unknownEngineRejected": true
+    },
+    "compose": { "dotnetModelGenerated": true, "resource": "etl-dotnet", "apiEndpoint": "http://etl-dotnet:8080", "containerImageBuiltOrRun": false },
+    "browser": {
+      "typographyStatesAndFormats": 17,
+      "minimumTextPixels": 16,
+      "minimumContrastObserved": 5.041366314924423,
+      "horizontalOverflow": false,
+      "javascriptErrors": 0,
+      "etlInteractions": ["raw and normalized samples", "24 hourly rows", "hourly export", "4 measured stages", "failure details", "linked retry", "legacy report"],
+      "screenshotsInspected": ["laptop", "projection", "mobile"],
+      "checks": ["320 CSS px", "200% text", "text spacing", "keyboard", "loading and failure states"],
+      "evidenceLocal": [".runtime/typography-qa/results.json", ".runtime/etl-qa/results.json"]
+    }
+  },
+  "limits": [
+    "Les certificats, le miroir NuGet et les règles réseau du poste HQ n'ont pas été testés ici.",
+    "Les appels live sont testés avec des réponses HTTP contrôlées; aucun accès aux sources publiques n'est nécessaire pour fixture.",
+    "Les images et kits Docker historiques transportent toujours le moteur Python.",
+    "Les vérifications visuelles ciblées ne constituent pas une certification WCAG; projecteur et zoom natif restent à vérifier sur place."
+  ]
+}

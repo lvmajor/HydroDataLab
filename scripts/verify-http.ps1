@@ -28,8 +28,8 @@ $id = Start-Run '{"source":"fixture","simulateFailure":true}'
 if ((Wait-Run $id).status -ne 'failed') { throw 'Échec simulé attendu.' }
 $retry = Invoke-RestMethod "$BaseUrl/api/runs/$id/retry" -Method Post
 if ((Wait-Run $retry.id).status -ne 'succeeded') { throw 'Relance échouée.' }
-foreach ($file in @('observations.csv','observations.parquet','report.json')) {
+foreach ($file in @('observations.csv','observations.parquet','report.json','hourly.csv')) {
     $response = Invoke-WebRequest "$BaseUrl/api/artifacts/$($retry.id)/$file" -UseBasicParsing
     if ($response.StatusCode -ne 200 -or $response.RawContentLength -lt 100) { throw "Export invalide : $file" }
 }
-Write-Host 'HTTP OK : 168 observations, 4 séries, couverture, échec, relance, CSV/Parquet/JSON.'
+Write-Host 'HTTP OK : 168 observations, 4 séries, couverture, échec, relance, CSV/Parquet/JSON/horaire.'

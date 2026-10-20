@@ -8,7 +8,8 @@ if ($DockerHost) { $dockerOptions += @('--host',$DockerHost) }
 Invoke-Checked $Engine ($dockerOptions + @('version','--format','{{.Server.Version}}'))
 # Arrêter seulement cet AppHost : Windows verrouille son exécutable pendant la publication.
 Invoke-Checked aspire @('stop','--apphost',$AppHost,'--non-interactive')
-Invoke-Checked aspire @('publish','--apphost',$AppHost,'-o','artifacts/compose','--non-interactive')
+# Ce kit historique transporte les images Python; ignorer le choix natif de la console.
+Invoke-Checked aspire @('publish','--apphost',$AppHost,'-o','artifacts/compose','--non-interactive','--','--Hydro:EtlEngine=python')
 $buildOptions = @('--load')
 if ($Engine -eq 'podman') { $buildOptions = @('--format','docker') }
 Invoke-Checked $Engine ($dockerOptions + @('build') + $buildOptions + @('-t','docker.io/library/hydrodatalab-etl:formation','-f','etl/Dockerfile','.'))

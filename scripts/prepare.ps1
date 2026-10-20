@@ -1,6 +1,12 @@
-param([switch]$SkipPresentation)
+param([switch]$SkipPresentation, [ValidateSet('python','dotnet')][string]$EtlEngine)
 . "$PSScriptRoot/common.ps1"
-Invoke-Checked uv @('sync','--project','etl','--frozen')
+$EtlEngine = Resolve-EtlEngine $EtlEngine
+Write-Host "Préparation du moteur ETL : $EtlEngine"
+if ($EtlEngine -eq 'python') { Invoke-Checked uv @('sync','--project','etl','--frozen') }
+else {
+    Invoke-Checked dotnet @('restore','tests/Etl.Tests','--locked-mode')
+    Invoke-Checked dotnet @('build','src/Etl','--no-restore','--verbosity','quiet')
+}
 Invoke-Checked dotnet @('restore','tests/Api.Tests','--locked-mode')
 Invoke-Checked dotnet @('build','src/Api','--no-restore','--verbosity','quiet')
 Invoke-Checked npm.cmd @('ci','--prefix','web')
@@ -15,4 +21,4 @@ if (!$SkipPresentation) {
     Invoke-Checked npm.cmd @('run','build','--prefix','presentation')
 }
 Write-Host 'Préparation terminée. Les données de démonstration sont déjà dans data/fixtures.'
-Write-Host 'Lancer scripts/verify.ps1, puis scripts/start-demo.ps1.'
+Write-Host "Lancer scripts/verify.ps1 -EtlEngine $EtlEngine, puis scripts/start-demo.ps1 -EtlEngine $EtlEngine."

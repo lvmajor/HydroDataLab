@@ -68,12 +68,12 @@ public sealed class PipelineJob(RunStore store, IHttpClientFactory clients, ILog
             var body = new { runId = id, source = context.MergedJobDataMap.GetString("source"),
                 simulateFailure = context.MergedJobDataMap.GetString("simulateFailure") == "true",
                 qualityScenario = context.MergedJobDataMap.GetString("qualityScenario") };
-            logger.LogInformation("Extraction, transformation et export Python pour {RunId}", id);
-            using var response = await clients.CreateClient("python").PostAsJsonAsync("run", body, cancellationToken);
+            logger.LogInformation("Extraction, transformation et export ETL pour {RunId}", id);
+            using var response = await clients.CreateClient("etl").PostAsJsonAsync("run", body, cancellationToken);
             var report = await response.Content.ReadAsStringAsync(cancellationToken);
             if (!response.IsSuccessStatusCode)
             {
-                var message = $"Python HTTP {(int)response.StatusCode}";
+                var message = $"ETL HTTP {(int)response.StatusCode}";
                 try
                 {
                     using var failure = JsonDocument.Parse(report);
@@ -91,7 +91,7 @@ public sealed class PipelineJob(RunStore store, IHttpClientFactory clients, ILog
                 throw new HttpRequestException(message);
             }
             using var document = JsonDocument.Parse(report);
-            if (document.RootElement.GetProperty("runId").GetString() != id) throw new InvalidDataException("Identifiant incohérent dans le rapport Python.");
+            if (document.RootElement.GetProperty("runId").GetString() != id) throw new InvalidDataException("Identifiant incohérent dans le rapport ETL.");
             store.Complete(id, report, null);
             logger.LogInformation("Exécution {RunId} réussie et rapport conservé", id);
         }

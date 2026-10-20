@@ -7,6 +7,9 @@
 
 var builder = DistributedApplication.CreateBuilder(args);
 var root = Path.GetFullPath("../..", builder.AppHostDirectory);
+var etlEngine = (builder.Configuration["Hydro:EtlEngine"] ?? "python").Trim().ToLowerInvariant();
+if (etlEngine is not ("python" or "dotnet"))
+    throw new InvalidOperationException("Hydro:EtlEngine doit être 'python' ou 'dotnet' (variable Hydro__EtlEngine).");
 builder.AddDockerComposeEnvironment("compose")
     .WithDashboard(dashboard => dashboard
         .WithImage("mcr.microsoft.com/dotnet/aspire-dashboard", "13.6.1")
@@ -20,19 +23,20 @@ builder.AddDockerComposeEnvironment("compose")
 
 if (builder.ExecutionContext.IsPublishMode)
 {
-    var python = builder.AddDockerfile("python", root, "etl/Dockerfile")
-        .WithHttpEndpoint(targetPort: 8001)
+    var etl = builder.AddDockerfile(etlEngine == "dotnet" ? "etl-dotnet" : "python", root,
+            etlEngine == "dotnet" ? "src/Etl/Dockerfile" : "etl/Dockerfile")
+        .WithHttpEndpoint(targetPort: etlEngine == "dotnet" ? 8080 : 8001)
         .WithVolume("hydrolab-exports", "/app/outputs")
         .WithHttpHealthCheck("/health");
     var api = builder.AddDockerfile("api", root, "src/Api/Dockerfile")
         .WithHttpEndpoint(targetPort: 8080)
         .WithVolume("hydrolab-state", "/state")
-        .WithEnvironment("Python__BaseUrl", python.GetEndpoint("http"))
+        .WithEnvironment("Etl__BaseUrl", etl.GetEndpoint("http"))
         .WithEnvironment("OTEL_EXPORTER_OTLP_ENDPOINT", "http://compose-dashboard:18889")
         .WithEnvironment("OTEL_EXPORTER_OTLP_PROTOCOL", "grpc")
         .WithEnvironment("OTEL_SERVICE_NAME", "hydrodatalab-api")
         .WithHttpHealthCheck("/health")
-        .WaitFor(python);
+        .WaitFor(etl);
     builder.AddDockerfile("web", Path.Combine(root, "web"))
         .WithHttpEndpoint(port: 53170, targetPort: 80)
         .WithExternalHttpEndpoints()
@@ -46,18 +50,36 @@ if (builder.ExecutionContext.IsPublishMode)
 else
 {
     var runtime = Environment.GetEnvironmentVariable("HYDRO_RUNTIME_DIR") ?? Path.Combine(root, ".runtime", "main");
+    if (etlEngine == "dotnet") runtime = Path.Combine(runtime, "dotnet");
     Directory.CreateDirectory(runtime);
-    var python = builder.AddUvicornApp("python", Path.Combine(root, "etl"), "hydrodatalab.api:app")
-        .WithUv(install: false)
-        .WithEnvironment("HYDRO_FIXTURE_DIR", Path.Combine(root, "data", "fixtures"))
-        .WithEnvironment("HYDRO_OUTPUT_DIR", Path.Combine(runtime, "exports"))
-        .WithHttpHealthCheck("/health");
+    IResourceBuilder<IResource> etlResource;
+    EndpointReference etlEndpoint;
+    if (etlEngine == "dotnet")
+    {
+        var etl = builder.AddProject("etl-dotnet", Path.Combine(root, "src", "Etl", "HydroDataLab.Etl.csproj"), launchProfileName: null)
+            .WithHttpEndpoint()
+            .WithEnvironment("HYDRO_FIXTURE_DIR", Path.Combine(root, "data", "fixtures"))
+            .WithEnvironment("HYDRO_OUTPUT_DIR", Path.Combine(runtime, "exports"))
+            .WithHttpHealthCheck("/health");
+        etlResource = etl;
+        etlEndpoint = etl.GetEndpoint("http");
+    }
+    else
+    {
+        var etl = builder.AddUvicornApp("python", Path.Combine(root, "etl"), "hydrodatalab.api:app")
+            .WithUv(install: false)
+            .WithEnvironment("HYDRO_FIXTURE_DIR", Path.Combine(root, "data", "fixtures"))
+            .WithEnvironment("HYDRO_OUTPUT_DIR", Path.Combine(runtime, "exports"))
+            .WithHttpHealthCheck("/health");
+        etlResource = etl;
+        etlEndpoint = etl.GetEndpoint("http");
+    }
     var api = builder.AddProject("api", Path.Combine(root, "src", "Api", "HydroDataLab.Api.csproj"), launchProfileName: null)
         .WithHttpEndpoint()
-        .WithEnvironment("Python__BaseUrl", python.GetEndpoint("http"))
+        .WithEnvironment("Etl__BaseUrl", etlEndpoint)
         .WithEnvironment("Hydro__DataDir", Path.Combine(runtime, "api"))
         .WithHttpHealthCheck("/health")
-        .WaitFor(python);
+        .WaitFor(etlResource);
     builder.AddViteApp("web", Path.Combine(root, "web"))
         .WithNpm(install: false)
         .WithEndpoint("http", endpoint => endpoint.Port = 53170)

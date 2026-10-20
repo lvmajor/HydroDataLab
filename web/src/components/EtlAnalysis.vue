@@ -13,8 +13,8 @@ const artifact = (name: string) => `/api/artifacts/${encodeURIComponent(props.re
 </script>
 <template>
   <section id="etl" class="etl-section" aria-labelledby="etl-title">
-    <div class="section-line"><div><p class="eyebrow">Le travail de Python · Extract → Transform → Load</p><h2 id="etl-title">Des mesures brutes aux réponses métier</h2></div><span>{{ report.period.start }} · {{ report.period.timezone }}</span></div>
-    <p class="section-intro">Explorer les étapes de cette exécution. Les résultats ci-dessous sont calculés par Python, puis transmis à Vue.</p>
+    <div class="section-line"><div><p class="eyebrow">Le parcours ETL · Extract → Transform → Load</p><h2 id="etl-title">Des mesures brutes aux réponses métier</h2></div><span>{{ report.period.start }} · {{ report.period.timezone }}</span></div>
+    <p class="section-intro">Explorer les étapes de cette exécution. Les résultats ci-dessous sont calculés par le moteur ETL, puis transmis à Vue.</p>
     <div class="etl-steps" role="group" aria-label="Étapes ETL à explorer">
       <button v-for="(label, i) in ['1 · Extraire', '2 · Transformer', '3 · Charger / exporter']" :key="i" :aria-pressed="step === i" :class="{ selected: step === i }" @click="step = i"><strong>{{ label }}</strong><span>{{ i === 0 ? `${etl.rawCount} lignes sources` : i === 1 ? `${etl.normalizedCount} lignes normalisées` : `${analysis.hourly.length} heures de demande` }}</span></button>
     </div>
@@ -25,7 +25,7 @@ const artifact = (name: string) => `/api/artifacts/${encodeURIComponent(props.re
         <p class="quiet">{{ etl.rawCount }} lignes au total pour la demande, le niveau d’eau et les températures. La source publique est détaillée en bas de page.</p>
       </template>
       <template v-else-if="step === 1">
-        <h3>Après · un schéma commun, prêt pour l’analyse</h3><p>Python convertit les dates en UTC, vérifie les unités et les nombres, puis conserve la dernière occurrence de chaque série et instant. Les quatre premières lignes normalisées de demande sont affichées ci-dessous.</p>
+        <h3>Après · un schéma commun, prêt pour l’analyse</h3><p>Le moteur ETL convertit les dates en UTC, vérifie les unités et les nombres, puis conserve la dernière occurrence de chaque série et instant. Les quatre premières lignes normalisées de demande sont affichées ci-dessous.</p>
         <div class="table-scroll" role="region" aria-label="Échantillon normalisé de demande" tabindex="0"><table><thead><tr><th>timestamp_utc</th><th>value</th><th>unit</th></tr></thead><tbody><tr v-for="row in etl.normalizedDemandSample" :key="row.timestamp_utc"><td>{{ row.timestamp_utc }}</td><td>{{ number(row.value, 2) }}</td><td>{{ row.unit }}</td></tr></tbody></table></div>
         <p class="quiet">{{ etl.validCount }} valeurs numériques · {{ etl.missingCount }} valeurs laissées absentes · {{ report.summary.duplicateCount }} doublons retirés. Zéro reste une mesure valide.</p>
         <p v-if="etl.scenarioRemovedCount" class="notice error">Scénario de démonstration : {{ etl.scenarioRemovedCount }} mesure de niveau d’eau retirée de la copie en mémoire, sans modifier la source.</p>

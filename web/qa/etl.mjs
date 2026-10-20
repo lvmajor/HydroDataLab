@@ -84,6 +84,6 @@ try {
   await page.reload()
   await expect(page.getByText(/Ce rapport précède les nouvelles analyses/)).toBeVisible()
   assert.deepEqual(errors, []); assert.deepEqual(external, [])
-  const evidence = { completedAt: new Date().toISOString(), status: 'passed', base, ids: { id, failedId, retryId }, indicators: successful.report.analysis.indicators, checks: ['real Python calculations', 'raw and normalized samples', '24 hourly rows', 'hourly CSV download', '4 measured stages', 'failure diagnostics', 'last successful report preserved', 'linked retry', 'legacy report', '320px reflow', '200% text', 'text spacing', 'no JS errors or external requests'] }
+  const evidence = { completedAt: new Date().toISOString(), status: 'passed', base, ids: { id, failedId, retryId }, indicators: successful.report.analysis.indicators, checks: ['real ETL calculations', 'raw and normalized samples', '24 hourly rows', 'hourly CSV download', '4 measured stages', 'failure diagnostics', 'last successful report preserved', 'linked retry', 'legacy report', '320px reflow', '200% text', 'text spacing', 'no JS errors or external requests'] }
   await writeFile(`${out}/results.json`, JSON.stringify(evidence, null, 2)); console.log(JSON.stringify(evidence, null, 2))
 } finally { await browser.close() }

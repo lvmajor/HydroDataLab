@@ -1,4 +1,4 @@
-param([switch]$WithDocker, [string]$DockerContext)
+param([switch]$WithDocker, [string]$DockerContext, [ValidateSet('python','dotnet')][string]$EtlEngine)
 $ErrorActionPreference = 'Stop'
 # Keep the bootstrap message ASCII: Windows PowerShell 5.1 misreads BOM-less UTF-8.
 Write-Host "PowerShell $($PSVersionTable.PSVersion) - $($PSVersionTable.PSEdition)"
@@ -7,8 +7,13 @@ if ($PSVersionTable.PSVersion.Major -lt 7) {
 }
 $root = Split-Path -Parent $PSScriptRoot
 Set-Location -LiteralPath $root
+. "$PSScriptRoot/common.ps1"
+$EtlEngine = Resolve-EtlEngine $EtlEngine
 Write-Host 'HydroDataLab — diagnostic des prérequis'
-foreach ($tool in @('git','dotnet','aspire','node','npm.cmd','uv')) {
+Write-Host "Moteur ETL : $EtlEngine"
+$requiredTools = @('git','dotnet','aspire','node','npm.cmd')
+if ($EtlEngine -eq 'python') { $requiredTools += 'uv' }
+foreach ($tool in $requiredTools) {
     $command = Get-Command $tool -ErrorAction SilentlyContinue
     if ($command) { Write-Host ('OK  ' + $tool + ' : ' + $command.Source) }
     else { Write-Warning ('Absent : ' + $tool) }
@@ -16,7 +21,7 @@ foreach ($tool in @('git','dotnet','aspire','node','npm.cmd','uv')) {
 & dotnet --version
 & aspire --version
 & node --version
-& uv --version
+if ($EtlEngine -eq 'python') { & uv --version }
 Write-Host 'Docker est facultatif pour le mode natif.'
 if ($WithDocker -and (Get-Command docker -ErrorAction SilentlyContinue)) {
     if ($DockerContext) { & docker --context $DockerContext version --format '{{.Server.Version}}' }

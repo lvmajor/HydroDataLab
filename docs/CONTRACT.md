@@ -1,7 +1,11 @@
 # Contrats de HydroDataLab
 
-## Pipeline Python
+## Moteurs ETL Python et .NET
 Racine du paquet : `etl/`, module `hydrodatalab`. Commande : `uv run --project etl python -m hydrodatalab run --source fixture --output outputs/cli`. Commande extraction seule : sous-commande `extract`. Adaptateur : `hydrodatalab.api:app` via uvicorn, port 8001 par défaut.
+
+Alternative : `src/Etl/HydroDataLab.Etl.csproj`, .NET 10. `dotnet run --project src/Etl -- run --source fixture --output outputs/dotnet-cli`; sous-commande `extract` pour l'extraction seule. Sans sous-commande, l'exécutable sert le même contrat HTTP via ASP.NET Core. Calculs isolés dans `src/Etl`, aucune duplication de calcul dans l'API de pilotage. Les exports portent les mêmes noms et types logiques; les métadonnées de bibliothèque et l'encodage physique Parquet peuvent différer.
+
+Aspire sélectionne un seul moteur au démarrage : clé `Hydro:EtlEngine`, variable `Hydro__EtlEngine`, valeurs `python` (défaut) ou `dotnet`. La CLI Aspire transmet `-- --Hydro:EtlEngine=dotnet`; les scripts natifs acceptent `-EtlEngine dotnet`. Arrêter puis redémarrer l'AppHost pour changer de moteur. Une valeur inconnue échoue explicitement.
 
 `GET /health` renvoie `{ "status": "ok" }`.
 `POST /run` reçoit `{ "runId": "uuid", "source": "fixture|live", "simulateFailure": false, "qualityScenario": "complete|missing" }`. Il exécute le même cœur que la CLI et renvoie le rapport complet ci-dessous. Échec HTTP non-2xx avec message lisible. Un scénario `missing` retire une observation de niveau d'eau dans une copie en mémoire et le signale dans le rapport; les données originales restent intactes.
@@ -49,11 +53,13 @@ Les séries sont `demand`, `water_level`, `temperature_min`, `temperature_max`. 
 Statuts : `queued`, `running`, `succeeded`, `failed`, `interrupted`. Étapes : `queued`, `extract-transform-export`, `persist`, `complete`. L'historique est durable; après redémarrage les exécutions en cours sont marquées interrompues. La planification périodique est désactivée au premier démarrage.
 
 ## Environnement
-Python : `HYDRO_OUTPUT_DIR`, `HYDRO_FIXTURE_DIR` facultatif. .NET : `Python__BaseUrl`, `Hydro__DataDir`. Vite : `API_BASE_URL` pour son proxy `/api`. Le script `start-demo.ps1` sélectionne un répertoire runtime distinct par branche/tag via `HYDRO_RUNTIME_DIR`.
+Les deux ETL : `HYDRO_OUTPUT_DIR`, `HYDRO_FIXTURE_DIR` facultatif. API : `Etl__BaseUrl`, avec repli compatible sur `Python__BaseUrl`, et `Hydro__DataDir`. Vite : `API_BASE_URL` pour son proxy `/api`. Le script `start-demo.ps1` sélectionne un répertoire runtime distinct par branche/tag via `HYDRO_RUNTIME_DIR`. Le moteur .NET ajoute le sous-dossier `dotnet` à cette racine pour isoler ses exports, son historique SQLite et sa planification. Python conserve ses chemins existants.
 
-En mode Aspire natif, les ports hôtes de Python et de l’API sont attribués automatiquement. Leurs adresses sont transmises par références d’endpoints (`Python__BaseUrl` vers .NET, `API_BASE_URL` vers Vite), sans numéro à recopier. Vue reste sur `http://localhost:53170`; le navigateur et `scripts/verify-http.ps1` accèdent à l’API par `/api` sur cette même adresse. Les URL directes du lancement courant figurent dans le dashboard Aspire.
+En mode Aspire natif, les ports hôtes de l'ETL et de l’API sont attribués automatiquement. Leurs adresses sont transmises par références d’endpoints (`Etl__BaseUrl` vers l'API, `API_BASE_URL` vers Vite), sans numéro à recopier. Vue reste sur `http://localhost:53170`; le navigateur et `scripts/verify-http.ps1` accèdent à l’API par `/api` sur cette même adresse. Les URL directes du lancement courant figurent dans le dashboard Aspire.
 
-Hors Aspire, fournir explicitement `Python__BaseUrl` à l’API et `API_BASE_URL` au serveur Vite. Une configuration absente est signalée; les anciens ports 53171/53172 ne servent plus de repli. En Compose, les ports internes Python 8001 et API 8080 et leur réseau privé restent inchangés.
+Hors Aspire, fournir explicitement `Etl__BaseUrl` (ou l'ancien `Python__BaseUrl`) à l’API et `API_BASE_URL` au serveur Vite. Une configuration absente est signalée; les anciens ports 53171/53172 ne servent plus de repli. En Compose, les ports internes sont Python 8001 ou ETL .NET 8080, et API 8080; ils restent privés.
+
+Les deux adaptateurs renvoient 409 lorsqu'un pipeline est actif, 422 pour les paramètres ou données invalides et 503 pour un échec d'exécution. L'enveloppe d'erreur métier reste `detail: {message, execution}`; le conflit actif utilise `detail` textuel. Les quatre étapes mesurées, la publication atomique et le rejeu immuable par UUID s'appliquent aux deux moteurs. Les anciennes mentions « Python » ci-dessous décrivent le contrat initial; le moteur .NET le reprend.
 
 ## Analyse BI et traçabilité (ajout compatible, 19 octobre)
 
