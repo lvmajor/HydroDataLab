@@ -1,0 +1,346 @@
+{
+  "checkedAtUtc": "2026-10-20T00:53:55.576Z",
+  "slideCount": 31,
+  "contentSlides": 25,
+  "checks": {
+    "routes": [
+      {
+        "slide": 1,
+        "issues": [],
+        "title": "GitHub Copilotdans VS Code"
+      },
+      {
+        "slide": 2,
+        "issues": [],
+        "title": "Votre terrain de développement"
+      },
+      {
+        "slide": 3,
+        "issues": [],
+        "title": "Bien déléguer avec Copilot"
+      },
+      {
+        "slide": 4,
+        "issues": [],
+        "title": "Quatre séries, quatre sens différents"
+      },
+      {
+        "slide": 5,
+        "issues": [],
+        "title": "Un modèle, un harnais, un agent"
+      },
+      {
+        "slide": 6,
+        "issues": [],
+        "title": "Git : garder une trace de ses essais"
+      },
+      {
+        "slide": 7,
+        "issues": [],
+        "title": "Démo 1 · donner une mission à l’agent"
+      },
+      {
+        "slide": 8,
+        "issues": [],
+        "title": "Écrire une règle que l’on peut vérifier"
+      },
+      {
+        "slide": 9,
+        "issues": [],
+        "title": "Où écrire la règle, et quand s’applique-t-elle?"
+      },
+      {
+        "slide": 10,
+        "issues": [],
+        "title": "Tiered-context architecture"
+      },
+      {
+        "slide": 11,
+        "issues": [],
+        "title": "Comment ces apports composent le contexte"
+      },
+      {
+        "slide": 12,
+        "issues": [],
+        "title": "Les personnalisations, dans VS Code"
+      },
+      {
+        "slide": 13,
+        "issues": [],
+        "title": "Skills et tools : deux choix distincts"
+      },
+      {
+        "slide": 14,
+        "issues": [],
+        "title": "Une base « vanille », des ajouts ciblés"
+      },
+      {
+        "slide": 15,
+        "issues": [],
+        "title": "Les tokens : lire et produire"
+      },
+      {
+        "slide": 16,
+        "issues": [],
+        "title": "Auto : un bon point de départ"
+      },
+      {
+        "slide": 17,
+        "issues": [],
+        "title": "Comparer 4 tâches et 5 modèles"
+      },
+      {
+        "slide": 18,
+        "issues": [],
+        "title": "Thinking effort et coût par tâche"
+      },
+      {
+        "slide": 19,
+        "issues": [],
+        "title": "Auto choisit; HydraFusion orchestre"
+      },
+      {
+        "slide": 20,
+        "issues": [],
+        "title": "Démo 2 · vérifier un résultat"
+      },
+      {
+        "slide": 21,
+        "issues": [],
+        "title": "SDD : une spécification avant le code"
+      },
+      {
+        "slide": 22,
+        "issues": [],
+        "title": "Démo 3 · détecter une mesure absente"
+      },
+      {
+        "slide": 23,
+        "issues": [],
+        "title": "Des skills à choisir selon votre tâche"
+      },
+      {
+        "slide": 24,
+        "issues": [],
+        "title": "Votre prochaine tâche avec Copilot"
+      },
+      {
+        "slide": 25,
+        "issues": [],
+        "title": "Pour continuer et rester à jour"
+      },
+      {
+        "slide": 26,
+        "issues": [],
+        "title": "Annexe · se repérer dans Customizations"
+      },
+      {
+        "slide": 27,
+        "issues": [],
+        "title": "Annexe · modèles et tarifs Copilot"
+      },
+      {
+        "slide": 28,
+        "issues": [],
+        "title": "Annexe · Canvas, travailler dans le même objet"
+      },
+      {
+        "slide": 29,
+        "issues": [],
+        "title": "Annexe · le contrat d’une observation"
+      },
+      {
+        "slide": 30,
+        "issues": [],
+        "title": "Annexe · reprendre sans improviser"
+      },
+      {
+        "slide": 31,
+        "issues": [],
+        "title": "Annexe · sources et limites"
+      }
+    ],
+    "viewports": [
+      {
+        "width": 1366,
+        "slide": 9,
+        "counter": "9 / 31",
+        "overflow": [],
+        "title": "Où écrire la règle, et quand s’applique-t-elle?"
+      },
+      {
+        "width": 1366,
+        "slide": 10,
+        "counter": "10 / 31",
+        "overflow": [],
+        "title": "Tiered-context architecture"
+      },
+      {
+        "width": 1366,
+        "slide": 11,
+        "counter": "11 / 31",
+        "overflow": [],
+        "title": "Comment ces apports composent le contexte"
+      },
+      {
+        "width": 1366,
+        "presenter": 10,
+        "collapsed": true,
+        "headings": [
+          "0:00–0:25 · Always on — règles communes",
+          "0:25–0:50 · Task scoped — selon la tâche",
+          "0:50–1:10 · On demand — au besoin",
+          "1:10–1:30 · Distinguer informations et autorisations"
+        ],
+        "overflow": false
+      },
+      {
+        "width": 1366,
+        "presenter": 11,
+        "collapsed": true,
+        "headings": [
+          "0:00–0:20 · Partir du commun",
+          "0:20–0:45 · Ajouter ce qui répond à la tâche",
+          "0:45–1:00 · Vérifier, puis enchaîner"
+        ],
+        "overflow": false
+      },
+      {
+        "width": 1920,
+        "slide": 9,
+        "counter": "9 / 31",
+        "overflow": [],
+        "title": "Où écrire la règle, et quand s’applique-t-elle?"
+      },
+      {
+        "width": 1920,
+        "slide": 10,
+        "counter": "10 / 31",
+        "overflow": [],
+        "title": "Tiered-context architecture"
+      },
+      {
+        "width": 1920,
+        "slide": 11,
+        "counter": "11 / 31",
+        "overflow": [],
+        "title": "Comment ces apports composent le contexte"
+      },
+      {
+        "width": 1920,
+        "presenter": 10,
+        "collapsed": true,
+        "headings": [
+          "0:00–0:25 · Always on — règles communes",
+          "0:25–0:50 · Task scoped — selon la tâche",
+          "0:50–1:10 · On demand — au besoin",
+          "1:10–1:30 · Distinguer informations et autorisations"
+        ],
+        "overflow": false
+      },
+      {
+        "width": 1920,
+        "presenter": 11,
+        "collapsed": true,
+        "headings": [
+          "0:00–0:20 · Partir du commun",
+          "0:20–0:45 · Ajouter ce qui répond à la tâche",
+          "0:45–1:00 · Vérifier, puis enchaîner"
+        ],
+        "overflow": false
+      }
+    ],
+    "sync": [
+      {
+        "detail": "Apport 1 · Commun",
+        "selected": 0
+      },
+      {
+        "detail": "Apport 2 · Chemin",
+        "selected": 1
+      },
+      {
+        "detail": "Apport 3 · Tâche",
+        "selected": 2
+      },
+      {
+        "detail": "Apport 4 · Lecture",
+        "selected": 3
+      },
+      {
+        "detail": "Apport 5 · Résultat",
+        "selected": 4
+      }
+    ],
+    "preservedAfterReload": true,
+    "audienceToPresenter": true,
+    "costSlide": 17,
+    "costBefore": "Auto Balance au quotidien · choix manuels ci-dessous\n−\n1 essai(s)\n+",
+    "costAfter": "Auto Balance au quotidien · choix manuels ci-dessous\n−\n2 essai(s)\n+",
+    "notesOpenedByKeyboard": true,
+    "errors": [
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:03.404Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:03.578Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:03.733Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:22.486Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:22.753Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:23.016Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:23.702Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:23.979Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:24.304Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      },
+      {
+        "level": "error",
+        "message": "Failed to patch FloatingVue TypeError: Cannot read properties of undefined (reading 'Popper')\n    at e.component (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71580)\n    at Object.Dv [as install] (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:70863)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at Object.install (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:10:71821)\n    at Object.use (http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js:3:16691)\n    at vl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58261)\n    at yl (http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58390)\n    at http://127.0.0.1:53173/assets/index-CxYDRTgi.js:957:58412",
+        "timestamp": "2026-10-20T00:53:54.689Z",
+        "url": "http://127.0.0.1:53173/assets/modules/shiki-Dkr-pov6.js"
+      }
+    ]
+  },
+  "method": "CUA browser DOM checks and actual screenshots; no network interception",
+  "timing": "32 min explications + 13 min démos; 15:00–19:00 conservé"
+}

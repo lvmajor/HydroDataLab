@@ -1,5 +1,13 @@
 # HydroDataLab — journal de reprise
 
+## Architecture du contexte par paliers — 19 octobre
+
+- Départ : main `dac5d19`, propre et synchronisé. Demande : remplacer « socle » par un libellé concret et expliquer la tiered-context architecture sur deux slides si nécessaire.
+- Vérifié : documentation Microsoft actuelle sur les instructions, le contexte implicite/explicite et le context engineering. `applyTo` est conditionnel; les documents ne deviennent pas permanents par leur seule présence; la fenêtre Agents désactive le contexte implicite par défaut. Séparer contexte du modèle et configuration/permissions du harnais.
+- Réalisé : règles communes en slide 9; paliers en 10 et composition interactive en 11. MCP/permissions distingués du contenu transmis au modèle; conditions des documents, chemins, rôles, prompts/skills et IDE/CLI détaillées. Notes, guides, conducteur HTML et renvois renumérotés. 31 slides, dont 25 principales; 32 + 13 minutes conservées, démos aux mêmes horaires.
+- Vérifié : build; 31 routes sans débordement; rendus 9–11 en 1366×768 et 1920×1080; notes 10–11, repli et clavier; cinq sélections synchronisées, persistance au rechargement et retour audience → présentateur; coûts à 1/2 essais sur la nouvelle slide 17. PDF de 31 pages, textes/liens et six destinations internes contrôlés; pages modifiées examinées. Message console FloatingVue/Popper connu sans effet constaté. Preuves : docs/validation/tiered-context.json, presentation-flow.json et presentation/exports/qa/VALIDATION.md.
+- Prochaine action : enregistrer et synchroniser main. Sur le portable HQ, pull, rebuild et rechargement des deux vues; répéter les slides 9–11 en quatre minutes. Aucun changement de tags, de branche d’exercice, de données ou d’images Docker.
+
 ## Capture réelle Artificial Analysis — 19 octobre
 
 - Départ : main 0c4492c, propre et synchronisé. Demande : remplacer le schéma par une vraie capture et des comparaisons modèle/effort/coût.

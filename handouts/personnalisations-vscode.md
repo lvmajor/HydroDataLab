@@ -1,19 +1,19 @@
 # Personnalisations de VS Code et du harnais Copilot
 
-Vérifié le **19 octobre 2026**, pour VS Code **1.142**. Cette fiche accompagne les diapositives 8 à 13, 21, 24 et 26. Les formats cités sont liés à leur documentation officielle.
+Vérifié le **19 octobre 2026**, pour VS Code **1.142**. Cette fiche accompagne les diapositives 8 à 14, 23, 26 et 28. Les formats cités sont liés à leur documentation officielle.
 
 ## Choix conseillé pour ce public
 
-Pour des analystes Python qui travaillent aujourd’hui dans VS Code + GitHub Copilot, commencer avec **un socle court dans `.github/copilot-instructions.md`**, des règles ciblées dans `.github/instructions/python.instructions.md`, et des tests. Ajouter une skill quand une procédure revient souvent. Le harnais est le logiciel qui relie le modèle aux outils et au contexte. Dans 1.142, Copilot utilise le Copilot SDK et son adoption comme défaut progresse; il était déjà disponible. Changer le modèle n’en change pas le harnais. [Harnais et prérequis](https://code.visualstudio.com/docs/agents/run/agent-harnesses), [nouveautés 1.142](https://code.visualstudio.com/updates/v1_142#copilot-harness).
+Pour des analystes Python qui travaillent aujourd’hui dans VS Code + GitHub Copilot, commencer avec **des règles communes courtes dans `.github/copilot-instructions.md`**, des règles ciblées dans `.github/instructions/python.instructions.md`, et des tests. Ajouter une skill quand une procédure revient souvent. Le harnais est le logiciel qui relie le modèle aux outils et au contexte. Dans 1.142, Copilot utilise le Copilot SDK et son adoption comme défaut progresse; il était déjà disponible. Changer le modèle n’en change pas le harnais. [Harnais et prérequis](https://code.visualstudio.com/docs/agents/run/agent-harnesses), [nouveautés 1.142](https://code.visualstudio.com/updates/v1_142#copilot-harness).
 
-**AGENTS.md est un bon choix pour le socle d’une équipe multiharnais**, lorsque tous les outils choisis le découvrent. Le nom exact est `AGENTS.md`, à la racine; le corps est du Markdown. Conserver les détails propres à Copilot dans ses fichiers ciblés. Dans HydroDataLab, le socle existant reste dans `copilot-instructions.md`; le petit `AGENTS.md` demande sa lecture. Ce renvoi doit être vérifié, pas supposé équivalent à une inclusion automatique. Ne pas maintenir deux copies longues des mêmes règles. [Formats pris en charge](https://code.visualstudio.com/docs/agent-customization/custom-instructions#choose-a-format).
+**AGENTS.md est un bon choix pour les règles communes d’une équipe multiharnais**, lorsque tous les outils choisis le découvrent. Le nom exact est `AGENTS.md`, à la racine; le corps est du Markdown. Conserver les détails propres à Copilot dans ses fichiers ciblés. Dans HydroDataLab, les règles communes restent dans `copilot-instructions.md`; le petit `AGENTS.md` demande sa lecture. Ce renvoi doit être vérifié, pas supposé équivalent à une inclusion automatique. Ne pas maintenir deux copies longues des mêmes règles. [Formats pris en charge](https://code.visualstudio.com/docs/agent-customization/custom-instructions#choose-a-format).
 
 ## Portée, activation, composition : trois questions différentes
 
 | Question | Réponse pratique |
 |---|---|
 | **Où et pour qui?** | Workspace = ce projet, versionné dans Git. User = préférences personnelles sur la machine du harnais. Organisation = règles gérées centralement dans les sessions compatibles. |
-| **Quand?** | Socle commun; motif des fichiers; pertinence de la tâche; ou ajout manuel. |
+| **Quand?** | Règles communes; motif des fichiers; pertinence de la tâche; ou ajout manuel. |
 | **Comment combiner?** | Les éléments applicables contribuent au contexte. Supprimer les contradictions; ne pas compter sur « le plus proche gagne ». |
 
 Il ne faut pas présenter la hiérarchie de dossiers comme une hiérarchie universelle d’autorité. GitHub documente un ordre de priorité pour ses expériences, notamment GitHub.com; il ne suffit pas à prouver celui de chaque harnais VS Code. Les instructions ne remplacent pas les autorisations appliquées par le logiciel. [Portées dans VS Code](https://code.visualstudio.com/docs/agent-customization/overview#choose-a-customization-scope), [contexte GitHub.com et priorités](https://docs.github.com/en/copilot/concepts/prompting/response-customization).
@@ -21,7 +21,7 @@ Il ne faut pas présenter la hiérarchie de dossiers comme une hiérarchie unive
 | Fichier / source pour Copilot | Format | Quand l’utiliser |
 |---|---|---|
 | `.github/copilot-instructions.md` | Markdown | Carte du projet et règles communes. |
-| `AGENTS.md` à la racine | Markdown | Socle partagé entre harnais compatibles. |
+| `AGENTS.md` à la racine | Markdown | Règles partagées entre harnais compatibles. |
 | `.github/instructions/*.instructions.md` | En-tête YAML facultatif + corps Markdown | Détails d’un composant ou d’une tâche. |
 | `~/.copilot/copilot-instructions.md` | Markdown | Préférences personnelles permanentes. |
 | `~/.copilot/instructions/*.instructions.md` | YAML + Markdown | Préférences ciblées personnelles. |
@@ -51,21 +51,17 @@ Ce bloc est simplifié : le fichier réel couvre aussi `specs/**/*.py` et d’au
 
 Exemple chiffré : trois températures attendues `[10, 0, None]` donnent **deux mesures numériques sur trois**, soit **66,67 %**. Remplacer `None` par zéro ferait croire à trois mesures. Dans pandas, une absence peut être `NaN` ou `NA`; dans JSON, `null`. Les règles de plausibilité d’une série restent distinctes de cette distinction entre absence et zéro.
 
-## Context layers — les couches du contexte
+## Tiered-context architecture — architecture du contexte par paliers
 
-La diapositive 10 relie cinq sources au **Model context — Contexte du modèle** :
+La slide 10 classe les apports par **condition de chargement** : Always on (règles communes reconnues), Task scoped (selon chemin, rôle ou tâche), On demand (documents et résultats utiles). La slide 11 montre leur composition sur la couverture : règles du dépôt + règles Python applicables + demande courante + dictionnaire/code lus + résultat de test. Les cinq exemples appartiennent à trois paliers, sans définir un ordre de priorité. [Conditions détaillées et exceptions dans l’aide-mémoire](aide-memoire.md#tiered-context-architecture--architecture-du-contexte-par-paliers).
 
-1. **Project instructions — Consignes du projet** : les règles communes de `copilot-instructions.md`.
-2. **File-specific instructions — Consignes ciblées** : les règles Python dans `python.instructions.md`, activées selon les mécanismes décrits plus haut.
-3. **Reference documents — Documents de référence** : le dictionnaire des données joint à la demande ou lu par l’agent.
-4. **Task prompt — Demande courante** : le résultat voulu et la spécification à suivre pour cette tâche.
-5. **Tool results — Résultats des outils** : les sorties réelles de pytest, du terminal ou du rapport de qualité.
+Architecture et standards : garder leur résumé essentiel dans les instructions communes, puis faire lire les détails au besoin. La seule présence d’un document dans Git ne le rend pas permanent. IDE/CLI : joindre explicitement les éléments importants; dans la fenêtre Agents, le contexte implicite est désactivé par défaut. Les fichiers ouverts ne sont pas tous transmis. [Microsoft : composition du contexte](https://code.visualstudio.com/docs/agents/concepts/context).
 
-Les deux premières sources apportent les consignes durables; les suivantes cadrent le travail et permettent de vérifier son résultat. C’est notre organisation pédagogique, pas une liste de niveaux officiels de VS Code. La position dans le dessin ne donne pas une priorité. L’historique et d’autres instructions peuvent également contribuer au contexte. [Guide Microsoft pour structurer le contexte](https://code.visualstudio.com/docs/agents/guides/context-engineering-guide).
+Séparer ce contenu de la configuration du harnais : outils/MCP disponibles et permissions contrôlent les actions; configurer un serveur ne charge pas ses données. Un prompt est une demande; un fichier `.prompt.md` est réservé à Local/Chat, tandis qu’une skill compatible convient à un workflow réutilisable Copilot. [Prompt files](https://code.visualstudio.com/docs/agent-customization/prompt-files), [guide context engineering — exemple Local à adapter](https://code.visualstudio.com/docs/agents/guides/context-engineering-guide).
 
 ## Lire le panneau Agent Customizations
 
-La diapositive 11 relie les libellés du menu à trois familles pédagogiques, à partir de la [capture complète fournie le 19 octobre](../presentation/public/vscode-customizations-overview.png), cadrée en annexe 25. Ce menu classe des capacités; sa disposition ne définit pas leur priorité.
+La diapositive 12 relie les libellés du menu à trois familles pédagogiques, à partir de la [capture complète fournie le 19 octobre](../presentation/public/vscode-customizations-overview.png), cadrée en annexe 26. Ce menu classe des capacités; sa disposition ne définit pas leur priorité.
 
 - **Overview — Vue d’ensemble :** point d’entrée pour retrouver les personnalisations du harnais et du projet indiqués dans l’en-tête.
 - **Customize Your Agent — Personnaliser votre agent :** décrire ses préférences pour faire préparer des agents, skills ou instructions. Par exemple : « Prépare une instruction de projet demandant des tests pour toute transformation Python. » Examiner les fichiers proposés, leur portée et leur compatibilité avant de les enregistrer. Ce champ aide à créer une personnalisation; il ne garantit pas son application à toutes les sessions.
@@ -89,7 +85,7 @@ Les compteurs de la capture ne mesurent ni le coût ni l’utilisation dans une 
 
 ## Quand une skill est-elle chargée?
 
-La diapositive 12 compare deux parcours. Une **skill** apporte une méthode dans le contexte; un **outil** est appelé avec des paramètres pour agir ou obtenir un résultat. L’agent peut sélectionner les deux, mais leur activation n’a pas le même effet.
+La diapositive 13 compare deux parcours. Une **skill** apporte une méthode dans le contexte; un **outil** est appelé avec des paramètres pour agir ou obtenir un résultat. L’agent peut sélectionner les deux, mais leur activation n’a pas le même effet.
 
 Dans Copilot, le chargement normal d’une skill est progressif :
 
@@ -143,7 +139,7 @@ MCP signifie **Model Context Protocol**. Un outil n’exige pas nécessairement 
 
 ### MCP : choisir le fichier du harnais actif
 
-L’encadré de la slide 11 compare **Copilot** (`%USERPROFILE%\.copilot\mcp-config.json` personnel, `.mcp.json` projet) et **Local** (`mcp.json` du profil VS Code, `.vscode/mcp.json` projet). La clé JSON est respectivement `mcpServers` ou `servers`.
+L’encadré de la slide 12 compare **Copilot** (`%USERPROFILE%\.copilot\mcp-config.json` personnel, `.mcp.json` projet) et **Local** (`mcp.json` du profil VS Code, `.vscode/mcp.json` projet). La clé JSON est respectivement `mcpServers` ou `servers`.
 
 **Repère de version :** la 1.142 déploie progressivement Copilot par défaut, déjà accessible auparavant. Elle ne date pas l’apparition de ces chemins. L’[aide-mémoire](aide-memoire.md#mcp--emplacements-selon-le-harnais-repères-vs-code-1142) précise le réglage expérimental pour la destination projet, `COPILOT_HOME`, la compatibilité Local et la migration. [Notes 1.142](https://code.visualstudio.com/updates/v1_142#copilot-harness), [guide Microsoft](https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers).
 
@@ -179,7 +175,7 @@ Pour Copilot, suivre le **schéma GitHub Copilot / SDK**, pas un exemple Local c
 4. Ouvrir l’élément, examiner son fichier et son en-tête.
 5. Faire une petite tâche représentative; examiner **References**, les actions et les tests.
 
-La nouvelle capture fournie par le présentateur, intégrée en annexe 25, montre **Overview** pour **Copilot · Formation Copilot - HQ**. Les portées User et Workspace se consultent en ouvrant Instructions; elles ne sont pas visibles dans cette vue d’ensemble. Les chemins sous la capture expliquent ces portées, sans prétendre être des entrées de l’image. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
+La nouvelle capture fournie par le présentateur, intégrée en annexe 26, montre **Overview** pour **Copilot · Formation Copilot - HQ**. Les portées User et Workspace se consultent en ouvrant Instructions; elles ne sont pas visibles dans cette vue d’ensemble. Les chemins sous la capture expliquent ces portées, sans prétendre être des entrées de l’image. [Gestion et vérification des personnalisations](https://code.visualstudio.com/docs/agent-customization/overview#verify-a-customization).
 
 Si un fichier manque : vérifier harnais, dossier ouvert, emplacement et activation. Le réglage des dossiers parents et les fichiers AGENTS imbriqués demandent une vérification spécifique. Pour Local, `chat.useNestedAgentsMdFiles` est expérimental; ce n’est pas un commutateur universel pour Copilot. Les anciens `chat.*FilesLocations` peuvent nécessiter une migration.
 

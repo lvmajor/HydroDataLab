@@ -12,7 +12,7 @@ Développer et tester localement des ETL Python et des visualisations, puis pré
 
 - **Auto** choisit le modèle; **Thinking Effort** règle le raisonnement pour les modèles compatibles. Commencer par les réglages recommandés, puis augmenter l’effort si la difficulté le justifie. Davantage d’effort consomme plus de tokens. [Réglage dans VS Code](https://code.visualstudio.com/docs/agent-customization/language-models#configure-thinking-effort).
 - Comparer le coût de **tous les appels, reprises comprises**, avec les tests réussis et le temps passé. Un premier essai moins cher ne garantit pas une tâche moins chère.
-- [Artificial Analysis : code et coût par tâche](https://artificialanalysis.ai/agents/coding-agents) aide à comparer des configurations agent/modèle/réglages. Son coût API par tâche n’est pas la facture Copilot ni un coût par réussite garantie. La slide 17 montre une vraie capture et les exemples Sol/Sonnet en Low, High et Max. Détails et valeurs datées dans la [matrice des modèles](matrice-modeles.md#thinking-effort--effort-de-raisonnement).
+- [Artificial Analysis : code et coût par tâche](https://artificialanalysis.ai/agents/coding-agents) aide à comparer des configurations agent/modèle/réglages. Son coût API par tâche n’est pas la facture Copilot ni un coût par réussite garantie. La slide 18 montre une vraie capture et les exemples Sol/Sonnet en Low, High et Max. Détails et valeurs datées dans la [matrice des modèles](matrice-modeles.md#thinking-effort--effort-de-raisonnement).
 
 ## Avant de lancer
 
@@ -55,7 +55,7 @@ Notre `/validate-etl` est volontaire (`disable-model-invocation: true`). Sans ce
 |---|---|
 | Décisions du projet | `.github/copilot-instructions.md` |
 | Conventions d’un composant | `.github/instructions/*.instructions.md`, `applyTo` |
-| Socle partagé entre agents compatibles | `AGENTS.md` |
+| Règles partagées entre agents compatibles | `AGENTS.md` |
 | Procédure répétable | `.github/skills/<nom>/SKILL.md` |
 | Rôle et outils | `.github/agents/<nom>.agent.md` |
 | Tâche et critères actuels | Spec et tests ciblés |
@@ -75,17 +75,25 @@ Le personnel Copilot concerne plusieurs projets et reste distinct d’un profil 
 
 **Migration :** sélectionner **Copilot → Chat: Open Customizations → Migrations**. Relire les conversions, notamment les variables et propriétés propres à VS Code, puis vérifier un appel d’outil. Changer uniquement le nom du fichier ne suffit pas. Les chemins distants/Dev Container appartiennent à l’environnement qui exécute l’agent. [Microsoft : migration MCP](https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers).
 
-## Context layers — les couches du contexte
+## Tiered-context architecture — architecture du contexte par paliers
 
-| Couche | Exemple dans HydroDataLab | Quand elle contribue |
+Les slides 10–11 distinguent **la portée** (pour quel projet/utilisateur), **le déclenchement** (quand charger) et **le contexte effectivement fourni**. Les paliers organisent notre méthode; ils ne définissent pas une priorité universelle entre consignes.
+
+| Palier | Ce qu’on y place | Condition de chargement |
 |---|---|---|
-| **Project instructions — Consignes du projet** | `.github/copilot-instructions.md` : préserver les données brutes et savoir valider le projet | Règles communes découvertes par le harnais |
-| **File-specific instructions — Consignes ciblées** | `.github/instructions/python.instructions.md` : zéro est valide, une absence reste absente | Selon fichier, description ou ajout manuel |
-| **Reference documents — Documents de référence** | `docs/DATA_DICTIONARY.md` : champs, unités, fréquence, fuseau et provenance | Document joint à la demande ou effectivement lu |
-| **Task prompt — Demande courante** | « Ajoute la couverture décrite dans `specs/coverage.md`. » | Pour préciser le résultat attendu maintenant |
-| **Tool results — Résultats des outils** | Sortie pytest et `report.json` : 23/24 donne 95,83 % | Pendant le travail, à partir des résultats réellement observés |
+| **Always on — règles communes** | Instructions du dépôt, préférences utilisateur permanentes, directives d’organisation activées; résumé d’architecture et standards essentiels | Formats découverts et pris en charge par le harnais; accès/réglages de l’organisation applicables |
+| **Task scoped — selon la tâche** | Règles ciblées par chemin; rôle d’agent choisi; prompt du travail; skill pertinente | `applyTo` correspondant, description pertinente, agent choisi ou procédure invoquée/chargée |
+| **On demand — au besoin** | Documents détaillés, code, échantillons, sélection IDE/contexte CLI, sorties d’outils | Ajout explicite, lecture/recherche par l’agent ou inclusion implicite par l’interface |
 
-Toutes alimentent le **Model context — Contexte du modèle**. Ces noms organisent notre démarche; ils ne constituent pas cinq niveaux officiels de VS Code ni un ordre de priorité. Un fichier mentionné n’est pas automatiquement chargé. Les catégories remplacent les anciens raccourcis du support : socle, composant, contrat, tâche et preuves.
+**Architecture et standards :** mettre les quelques exigences essentielles dans les règles communes, puis référencer les documents détaillés et préciser quand les lire. Un `ARCHITECTURE.md` ou un lien ne garantit pas l’inclusion intégrale du document. Une instruction ciblée par chemin est automatique **sous condition**, pas permanente pour toutes les tâches. [Microsoft : instructions](https://code.visualstudio.com/docs/agent-customization/custom-instructions), [organiser le contexte](https://code.visualstudio.com/docs/agents/guides/context-engineering-guide).
+
+**IDE/CLI :** les fichiers ouverts ne sont pas tous envoyés. Le contexte implicite dépend de la vue, du harnais et des réglages; dans la fenêtre Agents, il est désactivé par défaut. Joindre explicitement le code ou les fichiers indispensables. En CLI, ne pas supposer que les onglets de VS Code sont disponibles. Une sortie d’outil revient au contexte; une sortie d’un autre terminal doit être fournie ou lue. [Microsoft : contexte implicite](https://code.visualstudio.com/docs/agents/concepts/context#implicit-context).
+
+**Rôle du harnais :** MCP configure les connexions et outils disponibles; les permissions autorisent ou bloquent les actions. Ces paramètres peuvent être persistants au niveau utilisateur/projet. Ils ne sont ni une consigne métier ni un chargement de toutes les données du serveur. Les définitions d’outils et leurs résultats peuvent contribuer au contexte. [Microsoft : utiliser les outils](https://code.visualstudio.com/docs/agents/run/tools).
+
+**Prompt et workflow :** le prompt est la demande courante. Les fichiers `.prompt.md` s’exécutent dans **Local / Chat**; avec le harnais **Copilot**, employer une skill compatible pour un workflow réutilisable. Un agent personnalisé fournit son rôle quand il est sélectionné. [Microsoft : prompt files](https://code.visualstudio.com/docs/agent-customization/prompt-files).
+
+**Composition HydroDataLab :** règles communes + règle Python applicable + demande de couverture + dictionnaire/code lus + résultat `pytest` (23/24 = 95,83 %). S’y ajoutent les instructions système et l’historique utile de cette session, dans une fenêtre de contexte limitée. Vérifier References, activité de lecture et résultats; « disponible » ne signifie pas « utilisé ». [Microsoft : assemblage du contexte](https://code.visualstudio.com/docs/agents/concepts/context#how-vs-code-assembles-context).
 
 ## Économiser sans sacrifier la qualité
 
@@ -95,7 +103,7 @@ Les tarifs actuels sont en AI credits : 1 crédit = 0,01 $ US. Le coût dépend 
 
 ## Garder une configuration facile à entretenir
 
-Partir des fonctions natives, des consignes du projet et des tests. Ajouter un skill pour une tâche répétée, puis vérifier son utilité. La sélection Python, Playwright, Aspire, .NET et les pistes de Matt Pocock est détaillée dans [Skills et veille](skills-et-veille.md). Matt Pocock reste en exploration dans cette formation. Les ressources pour suivre les nouveautés et les emplacements HQ sont en diapositive 24.
+Partir des fonctions natives, des consignes du projet et des tests. Ajouter un skill pour une tâche répétée, puis vérifier son utilité. La sélection Python, Playwright, Aspire, .NET et les pistes de Matt Pocock est détaillée dans [Skills et veille](skills-et-veille.md). Matt Pocock reste en exploration dans cette formation. Les ressources pour suivre les nouveautés et les emplacements HQ sont en diapositive 25.
 
 ## Vérifier une transformation
 

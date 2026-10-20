@@ -6,14 +6,14 @@ Ouvrir [la version lisible dans le navigateur](conducteur-demos.html) sur le por
 
 ## Repères à garder sous les yeux
 
-**Sujet de la formation : GitHub Copilot dans VS Code et ses bonnes pratiques.** HydroDataLab rend visibles les résultats à vérifier. Démo 1 : 09:00–13:00; démo 2 : 29:30–34:30; transition SDD : 34:30–36:30; démo 3 : 36:30–40:30. Le parcours se termine à 45:00, puis questions et marge. Contexte interactif : slide 10; coûts : slide 16.
+**Sujet de la formation : GitHub Copilot dans VS Code et ses bonnes pratiques.** HydroDataLab rend visibles les résultats à vérifier. Démo 1 : 09:00–13:00; démo 2 : 29:30–34:30; transition SDD : 34:30–36:30; démo 3 : 36:30–40:30. Le parcours se termine à 45:00, puis questions et marge. Contexte interactif : slide 11; coûts : slide 17.
 
 | Moment | Dossier / version | À montrer | Durée |
 |---|---|---|---:|
 | Démo 1 · slide 7 | Dépôt principal, `main` | Une mission en lecture seule, ses instructions et ses preuves | 4 min |
-| Démo 2 · slide 19 | Dépôt principal, `main` | Exécution → avant/après → code/test → détails → conteneur | 5 min |
-| Transition · slide 20 | Arrêter `main`, démarrer la copie d’exercice | Garder la slide SDD projetée pendant la manipulation | Dans les 2 min de SDD |
-| Démo 3 · slide 21 | Copie d’exercice, branche `codex/repetition-01` issue de `codex/preparation-demo-06` | Règle BI → code Python → tests → 100 %, puis 95,83 % | 4 min |
+| Démo 2 · slide 20 | Dépôt principal, `main` | Exécution → avant/après → code/test → détails → conteneur | 5 min |
+| Transition · slide 21 | Arrêter `main`, démarrer la copie d’exercice | Garder la slide SDD projetée pendant la manipulation | Dans les 2 min de SDD |
+| Démo 3 · slide 22 | Copie d’exercice, branche `codex/repetition-01` issue de `codex/preparation-demo-06` | Règle BI → code Python → tests → 100 %, puis 95,83 % | 4 min |
 | Secours, si nécessaire | Retour au dépôt principal, `main` | Solution préparée, annoncée comme telle | Décider à 2:10 de la démo 3 |
 
 **Pourquoi deux dossiers?** Le dépôt principal garde les diapositives récentes et l’application complète. La copie permet de modifier Python sans toucher au secours. `main` conserve la solution métier du jalon 07 et ajoute les améliorations de préparation, dont les ports dynamiques. La branche préparée `codex/preparation-demo-06`, issue du jalon 06, intègre les ports dynamiques, la typographie et le parcours ETL détaillé, sans implémenter la couverture. Le commit préparé `9e1ecde` est transporté dans le bundle; aucune résolution de conflit ou application manuelle de commits n’est nécessaire. Les changements de version sont préparés avant la séance; pendant la présentation, on change de dossier et d’application active.
@@ -142,7 +142,7 @@ Garder ce terminal ouvert. `Win + P` → **Étendre**. Même navigateur, même p
 - Projecteur : **http://127.0.0.1:53173/1**, plein écran `F11`.
 - Démonstration : **http://localhost:53170**, dashboard Aspire et deux fenêtres VS Code déjà ouvertes.
 
-Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 20. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.
+Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les notes sur le portable. Couper les notifications. Les étapes 1 et 2 se déroulent dans le dépôt principal. La transition vers l’exercice aura lieu pendant la slide 21. Préparer les commandes et les prompts ci-dessous dans des onglets; ne pas les retaper devant le public.
 
 ## Démo 1 · cadrer une mission · 4 min
 
@@ -162,7 +162,7 @@ Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les 
 
 ### 1:30–2:20 · Une règle vérifiable
 
-**Faire :** ouvrir **Customizations**. Pendant 10 secondes, situer **Overview** (vue d’ensemble) et **Customize Your Agent** (aide à créer des fichiers à relire), sans envoyer de demande. Passer à **Instructions**, puis montrer `.github/copilot-instructions.md` et `.github/instructions/python.instructions.md`. Retrouver la règle des valeurs absentes et des zéros. Les sept rubriques seront expliquées à la slide 11. Si l’interface ne liste pas un fichier, ouvrir le fichier et vérifier le chargement réel dans les références/diagnostics; ne pas affirmer qu’il a été chargé uniquement parce qu’il existe.
+**Faire :** ouvrir **Customizations**. Pendant 10 secondes, situer **Overview** (vue d’ensemble) et **Customize Your Agent** (aide à créer des fichiers à relire), sans envoyer de demande. Passer à **Instructions**, puis montrer `.github/copilot-instructions.md` et `.github/instructions/python.instructions.md`. Retrouver la règle des valeurs absentes et des zéros. Les sept rubriques seront expliquées à la slide 12. Si l’interface ne liste pas un fichier, ouvrir le fichier et vérifier le chargement réel dans les références/diagnostics; ne pas affirmer qu’il a été chargé uniquement parce qu’il existe.
 
 **Dire :** « Dans `[10, 0, None]`, deux valeurs ont été mesurées. Zéro est une mesure; None indique une absence. Inventer un zéro à sa place fausserait le contrôle de qualité. »
 
@@ -185,7 +185,7 @@ Réponse attendue : un schéma en quatre étapes et les commandes de vérificati
 
 ## Démo 2 · vérifier un résultat · 5 min
 
-**Slide 19 → terminal du dépôt principal (`main`). Question : « Quelles preuves faut-il avant d’accepter le résultat de l’agent? »**
+**Slide 20 → terminal du dépôt principal (`main`). Question : « Quelles preuves faut-il avant d’accepter le résultat de l’agent? »**
 
 ### 0:00–0:45 · Rejouer un résultat
 
@@ -256,7 +256,7 @@ Choisir cette variante **avant la séance**, ou l’utiliser pendant les questio
 
 ## Transition · préparer la démo 3
 
-**Garder la slide 20 (SDD) sur le projecteur.** Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.
+**Garder la slide 21 (SDD) sur le projecteur.** Pendant ses deux minutes, lancer ce bloc dans le terminal de pilotage, puis expliquer la mini-spécification. Les deux dossiers ont déjà démarré avec succès pendant la préparation.
 
 ```powershell
 Set-Location -LiteralPath $Depot
@@ -268,11 +268,11 @@ git status --short --branch
 
 **Attendu :** la branche de cette répétition, avec `coverage.py` encore à implémenter. Recharger Vue, lancer une collecte complète et vérifier **Non calculée**. Si l’indicateur est déjà calculé, ne pas poursuivre comme si l’exercice était neuf : vérifier le chemin et préparer une nouvelle branche selon la dernière section.
 
-**Dire :** « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de `$Live`, puis à la slide 21. La présentation reste servie depuis `$Depot`; aucun ancien support du tag 06 n’est lancé.
+**Dire :** « Voici la version de départ de notre exercice. L’interface est prête; il lui manque le calcul Python. » Passer à la fenêtre VS Code de `$Live`, puis à la slide 22. La présentation reste servie depuis `$Depot`; aucun ancien support du tag 06 n’est lancé.
 
 ## Démo 3 · une règle devient un contrôle · 4 min
 
-**Slide 21 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »**
+**Slide 22 → Vue puis VS Code de la copie d’exercice. Question : « Une seule mesure manque : notre contrôle le détecte-t-il? »**
 
 ### 0:00–0:40 · Montrer le besoin et l’état initial
 
@@ -329,7 +329,7 @@ uv run --project etl pytest etl/tests specs/test_coverage_acceptance.py --basete
 
 Si l’ancien rapport reste visible, attendre la fin de la nouvelle collecte et rafraîchir. Modifier le code ne recalcule pas rétroactivement un rapport déjà publié. Si le rechargement Python n’a pas eu lieu, utiliser le secours au lieu de diagnostiquer devant le public.
 
-**Réussite :** une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 22, sélection de skills.
+**Réussite :** une règle compréhensible, du code examiné, des tests réussis et un changement visible. Revenir à la slide 23, sélection de skills.
 
 ## Secours · revenir à la solution préparée
 

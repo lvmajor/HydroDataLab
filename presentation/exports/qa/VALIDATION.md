@@ -1,6 +1,14 @@
 # Validation de la présentation
 
-## État courant : capture réelle Artificial Analysis
+## État courant : architecture du contexte par paliers
+
+19 octobre 2026. **31 slides, dont 25 principales et 6 annexes.** La 9 emploie « règles communes du projet ». La 10 distingue Always on, Task scoped et On demand; la 11 montre les contributions à une tâche de couverture. Documents détaillés, règles de chemin, contexte implicite IDE/CLI, rôle choisi et workflow sont distingués. MCP/outils/permissions figurent dans le rôle du harnais; aucune inclusion automatique de toutes leurs données n’est affirmée. Notes, aide-mémoire, fiche, guide et conducteur HTML alignés.
+
+Build réussi. Contrôle CUA des 31 routes audience : aucun débordement détecté. Rendus 9–11 en 1366×768 et 1920×1080, notes 10–11 aux deux tailles, détails accessibles au clavier. Chevauchements initiaux corrigés avant livraison. Les cinq sélections du contexte se propagent du présentateur à l’audience, sont conservées après rechargement et répondent dans l’autre sens. Les coûts de la slide 17 passent de 1 à 2 essais dans les deux vues, puis reviennent à 1. Console : message FloatingVue/Popper déjà connu dans l’outillage, sans défaut observé sur les interactions et rendus contrôlés. Cette vérification CUA n’intercepte pas les requêtes réseau; elle ne remplace pas un nouveau test réseau coupé sur le portable HQ.
+
+PDF : 31 pages, termes et sources attendus, six destinations internes valides. Pages 9–11 examinées à pleine taille; renvois des pages suivantes actualisés. Les 25 plages notes/guide correspondent : **32 + 13 minutes**, démos inchangées. Les slides 9/10/11 occupent 1 min 30 / 1 min 30 / 1 min, de 15:00 à 19:00. Preuves : `../../../docs/validation/tiered-context.json`, `presentation-flow.json`, captures `tiered-*` et rendus `page-*`. Les anciens rapports nommés thinking-effort/browser-report/presenter-sync décrivent leurs révisions antérieures.
+
+## Historique : capture réelle Artificial Analysis
 
 19 octobre 2026. Slide 17 : capture réelle du graphique public, six configurations Sol/Codex et Sonnet/Claude Code aux niveaux Low, High et Max. Les valeurs du tableau viennent des six infobulles enregistrées; l’axe du coût est logarithmique et les indices affichés sont arrondis. Deux comparaisons sont commentées : Sol High → Max (+74 % de coût, indice affiché 60) et Sonnet High → Max (×11,4, indice 55 → 68). Les coûts API du benchmark sont distingués de la facturation Copilot. Capture et preuves disponibles hors ligne.
 

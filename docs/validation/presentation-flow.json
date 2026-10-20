@@ -1,7 +1,7 @@
 {
-  "checkedAtUtc": "2026-10-20T00:39:04.914Z",
+  "checkedAtUtc": "2026-10-20T00:54:13.254Z",
   "focus": "GitHub Copilot dans VS Code; HydroDataLab comme fil conducteur",
-  "slideCount": 30,
+  "slideCount": 31,
   "explanationMinutes": 32,
   "demoMinutes": 13,
   "questionsMinutes": 10,
@@ -60,94 +60,100 @@
       "slide": 9,
       "title": "Où écrire la règle, et quand s’applique-t-elle?",
       "start": "15:00",
-      "finish": "17:00"
+      "finish": "16:30"
     },
     {
       "slide": 10,
-      "title": "Context layers · les couches du contexte",
-      "start": "17:00",
-      "finish": "19:00"
+      "title": "Tiered-context architecture",
+      "start": "16:30",
+      "finish": "18:00"
     },
     {
       "slide": 11,
+      "title": "Comment ces apports composent le contexte",
+      "start": "18:00",
+      "finish": "19:00"
+    },
+    {
+      "slide": 12,
       "title": "Les personnalisations, dans VS Code",
       "start": "19:00",
       "finish": "20:15"
     },
     {
-      "slide": 12,
+      "slide": 13,
       "title": "Skills et tools : deux choix distincts",
       "start": "20:15",
       "finish": "21:45"
     },
     {
-      "slide": 13,
+      "slide": 14,
       "title": "Une base « vanille », des ajouts ciblés",
       "start": "21:45",
       "finish": "22:30"
     },
     {
-      "slide": 14,
+      "slide": 15,
       "title": "Les tokens : lire et produire",
       "start": "22:30",
       "finish": "24:00"
     },
     {
-      "slide": 15,
+      "slide": 16,
       "title": "Auto : un bon point de départ",
       "start": "24:00",
       "finish": "25:00"
     },
     {
-      "slide": 16,
+      "slide": 17,
       "title": "Comparer 4 tâches et 5 modèles",
       "start": "25:00",
       "finish": "26:30"
     },
     {
-      "slide": 17,
+      "slide": 18,
       "title": "Thinking effort et coût par tâche",
       "start": "26:30",
       "finish": "28:00"
     },
     {
-      "slide": 18,
+      "slide": 19,
       "title": "Auto choisit; HydraFusion orchestre",
       "start": "28:00",
       "finish": "28:30"
     },
     {
-      "slide": 19,
+      "slide": 20,
       "title": "Démo 2 · vérifier un résultat",
       "start": "28:30",
       "finish": "34:30"
     },
     {
-      "slide": 20,
+      "slide": 21,
       "title": "SDD : une spécification avant le code",
       "start": "34:30",
       "finish": "36:30"
     },
     {
-      "slide": 21,
+      "slide": 22,
       "title": "Démo 3 · détecter une mesure absente",
       "start": "36:30",
       "finish": "40:30"
     },
     {
-      "slide": 22,
+      "slide": 23,
       "title": "Des skills à choisir selon votre tâche",
       "start": "40:30",
       "finish": "42:00"
     },
     {
-      "slide": 23,
+      "slide": 24,
       "title": "Votre prochaine tâche avec Copilot",
       "start": "42:00",
       "finish": "43:30"
     },
     {
-      "slide": 24,
+      "slide": 25,
       "title": "Pour continuer et rester à jour",
       "start": "43:30",
       "finish": "45:00"

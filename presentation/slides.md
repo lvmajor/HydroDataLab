@@ -146,7 +146,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 <summary>Repères · niveau du public et annexes</summary>
 
 - Aucune maîtrise de Git, Docker, .NET ou Vue n’est supposée : expliquer les mots avant de les utiliser.
-- Les annexes 25 à 30 servent aux questions.
+- Les annexes 26 à 31 servent aux questions.
 
 </details>
 -->
@@ -351,7 +351,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 <summary>Précisions · réglages et références</summary>
 
 - Auto Balance ou le modèle autorisé préparé. Dans cette fenêtre, ne pas chercher l’agent Plan du menu de la vue Chat.
-- Les sept rubriques de personnalisation sont expliquées en slide 11.
+- Les sept rubriques de personnalisation sont expliquées en slide 12.
 - Un fichier qui existe n’est pas nécessairement chargé. Les références montrent des sources consultées; la présence d’une règle ne garantit pas son respect.
 
 </details>
@@ -373,7 +373,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 <div class="rule-file"><b>Instruction permanente :</b> « Conserver les valeurs manquantes.<br>Compter 0 comme une mesure numérique valide. »<br><code>.github/instructions/python.instructions.md</code></div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions personnalisées</a> · <a href="/25">Se repérer dans Customizations →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · instructions personnalisées</a> · <a href="/26">Se repérer dans Customizations →</a></div>
 
 <!--
 **2 min · 13:00–15:00**
@@ -402,7 +402,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 - En pandas, l’absence peut apparaître comme `NaN` ou `NA`; en JSON, `null`.
 - Le test compte deux valeurs : ni une (zéro exclu), ni trois (absence remplacée).
 - Zéro n’est pas physiquement plausible pour toute série : les contrôles métier restent nécessaires.
-- La capture réelle est en annexe 25; l’ouvrir pendant la démo seulement si nécessaire.
+- La capture réelle est en annexe 26; l’ouvrir pendant la démo seulement si nécessaire.
 
 </details>
 -->
@@ -411,7 +411,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 # Où écrire la règle, et quand s’applique-t-elle?
 
-<div class="small"><b>Socle Copilot :</b> <code>.github/copilot-instructions.md</code> · Markdown commun au projet.<br><b>Règle ciblée :</b> <code>.github/instructions/python.instructions.md</code></div>
+<div class="small"><b>Règles communes du projet :</b> <code>.github/copilot-instructions.md</code> · Markdown commun au projet.<br><b>Règle ciblée :</b> <code>.github/instructions/python.instructions.md</code></div>
 
 ```md
 ---
@@ -424,12 +424,12 @@ Compter 0 comme une mesure numérique valide.
 
 <div class="small"><b>applyTo</b> : motif des fichiers créés ou modifiés. <b>description</b> : pertinence de la tâche.<br>Sans ces deux champs, joindre le fichier manuellement.</div>
 
-<div class="strip compact">Pour ce groupe : socle Copilot + règles Python ciblées.<br>Plusieurs harnais compatibles? Préférer <code>AGENTS.md</code> pour le socle partagé.</div>
+<div class="strip compact">Pour ce groupe : règles communes + règles Python ciblées.<br>Plusieurs harnais compatibles? Préférer <code>AGENTS.md</code> pour les règles partagées.</div>
 
 <div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions#instructions-file-format">Microsoft · format et activation</a> · <a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions#use-an-agentsmd-file">AGENTS.md</a></div>
 
 <!--
-**2 min · 15:00–17:00**
+**1 min 30 · 15:00–16:30**
 
 > **Fil rouge :** un fichier reconnu, une portée explicite, puis une vérification réelle.
 
@@ -442,7 +442,7 @@ Compter 0 comme une mesure numérique valide.
 ### Recommander une organisation simple
 
 - Ici, privilégier les formats Copilot utilisés par le groupe : fichier commun et règles ciblées.
-- Pour plusieurs harnais : `AGENTS.md` peut fournir un socle portable, si chacun le prend en charge.
+- Pour plusieurs harnais : `AGENTS.md` peut fournir des règles communes portables, si chacun le prend en charge.
 - Éviter de dupliquer les mêmes consignes dans deux gros fichiers.
 
 ### Enchaîner
@@ -464,41 +464,97 @@ Compter 0 comme une mesure numérique valide.
 
 ---
 
-# Context layers · les couches du contexte
+# Tiered-context architecture
+
+<TieredContext />
+
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · conditions des instructions</a> · <a href="https://code.visualstudio.com/docs/agents/concepts/context">Composition et contexte implicite</a></div>
+
+<!--
+**1 min 30 · 16:30–18:00**
+
+> **Fil rouge :** garder les règles essentielles disponibles; charger les détails quand le travail en a besoin.
+
+### 0:00–0:25 · Always on — règles communes
+
+- **Dire :** « Architecture du contexte par paliers : nous organisons quoi charger, et quand. »
+- Instructions du dépôt, préférences utilisateur et directives d’organisation reconnues et activées dans le harnais choisi.
+- Mettre le **résumé** d’architecture et les standards essentiels dans ces instructions. Le document détaillé n’est pas permanent par sa seule présence.
+
+### 0:25–0:50 · Task scoped — selon la tâche
+
+- Une règle `applyTo` est automatique **si le chemin correspond** : elle ne s’applique pas à chaque demande.
+- L’agent personnalisé apporte son rôle s’il est choisi; le prompt décrit le travail. Une skill apporte une méthode quand elle est chargée.
+- Un fichier de procédure disponible n’est pas forcément utilisé.
+
+### 0:50–1:10 · On demand — au besoin
+
+- Joindre une référence utile, lire un fichier, rechercher du code ou recevoir la sortie d’un outil.
+- IDE = environnement de développement; CLI = interface en ligne de commande.
+- **Fenêtre Agents :** contexte implicite de l’éditeur désactivé par défaut. Ajouter explicitement les fichiers indispensables.
+
+### 1:10–1:30 · Distinguer informations et autorisations
+
+- Le harnais prépare le contexte et contrôle les actions permises. Les outils et serveurs MCP disponibles définissent les capacités.
+- **Configurer MCP ne charge pas ses données.** Une réponse d’outil pourra ensuite enrichir le contexte.
+- Enchaîner : « Suivons ces apports sur une tâche concrète. »
+
+<details>
+<summary>Pour les questions · portée, activation et harnais</summary>
+
+- Ces trois paliers sont une méthode de conception pédagogique, pas trois niveaux normatifs de VS Code ni une règle de priorité. « Always on » désigne des instructions permanentes applicables, pas une garantie d’obéissance.
+- Copilot : `.github/copilot-instructions.md` et les formats compatibles comme `AGENTS.md`; préférences permanentes dans `~/.copilot/copilot-instructions.md`. Organisation : prise en charge, accès et `github.copilot.chat.organizationInstructions.enabled`.
+- Pour une règle ciblée, `description` peut aussi conduire à son chargement selon la tâche; sans motif ni description, ajout manuel. Supprimer les contradictions entre instructions applicables.
+- Le **contenu essentiel** d’un standard peut être inclus dans les instructions permanentes. Conserver la référence détaillée à part, indiquer quand la lire, puis vérifier sa lecture. Les règles de liens diffèrent selon le harnais.
+- Un prompt est une demande. Un **prompt file `.prompt.md`** est une fonction Local dans la vue Chat; pour un workflow réutilisable avec le harnais Copilot, utiliser une skill compatible. Ne pas confondre texte du prompt et format de fichier.
+- Le contexte de l’éditeur dépend de l’interface, du harnais et des réglages. L’IDE peut ajouter une sélection; un fichier ouvert n’implique pas son inclusion complète. En CLI, ne pas supposer que les onglets de VS Code sont visibles.
+- Les configurations MCP et permissions peuvent persister au niveau utilisateur/projet; elles ne sont donc pas « spécifiques à la tâche » par nature. Les définitions d’outils disponibles peuvent contribuer à la requête; les secrets de connexion n’ont pas à être copiés dans le prompt.
+- La sélection d’un outil ne dispense jamais des permissions du harnais. Cette distinction sera reprise avec Tools et MCP.
+- Sources : Microsoft instructions, concepts de contexte, prompt files et outils. Le guide context engineering illustre principalement Local; adapter à Copilot.
+
+</details>
+-->
+
+---
+
+# Comment ces apports composent le contexte
 
 <ContextLayers />
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/custom-instructions">Microsoft · activation des règles</a> · <a href="https://code.visualstudio.com/docs/agents/guides/context-engineering-guide">Structurer le contexte</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/concepts/context#how-vs-code-assembles-context">Microsoft · assemblage du contexte</a> · <a href="https://code.visualstudio.com/docs/chat/copilot-chat-context">Ajouter les références utiles</a></div>
 
 <!--
-**2 min · 17:00–19:00**
+**1 min · 18:00–19:00**
 
-> **Fil rouge :** plusieurs apports composent un même contexte; ce dessin n’est pas un ordre de priorité.
+> **Fil rouge :** ce qui est disponible dans le projet doit encore être sélectionné, joint ou lu pour contribuer à la requête.
 
-### Lire les couches de haut en bas
+### 0:00–0:20 · Partir du commun
 
-- **Project instructions / Consignes du projet** et **File-specific instructions / Consignes ciblées** : règles durables.
-- **Reference documents / Documents de référence** et **Task prompt / Demande courante** : informations et objectif du travail.
-- **Tool results / Résultats des outils** : observations réelles après une action.
+- Montrer **Always on / Règles communes** : préserver le brut, tester les calculs hors réseau.
+- Pointer **Task scoped / Règles Python** : le motif correspond au fichier modifié.
+- Les apports se combinent; sélectionner une ligne met seulement sa contribution en évidence.
 
-### Manipuler depuis la vue présentateur
+### 0:20–0:45 · Ajouter ce qui répond à la tâche
 
-- Cliquer **Reference documents** → montrer unité, fréquence et fuseau.
-- Cliquer **Tool results** → montrer l’exemple **23/24**.
-- Suivre les flèches vers **Model context / Contexte du modèle**.
+- Cliquer **Documents et code** : dictionnaire, spécification et fonction utiles.
+- Cliquer **Résultats des outils** : l’exemple 23/24 = 95,83 % illustre le retour d’un test.
+- Souligner la différence entre **fichier présent** et **information réellement fournie au modèle**.
 
-### Enchaîner
+### 0:45–1:00 · Vérifier, puis enchaîner
 
-« Voyons maintenant les capacités que l’on retrouve dans le panneau Customizations. »
+- **References**, activité de lecture et résultats observés donnent les preuves.
+- Instructions système et historique de la session contribuent aussi; tout ne tient pas sans limite.
+- Enchaîner : « Où voit-on ces mécanismes dans Customizations? »
 
 <details>
-<summary>Précisions · limites du schéma</summary>
+<summary>Manipulation et limites du schéma</summary>
 
-- *Context layers* signifie couches du contexte : catégories pédagogiques, pas hiérarchie officielle ni garantie de chargement automatique de tous les fichiers.
-- « Contrat » désigne ici un document décrivant les données, pas un niveau universel de contexte.
-- Historique, instructions de service et préférences utilisateur existent aussi; le schéma se concentre sur les apports préparables dans le projet.
-- Les consignes applicables se combinent; résoudre les contradictions. Les détails `applyTo` restent en slide 9.
-- Le PDF conserve toutes les couches, traductions et exemples; le panneau de droite affiche la première couche.
+- Les cinq lignes illustrent les **trois paliers** de la slide précédente. Ce ne sont ni cinq niveaux de priorité, ni une trace technique de notre requête réelle.
+- Cliquer dans Current → Slides de la vue présentateur; la sélection et le détail se synchronisent vers l’audience. Remettre la première ligne avant la séance.
+- L’agent personnalisé est facultatif dans l’exemple : la demande peut utiliser l’agent Copilot habituel. Ses consignes spécialisées ne contribuent que si cet agent est choisi.
+- Un appel d’outil renvoie un résultat pour les étapes suivantes. Une sortie de terminal externe doit être jointe ou lue; elle n’est pas automatiquement partagée entre sessions.
+- La fenêtre de contexte peut être résumée/compactée. La mémoire des autres sessions n’est pas automatiquement l’historique de celle-ci.
+- Le PDF affiche toutes les lignes avec le premier détail; les notes expliquent les deux autres points à commenter.
 
 </details>
 -->
@@ -509,7 +565,7 @@ Compter 0 comme une mesure numérique valide.
 
 <CustomizationMap />
 
-<div class="doc-link"><a href="https://code.visualstudio.com/updates/v1_142#copilot-harness">Microsoft · version 1.142</a> · <a href="https://code.visualstudio.com/docs/agent-customization/mcp-servers#choose-a-configuration-destination">Fichiers MCP</a> · <a href="https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers">Migration</a> · <a href="/25">Capture du panneau →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/updates/v1_142#copilot-harness">Microsoft · version 1.142</a> · <a href="https://code.visualstudio.com/docs/agent-customization/mcp-servers#choose-a-configuration-destination">Fichiers MCP</a> · <a href="https://code.visualstudio.com/docs/agent-customization/migrate-customizations#migrate-mcp-servers">Migration</a> · <a href="/26">Capture du panneau →</a></div>
 
 <!--
 **1 min 15 · 19:00–20:15**
@@ -518,7 +574,7 @@ Compter 0 comme une mesure numérique valide.
 
 ### 0:00–0:10 · Partir du menu
 
-- **Situer Overview :** point d’entrée des personnalisations; capture disponible en annexe 25.
+- **Situer Overview :** point d’entrée des personnalisations; capture disponible en annexe 26.
 - **Dire :** « Ces trois familles nous aident à nous repérer. »
 
 ### 0:10–0:35 · Lire les trois familles
@@ -541,7 +597,7 @@ Compter 0 comme une mesure numérique valide.
 <details>
 <summary>Pour les questions · interface et exemples</summary>
 
-- **Customize Your Agent** aide à préparer des fichiers à relire; visible en annexe 25.
+- **Customize Your Agent** aide à préparer des fichiers à relire; visible en annexe 26.
 - **Explore Customizations** ouvre les mêmes rubriques sous forme de cartes.
 - Les compteurs ne prouvent pas l’utilisation dans une réponse. La capture de l’annexe est agrandie sans retoucher ses pixels.
 - MCP = *Model Context Protocol*. SQL, hook et plugin sont des exemples illustratifs, pas des composants identifiés dans la capture.
@@ -1086,14 +1142,14 @@ class: breakwater
 
 - Collecte complète, puis collecte avec **Retirer une mesure de niveau d’eau**.
 - **Qualité par série : 24/24 = 100 %, puis 23/24 = 95,83 %.** Marquer une pause.
-- **Enchaîner à 4:00 :** « Vous voyez ce que cette règle permet de détecter. » Revenir à la slide 22.
+- **Enchaîner à 4:00 :** « Vous voyez ce que cette règle permet de détecter. » Revenir à la slide 23.
 
 <details>
 <summary>Secours · preuve préparée et limites</summary>
 
 - Si les services tardent, montrer la preuve préparée en le disant; ne pas dépasser 4:00.
 - En secours, utiliser le diff historique limité à `coverage.py` décrit dans le conducteur et annoncer sa provenance.
-- Ne pas basculer le dépôt principal sur un ancien tag. La transition vers la copie préparée a déjà eu lieu en slide 20.
+- Ne pas basculer le dépôt principal sur un ancien tag. La transition vers la copie préparée a déjà eu lieu en slide 21.
 - La copie vient de `codex/preparation-demo-06` (`9e1ecde`) et conserve la couverture à implémenter.
 
 </details>
@@ -1207,7 +1263,7 @@ Examiner le diff.<br>Lire les résultats des tests.<br>Conserver les décisions 
 <summary>Repères · conclusion</summary>
 
 - Ne pas introduire de nouvelle technologie dans cette conclusion.
-- Canvas reste disponible en annexe 27 sur demande.
+- Canvas reste disponible en annexe 28 sur demande.
 
 </details>
 -->
@@ -1222,7 +1278,7 @@ class: resources
 
 <div class="resource-routine">Routine proposée : 15 minutes de veille par semaine, puis une pratique testée sur votre projet.</div>
 
-<div class="source">Liens publics vérifiés le 19 octobre 2026. Ressources HQ à compléter. <a href="/27">Canvas en préversion · annexe 27</a></div>
+<div class="source">Liens publics vérifiés le 19 octobre 2026. Ressources HQ à compléter. <a href="/28">Canvas en préversion · annexe 28</a></div>
 
 <!--
 **1 min 30 · 43:30–45:00**
@@ -1239,7 +1295,7 @@ class: resources
 ### Ouvrir les questions
 
 - Laisser cette page visible de **45:00 à 55:00**; marge jusqu’à **60:00**.
-- Canvas en annexe 27 seulement si demandé; ne pas l’ajouter aux 45 minutes.
+- Canvas en annexe 28 seulement si demandé; ne pas l’ajouter aux 45 minutes.
 
 <details>
 <summary>Préparation · ajouter les ressources HQ</summary>
@@ -1267,7 +1323,7 @@ class: annex
 
 <div class="small">Ouvrir une rubrique → examiner le fichier → vérifier son application.</div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/overview#agent-customizations-editor">Microsoft · panneau Customizations</a> · <a href="/8">Exemple de règle</a> · <a href="/11">Les rubriques →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/overview#agent-customizations-editor">Microsoft · panneau Customizations</a> · <a href="/8">Exemple de règle</a> · <a href="/12">Les rubriques →</a></div>
 <div class="source">Capture fournie le 19 octobre : vue Overview. Les chemins ci-dessus expliquent les portées dans Instructions; ils ne sont pas visibles dans la capture.</div>
 
 <!--
@@ -1288,7 +1344,7 @@ class: annex
 
 ### Revenir au fil
 
-Revenir aux ressources, slide 24, après la réponse.
+Revenir aux ressources, slide 25, après la réponse.
 
 <details>
 <summary>Précisions · capture et stockage</summary>
@@ -1333,7 +1389,7 @@ class: annex
 
 ### Revenir au fil
 
-Coût réel = usage et contrat de facturation. Revenir à la slide 24.
+Coût réel = usage et contrat de facturation. Revenir à la slide 25.
 
 <details>
 <summary>Précisions · seuils et simulation</summary>
@@ -1368,7 +1424,7 @@ Application VS Code de bureau.<br>Session locale Copilot / Agent Host.<br>Pas le
 
 </div></div>
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness">Microsoft · prérequis et fonctionnement</a> · <a href="https://code.visualstudio.com/updates/v1_142#canvases-preview">Nouveauté 1.142</a> · <a href="/24">Retour →</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/run/agent-harnesses#use-canvases-with-the-copilot-harness">Microsoft · prérequis et fonctionnement</a> · <a href="https://code.visualstudio.com/updates/v1_142#canvases-preview">Nouveauté 1.142</a> · <a href="/25">Retour →</a></div>
 
 <!--
 **Annexe · pendant les questions**
@@ -1388,7 +1444,7 @@ Application VS Code de bureau.<br>Session locale Copilot / Agent Host.<br>Pas le
 
 ### Revenir au fil
 
-Revenir aux ressources, slide 24.
+Revenir aux ressources, slide 25.
 
 <details>
 <summary>Pour les questions · chemins de création</summary>
@@ -1431,7 +1487,7 @@ class: annex
 
 ### Revenir au fil
 
-« Ce sont des décisions à écrire dans la spec. » Revenir à la slide 24.
+« Ce sont des décisions à écrire dans la spec. » Revenir à la slide 25.
 
 <details>
 <summary>Précisions · instants et fréquences</summary>
@@ -1473,7 +1529,7 @@ class: annex
 
 ### Revenir au fil
 
-« Le dernier message n’est pas la preuve qu’une commande est entièrement terminée. » Revenir à la slide 24.
+« Le dernier message n’est pas la preuve qu’une commande est entièrement terminée. » Revenir à la slide 25.
 
 <details>
 <summary>Précautions · branches et données</summary>
@@ -1522,7 +1578,7 @@ class: annex
 
 ### Clore la réponse
 
-Revenir à la slide 24 pour poursuivre les questions.
+Revenir à la slide 25 pour poursuivre les questions.
 
 <details>
 <summary>Repères · hors ligne</summary>

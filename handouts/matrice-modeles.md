@@ -46,7 +46,7 @@ Dollars US par **million de tokens**. Colonnes distinctes; les catégories de ca
 | Changer plusieurs composants | 60 000 / 8 000 | 0,010 $ | 0,200 $ | 0,400 $ | Sol |
 | Diagnostiquer une anomalie difficile | 60 000 / 8 000 | 0,010 $ | 0,200 $ | 0,400 $ | Opus si justifié |
 
-La diapositive 16 montre **les quatre tâches en colonnes et les cinq modèles en lignes, simultanément**. Lire une colonne pour comparer les modèles d’une tâche, une ligne pour comparer les tâches avec un modèle. Montants en dollars US. Multiplier par le nombre d’essais; multiplier les dollars par 100 pour obtenir les crédits. Par exemple, trois essais du scénario ETL avec Sonnet coûtent 0,180 $ = 18 crédits sous ces hypothèses. Le graphique garde un axe linéaire partant de zéro, plafonné à 0,40 $ par essai pour tous les scénarios. Les losanges signalent les recommandations pédagogiques, sans score de qualité inventé.
+La diapositive 17 montre **les quatre tâches en colonnes et les cinq modèles en lignes, simultanément**. Lire une colonne pour comparer les modèles d’une tâche, une ligne pour comparer les tâches avec un modèle. Montants en dollars US. Multiplier par le nombre d’essais; multiplier les dollars par 100 pour obtenir les crédits. Par exemple, trois essais du scénario ETL avec Sonnet coûtent 0,180 $ = 18 crédits sous ces hypothèses. Le graphique garde un axe linéaire partant de zéro, plafonné à 0,40 $ par essai pour tous les scénarios. Les losanges signalent les recommandations pédagogiques, sans score de qualité inventé.
 
 Le volume identique entre modèles d’un scénario isole l’effet du tarif. En réel, appels, raisonnement, cache et reprises diffèrent. Deux modèles au même tarif peuvent produire des résultats différents. Auto Balance reste le défaut conseillé; on ne lui attribue pas un prix fixe puisqu’il route les requêtes. Valider les choix sur quelques tâches représentatives : exactitude, tests, temps, reprises et crédits totaux. [Comparaison officielle des modèles](https://docs.github.com/en/copilot/reference/ai-models/model-comparison).
 
@@ -58,7 +58,7 @@ Exemples pédagogiques à tester : effort faible pour une correction mécanique;
 
 ## Coût par tâche et benchmarks de code
 
-La diapositive **17** complète les montants simulés de la 16. Le **coût du résultat validé** additionne les appels et les reprises nécessaires. Exemple fictif : trois essais à 0,10 $ totalisent 0,30 $; un essai réussi à 0,20 $ est moins cher. Évaluer aussi le temps de validation humaine.
+La diapositive **18** complète les montants simulés de la 17. Le **coût du résultat validé** additionne les appels et les reprises nécessaires. Exemple fictif : trois essais à 0,10 $ totalisent 0,30 $; un essai réussi à 0,20 $ est moins cher. Évaluer aussi le temps de validation humaine.
 
 [Artificial Analysis — Coding Agents](https://artificialanalysis.ai/agents/coding-agents) propose le graphique **Coding Agent Index vs. Cost per Task** : score de code vers le haut, coût API moyen par tâche vers la droite, sur un **axe logarithmique**. La slide contient maintenant une [vraie capture locale du graphique](../presentation/public/aa-cost-effort-20261019.png), filtrée sur les six configurations suivantes. Les infobulles publiques ont été lues le **19 octobre 2026**, heure de Montréal; les indices ci-dessous sont arrondis tels qu’affichés.
 
