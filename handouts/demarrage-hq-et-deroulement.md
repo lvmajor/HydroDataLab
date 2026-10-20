@@ -77,6 +77,7 @@ Ouvrir **http://localhost:53170** et le lien Aspire affiché par le script. Pré
 Les heures ci-dessous sont le temps écoulé depuis le début de la présentation. Les lettres **A à E** renvoient aux commandes de la section suivante.
 
 ```mermaid
+%%{init: {"flowchart": {"htmlLabels": false}}}%%
 flowchart TD
     PRE["AVANT LA SÉANCE<br/>Slidev depuis main et application prêts<br/>Copie d’exercice et image Docker testées"]
     INTRO["00:00–09:00 · Slides 1–7<br/>Contexte, acteurs, Git<br/>Introduction de la première mission"]
