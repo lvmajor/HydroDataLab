@@ -4,9 +4,11 @@ Formation « Des agents IA aux pipelines Python fiables » — Hydro-Québec, 20
 
 Projet pédagogique local : données publiques, ETL Python ou .NET, API ASP.NET Core, Vue, Quartz et Aspire.
 
-Le support contient **24 diapositives + 6 annexes**, trois démonstrations (4 + 5 + 4 minutes), les notes et un PDF. Le pipeline utilise les données publiques du **17 octobre 2026** : 96 demandes électriques, 24 niveaux d'eau et 48 températures. Les stations Gouin Nord et Gouin Bois sont distinctes. Un niveau en mètres ne représente pas une réserve en GWh.
+Le support contient **25 diapositives + 6 annexes**, trois démonstrations (4 + 5 + 4 minutes), les notes et un PDF. Le pipeline utilise les données publiques du **17 octobre 2026** : 96 demandes électriques, 24 niveaux d'eau et 48 températures. Les stations Gouin Nord et Gouin Bois sont distinctes. Un niveau en mètres ne représente pas une réserve en GWh.
 
 ## Commencer
+
+**Pour le jour de la formation :** [démarrer sur le portable HQ et suivre le déroulement](handouts/demarrage-hq-et-deroulement.md) — mise à jour GitHub, reconstruction Slidev, deux écrans, schéma minuté et commandes des démos.
 
 Pour poursuivre sur un autre poste : [connecter et synchroniser le dépôt GitHub](handouts/synchronisation-github.md). Le dépôt est public, avec publication autorisée le 19 octobre 2026. Le ZIP conserve les images Docker et les secours; GitHub synchronise le code, les slides, les fiches et l’historique pédagogique.
 

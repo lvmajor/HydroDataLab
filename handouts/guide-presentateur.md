@@ -6,6 +6,8 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 
 ## Minutage strict
 
+La [fiche de démarrage HQ et de déroulement](demarrage-hq-et-deroulement.md) rassemble les commandes GitHub/Slidev, les deux vues et un schéma reliant les horaires aux commandes des démos et au secours.
+
 | Horloge | Diapositive | Explication | Démo |
 |---|---|---:|---:|
 | 00:00–00:30 | 1 — Copilot dans VS Code | 30 s |  |

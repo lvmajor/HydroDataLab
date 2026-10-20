@@ -1,5 +1,14 @@
 # HydroDataLab — journal de reprise
 
+## Fiche de démarrage HQ et déroulement — 19 octobre
+
+- Départ : `main` propre et synchronisé, `02ce1f2`. Demande : conserver les commandes GitHub/Slidev et le schéma des étapes dans l’espace de formation créé par MIA ou dans Git.
+- Destination retrouvée : espace « Formation HydroDataLab du 20 octobre 2026 », avec un plan minuté et un conducteur déjà présents. Préparer une fiche complémentaire d’accès rapide et sa version Markdown dans le dépôt public autorisé.
+- Repères : 25 slides principales, 6 annexes; démos à 09:00, 29:30 et 36:30. Conserver `main` et une copie d’exercice séparée; aucun changement de tags ni de branche d’exercice.
+- Réalisé : `handouts/demarrage-hq-et-deroulement.md`, lien README et guide présentateur; compteur README corrigé à 25 + 6. Fiche complémentaire enregistrée dans l’espace, avec lien en tête des accès rapides, schéma Mermaid et neuf blocs de commandes. Les autres pages de MIA sont conservées.
+- Vérifié : neuf blocs PowerShell parsés, cinq liens locaux présents, horaires alignés sur le conducteur, diff sans erreur. Lecture après enregistrement : titre, neuf blocs PowerShell et diagramme conservés. L’aperçu Pages demande une connexion dans le navigateur; le rendu visuel n’a pas été contrôlé. Le parseur Mermaid seul sous Node réclame un DOM : ce contrôle isolé ne valide pas le rendu.
+- Publication Git : ce jalon documentaire est destiné à `origin/main` autorisé. Prochaine action sur HQ : récupérer la fiche et adapter les deux chemins, puis suivre les commandes; aucune commande n’a été exécutée sur le portable HQ depuis cette conversation.
+
 ## Dernière passe pédagogique — 19 octobre
 
 - Départ : main `ab67440`. Des changements d’application, de scripts et de contrats sont déjà présents et évoluent en parallèle; ils restent hors de cette passe et ne seront pas inclus dans son commit.
