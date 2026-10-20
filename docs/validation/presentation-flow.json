@@ -1,5 +1,5 @@
 {
-  "checkedAtUtc": "2026-10-20T01:21:41.672Z",
+  "checkedAtUtc": "2026-10-20T01:52:28.934Z",
   "focus": "GitHub Copilot dans VS Code; HydroDataLab comme fil conducteur",
   "slideCount": 31,
   "explanationMinutes": 32,
@@ -58,7 +58,7 @@
     },
     {
       "slide": 9,
-      "title": "Où écrire la règle, et quand s’applique-t-elle?",
+      "title": "Instructions : le format du fichier",
       "start": "15:00",
       "finish": "16:30"
     },

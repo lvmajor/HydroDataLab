@@ -16,7 +16,7 @@ Formation du **mardi 20 octobre 2026**. Public principal : citoyens développeur
 | 06:00–08:00 | 6 — Repères Git | 2 min |  |
 | 08:00–13:00 | 7 — Première mission dans Agents | 1 min | 4 min |
 | 13:00–15:00 | 8 — Une instruction vérifiable | 2 min |  |
-| 15:00–16:30 | 9 — Format, portée et activation | 1 min 30 |  |
+| 15:00–16:30 | 9 — Instructions : le format du fichier | 1 min 30 |  |
 | 16:30–18:00 | 10 — Portée du contexte | 1 min 30 |  |
 | 18:00–19:00 | 11 — Chargement progressif | 1 min |  |
 | 19:00–20:15 | 12 — Les personnalisations, dans VS Code | 1 min 15 |  |
@@ -50,6 +50,23 @@ La page 25 reste visible pendant les questions. Compléter les trois entrées HQ
 
 ## Ce que voit le public
 
+### Enchaînement et rappels utiles
+
+La passe finale conserve les créneaux ci-dessus. Les notions reviennent uniquement pour servir une nouvelle étape : comprendre une règle, la ranger, l’appliquer, puis en vérifier le résultat.
+
+| Passage | Rôle de chaque étape | À éviter à l’oral |
+|---|---|---|
+| **1–7 · Entrer dans la pratique** | Promesse; quotidien; parcours; données; acteurs; Git; première mission | Énumérer tout le jargon dès l’ouverture. Le contexte et le test sont définis en 5, le diff en 6, l’instruction en introduction de 7. |
+| **7–9 · De l’observation au fichier** | Retrouver une consigne dans Instructions; vérifier son effet avec 10, 0, None; lire son format | Faire le tour de Customizations pendant la démo 1 ou refaire le calcul de couverture en 9. |
+| **10–14 · Organiser et personnaliser** | Portée; chargement; menu; fonctionnement skill/outil; choix d’une configuration simple | Détailler les skills en 10–11. En 10, donner seulement leur définition et leur place sur les deux axes. |
+| **15–19 · Choisir avec le coût en tête** | Volumes de tokens; routage Auto; coûts simulés à volumes supposés; benchmark modèle/effort; appels coordonnés HydraFusion | Refaire la recommandation Auto en 17 ou confondre les simulations avec les mesures. L’option HydraFusion Max n’est pas présentée dans cette capsule. |
+| **20–22 · Vérifier, puis faire évoluer** | Démo d’un résultat; critères SDD; modification délimitée | Refaire le cours ETL ou la définition du test. Les critères de la 21 deviennent les preuves de la démo 3. |
+| **23–25 · Transférer la pratique** | Quelques ajouts selon le besoin; formulation d’une tâche personnelle; ressources pour poursuivre | Refaire le mécanisme des skills, la liste des bonnes pratiques ou un tour de table. |
+
+**Slide 24 · 42:00–43:30 :** 20 s pour le gabarit « Je veux… à partir de… Ce sera réussi si… », 20 s de réflexion silencieuse, 30 s pour relier l’exemple horaire à ses preuves, 20 s pour rejoindre les ressources. Les échanges restent à 45:00. Ce petit exercice remplace le récapitulatif; il n’ajoute pas de temps.
+
+Les répétitions conservées sont intentionnelles : zéro/absence sert de fil conducteur sans recalcul à chaque slide; les trois démos appliquent la vérification des preuves; les annexes reprennent les notions seulement pour répondre aux questions.
+
 ### Lire les notes sans perdre le fil
 
 Chaque note commence par **la durée et l’horloge de la séance**, puis un **fil rouge** en une phrase. Les intertitres séparent ce qu’il faut dire, montrer et faire pour passer à la suite. Les blocs **Précisions**, **Pour les questions** et **Secours** se déplient au clic; ils restent fermés tant qu’ils ne servent pas. Le contenu des notes n’est pas projeté.
@@ -72,7 +89,7 @@ Préserver le créneau global 15:00–19:00 : format et activation (9) en 1 min 
 
 - **0:00–0:25 :** portée du projet : préserver brut/provenance. Les règles utilisateur/organisation applicables peuvent couvrir plusieurs projets.
 - **0:25–0:45 :** portée des fichiers Python : absence ≠ zéro; le motif cible `etl/**/*.py`.
-- **0:45–1:05 :** tâche courante : calcul de couverture, spécification, méthode de validation; rôle spécialisé facultatif.
+- **0:45–1:05 :** tâche courante : calcul de couverture et résultat attendu. Définir une skill comme une procédure réutilisable; réserver son fonctionnement détaillé à la 13 et les rôles spécialisés à la 12.
 - **1:05–1:30 :** lire l’encadré : « Une skill peut être Task scoped ET On demand. » Portée et moment de chargement sont deux axes; passer à la mécanique de chargement.
 
 **Slide 11 · 18:00–19:00**
@@ -105,13 +122,13 @@ La 11 ne détaille ni SKILL.md ni validate-etl. La 12 sert de carte de l’inter
 
 Les diapositives expliquent les notions et annoncent ce que les participants pourront observer ou vérifier. Les raccourcis clavier, commandes, minutages et procédures de secours se trouvent dans ce guide et dans les notes du mode présentateur. Projeter la fenêtre de présentation, pas la vue des notes.
 
-Ne pas supposer de connaissances Git ou Docker. Définir les termes avant de les employer : ETL et conteneur (2), modèle et agent (5), dépôt/commit/branche/worktree (6), session/planification/autorisations (7), instruction (8), contexte (10–11), skill, outils et MCP (12–13), token (15), API et exécution Docker (20), spécification et critère de réussite (21). Le worktree est une option expliquée, pas un prérequis ni une manipulation demandée. Le lexique est repris dans l'aide-mémoire.
+Ne pas supposer de connaissances Git ou Docker. Donner les repères au premier usage : ETL et conteneur (2), modèle/harnais/outil/agent, contexte et test (5), dépôt/commit/branche/worktree et diff (6), session/planification/autorisations et instruction (7). Approfondir ensuite : instruction vérifiable (8), format (9), portée du contexte et brève définition d’une skill (10), chargement (11), catégories dont MCP (12), mécanisme skill/outil (13), token (15), API et CLI (20), spécification et critère d’acceptation (21). Le worktree reste facultatif. Le lexique est repris dans l’aide-mémoire.
 
 À chaque démonstration, donner une question au public : « Quelles sources vérifient cette réponse? », « Quelles preuves faut-il avant d’accepter le résultat de l’agent? », « Une mesure manque : le contrôle le détecte-t-il? ». Les repères de la fenêtre Agents et ses réglages se montrent dans la première démo, avec leur utilité : lisibilité, portée du réglage, confirmation des actions et comparaison avant/après.
 
 ## Effort de raisonnement et coût par tâche · slide 18
 
-**26:30–28:00, sans navigation externe en direct.** 20 s pour le réglage et les axes; 25 s pour Sol High/Max; 25 s pour Sonnet High/Max; 20 s pour les limites et la transition. La vraie capture du 19 octobre est locale et fonctionne sans réseau. Les six valeurs sont reprises en texte à côté pour la projection. Le tableau conserve le harnais, le niveau et les indices arrondis affichés.
+**26:30–28:00, sans navigation externe en direct.** 20 s pour le réglage et les axes; 25 s pour Sol High/Max; 25 s pour Sonnet High/Max; 20 s pour les limites et la transition. Introduire le benchmark comme une comparaison sur un ensemble de tâches, après les coûts simulés de la 17. L’axe logarithmique représente des rapports de coût. La vraie capture du 19 octobre est locale et fonctionne sans réseau. Les six valeurs sont reprises en texte à côté pour la projection. Le tableau conserve le harnais, le niveau et les indices arrondis affichés.
 
 Deux comparaisons en séance : Sol High → Max, 0,89 → 1,55 $ (+74 %), indice affiché 60 → 60; Sonnet High → Max, 1,24 → 14,19 $ (×11,4), 55 → 68. Pour les questions : Sol Low / Sonnet Low, 0,50 / 0,48 $, 57 / 42. Ces calculs décrivent ces configurations et ce benchmark; le dernier exemple compare aussi deux harnais. Ne pas en déduire une qualité identique en High/Max ni un vainqueur universel. [Source filtrée](https://artificialanalysis.ai/agents/coding-agents?agents=codex-gpt-6-1-sol-low-reasoning-effort-low%2Ccodex-gpt-6-1-sol-high-reasoning-effort-high%2Ccodex-gpt-6-1-sol-max%2Cclaude-code-sonnet-5-5-low%2Cclaude-code-sonnet-5-5-high%2Cclaude-code-sonnet-5-5-max#artificial-analysis-coding-agent-index-vs-cost-per-task).
 
@@ -154,7 +171,7 @@ Depuis la racine de la version finale (`main`; les tags restent historiques), ex
 
 1. **0:00–0:45** : ouvrir **Chat: Open Agents Window** dans le dépôt principal, branche `main`. Session = conversation pour une tâche; repérer `/plan` pour une future implémentation, sans lancer une deuxième demande pendant cette mission en lecture seule. Le menu de cette fenêtre ne contient pas actuellement l'agent Plan : utiliser `/plan` dans la session Copilot. Copilot est l'environnement choisi et Auto sélectionne un modèle; ses niveaux seront expliqués ensuite. Présenter les confirmations d'actions.
 2. **0:45–1:30** : ouvrir `Ctrl+,`, ajuster la lisibilité et expliquer la portée : Utilisateur pour ses projets, Espace de travail pour le projet ouvert. Repérer **Changes**; ce panneau peut être vide pendant la mission en lecture seule. Le vrai diff sera montré à la démo 3.
-3. **1:30–2:20** : ouvrir **Chat: Open Customizations**. Consacrer 10 secondes à Overview (vue d’ensemble) et Customize Your Agent (aide à créer des fichiers à relire), sans envoyer de demande. Passer à Instructions et retrouver la règle Python qui distingue zéro d’une absence. Les sept rubriques seront expliquées à la slide 12.
+3. **1:30–2:20** : ouvrir **Chat: Open Customizations** et passer directement à **Instructions**. Retrouver la règle Python qui distingue zéro d’une absence. Dire seulement ce que signifie cette consigne; le calcul illustré viendra en 8, le format en 9 et le tour des rubriques en 12.
 4. **2:20–4:00** : lancer le prompt de découverte du conducteur des démos. Traduire **References** par « sources consultées », ouvrir un fichier cité et vérifier une affirmation avec le public.
 
 Résultat attendu : le public sait où l'agent travaille, quelles actions il peut faire et comment vérifier une affirmation. Si l'authentification est indisponible, montrer les fichiers et les règles locaux en annonçant que la réponse ne sera pas générée en direct. Ne pas créer de worktree pendant cette démonstration.

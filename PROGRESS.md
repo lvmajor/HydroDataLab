@@ -1,5 +1,14 @@
 # HydroDataLab — journal de reprise
 
+## Dernière passe pédagogique — 19 octobre
+
+- Départ : main `ab67440`. Des changements d’application, de scripts et de contrats sont déjà présents et évoluent en parallèle; ils restent hors de cette passe et ne seront pas inclus dans son commit.
+- Demande : relire tout le diaporama et les notes, alléger les répétitions, introduire les termes avant leur emploi et améliorer les transitions sans allonger la séance.
+- Décision : conserver les 31 slides, les 25 créneaux principaux, les départs des trois démos et le total 32 + 13 minutes. Garder l’exemple zéro/absence comme fil conducteur, sans refaire son calcul à chaque étape. Les annexes restent réservées aux questions.
+- Réalisé : définitions précoces, démo 1 centrée sur Instructions, rôles distincts des blocs instructions/contexte et coûts; conclusion appliquée à une tâche du participant avec 20 secondes de réflexion dans le créneau existant. Notes, guide, conducteur Markdown/HTML et aide-mémoire alignés. Le SDK reste dans les précisions pour les questions.
+- Vérifié : build; 31 routes sans débordement en 1366×768; huit slides projetées retouchées en 1920×1080; notes modifiées lisibles, détails repliés; synchronisation des trois états de contexte et des coûts, état conservé au rechargement. PDF de 31 pages avec six destinations internes, planches examinées. Les 25 plages notes/guide concordent, 32 + 13 minutes. Message FloatingVue/Popper connu sans défaut constaté. Preuves : docs/validation/presentation-final-pass.json et presentation-flow.json.
+- En parallèle : le travail d’application préexistant a été enregistré séparément dans `b0a9f57`; aucune réécriture ni modification de ce commit. Dernier libellé de la slide 5 vérifié, PDF final régénéré. Prochaine action : enregistrer cette passe et synchroniser main. La répétition humaine sur HQ reste nécessaire pour mesurer le rythme réel.
+
 ## Enchaînement contexte, personnalisations, skills et outils — 19 octobre
 
 - Départ : main `7b04966`, propre et synchronisé. Demande : éviter le doublon entre les slides 11 et 13 tout en distinguant chargement d’une skill et appel d’un outil.

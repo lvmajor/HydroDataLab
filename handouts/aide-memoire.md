@@ -18,13 +18,15 @@ Développer et tester localement des ETL Python et des visualisations, puis pré
 
 Définir objectif, entrée, sortie, contraintes et critères de réussite. Ouvrir le bon dossier du projet et choisir sa branche d'essai. Vérifier le modèle et les actions autorisées. Un worktree supplémentaire est facultatif. Pour HydroDataLab, Python réalise les transformations et les données brutes restent intactes.
 
+Pour formuler une première tâche : **« Je veux… à partir de… Ce sera réussi si… »** Exemple : produire une moyenne horaire à partir de quatre mesures aux 15 minutes, uniquement si les quatre sont valides. Prévoir un test complet et un test avec une mesure absente, puis relire le calcul et ses résultats. Ce gabarit sert à l’exercice de la slide 24.
+
 ## Les mots utiles
 
 | Terme | Sens dans cette formation |
 |---|---|
 | Dépôt Git | Le projet avec l'historique de ses versions enregistrées. |
 | Commit | Une version enregistrée dans cet historique. |
-| Branche | Un chemin d'évolution nommé, par exemple `demo-live` pour notre essai. |
+| Branche | Un chemin d'évolution nommé, par exemple `codex/repetition-01` pour notre essai. |
 | Worktree | Un dossier de travail supplémentaire lié au même dépôt, utile pour ouvrir une autre branche à côté. |
 | Session | Une conversation consacrée à une tâche. |
 | Modèle / agent | Le modèle produit une proposition; l'agent l'utilise avec des outils pour avancer dans la tâche. |

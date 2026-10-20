@@ -1,0 +1,638 @@
+{
+  "checkedAtUtc": "2026-10-20T01:50:39.315Z",
+  "scope": "Dernière passe pédagogique du diaporama et des notes; application et scripts hors périmètre",
+  "reviewedSlides": 31,
+  "mainSlides": 25,
+  "explanationMinutes": 32,
+  "demoMinutes": 13,
+  "questionsMinutes": 10,
+  "marginMinutes": 5,
+  "demoStarts": [
+    "09:00",
+    "29:30",
+    "36:30"
+  ],
+  "audiencePortable": [
+    {
+      "slide": 1,
+      "height": 768,
+      "overflow": [],
+      "title": "GitHub Copilotdans VS Code",
+      "width": 1366
+    },
+    {
+      "slide": 2,
+      "height": 768,
+      "overflow": [],
+      "title": "Votre terrain de développement",
+      "width": 1366
+    },
+    {
+      "slide": 3,
+      "height": 768,
+      "overflow": [],
+      "title": "Bien déléguer avec Copilot",
+      "width": 1366
+    },
+    {
+      "slide": 4,
+      "height": 768,
+      "overflow": [],
+      "title": "Quatre séries, quatre sens différents",
+      "width": 1366
+    },
+    {
+      "slide": 5,
+      "height": 768,
+      "overflow": [],
+      "title": "Un modèle, un harnais, un agent",
+      "width": 1366
+    },
+    {
+      "slide": 6,
+      "height": 768,
+      "overflow": [],
+      "title": "Git : garder une trace de ses essais",
+      "width": 1366
+    },
+    {
+      "slide": 7,
+      "height": 768,
+      "overflow": [],
+      "title": "Démo 1 · donner une mission à l’agent",
+      "width": 1366
+    },
+    {
+      "slide": 8,
+      "height": 768,
+      "overflow": [],
+      "title": "Écrire une règle que l’on peut vérifier",
+      "width": 1366
+    },
+    {
+      "slide": 9,
+      "height": 768,
+      "overflow": [],
+      "title": "Instructions : le format du fichier",
+      "width": 1366
+    },
+    {
+      "slide": 10,
+      "height": 768,
+      "overflow": [],
+      "title": "Portée du contexte · Context scope",
+      "width": 1366
+    },
+    {
+      "slide": 11,
+      "height": 768,
+      "overflow": [],
+      "title": "Chargement progressif · Progressive loading",
+      "width": 1366
+    },
+    {
+      "slide": 12,
+      "height": 768,
+      "overflow": [],
+      "title": "Les personnalisations, dans VS Code",
+      "width": 1366
+    },
+    {
+      "slide": 13,
+      "height": 768,
+      "overflow": [],
+      "title": "Charger une skill, appeler un outil",
+      "width": 1366
+    },
+    {
+      "slide": 14,
+      "height": 768,
+      "overflow": [],
+      "title": "Une base « vanille », des ajouts ciblés",
+      "width": 1366
+    },
+    {
+      "slide": 15,
+      "height": 768,
+      "overflow": [],
+      "title": "Les tokens : lire et produire",
+      "width": 1366
+    },
+    {
+      "slide": 16,
+      "height": 768,
+      "overflow": [],
+      "title": "Auto : un bon point de départ",
+      "width": 1366
+    },
+    {
+      "slide": 17,
+      "height": 768,
+      "overflow": [],
+      "title": "Comparer 4 tâches et 5 modèles",
+      "width": 1366
+    },
+    {
+      "slide": 18,
+      "height": 768,
+      "overflow": [],
+      "title": "Thinking effort et coût par tâche",
+      "width": 1366
+    },
+    {
+      "slide": 19,
+      "height": 768,
+      "overflow": [],
+      "title": "Auto choisit; HydraFusion orchestre",
+      "width": 1366
+    },
+    {
+      "slide": 20,
+      "height": 768,
+      "overflow": [],
+      "title": "Démo 2 · vérifier un résultat",
+      "width": 1366
+    },
+    {
+      "slide": 21,
+      "height": 768,
+      "overflow": [],
+      "title": "SDD : une spécification avant le code",
+      "width": 1366
+    },
+    {
+      "slide": 22,
+      "height": 768,
+      "overflow": [],
+      "title": "Démo 3 · détecter une mesure absente",
+      "width": 1366
+    },
+    {
+      "slide": 23,
+      "height": 768,
+      "overflow": [],
+      "title": "Des skills à choisir selon votre tâche",
+      "width": 1366
+    },
+    {
+      "slide": 24,
+      "height": 768,
+      "overflow": [],
+      "title": "Votre prochaine tâche avec Copilot",
+      "width": 1366
+    },
+    {
+      "slide": 25,
+      "height": 768,
+      "overflow": [],
+      "title": "Pour continuer et rester à jour",
+      "width": 1366
+    },
+    {
+      "slide": 26,
+      "height": 768,
+      "overflow": [],
+      "title": "Annexe · se repérer dans Customizations",
+      "width": 1366
+    },
+    {
+      "slide": 27,
+      "height": 768,
+      "overflow": [],
+      "title": "Annexe · modèles et tarifs Copilot",
+      "width": 1366
+    },
+    {
+      "slide": 28,
+      "height": 768,
+      "overflow": [],
+      "title": "Annexe · Canvas, travailler dans le même objet",
+      "width": 1366
+    },
+    {
+      "slide": 29,
+      "height": 768,
+      "overflow": [],
+      "title": "Annexe · le contrat d’une observation",
+      "width": 1366
+    },
+    {
+      "slide": 30,
+      "height": 768,
+      "overflow": [],
+      "title": "Annexe · reprendre sans improviser",
+      "width": 1366
+    },
+    {
+      "slide": 31,
+      "height": 768,
+      "overflow": [],
+      "title": "Annexe · sources et limites",
+      "width": 1366
+    }
+  ],
+  "audienceProjection": [
+    {
+      "slide": 3,
+      "height": 1080,
+      "overflow": [],
+      "width": 1920
+    },
+    {
+      "slide": 4,
+      "height": 1080,
+      "overflow": [],
+      "width": 1920
+    },
+    {
+      "slide": 5,
+      "height": 1080,
+      "overflow": [],
+      "width": 1920
+    },
+    {
+      "slide": 6,
+      "height": 1080,
+      "overflow": [],
+      "width": 1920
+    },
+    {
+      "slide": 9,
+      "height": 1080,
+      "overflow": [],
+      "width": 1920
+    },
+    {
+      "slide": 10,
+      "height": 1080,
+      "overflow": [],
+      "width": 1920
+    },
+    {
+      "slide": 19,
+      "height": 1080,
+      "overflow": [],
+      "width": 1920
+    },
+    {
+      "slide": 24,
+      "height": 1080,
+      "overflow": [],
+      "width": 1920
+    }
+  ],
+  "presenterNotes": [
+    {
+      "slide": 1,
+      "details": [],
+      "headings": [],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 5,
+      "details": [
+        {
+          "label": "Pour les questions · Copilot SDK et version 1.142",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Raconter un exemple familier",
+        "Situer notre environnement",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 6,
+      "details": [
+        {
+          "label": "Précisions · préparation et isolation",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Définir les repères Git",
+        "Montrer notre choix",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 7,
+      "details": [
+        {
+          "label": "Secours · Copilot tarde ou est indisponible",
+          "open": false
+        },
+        {
+          "label": "Précisions · réglages et références",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Avant la démo · 08:00–09:00",
+        "0:00–0:45 · Ouvrir la session",
+        "0:45–1:30 · Régler la lisibilité",
+        "1:30–2:20 · Retrouver les consignes",
+        "2:20–4:00 · Vérifier une réponse"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 8,
+      "details": [
+        {
+          "label": "Précisions · formats et contrôles métier",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Reprendre la consigne observée",
+        "Lire l’exemple",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 9,
+      "details": [
+        {
+          "label": "Précisions · découverte et portabilité",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Lire le format",
+        "Recommander une organisation simple",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 10,
+      "details": [
+        {
+          "label": "Pour les questions · portée, formats et autorité",
+          "open": false
+        }
+      ],
+      "headings": [
+        "0:00–0:25 · Project-wide — tout le projet",
+        "0:25–0:45 · File-specific — fichiers ciblés",
+        "0:45–1:05 · Task scoped — tâche ciblée",
+        "1:05–1:30 · La distinction à retenir"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 14,
+      "details": [
+        {
+          "label": "Pour les questions · nuances et entretien",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Dire",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 15,
+      "details": [
+        {
+          "label": "Pour les questions · compactage et cache",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Expliquer le coût du contexte",
+        "Donner une recette concrète",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 16,
+      "details": [
+        {
+          "label": "Pour les questions · régime de facturation",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Expliquer Auto",
+        "Montrer ce qui se vérifie",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 17,
+      "details": [
+        {
+          "label": "Précisions · hypothèses des coûts",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Lire le graphique",
+        "Guider les choix",
+        "Manipuler et enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 18,
+      "details": [
+        {
+          "label": "Pour les questions · petit budget, preuve et limites",
+          "open": false
+        }
+      ],
+      "headings": [
+        "0:00–0:20 · Situer le réglage et la capture",
+        "0:20–0:45 · Même modèle, effort différent",
+        "0:45–1:10 · Un autre compromis avec Sonnet",
+        "1:10–1:30 · Revenir à nos tâches"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 19,
+      "details": [
+        {
+          "label": "Précisions · capsule préparée",
+          "open": false
+        }
+      ],
+      "headings": [
+        "0:00–0:20 · Distinguer les parcours",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 20,
+      "details": [
+        {
+          "label": "Secours · Docker ou services indisponibles",
+          "open": false
+        },
+        {
+          "label": "Variante · échec et relance, à choisir avant la séance",
+          "open": false
+        },
+        {
+          "label": "Précisions · ce que montre le tableau de bord",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Avant la démo · 28:30–29:30",
+        "0:00–0:45 · Exécuter la commande Python",
+        "0:45–2:15 · Lire l’avant / après ETL",
+        "2:15–3:15 · Retrouver la règle et son test",
+        "3:15–4:15 · Examiner une exécution",
+        "4:15–5:00 · Rejouer dans Docker"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 21,
+      "details": [
+        {
+          "label": "Secours · démarrage trop long",
+          "open": false
+        },
+        {
+          "label": "Pour les questions · calcul et Spec Kit",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Montrer · garder cette slide projetée",
+        "Dire pendant la transition",
+        "Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 23,
+      "details": [
+        {
+          "label": "Pour les questions · outils, adoption et installation",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Relier chaque exemple à une tâche",
+        "Nuancer et enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 24,
+      "details": [
+        {
+          "label": "Repères · conclusion",
+          "open": false
+        }
+      ],
+      "headings": [
+        "0:00–0:20 · Donner le cadre",
+        "0:20–0:40 · Laisser formuler",
+        "0:40–1:10 · Vérifier la formulation",
+        "1:10–1:30 · Enchaîner"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    },
+    {
+      "slide": 25,
+      "details": [
+        {
+          "label": "Préparation · ajouter les ressources HQ",
+          "open": false
+        }
+      ],
+      "headings": [
+        "Orienter vers les ressources",
+        "Ouvrir les questions"
+      ],
+      "height": 768,
+      "horizontalOverflow": false,
+      "width": 1366
+    }
+  ],
+  "contextSynchronization": [
+    {
+      "state": "Inclus automatiquement",
+      "matched": true
+    },
+    {
+      "state": "Activé sous condition",
+      "matched": true
+    },
+    {
+      "state": "Lire ou recevoir",
+      "matched": true
+    }
+  ],
+  "contextReloadPreserved": true,
+  "costSynchronization": {
+    "twoAttempts": {
+      "audience": "0,800",
+      "presenter": "0,800"
+    },
+    "restored": "0,400"
+  },
+  "pdf": {
+    "pages": 31,
+    "internalLinks": 6,
+    "allTextAndLinkChecksPassed": true,
+    "contactSheetsReviewed": 3
+  },
+  "knownConsoleIssue": "FloatingVue/Popper déjà observé avant cette passe; aucun défaut visuel ou de synchronisation constaté dans ces contrôles.",
+  "humanRehearsalOnHqLaptop": "À effectuer; le minutage est vérifié dans les notes et le guide, pas mesuré en salle.",
+  "screenshots": [
+    "presentation/exports/qa/final-pass-audience-24.png",
+    "presentation/exports/qa/final-pass-projection-24.png",
+    "presentation/exports/qa/final-pass-notes-24.png"
+  ]
+}

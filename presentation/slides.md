@@ -35,7 +35,7 @@ Bonnes pratiques avec les agents<br>Fil conducteur : HydroDataLab
 ### Dire
 
 - **Ouvrir :** « Comment déléguer à Copilot tout en gardant la maîtrise de son travail? »
-- **Annoncer :** contexte, instructions, skills, outils, permissions et choix du modèle dans VS Code.
+- **Promesse :** mieux formuler une demande, guider Copilot et juger ce qu’il produit.
 - **Situer l’exemple :** HydroDataLab rend ces pratiques observables dans un projet BI/Python.
 
 ### Enchaîner
@@ -110,7 +110,7 @@ class: audience-context
 
 # Bien déléguer avec Copilot
 
-<div class="lead">Une mission précise, un contexte utile,<br>un résultat que vous pouvez vérifier.</div>
+<div class="lead">Une mission précise, les informations utiles,<br>un résultat que vous pouvez vérifier.</div>
 
 <div class="columns"><div>
 
@@ -135,7 +135,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 ### Annoncer le parcours
 
-- Utiliser Agents → fournir des règles et du contexte → choisir capacités et modèle → vérifier un changement.
+- Ouvrir une session → fournir les consignes et informations utiles → choisir les moyens → vérifier un changement.
 - **Durée :** 32 min d’explications, 13 min de démos, puis 10 min de questions et 5 min de marge.
 
 ### Enchaîner
@@ -158,11 +158,11 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 | Série | Unité | Ce que l’on observe |
 |---|---:|---|
 | Demande électrique au Québec | MW | Une puissance demandée |
-| Niveau d’eau au réservoir Gouin | m | Une hauteur dans le référentiel source |
+| Niveau d’eau au réservoir Gouin | m | Un niveau mesuré à une station |
 | Température minimale | °C | Un minimum sur la période source |
 | Température maximale | °C | Un maximum sur la période source |
 
-<div class="small">Notre ETL : extraire les données, les transformer, puis charger ou exporter le résultat.<br>Un niveau en mètres ne donne pas une réserve en GWh.</div>
+<div class="small">Le même jeu public servira aux trois démonstrations.<br>Un niveau en mètres ne donne pas une réserve d’énergie.</div>
 
 <div class="source">Sources publiques HQ et contrat [S11, S12]. Instantané : 17 octobre 2026, 168 observations; récupéré le 18 octobre à 19:44 UTC.</div>
 
@@ -205,10 +205,10 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 |---|---|
 | **Modèle** | Propose du code et raisonne sur le résultat. |
 | **Outil · tool** | Lit un fichier, le modifie ou lance Python. |
-| **Harnais · harness** | Relie modèle, contexte, outils et autorisations. |
+| **Harnais · harness** | Fournit les informations au modèle et encadre les outils. |
 | **Agent** | Boucle sur ces actions pour accomplir votre tâche. |
 
-<div class="strip compact"><b>Notre choix : harnais Copilot dans VS Code.</b><br>Il utilise le Copilot SDK. Choisir un modèle Claude conserve ce harnais.</div>
+<div class="strip compact"><b>Contexte = informations fournies au modèle.</b><br>Notre choix : le harnais Copilot dans VS Code.</div>
 
 <div class="doc-link"><a href="https://code.visualstudio.com/docs/agents/concepts/agent-harnesses">Microsoft · comprendre les harnais</a> · <a href="https://code.visualstudio.com/updates/v1_142#copilot-harness">Nouveautés 1.142</a></div>
 
@@ -220,8 +220,8 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 ### Raconter un exemple familier
 
 - **Modèle :** propose une modification du script.
-- **Outil :** exécute Python et retourne le résultat.
-- **Harnais :** prépare le contexte et applique les autorisations.
+- **Outil :** exécute un test Python et retourne le résultat. Un test compare le résultat obtenu à celui attendu.
+- **Harnais :** fournit le contexte, c’est-à-dire les informations données au modèle, et applique les autorisations.
 - **Agent :** poursuit le travail à partir du résultat reçu.
 
 ### Situer notre environnement
@@ -237,7 +237,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 <details>
 <summary>Pour les questions · Copilot SDK et version 1.142</summary>
 
-- Le Copilot SDK est une base commune aux produits Copilot; cela ne garantit pas des outils et réglages identiques partout.
+- SDK signifie Software Development Kit, ou kit de développement. Le harnais Copilot utilise le Copilot SDK, une base commune aux produits Copilot; cela ne garantit pas des outils et réglages identiques partout. Garder ce détail d’architecture pour les questions.
 - En 1.142, le harnais Copilot existant devient progressivement le défaut des nouvelles sessions; il n’est pas né dans cette version.
 - Sélectionner explicitement Copilot pour ce parcours.
 
@@ -255,7 +255,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 | **Branche** | Une suite de versions pour un essai.<br>Exemple : <code>codex/repetition-01</code>. |
 | **Worktree** · facultatif | Un autre dossier du même dépôt, pour travailler sur une autre branche. |
 
-<div class="strip">Pour débuter, une branche d’essai suffit.</div>
+<div class="strip"><b>Diff :</b> comparaison des lignes avant et après un changement.</div>
 
 <div class="source"><a href="https://git-scm.com/docs/git-worktree">Documentation Git · worktree</a> [S22]. Les fichiers et résultats non enregistrés demandent leur propre sauvegarde.</div>
 
@@ -273,9 +273,9 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 ### Montrer notre choix
 
-- Une copie Git indépendante est déjà préparée pour l’exercice.
-- Le dépôt principal reste sur `main` pendant toute la séance.
-- **Faire reformuler :** « Dans quel dossier et sur quelle branche l’agent va-t-il agir? »
+- Pour débuter, une branche d’essai suffit. Notre copie d’exercice est déjà préparée; le dépôt principal reste sur `main`.
+- **Diff :** comparaison avant/après des lignes modifiées. On le lira dans **Changes**.
+- **Repère :** toujours savoir dans quel dossier et sur quelle branche l’agent travaille.
 
 ### Enchaîner
 
@@ -315,12 +315,13 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 ### Avant la démo · 08:00–09:00
 
 - **Dire :** mission de découverte en lecture seule; le dépôt principal reste sur `main`.
+- **Instruction :** consigne enregistrée pour guider l’agent. Nous allons en retrouver une, puis expliquer son format après la démo.
 - **À portée de main :** conducteur des démos, rubrique **Démo 1**, avec le prompt complet.
 - Les repères ci-dessous démarrent au début de la démo, à **09:00**.
 
 ### 0:00–0:45 · Ouvrir la session
 
-- `Chat: Open Agents Window` → vérifier dossier, branche `main`, harnais Copilot et modèle préparé.
+- `Chat: Open Agents Window` → vérifier dossier, branche `main`, harnais Copilot et modèle préparé. Le choix du modèle sera expliqué après les personnalisations.
 - Créer une session; garder les confirmations d’actions. Situer `/plan`, sans lancer une deuxième demande.
 
 ### 0:45–1:30 · Régler la lisibilité
@@ -330,7 +331,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 ### 1:30–2:20 · Retrouver les consignes
 
-- **Customizations** → situer **Overview** et **Customize Your Agent** pendant 10 secondes, sans envoyer de demande.
+- **Customizations** → passer directement à **Instructions**. Le tour des autres rubriques viendra à la slide 12.
 - **Instructions** → consignes communes et Python → retrouver la règle zéro/absence.
 
 ### 2:20–4:00 · Vérifier une réponse
@@ -380,9 +381,9 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 > **Fil rouge :** zéro est une mesure; une absence n’en est pas une.
 
-### Définir l’instruction
+### Reprendre la consigne observée
 
-- **Dire :** « Une instruction est une consigne durable, enregistrée dans le projet et relue comme le code. »
+- **Dire :** « Nous avons retrouvé cette consigne dans le projet. Voyons comment vérifier son effet sur les données. »
 - Montrer le fichier du dépôt et les trois températures fictives : **10, 0, None**.
 
 ### Lire l’exemple
@@ -394,7 +395,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 ### Enchaîner
 
-« Où écrire cette règle, et quand sera-t-elle utilisée? »
+« Cette règle est claire. Voici le format du fichier qui la porte. »
 
 <details>
 <summary>Précisions · formats et contrôles métier</summary>
@@ -409,7 +410,7 @@ Données publiques Hydro-Québec.<br>Une petite modification Python.<br>Un indic
 
 ---
 
-# Où écrire la règle, et quand s’applique-t-elle?
+# Instructions : le format du fichier
 
 <div class="small"><b>Règles communes du projet :</b> <code>.github/copilot-instructions.md</code> · Markdown commun au projet.<br><b>Règle ciblée :</b> <code>.github/instructions/python.instructions.md</code></div>
 
@@ -431,11 +432,11 @@ Compter 0 comme une mesure numérique valide.
 <!--
 **1 min 30 · 15:00–16:30**
 
-> **Fil rouge :** un fichier reconnu, une portée explicite, puis une vérification réelle.
+> **Fil rouge :** reconnaître le fichier commun, l’en-tête d’une règle ciblée et le texte de la consigne.
 
 ### Lire le format
 
-- **En-tête entre `---` :** YAML. **Corps :** Markdown.
+- **En-tête entre `---` :** paramètres en YAML. **Corps :** consignes en Markdown. Ne pas recalculer l’exemple zéro/absence.
 - `etl/**/*.py` vise les fichiers Python dans `etl` et ses sous-dossiers, depuis la racine du workspace.
 - `applyTo` cible les fichiers; `description` peut aider l’agent à choisir la règle selon la tâche. Ce sont deux mécanismes distincts et optionnels.
 
@@ -447,7 +448,7 @@ Compter 0 comme une mesure numérique valide.
 
 ### Enchaîner
 
-« Ces instructions rejoignent d’autres informations dans le contexte du modèle. »
+« Le format est posé. À quel travail chaque information s’applique-t-elle? Puis, quand entre-t-elle dans le contexte? »
 
 <details>
 <summary>Précisions · découverte et portabilité</summary>
@@ -489,8 +490,8 @@ Compter 0 comme une mesure numérique valide.
 
 ### 0:45–1:05 · Task scoped — tâche ciblée
 
-- Pointer **But et méthode** : ajouter la couverture selon la spécification, puis vérifier le calcul.
-- Une skill est une procédure réutilisable pour ce type de travail. Un agent personnalisé peut ajouter un rôle spécialisé s’il est choisi.
+- Pointer **But et méthode** : ajouter la couverture selon le résultat attendu, puis vérifier le calcul.
+- Une **skill** est une procédure réutilisable pour ce type de travail. Son chargement détaillé sera expliqué après le menu des personnalisations.
 - Un même document ou une même skill peut servir à plusieurs tâches.
 
 ### 1:05–1:30 · La distinction à retenir
@@ -701,7 +702,7 @@ class: vanilla
 
 ### Enchaîner
 
-« Comparons le résultat sur une vraie tâche. Le nombre d’ajouts ne dit pas, à lui seul, combien de tokens nous consommons. »
+« Ces consignes et outils fournissent des informations au modèle. Voyons comment leur lecture et la réponse produite contribuent au coût. »
 
 <details>
 <summary>Pour les questions · nuances et entretien</summary>
@@ -760,7 +761,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 
 ### Enchaîner
 
-« Le choix du modèle compte aussi, mais une reprise peut annuler l’économie initiale. »
+« Le volume de texte compte. Le modèle qui le traite compte aussi : commençons par le choix automatique. »
 
 <details>
 <summary>Pour les questions · compactage et cache</summary>
@@ -803,7 +804,6 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 
 - Le modèle utilisé apparaît dans les informations de la réponse.
 - Une remise ne garantit pas une économie face à tout choix manuel.
-- **Repère :** 1 AI credit = 0,01 dollar US.
 
 ### Enchaîner
 
@@ -841,12 +841,12 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 
 - **Luna / Haiku :** explication courte. **Sonnet :** modification délimitée et testée.
 - **Sol :** changements complexes. **Opus :** diagnostic difficile.
-- Le losange est un choix pédagogique à essayer, **pas un score mesuré**. Auto Balance reste le départ conseillé.
+- Le losange est un choix pédagogique à essayer, **pas un score mesuré**.
 
 ### Manipuler et enchaîner
 
 - Depuis le présentateur, passer de **1 à 2 essais** avec `+`, puis revenir à **1** avec `−`.
-- **Dire :** « Les reprises se cumulent. Un autre réglage change aussi le travail effectué : le niveau de raisonnement. »
+- **Dire :** « Les reprises se cumulent. Après ces coûts simulés, regardons des mesures de benchmark, en faisant varier l’effort de raisonnement. »
 
 <details>
 <summary>Précisions · hypothèses des coûts</summary>
@@ -875,8 +875,8 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 ### 0:00–0:20 · Situer le réglage et la capture
 
 - **Thinking effort = effort de raisonnement.** Sélecteur du modèle → Thinking Effort, si compatible. Low = faible, High = élevé, Max = maximal.
-- Partir du réglage recommandé. Auto choisit le modèle; ce réglage concerne son effort.
-- **Vraie capture** du 19 octobre : indice vers le haut, coût API moyen par tâche vers la droite, **échelle logarithmique**.
+- Partir du réglage recommandé. Le **benchmark** compare des configurations sur un ensemble de tâches.
+- **Vraie capture :** indice vers le haut, coût API moyen par tâche vers la droite. Axe logarithmique : les distances représentent des rapports de coût.
 
 ### 0:20–0:45 · Même modèle, effort différent
 
@@ -892,7 +892,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 
 - Mesures avec **Codex et Claude Code**, pas notre harnais Copilot. Un nom d’effort commun n’assure pas le même budget entre fournisseurs.
 - Le coût API du benchmark n’est ni la facture Copilot ni un coût par réussite garantie. Chez nous : tests, temps et coût de tous les appels, reprises comprises.
-- **Enchaîner :** « HydraFusion peut aussi organiser plusieurs passages. »
+- **Enchaîner :** « Dernier cas : un parcours qui coordonne plusieurs appels, avec HydraFusion. »
 
 <details>
 <summary>Pour les questions · petit budget, preuve et limites</summary>
@@ -916,7 +916,7 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 
 ## Auto
 
-Un modèle choisi pour la requête.<br>Préférence Efficiency, Balance<br>ou Intelligence.
+Choisit le modèle pour la requête.<br>Le routage vu précédemment.
 
 </div><div>
 
@@ -926,7 +926,7 @@ Un modèle choisi pour la requête.<br>Préférence Efficiency, Balance<br>ou In
 
 </div></div>
 
-<div class="strip compact"><b>Coût HydraFusion = somme des modèles utilisés.</b><br>Pas de supplément propre à HydraFusion; pas de remise Auto.<br>Max augmente l’effort sur les tâches les plus exigeantes.</div>
+<div class="strip compact"><b>Coût HydraFusion = somme des modèles utilisés.</b><br>Pas de supplément propre à HydraFusion; pas de remise Auto.</div>
 
 <div class="doc-link"><a href="https://docs.github.com/en/early-access/copilot/hydrafusion">GitHub · fonctionnement et facturation HydraFusion</a><br><a href="https://github.blog/changelog/2026-10-14-hydrafusion-updates-and-new-max-option/">Annonce du 14 octobre</a> · <a href="https://docs.github.com/en/copilot/concepts/models/auto-model-selection">Documentation Auto</a></div>
 
@@ -983,9 +983,9 @@ class: breakwater
 - Infrastructure préparée; rester sur `main`. Ouvrir le conducteur, **Démo 2**.
 - Les repères ci-dessous démarrent au début de la démo, à **29:30**.
 
-### 0:00–0:45 · Exécuter la CLI
+### 0:00–0:45 · Exécuter la commande Python
 
-- Lancer le bloc CLI préparé du conducteur.
+- Lancer le bloc préparé du conducteur. **CLI :** interface en ligne de commande.
 - Montrer **168 observations, 4 séries et `hourly.csv`**; les sources locales rendent l’essai reproductible.
 
 ### 0:45–2:15 · Lire l’avant / après ETL
@@ -1002,7 +1002,7 @@ class: breakwater
 ### 3:15–4:15 · Examiner une exécution
 
 - **Voir les détails** d’un succès → paramètres, étapes Python, durées et export propre à cette exécution.
-- Quartz déclenche; SQLite conserve le bilan. Un seul journal Aspire si le temps le permet.
+- Quartz, le planificateur, déclenche le traitement; l’historique conserve son bilan. Un seul journal Aspire si le temps le permet.
 
 ### 4:15–5:00 · Rejouer dans Docker
 
@@ -1070,8 +1070,8 @@ class: sdd
 
 ### Dire pendant la transition
 
-- **Spec :** spécification. **Critère d’acceptation :** exemple vérifiable qui décide si le résultat convient.
-- **Test :** compare le résultat calculé au résultat attendu.
+- **Spécification, ou spec :** description du résultat attendu et de ses contraintes. **Critère d’acceptation :** exemple vérifiable qui décide si le résultat convient.
+- Les critères du tableau deviennent les tests que l’on demandera à Copilot de satisfaire.
 - **Couverture :** mesures valides dans des créneaux distincts / créneaux attendus × 100.
 - SDD : besoin → critères relus → plan → tâches → code → preuves. L’autre équipe approfondira cette démarche.
 
@@ -1203,8 +1203,8 @@ class: skill-selection
 
 ### Nuancer et enchaîner
 
-- **Dire :** « Nous commençons à explorer ces skills; ce n’est pas une liste universelle de must have. »
-- « Quel besoin récurrent justifierait un premier ajout dans votre travail? »
+- **Dire :** « Les skills de Matt Pocock restent en exploration. Ces pistes se choisissent selon un besoin; le chargement a déjà été expliqué. »
+- « Choisissez maintenant une tâche de votre quotidien sur laquelle essayer cette démarche. »
 
 <details>
 <summary>Pour les questions · outils, adoption et installation</summary>
@@ -1223,42 +1223,47 @@ class: skill-selection
 
 # Votre prochaine tâche avec Copilot
 
-<div class="lead">Écrivez un résultat attendu, confiez une petite tâche,<br>puis examinez les preuves.</div>
+<div class="lead">« Je veux… à partir de…<br>Ce sera réussi si… »</div>
 
 <div class="columns compact"><div>
 
-## Avant de déléguer
+## Exemple de demande
 
-Définir un résultat attendu.<br>Joindre les fichiers utiles.<br>Vérifier règles et autorisations.
+« Produire une moyenne horaire<br>à partir de mesures aux 15 minutes,<br>si les quatre mesures sont valides. »
 
 </div><div>
 
-## Avant d’accepter
+## Preuve attendue
 
-Examiner le diff.<br>Lire les résultats des tests.<br>Conserver les décisions utiles.
+Un test avec quatre mesures.<br>Un test avec une mesure absente.<br>Le calcul et ses résultats à relire.
 
 </div></div>
 
-<div class="strip compact">Quelle petite tâche pourriez-vous confier à Copilot dès demain?</div>
+<div class="strip compact">À vous : une petite tâche, ses données et un critère vérifiable.</div>
 
 <!--
 **1 min 30 · 42:00–43:30**
 
 > **Fil rouge :** choisir une petite tâche dont vous savez juger le résultat.
 
-### Faire choisir un premier essai
+### 0:00–0:20 · Donner le cadre
 
 - **Dire :** « Pensez à une correction de script, un test ou une revue que vous connaissez assez bien pour vérifier le résultat. »
-- Demande délimitée → bon contexte → règles vérifiables → permissions nécessaires → preuve avant acceptation.
+- Lire le gabarit : « Je veux… à partir de… Ce sera réussi si… »
 
-### Ancrer la pratique
+### 0:20–0:40 · Laisser formuler
 
-- Commencer simplement; ajouter une skill ou un serveur MCP quand un besoin le justifie.
-- Garder les échanges pour les dix minutes de questions. Le SDD sera approfondi par l’autre équipe.
+- **Laisser 20 secondes de réflexion silencieuse.** Chacun choisit sa tâche; ne pas ouvrir un tour de table.
 
-### Enchaîner
+### 0:40–1:10 · Vérifier la formulation
 
-« Voici les ressources pour poursuivre. Cette page restera affichée pendant les questions. »
+- Pointer l’exemple horaire : entrée précise, résultat attendu, cas limite.
+- **Question à se poser :** « Quelle preuve me permettra d’accepter ce résultat? » Les tests et le calcul relu répondent à cette question.
+
+### 1:10–1:30 · Enchaîner
+
+- « Gardez votre idée pour les questions. Voici où approfondir les pratiques et suivre les évolutions. »
+- Passer aux ressources; elles resteront affichées pendant les échanges.
 
 <details>
 <summary>Repères · conclusion</summary>

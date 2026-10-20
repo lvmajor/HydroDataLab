@@ -162,9 +162,9 @@ Déplacer la fenêtre à montrer sur le projecteur; garder le conducteur et les 
 
 ### 1:30–2:20 · Une règle vérifiable
 
-**Faire :** ouvrir **Customizations**. Pendant 10 secondes, situer **Overview** (vue d’ensemble) et **Customize Your Agent** (aide à créer des fichiers à relire), sans envoyer de demande. Passer à **Instructions**, puis montrer `.github/copilot-instructions.md` et `.github/instructions/python.instructions.md`. Retrouver la règle des valeurs absentes et des zéros. Les sept rubriques seront expliquées à la slide 12. Si l’interface ne liste pas un fichier, ouvrir le fichier et vérifier le chargement réel dans les références/diagnostics; ne pas affirmer qu’il a été chargé uniquement parce qu’il existe.
+**Faire :** ouvrir **Customizations** et passer directement à **Instructions**, puis montrer `.github/copilot-instructions.md` et `.github/instructions/python.instructions.md`. Retrouver la règle des valeurs absentes et des zéros. Le tour des rubriques viendra à la slide 12. Si l’interface ne liste pas un fichier, ouvrir le fichier et vérifier le chargement réel dans les références/diagnostics; ne pas affirmer qu’il a été chargé uniquement parce qu’il existe.
 
-**Dire :** « Dans `[10, 0, None]`, deux valeurs ont été mesurées. Zéro est une mesure; None indique une absence. Inventer un zéro à sa place fausserait le contrôle de qualité. »
+**Dire :** « Cette consigne distingue une mesure égale à zéro d’une mesure absente. Nous allons illustrer son effet juste après la démo. » Réserver le calcul sur `[10, 0, None]` à la slide 8 et le format du fichier à la slide 9.
 
 ### 2:20–4:00 · Demander, puis contrôler une preuve
 

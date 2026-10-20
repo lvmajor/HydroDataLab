@@ -1,6 +1,16 @@
 # Validation de la présentation
 
-## État courant : contexte → interface → skill et outil
+## État courant : dernière passe pédagogique
+
+19 octobre 2026. Relecture des 31 slides et de leurs notes. Définitions de contexte/test, diff et instruction placées avant les démonstrations qui les utilisent. Démo 1 limitée aux instructions; calcul zéro/absence réservé à la 8; format en 9, portée en 10 et chargement en 11. Le bloc 15–19 distingue volumes, Auto, simulation de coûts, benchmark modèle/effort et orchestration. Conclusion remplacée par une formulation de tâche personnelle dans les mêmes 90 secondes, dont 20 secondes de réflexion. Notes, guide, aide-mémoire et conducteur Markdown/HTML alignés; aucune commande de démo modifiée.
+
+Build réussi. Contrôle CUA des 31 routes en 1366×768 : aucun débordement détecté. Les huit slides dont le contenu projeté change ont également été contrôlées en 1920×1080. Notes modifiées contrôlées sur portable, intertitres présents et précisions initialement fermées. Synchronisation des trois états de contexte et conservation au rechargement vérifiées; coûts 1 → 2 → 1 essai vérifiés dans les deux vues. Message FloatingVue/Popper connu, sans défaut visuel ou d’interaction constaté ici.
+
+PDF régénéré : 31 pages, textes/liens attendus et six destinations internes valides; trois planches examinées. Les 25 plages notes/guide concordent : **32 + 13 minutes**. Démos à **09:00, 29:30 et 36:30**; questions à 45:00, marge jusqu’à 60:00. Le rythme oral et la projection sur le portable HQ restent à confirmer par la répétition humaine. Pas de nouveau test réseau coupé. Le conducteur HTML a reçu les deux mêmes paragraphes que sa source; cette passe ne revalide pas ses contrôles de copie.
+
+Preuves : `../../../docs/validation/presentation-final-pass.json`, `presentation-flow.json`, captures `final-pass-*`, rendus PDF `page-*` et planches `contact-*`.
+
+## Historique : contexte → interface → skill et outil
 
 19 octobre 2026. La slide 11 montre les règles et les références qui enrichissent une tâche, sans reprendre le parcours d’une skill. La 12 situe les rubriques de configuration et prépare la comparaison. La 13, « Charger une skill, appeler un outil », porte seule le détail nom/description → SKILL.md → références et choix d’outil → permissions → résultat. Le temps de parole distingue mieux méthode disponible et preuve d’exécution. Notes, guide, aide-mémoire, fiche et sources alignés.
 

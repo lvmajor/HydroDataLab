@@ -6,6 +6,8 @@ Sujet central : **GitHub Copilot dans VS Code et les bonnes pratiques des agents
 
 Les slides 10–11 séparent la portée (projet, fichiers, tâche) du chargement progressif. La 11 illustre les règles et références utiles; ses trois détails se synchronisent entre présentateur et audience. La 12 situe les rubriques Agent Customizations dans l’interface, avec une capture réelle en annexe 26. La 13 explique seule le parcours détaillé de chargement d’une skill et d’appel d’un outil : méthode disponible, puis action autorisée et résultat vérifiable. La fiche `handouts/personnalisations-vscode.md` détaille les formats, déclenchements et compteurs. La slide 18 explique Thinking Effort et le coût par tâche, avec une vraie capture datée d’Artificial Analysis et six valeurs modèle/effort/coût vérifiées.
 
+La dernière passe pédagogique donne une fonction distincte à chaque étape : observer une consigne (7), vérifier son effet (8), lire son format (9), comprendre portée et chargement (10–11). Le bloc 15–19 distingue volumes, routage, simulation des coûts, benchmark de raisonnement et orchestration. La 24 propose une formulation personnelle en 90 secondes, dont 20 secondes de réflexion; elle remplace la liste récapitulative. Minutages et transitions détaillés dans `handouts/guide-presentateur.md`.
+
 ## Lancer localement
 
 Les fichiers de présentation sont disponibles à partir du tag `05-docker`. Au jalon `04-pilotage`, préparer uniquement l’application avec `./scripts/prepare.ps1 -SkipPresentation`.
@@ -41,11 +43,11 @@ Après modification : `npm run build`, `npm run export`, puis recharger les deux
 
 ## Export PDF
 
-`npm run export` produit `exports/formation-hydrodatalab.pdf`. Le script détecte Chrome/Edge sur Windows ou Chromium Playwright. Pour un autre emplacement, définir `SLIDEV_BROWSER_PATH`. Aucun téléchargement n’est lancé par ce script d’export. Le PDF contient 30 pages statiques : interactions figées à l’état initial avec leurs hypothèses visibles.
+`npm run export` produit `exports/formation-hydrodatalab.pdf`. Le script détecte Chrome/Edge sur Windows ou Chromium Playwright. Pour un autre emplacement, définir `SLIDEV_BROWSER_PATH`. Aucun téléchargement n’est lancé par ce script d’export. Le PDF contient 31 pages statiques : interactions figées à l’état initial avec leurs hypothèses visibles.
 
 ## Vérifications
 
-Après `npm run build`, démarrer `npm run preview`, puis `node scripts/qa_browser.mjs` sur la machine de création. Le contrôle parcourt 30 routes, vérifie les débordements, bloque les requêtes externes et exerce les deux interactions. Rapport : `exports/qa/browser-report.json`.
+Après `npm run build`, démarrer `npm run preview`, puis `node scripts/qa_browser.mjs` sur la machine de création. Le contrôle parcourt 31 routes, vérifie les débordements, bloque les requêtes externes et exerce les deux interactions. Rapport : `exports/qa/browser-report.json`.
 
 `node scripts/qa_presenter_sync.mjs` vérifie les contrôles dans deux pages d’un même navigateur, dont la vraie vue présentateur : couches, coûts, navigation, rechargement et ouverture tardive, avec les requêtes externes bloquées. Rapport : `exports/qa/presenter-sync.json`. `PRESENTATION_URL` permet de contrôler un kit servi sur un autre port.
 

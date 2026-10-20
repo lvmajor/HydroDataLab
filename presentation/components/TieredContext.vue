@@ -18,7 +18,7 @@
         <span class="tier-index">Task scoped · Tâche ciblée</span>
         <h2>But et méthode</h2>
         <p class="tier-example">« Ajouter la couverture, puis vérifier le calcul. »</p>
-        <p class="tier-file">Demande + spécification<br>Skill de validation, si utilisée</p>
+        <p class="tier-file">Demande + résultat attendu<br>Skill de validation, si utilisée</p>
       </article>
     </div>
     <div class="scope-loading"><b>Une skill peut être les deux :</b><br><span>Task scoped = portée ciblée</span><b class="plus">+</b><span>On demand = chargée au besoin</span></div>
