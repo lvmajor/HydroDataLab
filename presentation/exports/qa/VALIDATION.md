@@ -1,6 +1,14 @@
 # Validation de la présentation
 
-## État courant : Thinking Effort et coût par tâche
+## État courant : capture réelle Artificial Analysis
+
+19 octobre 2026. Slide 17 : capture réelle du graphique public, six configurations Sol/Codex et Sonnet/Claude Code aux niveaux Low, High et Max. Les valeurs du tableau viennent des six infobulles enregistrées; l’axe du coût est logarithmique et les indices affichés sont arrondis. Deux comparaisons sont commentées : Sol High → Max (+74 % de coût, indice affiché 60) et Sonnet High → Max (×11,4, indice 55 → 68). Les coûts API du benchmark sont distingués de la facturation Copilot. Capture et preuves disponibles hors ligne.
+
+Build réussi. Nouvelle slide vérifiée dans le navigateur aux formats 1366×768 et 1920×1080 : aucun débordement interne, capture chargée, marges de 23,6 et 33,2 pixels avant les références. Notes présentateur vérifiées aux deux tailles, sans débordement horizontal; détails ouverts au clavier et repliés après rechargement. Compteur corrigé pour utiliser le nombre réel de slides. Preuves : `../../../docs/validation/thinking-effort.json` et captures `thinking-*`.
+
+PDF régénéré : 30 pages, valeurs, liens et six destinations internes validés; page 17 examinée à pleine taille. Les autres pages sont inchangées selon les rendus générés. Avertissement FloatingVue d’export inchangé, sans effet constaté. Les 24 plages notes/guide correspondent toujours : 32 minutes d’explications + 13 de démos; slide 17 maintenue à 26:30–28:00. La répétition orale sur le portable HQ reste à faire.
+
+## Historique : Thinking Effort et coût par tâche
 
 19 octobre 2026. **30 slides, dont 24 principales et 6 annexes.** Nouvelle slide 17 : niveaux de raisonnement, réglage distinct d’Auto, coût des appels/reprises et lecture du graphique Artificial Analysis. Le schéma ne contient pas de points mesurés. Liens Microsoft, benchmark et méthodologie accessibles dans le site et le PDF.
 

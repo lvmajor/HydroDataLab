@@ -1,25 +1,37 @@
 {
-  "checkedAtUtc": "2026-10-20T00:19:04.146Z",
+  "checkedAtUtc": "2026-10-20T00:38:48.123Z",
   "slide": 17,
   "sourcesDate": "2026-10-19",
-  "chart": "Reading guide only; no fabricated benchmark points",
+  "chart": "Real dated screenshot; six public tooltip readings; logarithmic cost axis; Codex/Claude Code configurations, not Copilot billing",
   "durationSeconds": 90,
   "results": [
     {
-      "width": 1366,
+      "captureLoaded": true,
+      "counter": "17 / 30",
+      "gapToFooter": 23.582595825195312,
       "height": 768,
-      "gapToFooter": 29.152175903320312,
       "overflow": [],
-      "notesExpandedByKeyboard": true
+      "width": 1366
     },
     {
-      "width": 1920,
+      "captureLoaded": true,
+      "counter": "17 / 30",
+      "gapToFooter": 33.163055419921875,
       "height": 1080,
-      "gapToFooter": 40.99525451660156,
       "overflow": [],
-      "notesExpandedByKeyboard": true
+      "width": 1920
     }
   ],
-  "errors": [],
-  "external": []
+  "notes": {
+    "headings": [
+      "0:00–0:20",
+      "0:20–0:45",
+      "0:45–1:10",
+      "1:10–1:30"
+    ],
+    "openedUsingKeyboard": true,
+    "collapsedOnReload": true,
+    "horizontalOverflow": false
+  },
+  "tooltipEvidence": "docs/screenshots/artificial-analysis/readings.json"
 }

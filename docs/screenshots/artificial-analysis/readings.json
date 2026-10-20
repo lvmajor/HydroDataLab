@@ -1,0 +1,52 @@
+{
+  "retrievedAtUtc": "2026-10-20T00:28:28.152Z",
+  "source": "https://artificialanalysis.ai/agents/coding-agents?agents=codex-gpt-6-1-sol-low-reasoning-effort-low%2Ccodex-gpt-6-1-sol-high-reasoning-effort-high%2Ccodex-gpt-6-1-sol-max%2Cclaude-code-sonnet-5-5-low%2Cclaude-code-sonnet-5-5-high%2Cclaude-code-sonnet-5-5-max",
+  "indexVersion": "1.5",
+  "readings": [
+    {
+      "model": "GPT-6.1 Sol",
+      "harness": "Codex",
+      "effort": "high",
+      "costUsd": 0.89,
+      "index": 60
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "harness": "Codex",
+      "effort": "max",
+      "costUsd": 1.55,
+      "index": 60
+    },
+    {
+      "model": "GPT-6.1 Sol",
+      "harness": "Codex",
+      "effort": "low",
+      "costUsd": 0.5,
+      "index": 57
+    },
+    {
+      "model": "Sonnet 5.5",
+      "harness": "Claude Code",
+      "effort": "low",
+      "costUsd": 0.48,
+      "index": 42
+    },
+    {
+      "model": "Sonnet 5.5",
+      "harness": "Claude Code",
+      "effort": "high",
+      "costUsd": 1.24,
+      "index": 55
+    },
+    {
+      "model": "Sonnet 5.5",
+      "harness": "Claude Code",
+      "effort": "max",
+      "costUsd": 14.19,
+      "index": 68
+    }
+  ],
+  "cost": "Average pay-per-token API cost per task, USD",
+  "score": "Rounded index displayed by tooltip",
+  "evidence": "Public chart tooltips; six PNG captures"
+}

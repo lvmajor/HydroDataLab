@@ -60,9 +60,26 @@ Exemples pédagogiques à tester : effort faible pour une correction mécanique;
 
 La diapositive **17** complète les montants simulés de la 16. Le **coût du résultat validé** additionne les appels et les reprises nécessaires. Exemple fictif : trois essais à 0,10 $ totalisent 0,30 $; un essai réussi à 0,20 $ est moins cher. Évaluer aussi le temps de validation humaine.
 
-[Artificial Analysis — Coding Agents](https://artificialanalysis.ai/agents/coding-agents) propose le graphique **Coding Agent Index vs. Cost per Task** : score de code vers le haut, coût API moyen par tâche vers la droite. Comparer les configurations **agent + modèle + réglages**, et examiner leurs résultats sur des tâches proches des vôtres. Le repère dessiné dans la slide n’invente aucun point du classement.
+[Artificial Analysis — Coding Agents](https://artificialanalysis.ai/agents/coding-agents) propose le graphique **Coding Agent Index vs. Cost per Task** : score de code vers le haut, coût API moyen par tâche vers la droite, sur un **axe logarithmique**. La slide contient maintenant une [vraie capture locale du graphique](../presentation/public/aa-cost-effort-20261019.png), filtrée sur les six configurations suivantes. Les infobulles publiques ont été lues le **19 octobre 2026**, heure de Montréal; les indices ci-dessous sont arrondis tels qu’affichés.
 
-Le coût affiché tient compte des tarifs API et du cache applicable. Il ne mesure ni la facture Copilot ni un coût par réussite garantie; l’indice agrège plusieurs évaluations. Lire la [méthodologie](https://artificialanalysis.ai/methodology/coding-agents-benchmarking) et la date des résultats. Utiliser ces mesures pour présélectionner, puis confirmer sur vos tâches et dans le sélecteur HQ. Aucun classement chiffré n’est figé dans le support.
+| Modèle | Harnais testé | Effort | Indice v1.5 affiché | Coût API moyen / tâche ($ US) |
+|---|---|---|---:|---:|
+| GPT‑6.1 Sol | Codex | Low — faible | 57 | 0,50 |
+| GPT‑6.1 Sol | Codex | High — élevé | 60 | 0,89 |
+| GPT‑6.1 Sol | Codex | Max — maximal | 60 | 1,55 |
+| Sonnet 5.5 | Claude Code | Low — faible | 42 | 0,48 |
+| Sonnet 5.5 | Claude Code | High — élevé | 55 | 1,24 |
+| Sonnet 5.5 | Claude Code | Max — maximal | 68 | 14,19 |
+
+Trois lectures concrètes, **calculées ici à partir des valeurs affichées** :
+
+- **Sol, High → Max :** coût +74 % environ, indice affiché identique (60). Tester High avant Max peut être pertinent; les arrondis ne prouvent pas l’égalité exacte des performances.
+- **Sonnet, High → Max :** indice +13 points, coût ×11,4 environ. Pour un diagnostic complexe, mesurer si le gain justifie le surcoût; ne pas appliquer Max systématiquement.
+- **Budget proche :** Sol Low coûte 0,50 $ pour 57 points; Sonnet Low, 0,48 $ pour 42. Les harnais diffèrent aussi : le résultat compare des configurations, sans isoler l’effet du seul modèle.
+
+Ces exemples sont une présélection à vérifier sur vos tâches, pas une garantie dans Copilot. Les libellés d’effort n’assurent pas le même budget entre fournisseurs. Preuves : [relevé des six infobulles](../docs/screenshots/artificial-analysis/readings.json), captures voisines et [paramètres du cadrage](../docs/screenshots/artificial-analysis/capture-settings.json). Les filtres et le réglage de police viennent du site; les pixels et valeurs du graphique ne sont pas retouchés.
+
+Le coût affiché tient compte des tarifs API et du cache applicable. Il ne mesure ni la facture Copilot ni un coût par réussite garantie; l’indice agrège plusieurs évaluations. Lire la [méthodologie](https://artificialanalysis.ai/methodology/coding-agents-benchmarking) et la date des résultats. La capture fige cet instantané pour la séance; le site et les modèles autorisés dans HQ peuvent évoluer.
 
 ## Auto et HydraFusion
 

@@ -16,7 +16,7 @@ for page,fragment in expected_links.items():
     uris=[str(a.get_object().get('/A',{}).get('/URI','')) for a in reader.pages[page-1].get('/Annots',[])]
     assert any(fragment in uri for uri in uris), (page,fragment)
 effort_text=reader.pages[16].extract_text()
-for term in ['Thinking effort','Low','Medium','High','Artificial Analysis','reprises comprises']:
+for term in ['Thinking effort','Low','High','Max','Artificial Analysis','0,89','1,55','14,19','74 %','logarithmique']:
     assert term in effort_text, term
 effort_links=[str(a.get_object().get('/A',{}).get('/URI','')) for a in reader.pages[16].get('/Annots',[])]
 for fragment in ['configure-thinking-effort','artificialanalysis.ai/agents/coding-agents','methodology/coding-agents-benchmarking']:

@@ -1,0 +1,15 @@
+{
+  "capturedAtUtc": "2026-10-20T00:30:42.680Z",
+  "url": "https://artificialanalysis.ai/agents/coding-agents?agents=codex-gpt-6-1-sol-low-reasoning-effort-low%2Ccodex-gpt-6-1-sol-high-reasoning-effort-high%2Ccodex-gpt-6-1-sol-max%2Cclaude-code-sonnet-5-5-low%2Cclaude-code-sonnet-5-5-high%2Cclaude-code-sonnet-5-5-max",
+  "selection": "GPT-6.1 Sol / Codex and Sonnet 5.5 / Claude Code, each Low High Max",
+  "labelSize": 13,
+  "paretoLine": false,
+  "logarithmicCostAxis": true,
+  "clipDocument": {
+    "x": 230,
+    "y": 2138,
+    "width": 1030,
+    "height": 400
+  },
+  "method": "Native browser screenshot; source pixels unmodified; crop retains selected points, axes and attribution"
+}

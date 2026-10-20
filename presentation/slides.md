@@ -808,43 +808,45 @@ Sa réponse et le code proposé.<br>Du raisonnement facturé<br>selon le modèle
 
 <ThinkingEffort />
 
-<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/language-models#configure-thinking-effort">Microsoft · régler l’effort</a> · <a href="https://artificialanalysis.ai/agents/coding-agents">Artificial Analysis · score de code / coût par tâche ↗</a><br>Repères consultés le 19 octobre 2026 · <a href="https://artificialanalysis.ai/methodology/coding-agents-benchmarking">Méthodologie du benchmark</a></div>
+<div class="doc-link"><a href="https://code.visualstudio.com/docs/agent-customization/language-models#configure-thinking-effort">Microsoft · régler l’effort</a> · <a href="https://artificialanalysis.ai/agents/coding-agents?agents=codex-gpt-6-1-sol-low-reasoning-effort-low%2Ccodex-gpt-6-1-sol-high-reasoning-effort-high%2Ccodex-gpt-6-1-sol-max%2Cclaude-code-sonnet-5-5-low%2Cclaude-code-sonnet-5-5-high%2Cclaude-code-sonnet-5-5-max#artificial-analysis-coding-agent-index-vs-cost-per-task">Artificial Analysis · les six configurations ↗</a><br><a href="https://artificialanalysis.ai/methodology/coding-agents-benchmarking">Méthodologie</a> · Coûts et indices affichés relevés le 19 octobre 2026.</div>
 
 <!--
 **1 min 30 · 26:30–28:00**
 
-> **Fil rouge :** choisir un niveau d’effort utile et comparer le coût d’un résultat qui passe nos tests.
+> **Fil rouge :** augmenter l’effort peut améliorer le résultat; mesurer le gain par rapport au coût.
 
-### 0:00–0:30 · Régler l’effort
+### 0:00–0:20 · Situer le réglage et la capture
 
-- **Dire :** « Thinking effort, c’est l’effort de raisonnement consacré à une requête. »
-- Commencer avec le réglage recommandé. Low pour une correction mécanique; augmenter pour un diagnostic difficile si le résultat le justifie.
-- Le sélecteur du modèle donne accès à **Thinking Effort** quand le modèle le permet. Medium et High sont des exemples de niveaux; leurs noms et leur disponibilité varient.
+- **Thinking effort = effort de raisonnement.** Sélecteur du modèle → Thinking Effort, si compatible. Low = faible, High = élevé, Max = maximal.
+- Partir du réglage recommandé. Auto choisit le modèle; ce réglage concerne son effort.
+- **Vraie capture** du 19 octobre : indice vers le haut, coût API moyen par tâche vers la droite, **échelle logarithmique**.
 
-### 0:30–0:55 · Raisonner par tâche
+### 0:20–0:45 · Même modèle, effort différent
 
-- **Distinguer :** Auto choisit le modèle; Thinking Effort règle son raisonnement. Un niveau élevé consomme davantage de tokens et ne garantit pas une réussite.
-- Additionner les appels, y compris les reprises. Exemple **fictif** : trois essais à 0,10 $ coûtent 0,30 $; un seul essai réussi à 0,20 $ revient moins cher.
-- Comparer aussi les tests réussis et le temps passé, avec la même tâche et les mêmes critères.
+- Pointer Sol **High : 60 / 0,89 $**, puis **Max : 60 / 1,55 $**.
+- Coût **+74 %**, avec le même **indice affiché arrondi**. Tester High avant Max; ce résultat ne prouve pas une égalité exacte ni une règle pour toute tâche.
 
-### 0:55–1:20 · Lire Artificial Analysis
+### 0:45–1:10 · Un autre compromis avec Sonnet
 
-- Pointer le repère : **plus haut = meilleur score; plus à gauche = coût API moindre**. Le dessin ne contient aucun point mesuré.
-- Sur le site lié, chercher **Coding Agent Index vs. Cost per Task**. Comparer la combinaison **agent, modèle et réglages**, pas seulement un nom de modèle.
-- Le coût par tâche du benchmark n’est ni un coût par réussite garantie ni notre facture Copilot. Utiliser ce repère pour présélectionner, puis tester nos tâches.
+- Sonnet : **High 55 / 1,24 $; Max 68 / 14,19 $**. Indice +13 points, coût **×11,4**.
+- Diagnostic difficile : vérifier si le gain justifie le surcoût. Modification simple : garder un effort proportionné.
 
-### 1:20–1:30 · Enchaîner
+### 1:10–1:30 · Revenir à nos tâches
 
-« Nous pouvons régler l’effort d’un modèle. HydraFusion peut aussi organiser plusieurs passages. »
+- Mesures avec **Codex et Claude Code**, pas notre harnais Copilot. Un nom d’effort commun n’assure pas le même budget entre fournisseurs.
+- Le coût API du benchmark n’est ni la facture Copilot ni un coût par réussite garantie. Chez nous : tests, temps et coût de tous les appels, reprises comprises.
+- **Enchaîner :** « HydraFusion peut aussi organiser plusieurs passages. »
 
 <details>
-<summary>Pour les questions · réglages et méthode</summary>
+<summary>Pour les questions · petit budget, preuve et limites</summary>
 
-- Les réglages recommandés et le raisonnement adaptatif sont le point de départ documenté. Ne pas présenter Medium comme le défaut universel ni High comme une qualité garantie.
-- Le réglage est mémorisé par session; une nouvelle conversation reprend le dernier niveau choisi pour ce modèle. Vérifier le sélecteur du portable HQ avant la séance.
-- Artificial Analysis mesure des tâches de développement dans des conditions fixées. Son indice v1.5 combine plusieurs évaluations; le coût est calculé aux tarifs API, avec cache lorsqu’il s’applique. Les configurations et le classement évoluent.
-- La page et sa méthodologie sont liées, sans figer un classement non vérifié dans le support. Le schéma local reste lisible sans Internet; la consultation du site est facultative, après la séance ou en questions.
-- La facture Copilot dépend de ses tarifs, crédits et politiques. Le temps de validation humaine s’évalue en plus du coût des appels.
+- Troisième exemple : Sol Low et Sonnet Low coûtent **0,50 / 0,48 $**, avec des indices **57 / 42**. Les harnais diffèrent : comparaison de configurations, pas effet isolé du modèle. Ne pas ajouter cet exemple aux 90 secondes si le rythme est serré.
+- Six valeurs lues dans les infobulles publiques le 19 octobre, heure de Montréal. Scores arrondis tels qu’affichés; aucune précision supplémentaire inventée. Captures et relevés dans docs/screenshots/artificial-analysis/.
+- Nos calculs sur les coûts affichés : (1,55 / 0,89 − 1) × 100 ≈ 74 %; 14,19 / 1,24 ≈ 11,4. Ils ne constituent pas un nouveau classement d’Artificial Analysis.
+- Filtres du site : Sol et Sonnet, chacun Low/High/Max, libellés 13 px et ligne de Pareto désactivée. Capture cadrée, pixels inchangés; axes, points et attribution conservés.
+- Le graphique fonctionne hors ligne. Le lien ouvre les six configurations actuelles, qui peuvent évoluer; les réglages d’affichage peuvent revenir aux valeurs du site.
+- Le réglage est mémorisé par session; une nouvelle conversation reprend le dernier niveau choisi pour ce modèle. Les niveaux disponibles varient; Medium reste possible, absent de cette sélection pour garder la comparaison lisible.
+- Comparer les résultats par benchmark et répéter des tâches représentatives avant de changer ses pratiques. Le temps de validation humaine s’ajoute au coût des appels.
 
 </details>
 -->

@@ -12,7 +12,7 @@ Développer et tester localement des ETL Python et des visualisations, puis pré
 
 - **Auto** choisit le modèle; **Thinking Effort** règle le raisonnement pour les modèles compatibles. Commencer par les réglages recommandés, puis augmenter l’effort si la difficulté le justifie. Davantage d’effort consomme plus de tokens. [Réglage dans VS Code](https://code.visualstudio.com/docs/agent-customization/language-models#configure-thinking-effort).
 - Comparer le coût de **tous les appels, reprises comprises**, avec les tests réussis et le temps passé. Un premier essai moins cher ne garantit pas une tâche moins chère.
-- [Artificial Analysis : code et coût par tâche](https://artificialanalysis.ai/agents/coding-agents) aide à comparer des configurations agent/modèle/réglages. Son coût API par tâche n’est pas la facture Copilot ni un coût par réussite garantie. Détails et exemple dans la [matrice des modèles](matrice-modeles.md#thinking-effort--effort-de-raisonnement).
+- [Artificial Analysis : code et coût par tâche](https://artificialanalysis.ai/agents/coding-agents) aide à comparer des configurations agent/modèle/réglages. Son coût API par tâche n’est pas la facture Copilot ni un coût par réussite garantie. La slide 17 montre une vraie capture et les exemples Sol/Sonnet en Low, High et Max. Détails et valeurs datées dans la [matrice des modèles](matrice-modeles.md#thinking-effort--effort-de-raisonnement).
 
 ## Avant de lancer
 

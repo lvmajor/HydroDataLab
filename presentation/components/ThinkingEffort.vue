@@ -1,55 +1,48 @@
+<script setup lang="ts">
+const groups = [
+  { label: 'GPT‑6.1 Sol · Codex', rows: [['Low', '57', '0,50'], ['High', '60', '0,89'], ['Max', '60', '1,55']] },
+  { label: 'Sonnet 5.5 · Claude Code', rows: [['Low', '42', '0,48'], ['High', '55', '1,24'], ['Max', '68', '14,19']] },
+]
+</script>
+
 <template>
   <div class="thinking-effort">
+    <p class="effort-intro"><b>Effort de raisonnement :</b> partir du réglage recommandé, puis mesurer le gain.</p>
     <div class="effort-columns">
-      <section aria-label="Choisir un effort de raisonnement">
-        <h2>Thinking effort · effort de raisonnement</h2>
-        <p class="effort-default">Commencer par le <b>réglage recommandé</b><br>et l’adaptation automatique, si disponible.</p>
-        <dl class="effort-levels">
-          <div><dt>Low · faible</dt><dd>Correction mécanique</dd></div>
-          <div><dt>Medium · moyen</dt><dd>Modification délimitée</dd></div>
-          <div><dt>High · élevé</dt><dd>Diagnostic complexe</dd></div>
-        </dl>
-        <p class="effort-caption">Exemples à tester; niveaux selon le modèle.</p>
-        <p class="effort-path">Sélecteur → <b>Thinking Effort</b> · distinct d’Auto</p>
-      </section>
-      <section class="benchmark-reading" aria-label="Lire le benchmark Artificial Analysis">
-        <h2>Artificial Analysis · code / coût</h2>
-        <svg viewBox="0 0 390 155" role="img" aria-label="Repère de lecture sans données : le score de code augmente vers le haut; le coût API par tâche augmente vers la droite. Le coin supérieur gauche combine meilleur score et coût moindre.">
-          <text x="8" y="19" class="axis-label">↑ Score sur les tâches de code</text>
-          <path d="M 17 34 V 111 H 375" class="axis" />
-          <path d="M 12 41 L 17 34 L 22 41 M 368 106 L 375 111 L 368 116" class="axis" />
-          <path d="M 35 43 H 219 V 98 H 35 Z" class="preferred-zone" />
-          <text x="49" y="65" class="zone-label">Meilleur score,</text>
-          <text x="49" y="88" class="zone-label">coût plus faible ↖</text>
-          <text x="132" y="144" class="axis-label">Coût API / tâche ($ US) →</text>
-        </svg>
-        <p class="effort-caption">Repère de lecture, sans points de benchmark.</p>
-        <p class="benchmark-scope"><b>Agent + modèle + réglages</b> testés.<br>Coût API ≠ facture Copilot.</p>
-      </section>
+      <figure class="benchmark-capture">
+        <img src="/aa-cost-effort-20261019.png" alt="Capture réelle d’Artificial Analysis : six configurations de Sol et Sonnet, aux niveaux Low, High et Max. Indice vertical, coût API par tâche sur un axe horizontal logarithmique. Valeurs reprises dans le tableau voisin." />
+        <figcaption>19 octobre 2026 · indice v1.5 · coût : axe <b>logarithmique</b>.</figcaption>
+      </figure>
+      <table class="effort-results" aria-label="Six résultats relevés dans les infobulles d’Artificial Analysis">
+        <thead><tr><th scope="col">Effort</th><th scope="col">Indice</th><th scope="col">$ US / tâche</th></tr></thead>
+        <tbody v-for="group in groups" :key="group.label">
+          <tr class="group-title"><th colspan="3" scope="rowgroup">{{ group.label }}</th></tr>
+          <tr v-for="row in group.rows" :key="row[0]"><th scope="row">{{ row[0] }}</th><td>{{ row[1] }}</td><td>{{ row[2] }}</td></tr>
+        </tbody>
+      </table>
     </div>
-    <div class="task-cost"><b>Coût du résultat validé</b> = tous les appels, reprises comprises.<br><span>Plus d’effort consomme plus de tokens; vérifier le gain sur vos tâches.</span></div>
+    <div class="effort-findings">
+      <p><b>Sol High → Max :</b> coût +74 %; même indice affiché de 60.</p>
+    </div>
+    <p class="effort-limit">Configurations Codex / Claude Code mesurées; coût API ≠ facture Copilot.</p>
   </div>
 </template>
 
 <style scoped>
 .thinking-effort { font-size:18px; line-height:1.35; }
-.effort-columns { display:grid; grid-template-columns:1.07fr 1fr; gap:30px; }
-.thinking-effort h2 { font-family:'IBM Plex Sans',sans-serif; font-size:19px; line-height:1.3; margin:0 0 8px; font-weight:600; }
 .thinking-effort p { margin:0; opacity:1; }
-.effort-default { background:#e1f1ee; border-left:4px solid #007967; padding:6px 10px; }
-.effort-levels { margin:8px 0; }
-.effort-levels > div { display:grid; grid-template-columns:150px 1fr; gap:8px; padding:5px 0; border-bottom:1px solid #cadce3; }
-.effort-levels dt { font-weight:600; color:var(--water); }
-.effort-levels dd { margin:0; }
-.thinking-effort .effort-caption { font-size:16px; color:var(--muted); line-height:1.4; }
-.thinking-effort .effort-path { margin-top:12px; font-size:17px; line-height:1.4; }
-.benchmark-reading { border-left:1px solid #b9d5df; padding-left:24px; }
-.benchmark-reading svg { display:block; width:100%; margin:4px 0 7px; overflow:visible; }
-.axis { fill:none; stroke:#476271; stroke-width:2; }
-.axis-label { fill:#123d51; font-size:17px; }
-.preferred-zone { fill:#e1f1ee; }
-.zone-label { fill:#006b61; font-size:20px; font-weight:600; }
-.thinking-effort .benchmark-scope { font-size:18px; margin-top:15px; line-height:1.4; }
-.task-cost { border-left:5px solid var(--gold); padding-left:16px; margin-top:14px; font-size:21px; }
-.task-cost span { font-size:18px; }
+.effort-intro { margin-bottom:8px!important; }
+.effort-columns { display:grid; grid-template-columns:minmax(0,1fr) 285px; align-items:start; gap:20px; }
+.benchmark-capture { margin:0; }
+.benchmark-capture img { display:block; width:100%; height:auto; border:1px solid #cadce3; }
+.benchmark-capture figcaption { margin-top:4px; font-size:16px; line-height:1.4; color:var(--muted); }
+.thinking-effort .effort-results { margin:0; font-size:17px; line-height:1.25; font-variant-numeric:tabular-nums; }
+.effort-results th,.effort-results td { padding:3px 7px; text-align:right; border-bottom:1px solid #cadce3; }
+.effort-results thead th { font-size:16px; background:var(--ink); color:white; }
+.effort-results th:first-child { text-align:left; }
+.effort-results tbody th { background:transparent; color:var(--ink); }
+.effort-results .group-title th { padding:6px 7px 4px; font-size:18px; text-align:left; background:#e1f1ee; color:#005d55; }
+.effort-results tbody tr:nth-child(even) { background:transparent; }
+.effort-findings { border-left:5px solid var(--gold); padding-left:14px; margin-top:8px; font-size:19px; line-height:1.4; }
+.thinking-effort .effort-limit { font-size:16px; color:var(--muted); line-height:1.4; margin-top:5px; }
 </style>

@@ -4,7 +4,7 @@ Sujet central : **GitHub Copilot dans VS Code et les bonnes pratiques des agents
 
 **30 diapositives : 24 principales et 6 annexes.** Prestation du 20 octobre 2026; sources vérifiées les 18 et 19 octobre. Le contenu et les démos occupent 45 minutes : 32 minutes d’explications et 4 + 5 + 4 minutes de démonstrations. Questions : 10 minutes; marge : 5.
 
-La slide 11 relie le panneau Agent Customizations à trois familles de capacités, avec une capture réelle. La slide 12 compare chargement progressif d’une skill et appel d’un outil. La slide 17 explique Thinking Effort et le coût par tâche, avec un repère de lecture et des liens vers Artificial Analysis. La capture élargie est en annexe 25; la fiche `handouts/personnalisations-vscode.md` détaille les formats, déclenchements et compteurs.
+La slide 11 relie le panneau Agent Customizations à trois familles de capacités, avec une capture réelle. La slide 12 compare chargement progressif d’une skill et appel d’un outil. La slide 17 explique Thinking Effort et le coût par tâche, avec une vraie capture datée d’Artificial Analysis et six valeurs modèle/effort/coût vérifiées. La capture élargie est en annexe 25; la fiche `handouts/personnalisations-vscode.md` détaille les formats, déclenchements et compteurs.
 
 ## Lancer localement
 
